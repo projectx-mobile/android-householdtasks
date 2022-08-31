@@ -16,3 +16,4 @@ rootProject.name = "Household Tasks"
 include ':app'
 include ':parent'
 include ':child'
+include ':auth'
