@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_small_text_size">14sp</dimen>
+    <dimen name="login_medium_text_size">16sp</dimen>
+    <dimen name="login_large_text_size">24sp</dimen>
+
+    <dimen name="login_margin_horizontal">16dp</dimen>
+    <dimen name="login_large_margin_horizontal">63dp</dimen>
+
+    <dimen name="login_small_margin">8dp</dimen>
+    <dimen name="login_large_margin">36dp</dimen>
+
+    <dimen name="login_middle_margin">24dp</dimen>
+    <dimen name="login_extra_large_margin">46dp</dimen>
+
+    <dimen name="login_small_padding">13dp</dimen>
+
+    <dimen name="button_radius">8dp</dimen>
+    <dimen name="inner_boarder">1.4dp</dimen>
+    <dimen name="button_elevation_y">3dp</dimen>
+    <dimen name="button_elevation_x">2.5dp</dimen>
+</resources>

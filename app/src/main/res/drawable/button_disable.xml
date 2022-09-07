@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/button_disable_color" />
+            <corners android:radius="@dimen/button_radius" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <stroke
+                android:width="@dimen/inner_boarder"
+                android:color="@color/button_disable_boarder_color" />
+            <corners android:radius="@dimen/button_radius" />
+        </shape>
+    </item>
+</layer-list>
