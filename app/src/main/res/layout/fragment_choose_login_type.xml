@@ -43,9 +43,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sign_in_google_button"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="@dimen/height.large"
             android:layout_marginTop="@dimen/vertical_margin"
-            android:background="@drawable/secondary_button"
+            android:background="@drawable/custom_secondary_button"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintBottom_toTopOf="@+id/create_account_text_view"
@@ -76,9 +76,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sign_in_email_button"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="@dimen/height.large"
             android:layout_marginTop="@dimen/vertical_margin"
-            android:background="@drawable/primary_button"
+            android:background="@drawable/custom_primary_button"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintBottom_toTopOf="@+id/create_account_text_view"

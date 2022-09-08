@@ -17,12 +17,12 @@
 
     <style name="title">
         <item name="android:textSize">24sp</item>
-        <item name="android:textColor">#181925</item>
+        <item name="android:textColor">@color/primary_midnight</item>
     </style>
 
     <style name="description">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">#6C6E84</item>
+        <item name="android:textColor">@color/primary_gray</item>
     </style>
 
 </resources>
