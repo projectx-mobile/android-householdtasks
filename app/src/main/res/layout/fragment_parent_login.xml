@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="LoginViewModel"
+            type="com.projectx.householdtasks.presentation.viewmodel.LoginViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <include
+                android:id="@+id/toolbar_login_layout"
+                layout="@layout/login_toolbar" />
+
+            <TextView
+                android:id="@+id/text_view_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.medium"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="@string/login_title"
+                android:textColor="@color/login_title_color"
+                android:textSize="@dimen/text_size.large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_login_layout" />
+
+            <TextView
+                android:id="@+id/text_view_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.medium"
+                android:layout_marginTop="@dimen/spacing.small"
+                android:fontFamily="@string/font_family_regular"
+                android:text="@string/login_parent_subtitle"
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/text_size.small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_title" />
+
+            <com.projectx.householdtasks.presentation.CustomTextInputLayout
+                android:id="@+id/email_login"
+                style="@style/CustomInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.medium"
+                android:layout_marginTop="@dimen/spacing.x_medium"
+                android:gravity="bottom"
+                android:hint="@string/login_email_parent"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toTopOf="@id/family_id_login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_subtitle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    style="@style/CustomTextInputLayoutLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="@={LoginViewModel.email}" />
+            </com.projectx.householdtasks.presentation.CustomTextInputLayout>
+
+            <com.projectx.householdtasks.presentation.CustomTextInputLayout
+                android:id="@+id/family_id_login"
+                style="@style/CustomInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.medium"
+                android:layout_marginTop="@dimen/spacing.small"
+                android:hint="@string/login_password_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/email_login">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    style="@style/CustomTextInputLayoutLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:inputType="textPassword"
+                    android:text="@={LoginViewModel.password}" />
+            </com.projectx.householdtasks.presentation.CustomTextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_continue"
+                style="@style/OnboardingCustomButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing.x_extra_large"
+                android:layout_marginHorizontal="@dimen/spacing.medium"
+                android:layout_marginTop="@dimen/spacing.x_double"
+                android:enabled="@{LoginViewModel.isButtonEnabled}"
+                android:padding="@dimen/spacing.normal"
+                android:text="@string/login_button_continue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/family_id_login" />
+
+            <TextView
+                android:id="@+id/help_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.double"
+                android:layout_marginTop="@dimen/spacing.xxx_extra_large"
+                android:layout_marginBottom="@dimen/spacing.large"
+                android:fontFamily="@string/font_family_light"
+                android:gravity="center"
+                android:text="@string/login_forgot_password"
+                android:textAllCaps="false"
+                android:textColor="@color/login_text_view_help_color"
+                android:textColorLink="@color/primary_color"
+                android:textSize="@dimen/text_size.small"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_continue" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

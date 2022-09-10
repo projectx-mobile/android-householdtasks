@@ -2,16 +2,16 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <solid android:color="@color/button_disable_color" />
-            <corners android:radius="@dimen/button_radius" />
+            <solid android:color="@color/login_custom_button_disable_color" />
+            <corners android:radius="@dimen/spacing.small" />
         </shape>
     </item>
     <item>
         <shape>
             <stroke
-                android:width="@dimen/inner_boarder"
-                android:color="@color/button_disable_boarder_color" />
-            <corners android:radius="@dimen/button_radius" />
+                android:width="@dimen/spacing.x_extra_small"
+                android:color="@color/login_custom_button_disable_boarder_color" />
+            <corners android:radius="@dimen/spacing.small" />
         </shape>
     </item>
 </layer-list>
