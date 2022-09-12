@@ -26,4 +26,5 @@
 
     <string name="font_family_regular">sans-serif</string>
     <string name="font_family_light">sans-serif-thin</string>
+    <string name="font_family_normal">sans-serif-light</string>
 </resources>

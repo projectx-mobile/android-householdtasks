@@ -118,7 +118,7 @@
                 android:layout_marginHorizontal="@dimen/spacing.double"
                 android:layout_marginTop="@dimen/spacing.xxx_extra_large"
                 android:layout_marginBottom="@dimen/spacing.large"
-                android:fontFamily="@string/font_family_light"
+                android:fontFamily="@string/font_family_normal"
                 android:gravity="center"
                 android:text="@string/login_forgot_password"
                 android:textAllCaps="false"

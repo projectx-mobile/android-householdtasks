@@ -43,7 +43,7 @@ class CustomTextInputLayout(context: Context, attributeSet: AttributeSet) :
         if (editText!!.isFocused) {
             if (error != null) {
                 editText!!.background =
-                    ContextCompat.getDrawable(context, R.drawable.error_in_focus)
+                    ContextCompat.getDrawable(context, R.drawable.field_error_in_focus)
             } else {
                 editText!!.background =
                     ContextCompat.getDrawable(context, R.drawable.text_input_layout)

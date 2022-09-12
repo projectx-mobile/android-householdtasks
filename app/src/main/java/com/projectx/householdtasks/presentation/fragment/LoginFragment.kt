@@ -14,16 +14,16 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.projectx.householdtasks.R
-import com.projectx.householdtasks.databinding.FragmentParentLoginBinding
+import com.projectx.householdtasks.databinding.FragmentLoginBinding
 import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
 import kotlin.random.Random
 
 const val PERSON = "person"
 
 
-class LoginFragment : Fragment(R.layout.fragment_parent_login) {
-    lateinit var viewModel: LoginViewModel
-    private var _binding: FragmentParentLoginBinding? = null
+class LoginFragment : Fragment(R.layout.fragment_login) {
+    private lateinit var viewModel: LoginViewModel
+    private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private var person: String? = null
 
@@ -41,7 +41,7 @@ class LoginFragment : Fragment(R.layout.fragment_parent_login) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentParentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -111,7 +111,7 @@ class LoginFragment : Fragment(R.layout.fragment_parent_login) {
                 if (requestSucceeded) {
                     Toast.makeText(context, getString(R.string.authentication_success), Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(context, getString(R.string.authenticaton_failed), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.authentication_failed), Toast.LENGTH_SHORT).show()
                     setAuthenticationError()
                 }
             }

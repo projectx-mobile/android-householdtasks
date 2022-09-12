@@ -12,7 +12,7 @@
     <string name="login_parent_subtitle">Введи свои данные для доступа в аккаунт.</string>
     <string name="login_password_parent">Пароль или Family ID</string>
     <string name="authentication_success">Authentication success</string>
-    <string name="authenticaton_failed">Authentication failed</string>
+    <string name="authentication_failed">Authentication failed</string>
     <string name="email_error">Неверный формат email.</string>
     <string name="password_error">Неверный формат или количество символов.</string>
     <string name="authentication_error">Неверный email или Family ID.</string>
