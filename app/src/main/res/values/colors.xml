@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary_color">#7D45FF</color>
+    <color name="background_nav_bar_color">#181925</color>
+    <color name="login_custom_button_enable_boarder_color">#181925</color>
 </resources>
