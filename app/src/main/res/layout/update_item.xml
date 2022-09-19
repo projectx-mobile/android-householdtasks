@@ -9,14 +9,16 @@
     android:elevation="0dp"
     app:cardBackgroundColor="@color/card_background_color_homescreen"
     app:cardCornerRadius="@dimen/cornerRadius"
+    app:cardUseCompatPadding="true"
     app:strokeColor="@color/primary_midnight"
     app:strokeWidth="2dp">
 
     <TextView
         android:id="@+id/update_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:layout_marginStart="@dimen/horizontal_margin"
         android:text="@string/task_completed_placeholder"
         android:textColor="@color/primary_midnight"
@@ -29,4 +31,7 @@
         android:layout_marginEnd="@dimen/horizontal_margin"
         android:src="@drawable/ic__right_arrow" />
 
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
 </com.google.android.material.card.MaterialCardView>
