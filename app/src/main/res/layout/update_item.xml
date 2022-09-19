@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:layout_margin="16dp"
+    android:elevation="0dp"
+    app:cardBackgroundColor="#E8E7FA"
+    app:cardCornerRadius="8dp"
+    app:strokeColor="#181925"
+    app:strokeWidth="2dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        android:textColor="#181925"
+        android:text="Aлиса выполнила новую задачу"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginRight="16dp"
+        android:padding="2dp"
+        android:src="@drawable/ic_right_arrow" />
+
+
+</com.google.android.material.card.MaterialCardView>
