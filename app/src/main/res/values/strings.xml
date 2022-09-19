@@ -4,4 +4,35 @@
     <string name="wallet">Кошелек</string>
     <string name="awards">Награды</string>
     <string name="profile">Профиль</string>
+    <string name="profile_settings">Настройки профиля</string>
+    <string name="name">Имя</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="parent">Родитель</string>
+    <string name="linked_accounts">Присоединенные аккаунты</string>
+    <string name="notifications">Уведомления</string>
+    <string name="my_family">Моя семья</string>
+    <string name="invited">Приглашен</string>
+    <string name="add">Добавить</string>
+    <string name="select_language">Выбрать язык</string>
+    <string name="support">Поддержка</string>
+    <string name="exit">Выйти</string>
+    <string name="login_with_qr_code">Отсканировать QR-Code из профиля Родителей.</string>
+    <string name="login_forgot_password">Не помнишь пароль? Восстановить доступ.</string>
+    <string name="login_title">Войти</string>
+    <string name="login_child_subtitle">Введи свой email и Family ID для доступа
+в аккаунт.</string>
+    <string name="login_email_parent">Ваш email</string>
+    <string name="login_email_child">Твой email</string>
+    <string name="login_password_child">Family ID</string>
+    <string name="login_button_continue">Продолжить</string>
+    <string name="login_parent_subtitle">Введи свои данные для доступа в аккаунт.</string>
+    <string name="login_password_parent">Пароль или Family ID</string>
+    <string name="authentication_success">Authentication success</string>
+    <string name="authentication_failed">Authentication failed</string>
+    <string name="email_error">Неверный формат email.</string>
+    <string name="password_error">Неверный формат или количество символов.</string>
+    <string name="authentication_error">Неверный email или Family ID.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

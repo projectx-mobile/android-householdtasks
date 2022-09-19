@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:left="2dp"
+        android:top="2dp">
+        <shape android:shape="oval">
+            <gradient
+                android:startColor="@color/background_nav_bar_color"
+                android:endColor="@color/background_nav_bar_color"
+                />
+        </shape>
+    </item>
+<item
+    android:right="2dp"
+    android:bottom="2dp">
+    <shape
+        android:shape="oval">
+        <size
+            android:width="56dp"
+            android:height="56dp" />
+        <solid
+            android:color="#F9F9FB" />
+        <stroke
+            android:width="2dp"
+            android:color="@color/login_custom_button_enable_boarder_color" />
+    </shape>
+</item>
+
+<item android:drawable="@drawable/ic_plus_black"
+    android:gravity="center"/>
+</layer-list>

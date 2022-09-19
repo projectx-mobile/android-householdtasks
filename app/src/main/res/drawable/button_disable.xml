@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/login_custom_button_disable_color" />
+            <corners android:radius="@dimen/spacing.small" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <stroke
+                android:width="@dimen/spacing.x_extra_small"
+                android:color="@color/login_custom_button_disable_boarder_color" />
+            <corners android:radius="@dimen/spacing.small" />
+        </shape>
+    </item>
+</layer-list>

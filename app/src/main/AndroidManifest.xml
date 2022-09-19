@@ -10,7 +10,7 @@
         android:theme="@style/Theme.HouseholdTasks"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.MainActivity" android:theme="@style/DemoTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
