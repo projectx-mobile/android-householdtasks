@@ -5,7 +5,11 @@
     <dimen name="vertical_margin">24dp</dimen>
     <dimen name="small_vertical_margin">8dp</dimen>
     <dimen name="small_horizontal_margin">8dp</dimen>
-    <dimen name="height.large">48dp</dimen>
+
+    <dimen name="big.TextSize">24sp</dimen>
+    <dimen name="small.TextSize">14sp</dimen>
+    <dimen name="extraSmall.TextSize">12sp</dimen>
+    <dimen name="cornerRadius">8dp</dimen>
 
 
 </resources>

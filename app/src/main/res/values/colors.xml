@@ -11,4 +11,5 @@
     <color name="primary_white_snow">#F9F9FB</color>
     <color name="primary_juicy_grape">#7D45FF</color>
     <color name="primary_gray">#6C6E84</color>
+    <color name="card_background_color_homescreen">#E8E7FA</color>
 </resources>

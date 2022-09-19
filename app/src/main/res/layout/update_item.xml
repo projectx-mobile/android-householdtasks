@@ -3,29 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:layout_margin="16dp"
+    android:layout_marginStart="@dimen/horizontal_margin"
+    android:layout_marginTop="@dimen/small_vertical_margin"
+    android:layout_marginEnd="@dimen/horizontal_margin"
     android:elevation="0dp"
-    app:cardBackgroundColor="#E8E7FA"
-    app:cardCornerRadius="8dp"
-    app:strokeColor="#181925"
+    app:cardBackgroundColor="@color/card_background_color_homescreen"
+    app:cardCornerRadius="@dimen/cornerRadius"
+    app:strokeColor="@color/primary_midnight"
     app:strokeWidth="2dp">
 
     <TextView
+        android:id="@+id/update_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="16dp"
-        android:textColor="#181925"
-        android:text="Aлиса выполнила новую задачу"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:text="@string/task_completed_placeholder"
+        android:textColor="@color/primary_midnight"
         android:textSize="14sp" />
 
     <ImageView
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_gravity="end|center_vertical"
-        android:layout_marginRight="16dp"
-        android:padding="2dp"
-        android:src="@drawable/ic_right_arrow" />
-
+        android:layout_marginEnd="@dimen/horizontal_margin"
+        android:src="@drawable/ic__right_arrow" />
 
 </com.google.android.material.card.MaterialCardView>

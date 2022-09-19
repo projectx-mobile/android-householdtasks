@@ -4,4 +4,8 @@
     <string name="my_family">Моя семья</string>
     <string name="updates">Обновления</string>
     <string name="view_all_updates">Просмотреть все</string>
+    <string name="active_tasks">Активных на сегодня (0)</string>
+    <string name="task_completed_placeholder">Aлиса выполнила новую задачу</string>
+    <string name="tasks_label">задач</string>
+    <string name="name_placeholder">Aлиса</string>
 </resources>
