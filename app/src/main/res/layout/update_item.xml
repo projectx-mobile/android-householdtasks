@@ -9,6 +9,7 @@
     android:elevation="0dp"
     app:cardBackgroundColor="@color/card_background_color_homescreen"
     app:cardCornerRadius="@dimen/cornerRadius"
+    app:cardElevation="0dp"
     app:cardUseCompatPadding="true"
     app:strokeColor="@color/primary_midnight"
     app:strokeWidth="2dp">
@@ -18,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="56dp"
         android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
         android:layout_marginStart="@dimen/horizontal_margin"
+        android:gravity="center_vertical"
         android:text="@string/task_completed_placeholder"
         android:textColor="@color/primary_midnight"
         android:textSize="14sp" />

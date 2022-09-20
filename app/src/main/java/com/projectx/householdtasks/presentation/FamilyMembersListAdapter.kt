@@ -39,8 +39,9 @@ class FamilyMembersListAdapter(private val onItemClicked: (FamilyMemberTest) -> 
             }
             binding.apply {
                 name.text = member.name
-                amountOfTasks.text = "${member.completedTasks}/${member.tasks}"
-                avatar.setProgress(member.completedTasks / member.tasks * 100)
+                amountOfTasks.text =
+                    "${member.completedTasks}/${member.tasks}"
+                avatar.setProgress(((member.completedTasks.toFloat() / member.tasks) * 100).toInt())
             }
         }
     }

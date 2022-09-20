@@ -4,8 +4,11 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.util.AttributeSet
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatImageView
+import com.projectx.householdtasks.R
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -24,11 +27,12 @@ class CustomImage(context: Context, attributes: AttributeSet? = null) :
         "progress",
         0
     ) ?: 0
+    @RequiresApi(Build.VERSION_CODES.M)
     private var progressColor = attributes?.getAttributeIntValue(
         "http://schemas.android.com/apk/res-auto",
         "progressColor",
-        Color.GREEN
-    ) ?: Color.GREEN
+        context.resources.getColor(R.color.primary_juicy_grape)
+    ) ?: context.resources.getColor(R.color.primary_juicy_grape)
     private var strokeColor = attributes?.getAttributeIntValue(
         "http://schemas.android.com/apk/res-auto",
         "strokeColor",
@@ -61,7 +65,7 @@ class CustomImage(context: Context, attributes: AttributeSet? = null) :
         val halfWidth = (w / 2).toFloat()
 
         val paint = Paint()
-        paint.color = Color.WHITE
+        paint.color = context.resources.getColor(R.color.primary_white_snow)
         paint.style = Paint.Style.FILL
         canvas?.drawRect(0F, 0F, halfWidth, w.toFloat(), paint)
 

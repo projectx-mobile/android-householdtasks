@@ -38,18 +38,31 @@ class ParentHomescreenFragment : BaseFragment() {
     }
 
     private fun FragmentParentHomescreenBinding.bindUI() = this.also {
-        customFamilyMembersAdapter.submitList(viewModel.getFamilyMembers())
-        customUpdatesAdapter.submitList(viewModel.getUpdates())
+        viewModel.getFamilyMembers()?.also {
+            customFamilyMembersAdapter.submitList(it)
+            familyMembersRecyclerView.apply {
+                adapter = customFamilyMembersAdapter
+                layoutManager = LinearLayoutManager(requireContext())
+            }
+        } ?: emptyFamily()
 
-        familyMembersRecyclerView.apply {
-            adapter = customFamilyMembersAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
-        updatesRecyclerView.apply {
-            adapter = customUpdatesAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
 
+        viewModel.getUpdates()?.also {
+            customUpdatesAdapter.submitList(it)
+            updatesRecyclerView.apply {
+                adapter = customUpdatesAdapter
+                layoutManager = LinearLayoutManager(requireContext())
+            }
+        } ?: emptyUpdates()
+
+    }
+
+    private fun emptyUpdates() {
+        binding.emptyUpdates.visibility = View.VISIBLE
+    }
+
+    private fun emptyFamily() {
+        binding.emptyFamily.visibility = View.VISIBLE
     }
 
     private fun FragmentParentHomescreenBinding.subscribeUI() = this.also {

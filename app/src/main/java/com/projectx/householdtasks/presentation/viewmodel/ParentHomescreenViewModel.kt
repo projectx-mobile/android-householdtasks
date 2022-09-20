@@ -10,7 +10,8 @@ class ParentHomescreenViewModel : BaseViewModel() {
         FamilyMemberTest("Алиса", 3, 2),
     )
 
-    fun getFamilyMembers(): List<FamilyMemberTest> {
+    fun getFamilyMembers(): List<FamilyMemberTest>? {
+        return null
         return familyMembers
     }
 
@@ -23,7 +24,8 @@ class ParentHomescreenViewModel : BaseViewModel() {
 
     )
 
-    fun getUpdates(): List<UpdatesTest> {
+    fun getUpdates(): List<UpdatesTest>? {
+        return null
         return updates
     }
 }

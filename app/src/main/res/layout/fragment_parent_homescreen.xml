@@ -20,9 +20,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/horizontal_margin"
             android:layout_marginTop="@dimen/vertical_margin"
+            android:fontFamily="@font/nexa_demo"
             android:text="@string/tasks"
             android:textColor="@color/primary_midnight"
             android:textSize="@dimen/big.TextSize"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,8 +47,19 @@
             android:id="@+id/family_members_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/horizontal_margin"
+            android:paddingRight="@dimen/horizontal_margin"
             tools:itemCount="2"
             tools:listitem="@layout/family_member_item" />
+
+        <ImageView
+            android:id="@+id/empty_family"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:src="@drawable/ic_empty_family"/>
     </LinearLayout>
 
     <LinearLayout
@@ -57,6 +70,8 @@
         android:orientation="vertical"
         app:behavior_hideable="false"
         app:behavior_peekHeight="320dp"
+        android:paddingBottom="64dp"
+        android:layout_marginBottom="64dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/current_tasks"
@@ -65,9 +80,9 @@
         <ImageView
             android:layout_width="42dp"
             android:layout_height="5dp"
+            android:layout_gravity="top|center_horizontal"
             android:layout_marginTop="@dimen/small_vertical_margin"
-            android:src="@drawable/rectangle_bottom_sheet"
-            android:layout_gravity="top|center_horizontal"/>
+            android:src="@drawable/rectangle_bottom_sheet" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,14 +92,17 @@
 
             <TextView
                 android:id="@+id/updates_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginStart="@dimen/horizontal_margin"
                 android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/nexa_demo"
                 android:text="@string/updates"
                 android:textColor="@color/primary_midnight"
-                android:textSize="@dimen/big.TextSize" />
+                android:textSize="@dimen/big.TextSize"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/view_all_updates"
@@ -113,7 +131,20 @@
             android:layout_marginEnd="@dimen/horizontal_margin"
             tools:itemCount="5"
             tools:listitem="@layout/update_item" />
+
+        <ImageView
+            android:id="@+id/empty_updates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:src="@drawable/ic_empty_updates"
+            android:layout_marginStart="@dimen/horizontal_margin"/>
     </LinearLayout>
 
-
+    <include
+        layout="@layout/nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom"
+      />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
