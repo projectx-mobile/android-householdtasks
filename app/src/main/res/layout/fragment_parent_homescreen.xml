@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/primary_white_snow">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,15 +53,26 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/test"
         android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="320dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/current_tasks"
         app:layout_constraintVertical_bias="0.0">
 
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="@dimen/small_vertical_margin"
+            android:src="@drawable/rectangle_bottom_sheet"
+            android:layout_gravity="top|center_horizontal"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
             android:orientation="horizontal">
 
             <TextView
@@ -97,6 +109,8 @@
             android:id="@+id/updates_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginEnd="@dimen/horizontal_margin"
             tools:itemCount="5"
             tools:listitem="@layout/update_item" />
     </LinearLayout>
