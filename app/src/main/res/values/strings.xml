@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Household Tasks</string>
     <string name="tasks">Задачи</string>
+    <string name="wallet">Кошелек</string>
+    <string name="awards">Награды</string>
+    <string name="profile">Профиль</string>
     <string name="my_family">Моя семья</string>
     <string name="updates">Обновления</string>
     <string name="view_all_updates">Просмотреть все</string>

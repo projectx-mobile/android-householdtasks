@@ -13,5 +13,9 @@
     <color name="primary_gray">#6C6E84</color>
     <color name="card_background_color_homescreen">#E8E7FA</color>
     <color name="secondary_lavander_grey">#C0C1D2</color>
+    <color name="primary_color">#7D45FF</color>
+    <color name="background_nav_bar_color">#181925</color>
+    <color name="login_custom_button_enable_boarder_color">#181925</color>
+
 
 </resources>
