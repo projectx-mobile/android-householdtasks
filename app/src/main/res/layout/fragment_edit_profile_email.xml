@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="LoginViewModel"
-            type="com.projectx.householdtasks.presentation.viewmodel.LoginViewModel" />
+            name="EditProfileEmailViewModel"
+            type="com.projectx.householdtasks.presentation.viewmodel.EditProfileEmailViewModel" />
     </data>
 
     <ScrollView
@@ -20,8 +20,10 @@
             android:fitsSystemWindows="true">
 
             <include
-                android:id="@+id/toolbar_login_layout"
-                layout="@layout/login_toolbar" />
+                android:id="@+id/toolbar_layout"
+                layout="@layout/login_toolbar"
+                android:clickable="true"
+                android:focusable="true" />
 
             <TextView
                 android:id="@+id/text_view_title"
@@ -29,107 +31,95 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:fontFamily="@font/nexa_demo_bold"
-                android:text="@string/login_title"
+                android:text="@string/email"
                 android:textColor="@color/login_title_color"
                 android:textSize="@dimen/text_size.large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar_login_layout" />
-
-            <TextView
-                android:id="@+id/text_view_subtitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:layout_marginTop="@dimen/spacing.small"
-                android:fontFamily="@string/font_family_regular"
-                android:text="@string/login_parent_subtitle"
-                android:textColor="@color/hint_color"
-                android:textSize="@dimen/text_size.small"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_title" />
+                app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
 
             <com.projectx.householdtasks.presentation.CustomTextInputLayout
-                android:id="@+id/email_login"
+                android:id="@+id/current_email_layout"
                 style="@style/CustomInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.x_medium"
                 android:gravity="bottom"
-                android:hint="@string/login_email_parent"
+                android:focusable="false"
+                android:hint="Текущий email"
+                app:errorEnabled="false"
                 android:inputType="textEmailAddress"
-                app:layout_constraintBottom_toTopOf="@id/family_id_login"
+                app:layout_constraintBottom_toTopOf="@id/new_email_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_subtitle">
+                app:layout_constraintTop_toBottomOf="@id/text_view_title">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email"
+                    android:focusable="false"
                     style="@style/CustomTextInputLayoutLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:text="@={LoginViewModel.email}" />
+                    android:gravity="bottom" />
             </com.projectx.householdtasks.presentation.CustomTextInputLayout>
 
             <com.projectx.householdtasks.presentation.CustomTextInputLayout
-                android:id="@+id/family_id_login"
+                android:id="@+id/new_email_layout"
                 style="@style/CustomInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.small"
-                android:hint="@string/login_password_parent"
+                android:hint="Введи новый email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/email_login">
+                app:layout_constraintTop_toBottomOf="@id/current_email_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password"
+                    android:id="@+id/new_email"
                     style="@style/CustomTextInputLayoutLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="bottom"
-                    android:inputType="textPassword"
-                    android:text="@={LoginViewModel.password}" />
+                    android:inputType="textEmailAddress"
+                    android:text="@={EditProfileEmailViewModel.newEmail}" />
             </com.projectx.householdtasks.presentation.CustomTextInputLayout>
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_continue"
+                android:id="@+id/button_save_changes"
                 style="@style/OnBoardingCustomButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spacing.x_extra_large"
                 android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.x_double"
-                android:enabled="@{LoginViewModel.isButtonEnabled}"
+                android:enabled="@{EditProfileEmailViewModel.isButtonEnabled}"
                 android:padding="@dimen/spacing.normal"
-                android:text="@string/login_button_continue"
+                android:text="Сохранить изменения"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/family_id_login" />
+                app:layout_constraintTop_toBottomOf="@id/new_email_layout" />
 
             <TextView
-                android:id="@+id/help_link"
+                android:id="@+id/help_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.double"
-                android:layout_marginTop="@dimen/spacing.xxx_extra_large"
+                android:layout_marginHorizontal="48dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="@dimen/spacing.large"
-                android:fontFamily="@string/font_family_normal"
+                android:fontFamily="@string/font_family_regular"
                 android:gravity="center"
-                android:text="@string/login_forgot_password"
+                android:visibility="invisible"
+                android:text="Мы отправили ссылку для подтверждения
+на указанный email."
                 android:textAllCaps="false"
                 android:textColor="@color/login_text_view_help_color"
                 android:textColorLink="@color/primary_color"
                 android:textSize="@dimen/text_size.small"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_continue" />
+                app:layout_constraintTop_toBottomOf="@id/button_save_changes" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

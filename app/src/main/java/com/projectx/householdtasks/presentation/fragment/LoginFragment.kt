@@ -21,7 +21,7 @@ import kotlin.random.Random
 const val PERSON = "person"
 
 
-class LoginFragment : Fragment(R.layout.fragment_login) {
+class LoginFragment : BaseFragment() {
     private lateinit var viewModel: LoginViewModel
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!

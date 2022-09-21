@@ -1,5 +1,22 @@
 <resources>
     <string name="app_name">Household Tasks</string>
+    <string name="tasks">Задачи</string>
+    <string name="wallet">Кошелек</string>
+    <string name="awards">Награды</string>
+    <string name="profile">Профиль</string>
+    <string name="profile_settings">Настройки профиля</string>
+    <string name="name">Имя</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="parent">Родитель</string>
+    <string name="linked_accounts">Присоединенные аккаунты</string>
+    <string name="notifications">Уведомления</string>
+    <string name="my_family">Моя семья</string>
+    <string name="invited">Приглашен</string>
+    <string name="add">Добавить</string>
+    <string name="select_language">Выбрать язык</string>
+    <string name="support">Поддержка</string>
+    <string name="exit">Выйти</string>
     <string name="login_with_qr_code">Отсканировать QR-Code из профиля Родителей.</string>
     <string name="login_forgot_password">Не помнишь пароль? Восстановить доступ.</string>
     <string name="login_title">Войти</string>
@@ -16,5 +33,7 @@
     <string name="email_error">Неверный формат email.</string>
     <string name="password_error">Неверный формат или количество символов.</string>
     <string name="authentication_error">Неверный email или Family ID.</string>
+    <string name="help_message_forgot_password">Забыли пароль? Сбросить пароль здесь.</string>
+
 
 </resources>

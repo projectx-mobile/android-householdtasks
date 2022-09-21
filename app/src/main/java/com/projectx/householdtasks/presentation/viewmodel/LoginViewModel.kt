@@ -17,7 +17,7 @@ class LoginViewModel : BaseViewModel() {
     }
 
     fun isEmailValid(): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email.value!!).matches()
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email.value!!.trim()).matches()
     }
 
     fun isPasswordValid(): Boolean {
