@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Household Tasks</string>
     <string name="task_label_placeholder">Название задачи</string>
+    <string name="tasks">Задачи</string>
+    <string name="active_tasks">Активных на сегодня (5)</string>
+
 </resources>
