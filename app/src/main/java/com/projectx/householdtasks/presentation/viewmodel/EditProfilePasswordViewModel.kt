@@ -2,9 +2,8 @@ package com.projectx.householdtasks.presentation.viewmodel
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.android.material.textfield.TextInputLayout
 
-class EditProfilePasswordViewModel: BaseViewModel() {
+class EditProfilePasswordViewModel : BaseViewModel() {
     val currentPassword = MutableLiveData("")
     val newPassword = MutableLiveData("")
     val passwordConfirmation = MutableLiveData("")
@@ -28,9 +27,11 @@ class EditProfilePasswordViewModel: BaseViewModel() {
     fun isNewPasswordValid(): Boolean {
         return newPassword.value!!.length > 7
     }
+
     fun isPasswordConfirmationValid(): Boolean {
         return passwordConfirmation.value!!.length > 7
     }
+
     fun isPasswordsMatch(): Boolean {
         return newPassword.value == passwordConfirmation.value
     }
@@ -43,3 +44,4 @@ class EditProfilePasswordViewModel: BaseViewModel() {
         return currentPassword.value!!.isNotEmpty() && newPassword.value!!.isNotEmpty() && passwordConfirmation.value!!.isNotEmpty()
     }
 }
+

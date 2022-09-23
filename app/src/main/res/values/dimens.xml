@@ -16,9 +16,11 @@
     <dimen name="spacing.small">8dp</dimen>
     <dimen name="spacing.small_x">9dp</dimen>
     <dimen name="spacing.small_xx">10dp</dimen>
-    <dimen name="spacing.normal">13dp</dimen>
+    <dimen name="spacing.normal_x">12dp</dimen>
+    <dimen name="spacing.normal">14dp</dimen>
     <dimen name="spacing.x_normal">15dp</dimen>
     <dimen name="spacing.medium">16dp</dimen>
+    <dimen name="spacing.x_x_medium">18dp</dimen>
     <dimen name="spacing.x_medium">24dp</dimen>
     <dimen name="spacing.xx_medium">32dp</dimen>
     <dimen name="spacing.double">36dp</dimen>
@@ -29,6 +31,7 @@
     <dimen name="spacing.x_extra_large">56dp</dimen>
     <dimen name="spacing.xx_extra_large">63dp</dimen>
     <dimen name="spacing.extra_large_x">72dp</dimen>
+    <dimen name="spacing.extra_large_x_x">82dp</dimen>
     <dimen name="spacing.extra_large_xx">100dp</dimen>
     <dimen name="spacing.xxx_extra_large">200dp</dimen>
 

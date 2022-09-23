@@ -34,6 +34,30 @@
     <string name="password_error">Неверный формат или количество символов.</string>
     <string name="authentication_error">Неверный email или Family ID.</string>
     <string name="help_message_forgot_password">Забыли пароль? Сбросить пароль здесь.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="passwords_not_match">Введенные пароли не совпадают</string>
+    <string name="send_invitation">Приглашение отправлено</string>
+    <string name="my_profile">Мой профиль</string>
+    <string name="save_changes">Изменения сохранены</string>
+    <string name="delete_profile">Удалить профиль</string>
+    <string name="current_email">Текущий email</string>
+    <string name="enter_new_email">Введи новый email</string>
+    <string name="help_message_edit_email">Мы отправили ссылку для подтверждения на указанный email.</string>
+    <string name="current_password">Твой текущий пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="confirm_password">Подтверди новый пароль</string>
+    <string name="changes_saved">Изменения сохранены.</string>
+    <string name="new_user">Новый пользователь</string>
+    <string name="help_message_invite_user">Выбери способ, с помощью которого мы пригласим нового пользователя.</string>
+    <string name="invite_by_email">Пригласить по email</string>
+    <string name="family_id">Family ID</string>
+    <string name="share_link">Поделиться ссылкой</string>
+    <string name="child">Ребенок</string>
+    <string name="email_new_user">Email нового пользователя</string>
+    <string name="faq">Часто задаваемые вопросы</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="feedback">Оставить отзыв</string>
+    <string name="help_message_support">Остались вопросы? Напишите нам support@email.com</string>
 
 
 </resources>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="AccountStatusViewModel"
+            type="com.projectx.householdtasks.presentation.viewmodel.AccountStatusViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing.medium"
+            android:fitsSystemWindows="true">
+
+            <include
+                android:id="@+id/toolbar_login_layout"
+                layout="@layout/login_toolbar" />
+
+            <TextView
+                android:id="@+id/text_view_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="Управление ролями"
+                android:textColor="@color/login_title_color"
+                android:textSize="@dimen/text_size.large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_login_layout" />
+
+            <TextView
+                android:id="@+id/text_view_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.small"
+                android:fontFamily="@string/font_family_regular"
+                android:text="К вашему Family ID должен дыть привязан хотя бы один пользователь с ролью родитель."
+                android:textColor="@color/hint_color"
+                android:textSize="@dimen/text_size.small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_title" />
+
+            <TextView
+                android:id="@+id/text_view_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="Моя роль"
+                android:textColor="@color/login_title_color"
+                android:textSize="@dimen/text_size.medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_subtitle" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/buttons_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/rectangle"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_role">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginStart="3dp"
+                    android:text="Родитель"
+                    android:textAllCaps="false"
+                    style="@style/CustomToggleButtonUserRole"
+
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_child"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="Ребенок"
+                    android:textColor="@color/dark_text_color"
+                    android:textAllCaps="false"
+                    style="@style/CustomToggleButtonUserRole" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:id="@+id/text_view_set_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="Назначить родителя"
+                android:textColor="@color/login_title_color"
+                android:textSize="@dimen/text_size.medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttons_layout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

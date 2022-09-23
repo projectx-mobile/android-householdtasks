@@ -3,14 +3,10 @@ package com.projectx.householdtasks.presentation.viewmodel
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 
-class LoginViewModel : BaseViewModel() {
+class InviteUserByEmailViewModel : BaseViewModel() {
     val email = MutableLiveData("")
-    val password = MutableLiveData("")
     val isButtonEnabled = MediatorLiveData<Boolean>().apply {
         addSource(email) {
-            value = isContinueButtonEnabled()
-        }
-        addSource(password) {
             value = isContinueButtonEnabled()
         }
     }
@@ -19,16 +15,7 @@ class LoginViewModel : BaseViewModel() {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email.value!!.trim()).matches()
     }
 
-    fun isPasswordValid(): Boolean {
-        // TODO: add matching with password and Family Id
-        return password.value!!.length > 7
-    }
-
-    fun isValid(): Boolean {
-        return isEmailValid() && isPasswordValid()
-    }
-
     private fun isContinueButtonEnabled(): Boolean {
-        return email.value!!.isNotEmpty() && password.value!!.isNotEmpty()
+        return email.value!!.isNotEmpty()
     }
 }

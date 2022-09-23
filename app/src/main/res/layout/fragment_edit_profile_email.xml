@@ -17,6 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing.medium"
             android:fitsSystemWindows="true">
 
             <include
@@ -29,7 +30,6 @@
                 android:id="@+id/text_view_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:fontFamily="@font/nexa_demo_bold"
                 android:text="@string/email"
                 android:textColor="@color/login_title_color"
@@ -43,13 +43,12 @@
                 style="@style/CustomInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.x_medium"
-                android:gravity="bottom"
                 android:focusable="false"
-                android:hint="Текущий email"
-                app:errorEnabled="false"
+                android:gravity="bottom"
+                android:hint="@string/current_email"
                 android:inputType="textEmailAddress"
+                app:errorEnabled="false"
                 app:layout_constraintBottom_toTopOf="@id/new_email_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,10 +56,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email"
-                    android:focusable="false"
                     style="@style/CustomTextInputLayoutLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
                     android:gravity="bottom" />
             </com.projectx.householdtasks.presentation.CustomTextInputLayout>
 
@@ -69,9 +68,8 @@
                 style="@style/CustomInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.small"
-                android:hint="Введи новый email"
+                android:hint="@string/enter_new_email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/current_email_layout">
@@ -92,11 +90,10 @@
                 style="@style/OnBoardingCustomButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.x_double"
                 android:enabled="@{EditProfileEmailViewModel.isButtonEnabled}"
                 android:padding="@dimen/spacing.normal"
-                android:text="Сохранить изменения"
+                android:text="@string/save_changes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/new_email_layout" />
@@ -105,18 +102,17 @@
                 android:id="@+id/help_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="48dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="@dimen/spacing.large"
+                android:layout_marginTop="@dimen/spacing.medium"
                 android:layout_marginBottom="@dimen/spacing.large"
                 android:fontFamily="@string/font_family_regular"
                 android:gravity="center"
-                android:visibility="invisible"
-                android:text="Мы отправили ссылку для подтверждения
-на указанный email."
+                android:text="@string/help_message_edit_email"
                 android:textAllCaps="false"
                 android:textColor="@color/login_text_view_help_color"
                 android:textColorLink="@color/primary_color"
                 android:textSize="@dimen/text_size.small"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/button_save_changes" />

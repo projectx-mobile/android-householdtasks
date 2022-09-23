@@ -17,6 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:fitsSystemWindows="true">
 
             <include
@@ -27,7 +28,6 @@
                 android:id="@+id/text_view_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:fontFamily="@font/nexa_demo_bold"
                 android:text="@string/login_title"
                 android:textColor="@color/login_title_color"
@@ -40,7 +40,6 @@
                 android:id="@+id/text_view_subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.small"
                 android:fontFamily="@string/font_family_regular"
                 android:text="@string/login_parent_subtitle"
@@ -55,7 +54,6 @@
                 style="@style/CustomInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.x_medium"
                 android:gravity="bottom"
                 android:hint="@string/login_email_parent"
@@ -79,7 +77,6 @@
                 style="@style/CustomInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.small"
                 android:hint="@string/login_password_parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +99,6 @@
                 style="@style/OnBoardingCustomButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
                 android:layout_marginTop="@dimen/spacing.x_double"
                 android:enabled="@{LoginViewModel.isButtonEnabled}"
                 android:padding="@dimen/spacing.normal"
@@ -115,7 +111,6 @@
                 android:id="@+id/help_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.double"
                 android:layout_marginTop="@dimen/spacing.xxx_extra_large"
                 android:layout_marginBottom="@dimen/spacing.large"
                 android:fontFamily="@string/font_family_normal"

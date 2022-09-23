@@ -12,11 +12,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentEditProfilePasswordBinding
-import com.projectx.householdtasks.presentation.viewmodel.EditProfileEmailViewModel
 import com.projectx.householdtasks.presentation.viewmodel.EditProfilePasswordViewModel
 
 class EditProfilePasswordFragment : BaseFragment() {
@@ -45,7 +43,29 @@ class EditProfilePasswordFragment : BaseFragment() {
 
         hidePasswordErrorsOnChange()
         setLink()
+        buttonSaveChangesSetListener()
+    }
 
+    private fun hidePasswordErrorsOnChange() {
+        viewModel.currentPassword.observe(viewLifecycleOwner) {
+            binding.currentPasswordLayout.isErrorEnabled = false
+        }
+        viewModel.newPassword.observe(viewLifecycleOwner) {
+            binding.newPasswordLayout.isErrorEnabled = false
+        }
+        viewModel.passwordConfirmation.observe(viewLifecycleOwner) {
+            binding.passwordConfirmationLayout.error = null
+        }
+    }
+
+    private fun setLink() {
+        val spannableString = SpannableString(binding.helpLink.text)
+        spannableString.setSpan(MyClickableSpan(), 15, 36, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.helpLink.text = spannableString
+        binding.helpLink.movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    private fun buttonSaveChangesSetListener() {
         binding.buttonSaveChanges.setOnClickListener {
             resetErrors()
             if (viewModel.isPasswordsMatch() && viewModel.isValid()) {
@@ -67,24 +87,6 @@ class EditProfilePasswordFragment : BaseFragment() {
         }
     }
 
-    private fun setLink() {
-        val spannableString = SpannableString(binding.helpLink.text)
-        spannableString.setSpan(MyClickableSpan(), 15, 36, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.helpLink.text = spannableString
-        binding.helpLink.movementMethod = LinkMovementMethod.getInstance()
-    }
-
-    private fun hidePasswordErrorsOnChange() {
-        viewModel.currentPassword.observe(viewLifecycleOwner) {
-            binding.currentPasswordLayout.isErrorEnabled = false
-        }
-        viewModel.newPassword.observe(viewLifecycleOwner) {
-            binding.newPasswordLayout.isErrorEnabled = false
-        }
-        viewModel.passwordConfirmation.observe(viewLifecycleOwner) {
-            binding.passwordConfirmationLayout.error = null
-        }
-    }
     private fun resetErrors() {
         binding.currentPasswordLayout.isErrorEnabled = false
         binding.newPasswordLayout.isErrorEnabled = false
@@ -93,16 +95,8 @@ class EditProfilePasswordFragment : BaseFragment() {
 
     private fun setErrorForNewPasswords() {
         binding.newPasswordLayout.error = " "
-        binding.passwordConfirmationLayout.error = "Введенные пароли не совпадают"
+        binding.passwordConfirmationLayout.error = getString(R.string.passwords_not_match)
     }
-
-//    private fun isPasswordsMatch(): Boolean {
-//        if (binding.newPassword.text.toString() != binding.passwordConfirmation.text.toString()) {
-//            setErrorForPassword()
-//            return false
-//        }
-//        return true
-//    }
 
     private fun setErrorForPassword(password: TextInputLayout) {
         password.error = getString(R.string.password_error)

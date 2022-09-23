@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="LoginViewModel"
+            type="com.projectx.householdtasks.presentation.viewmodel.LoginViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing.medium"
+            android:fitsSystemWindows="true">
+
+            <include
+                android:id="@+id/toolbar_login_layout"
+                layout="@layout/login_toolbar" />
+
+            <TextView
+                android:id="@+id/text_view_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="Уведомления"
+                android:textColor="@color/login_title_color"
+                android:textSize="@dimen/text_size.large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_login_layout" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/turn_off_notifications_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing.x_extra_large"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_title">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.medium"
+                    android:background="@drawable/ic_notification_off" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Выключить все"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.small" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector"
+                      />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

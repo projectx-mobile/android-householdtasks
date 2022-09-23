@@ -8,143 +8,136 @@
             name="EditProfileViewModel"
             type="com.projectx.householdtasks.presentation.viewmodel.EditProfileViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/login_toolbar" />
-
-    <TextView
-        android:id="@+id/text_view_title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing.medium"
-        android:fontFamily="@font/nexa_demo_bold"
-        android:text="Мой профиль"
-        android:textColor="@color/login_title_color"
-        android:textSize="@dimen/text_size.x_medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/profile_photo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing.large"
-        android:background="@drawable/oval_with_icon_photo"
-        android:gravity="center"
-        android:text="И"
-        android:textColor="@color/dark_text_color"
-        android:textSize="@dimen/text_size.x_medium"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_title" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/divider"
-        style="@style/Divider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing.medium"
-        android:layout_marginTop="@dimen/spacing.xx_medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_photo" />
-
-    <com.projectx.householdtasks.presentation.CustomTextInputLayout
-        android:id="@+id/person_name_layout"
-        style="@style/CustomInputStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing.medium"
-        android:layout_marginTop="@dimen/spacing.xx_extra_large"
-        android:gravity="bottom"
-        android:hint="@string/name"
-        app:layout_constraintTop_toBottomOf="@id/profile_photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name"
-            style="@style/CustomTextInputLayoutLogin"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:text="@={EditProfileViewModel.newName}"/>
-    </com.projectx.householdtasks.presentation.CustomTextInputLayout>
+            android:layout_marginHorizontal="@dimen/spacing.medium"
+            android:fitsSystemWindows="true">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/save_changes"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing.x_extra_large"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="@dimen/spacing.x_double"
-        android:background="@drawable/button_disable"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/person_name_layout"
-        app:layout_constraintStart_toStartOf="parent">
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/login_toolbar" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_view_save_changes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing.small_xx"
-            android:layout_marginEnd="14dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Сохранить изменения"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size.medium" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:id="@+id/text_view_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="@string/my_profile"
+                android:textColor="@color/login_title_color"
+                android:textSize="@dimen/text_size.x_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif"
-        android:text="Изменения сохранены"
-        android:visibility="invisible"
-        android:textColor="@color/background_nav_bar_color"
-        android:textSize="@dimen/text_size.xx_small"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/save_changes" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/profile_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.large"
+                android:background="@drawable/oval_with_icon_photo"
+                android:gravity="center"
+                android:text="И"
+                android:textColor="@color/dark_text_color"
+                android:textSize="@dimen/text_size.x_medium"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/exit_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/spacing.x_extra_large"
-        android:layout_marginBottom="@dimen/text_size.x_medium"
-        android:layout_marginHorizontal="82dp"
-        android:background="@drawable/rectangle_white_with_shadow"
-        android:gravity="center|left"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/divider"
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.xx_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_photo" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:background="@drawable/ic_delete_profile" />
+            <com.projectx.householdtasks.presentation.CustomTextInputLayout
+                android:id="@+id/person_name_layout"
+                style="@style/CustomInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.xx_extra_large"
+                android:gravity="bottom"
+                android:hint="@string/name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_photo">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing.small_xx"
-            android:layout_marginEnd="14dp"
-            android:text="Удалить профиль"
-            android:textColor="@color/background_nav_bar_color"
-            android:textSize="@dimen/text_size.small"
-            android:textStyle="bold" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
+                    style="@style/CustomTextInputLayoutLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="@={EditProfileViewModel.newName}" />
+            </com.projectx.householdtasks.presentation.CustomTextInputLayout>
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_save_changes"
+                style="@style/WhiteCustomButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing.x_extra_large"
+                android:layout_marginTop="@dimen/spacing.x_double"
+                android:enabled="@{EditProfileViewModel.isButtonEnabled}"
+                android:padding="@dimen/spacing.normal"
+                android:text="@string/save_changes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/person_name_layout" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_vew_save_changes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.normal_x"
+                android:fontFamily="sans-serif"
+                android:text="@string/save_changes"
+                android:textColor="@color/background_nav_bar_color"
+                android:textSize="@dimen/text_size.xx_small"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_save_changes" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/exit_profile"
+                style="@style/WhiteCustomButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/spacing.x_extra_large"
+                android:layout_marginHorizontal="@dimen/spacing.extra_large_x_x"
+                android:layout_marginBottom="@dimen/text_size.x_medium"
+                android:gravity="center|start"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.x_x_medium"
+                    android:background="@drawable/ic_delete_profile" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:text="@string/delete_profile"
+                    android:textColor="@color/background_nav_bar_color"
+                    android:textSize="@dimen/text_size.small"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

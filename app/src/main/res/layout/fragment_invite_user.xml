@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing.medium"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/login_toolbar" />
+
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nexa_demo_bold"
+            android:text="@string/new_user"
+            android:textColor="@color/login_title_color"
+            android:textSize="@dimen/text_size.large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
+        <TextView
+            android:id="@+id/text_view_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing.small"
+            android:fontFamily="@string/font_family_regular"
+            android:text="@string/help_message_invite_user"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/text_size.small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_title" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/invite_by_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing.x_extra_large"
+            android:layout_marginTop="@dimen/spacing.extra_large"
+            android:background="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_subtitle">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.medium"
+                android:background="@drawable/ic_email" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.small_xx"
+                android:layout_marginEnd="@dimen/spacing.normal"
+                android:layout_weight="30"
+                android:drawableEnd="@drawable/ic_right"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/invite_by_email"
+                android:textColor="@color/dark_text_color"
+                android:textSize="@dimen/text_size.small" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/share_link"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing.x_extra_large"
+            android:layout_marginTop="@dimen/spacing.small"
+            android:background="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/invite_by_email">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.medium"
+                android:background="@drawable/ic_link" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.small_xx"
+                android:layout_marginEnd="@dimen/spacing.normal"
+                android:layout_weight="30"
+                android:drawableEnd="@drawable/ic_right"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/share_link"
+                android:textColor="@color/dark_text_color"
+                android:textSize="@dimen/text_size.small" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/family_id"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing.x_extra_large"
+            android:layout_marginTop="@dimen/spacing.small"
+            android:background="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/share_link">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.medium"
+                android:background="@drawable/ic_password" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.small_xx"
+                android:layout_marginEnd="@dimen/spacing.normal"
+                android:layout_weight="30"
+                android:drawableEnd="@drawable/ic_right"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/family_id"
+                android:textColor="@color/dark_text_color"
+                android:textSize="@dimen/text_size.small" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

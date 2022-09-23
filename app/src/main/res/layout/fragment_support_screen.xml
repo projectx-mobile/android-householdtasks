@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing.medium"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/login_toolbar" />
+
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nexa_demo_bold"
+            android:text="@string/support"
+            android:textColor="@color/login_title_color"
+            android:textSize="@dimen/text_size.large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/faq"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing.x_extra_large"
+            android:layout_marginTop="@dimen/spacing.extra_large"
+            android:background="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_title">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.medium"
+                android:background="@drawable/ic_support" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.small_xx"
+                android:layout_marginEnd="@dimen/spacing.normal"
+                android:layout_weight="30"
+                android:drawableEnd="@drawable/ic_right"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/faq"
+                android:textColor="@color/dark_text_color"
+                android:textSize="@dimen/text_size.small" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/privacy_policy"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing.x_extra_large"
+            android:layout_marginTop="@dimen/spacing.small"
+            android:background="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/faq">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.medium"
+                android:background="@drawable/ic_privacy_policy" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.small_xx"
+                android:layout_marginEnd="@dimen/spacing.normal"
+                android:layout_weight="30"
+                android:drawableEnd="@drawable/ic_right"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/privacy_policy"
+                android:textColor="@color/dark_text_color"
+                android:textSize="@dimen/text_size.small" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/feedback"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing.x_extra_large"
+            android:layout_marginTop="@dimen/spacing.small"
+            android:background="@drawable/rectangle"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/privacy_policy">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.medium"
+                android:background="@drawable/ic_feedback" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.small_xx"
+                android:layout_marginEnd="@dimen/spacing.normal"
+                android:layout_weight="30"
+                android:drawableEnd="@drawable/ic_right"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/feedback"
+                android:textColor="@color/dark_text_color"
+                android:textSize="@dimen/text_size.small" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/help_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="63dp"
+            android:layout_marginBottom="@dimen/spacing.large"
+            android:fontFamily="@string/font_family_regular"
+            android:gravity="center"
+            android:text="@string/help_message_support"
+            android:textAllCaps="false"
+            android:textColor="@color/login_text_view_help_color"
+            android:textColorLink="@color/primary_color"
+            android:textSize="@dimen/text_size.small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+
