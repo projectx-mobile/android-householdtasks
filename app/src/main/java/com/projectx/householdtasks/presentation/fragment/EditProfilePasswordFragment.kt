@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentEditProfilePasswordBinding
@@ -44,6 +45,10 @@ class EditProfilePasswordFragment : BaseFragment() {
         hidePasswordErrorsOnChange()
         setLink()
         buttonSaveChangesSetListener()
+
+        binding.toolbarLayout.toolbar.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
+        }
     }
 
     private fun hidePasswordErrorsOnChange() {

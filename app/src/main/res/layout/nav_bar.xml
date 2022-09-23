@@ -21,8 +21,10 @@
         android:layout_height="@dimen/spacing.extra_large"
         android:layout_gravity="center|bottom"
         android:layout_margin="@dimen/spacing.medium"
-        android:background="@drawable/fab_background"
+        android:background="@drawable/fab_selector"
         android:src="@drawable/ic_plus_white"
-        android:translationZ="@dimen/spacing.small_x" />
+        android:translationZ="@dimen/spacing.small_x"
+        android:clickable="true"
+        android:focusable="true" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/primary_color" />
+    <corners android:radius="@dimen/spacing.small" />
+    <stroke
+        android:width="@dimen/spacing.x_extra_small"
+        android:color="@color/login_custom_button_enable_boarder_color" />
+</shape>
+

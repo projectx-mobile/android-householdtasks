@@ -2,6 +2,7 @@ package com.projectx.householdtasks.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.fragment.NavHostFragment
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.presentation.fragment.*
 
@@ -12,10 +13,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 //        loadLoginFragment()
 
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment_container_view, ProfileFragment())
-            commit()
-        }
+//        supportFragmentManager.beginTransaction().apply {
+//            replace(R.id.fragment_container_view, ProfileFragment())
+//            commit()
+//        }
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
 //        supportFragmentManager.beginTransaction().apply {
 //            replace(R.id.fragment_container_view, InviteUserByEmailFragment())
@@ -32,10 +36,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadLoginFragment() {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment_container_view, LoginFragment.newInstance("parent"))
-            commit()
-        }
+//        supportFragmentManager.beginTransaction().apply {
+//            replace(R.id.fragment_container_view, LoginFragment.newInstance("parent"))
+//            commit()
+//        }
 //        supportFragmentManager.beginTransaction().apply {
 //            replace(R.id.fragment_container_view, LoginFragment.newInstance("child"))
 //            commit()

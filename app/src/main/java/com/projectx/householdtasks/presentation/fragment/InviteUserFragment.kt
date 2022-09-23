@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentInviteUserBinding
 import com.projectx.householdtasks.databinding.FragmentProfileBinding
 
@@ -25,11 +27,18 @@ class InviteUserFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.inviteByEmail.setOnClickListener {}
+        binding.inviteByEmail.setOnClickListener {
+            findNavController().navigate(R.id.action_inviteUserFragment_to_inviteUserByEmailFragment)
+        }
 
-        binding.shareLink.setOnClickListener {}
+        binding.shareLink.setOnClickListener {
+        }
 
         binding.familyId.setOnClickListener {}
+        binding.toolbarLayout.toolbar.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
+
+        }
     }
 
     override fun onDestroyView() {

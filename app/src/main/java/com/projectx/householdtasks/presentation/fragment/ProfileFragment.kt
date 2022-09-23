@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.navigation.fragment.findNavController
+import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentProfileBinding
 
 class ProfileFragment : BaseFragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +25,6 @@ class ProfileFragment : BaseFragment() {
         return view
     }
 
-
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,12 +32,30 @@ class ProfileFragment : BaseFragment() {
         addScrollListener()
 
         binding.navigationBar.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
 
         binding.profileEmail.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_editProfileEmailFragment)
         }
 
         binding.profilePassword.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_editProfilePasswordFragment)
+        }
+        binding.profilePerson.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_accountStatusFragment)
+        }
+        binding.linkedAccounts.setOnClickListener {
+
+        }
+        binding.notifications.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_notificationFragment)
+        }
+        binding.addUserButton.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_inviteUserFragment)
+        }
+        binding.support.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_supportScreenFragment)
         }
     }
 

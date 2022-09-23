@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="AccountStatusViewModel"
             type="com.projectx.householdtasks.presentation.viewmodel.AccountStatusViewModel" />
@@ -22,7 +20,7 @@
             android:fitsSystemWindows="true">
 
             <include
-                android:id="@+id/toolbar_login_layout"
+                android:id="@+id/toolbar_layout"
                 layout="@layout/login_toolbar" />
 
             <TextView
@@ -30,12 +28,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_demo_bold"
-                android:text="Управление ролями"
+                android:text="@string/role_management"
                 android:textColor="@color/login_title_color"
                 android:textSize="@dimen/text_size.large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar_login_layout" />
+                app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
 
             <TextView
                 android:id="@+id/text_view_subtitle"
@@ -43,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing.small"
                 android:fontFamily="@string/font_family_regular"
-                android:text="К вашему Family ID должен дыть привязан хотя бы один пользователь с ролью родитель."
+                android:text="@string/role_management_subtitle"
                 android:textColor="@color/hint_color"
                 android:textSize="@dimen/text_size.small"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -54,9 +52,9 @@
                 android:id="@+id/text_view_role"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="@dimen/spacing.large"
                 android:fontFamily="@font/nexa_demo_bold"
-                android:text="Моя роль"
+                android:text="@string/my_role"
                 android:textColor="@color/login_title_color"
                 android:textSize="@dimen/text_size.medium"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -66,35 +64,36 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/buttons_layout"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="@dimen/spacing.extra_large"
+                android:layout_marginTop="@dimen/spacing.medium"
                 android:background="@drawable/rectangle"
-                android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_role">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_parent"
+                    style="@style/CustomToggleButtonUserRole"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginVertical="3dp"
                     android:layout_marginStart="3dp"
-                    android:text="Родитель"
+                    android:layout_weight="1"
+                    android:text="@string/parent"
                     android:textAllCaps="false"
-                    style="@style/CustomToggleButtonUserRole"
 
                     />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_child"
+                    style="@style/CustomToggleButtonUserRole"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginVertical="3dp"
                     android:layout_marginEnd="3dp"
-                    android:text="Ребенок"
-                    android:textColor="@color/dark_text_color"
+                    android:layout_weight="1"
+                    android:text="@string/child"
                     android:textAllCaps="false"
-                    style="@style/CustomToggleButtonUserRole" />
+                    android:textColor="@color/dark_text_color" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -102,15 +101,157 @@
                 android:id="@+id/text_view_set_parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="@dimen/spacing.large"
                 android:fontFamily="@font/nexa_demo_bold"
-                android:text="Назначить родителя"
+                android:text="@string/set_parent"
                 android:textColor="@color/login_title_color"
                 android:textSize="@dimen/text_size.medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/buttons_layout" />
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.medium"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_set_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/oval"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:gravity="center"
+                    android:text="И"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.x_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:text="Алиса"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.medium" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/person_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.small"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/person">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/oval"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:gravity="center"
+                    android:text="Б"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.x_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:text="Борис"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.medium" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/invited_person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.small"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/person_second">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_invited_person" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:text="Приглашен"
+                    android:textColor="@color/hint_color"
+                    android:textSize="@dimen/text_size.medium" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
+

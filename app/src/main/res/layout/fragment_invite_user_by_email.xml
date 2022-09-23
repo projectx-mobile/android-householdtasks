@@ -21,7 +21,7 @@
             android:fitsSystemWindows="true">
 
             <include
-                android:id="@+id/toolbar_login_layout"
+                android:id="@+id/toolbar_layout"
                 layout="@layout/login_toolbar" />
 
             <TextView
@@ -34,7 +34,7 @@
                 android:textSize="@dimen/text_size.large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar_login_layout" />
+                app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
 
             <RadioGroup
                 android:id="@+id/radio_group"

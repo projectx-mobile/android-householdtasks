@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentEditProfileEmailBinding
 import com.projectx.householdtasks.presentation.viewmodel.EditProfileEmailViewModel
@@ -31,6 +32,9 @@ class EditProfileEmailFragment : BaseFragment() {
         binding.editProfileEmailViewModel = viewModel
         binding.lifecycleOwner = this
         binding.currentEmailLayout.editText?.setText("name@example.com")
+        binding.toolbarLayout.toolbar.setOnClickListener {
+            findNavController().navigate(R.id.profileFragment)
+        }
         hideEmailErrorsOnChange()
         setButtonContinueClickListener()
     }

@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="LoginViewModel"
-            type="com.projectx.householdtasks.presentation.viewmodel.LoginViewModel" />
+            name="NotificationViewModel"
+            type="com.projectx.householdtasks.presentation.viewmodel.NotificationViewModel" />
     </data>
 
     <ScrollView
@@ -21,7 +21,7 @@
             android:fitsSystemWindows="true">
 
             <include
-                android:id="@+id/toolbar_login_layout"
+                android:id="@+id/toolbar_layout"
                 layout="@layout/login_toolbar" />
 
             <TextView
@@ -34,17 +34,15 @@
                 android:textSize="@dimen/text_size.large"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar_login_layout" />
-
+                app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/turn_off_notifications_layout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="12dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_title">
 
@@ -59,10 +57,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing.small_xx"
                     android:layout_marginEnd="@dimen/spacing.normal"
-                    android:fontFamily="sans-serif-medium"
                     android:text="Выключить все"
                     android:textColor="@color/dark_text_color"
-                    android:textSize="@dimen/text_size.small" />
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:textSize="@dimen/text_size.medium" />
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -71,7 +69,60 @@
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
+                        android:checked="false"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Divider"
+                android:layout_marginTop="@dimen/spacing.large"
+                app:layout_constraintTop_toBottomOf="@id/turn_off_notifications_layout"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/new_tasks_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.large"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.medium"
+                    android:background="@drawable/ic_new_task_state" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:text="Новый статус задач"
+                    android:textColor="@color/dark_text_color"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:textSize="@dimen/text_size.medium" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
                         android:theme="@style/CustomSwitch"
                         android:thumb="@drawable/switch_thumb_selector"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -80,6 +131,293 @@
                       />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/tasks_request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.extra_large"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/new_tasks_state">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.medium"
+                    android:background="@drawable/ic_request_for_tasks" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:text="Запросы на задачи"
+                    android:textColor="@color/dark_text_color"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:textSize="@dimen/text_size.medium" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/awards_request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.extra_large"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tasks_request">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.medium"
+                    android:background="@drawable/ic_awards_black" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:text="Запросы на награды"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.medium" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Divider"
+                android:layout_marginTop="@dimen/spacing.large"
+                app:layout_constraintTop_toBottomOf="@id/awards_request"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/notification_for_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.large"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider_second">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.medium"
+                    android:background="@drawable/ic_notification" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:text="Напоминать о задачах"
+                    android:textColor="@color/dark_text_color"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:textSize="@dimen/text_size.medium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/notification_picker"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing.x_extra_large"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notification_for_tasks">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:drawableEnd="@drawable/ic_arrow_down_black"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Каждые 2 часа"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.small" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/notification_picker">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/oval"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:gravity="center"
+                    android:text="И"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.x_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:text="Алиса"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.medium" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/person_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/person">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/oval"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:gravity="center"
+                    android:text="Б"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.x_medium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:text="Борис"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="@dimen/text_size.medium" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/invited_person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/person_second">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_invited_person" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:text="Приглашен"
+                    android:textColor="@color/hint_color"
+                    android:textSize="@dimen/text_size.medium" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:theme="@style/CustomSwitch"
+                        android:thumb="@drawable/switch_thumb_selector"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:track="@drawable/switch_track_selector"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
