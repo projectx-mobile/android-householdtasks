@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/shadow_text_input_color" />
+            <corners android:radius="@dimen/spacing.small_x" />
+        </shape>
+    </item>
+    <item
+        android:left="@dimen/spacing.xx_small"
+        android:top="@dimen/spacing.xx_small">
+        <shape>
+            <solid android:color="@color/white" />
+            <corners android:topLeftRadius="@dimen/spacing.small" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <size android:height="@dimen/spacing.x_extra_large" />
+            <stroke
+                android:width="@dimen/spacing.x_extra_small"
+                android:color="@color/login_custom_button_enable_boarder_color" />
+            <padding android:padding="@dimen/spacing.x_extra_small" />
+            <corners android:radius="@dimen/spacing.small" />
+        </shape>
+    </item>
+</layer-list>
