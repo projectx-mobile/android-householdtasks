@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/primary_white_snow">
 
 
     <LinearLayout
@@ -154,7 +155,7 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/calendar_recyclerView"
                     android:layout_width="313dp"
                     android:layout_height="53dp"
                     android:orientation="horizontal"
@@ -168,17 +169,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_left_arrow"
-                    app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+                    app:layout_constraintBottom_toBottomOf="@+id/calendar_recyclerView"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/recyclerView" />
+                    app:layout_constraintTop_toTopOf="@+id/calendar_recyclerView" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_right_arrow"
-                    app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+                    app:layout_constraintBottom_toBottomOf="@+id/calendar_recyclerView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/recyclerView" />
+                    app:layout_constraintTop_toTopOf="@+id/calendar_recyclerView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -189,6 +190,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet_background"
         android:orientation="vertical"
         app:behavior_peekHeight="300dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
@@ -196,12 +198,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/small_vertical_margin"
+                android:src="@drawable/rectangle_1469" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chips_group"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
                 app:singleLine="true"
                 app:singleSelection="true">
 
@@ -230,6 +241,12 @@
                     android:text="по убыванию баллов" />
 
             </com.google.android.material.chip.ChipGroup>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/task_card" />
         </LinearLayout>
 
     </LinearLayout>
