@@ -64,4 +64,12 @@
     <string name="set_parent">Назначить родителя</string>
 
 
+    <!-- Strings related to login -->
+    <string name="title">Войти</string>
+    <string name="description">Выбери способ доступа в свой аккаунт.</string>
+    <string name="sign_in_with_google">Войти с Google</string>
+    <string name="sign_in_with_email">Войти по email</string>
+    <string name="create_account">Впервые в Трекере Заданий? <b><a href="">Создать аккаунт.</a></b></string>
+
+    <!-- /Strings related to login -->
 </resources>
