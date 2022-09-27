@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentParentHomescreenBinding
 import com.projectx.householdtasks.presentation.FamilyMembersListAdapter
 import com.projectx.householdtasks.presentation.UpdatesListAdapter
@@ -66,6 +68,12 @@ class ParentHomescreenFragment : BaseFragment() {
     }
 
     private fun FragmentParentHomescreenBinding.subscribeUI() = this.also {
+        viewAllUpdates.setOnClickListener {
+            findNavController().navigate(R.id.allUpdatesFragment)
+        }
+        viewAllUpdatesIcon.setOnClickListener {
+            findNavController().navigate(R.id.allUpdatesFragment)
+        }
 
     }
 

@@ -11,4 +11,5 @@
     <string name="task_completed_placeholder">Aлиса выполнила новую задачу</string>
     <string name="tasks_label">задач</string>
     <string name="name_placeholder">Aлиса</string>
+    <string name="updates_placeholder">Обновления</string>
 </resources>

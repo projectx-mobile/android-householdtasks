@@ -10,5 +10,14 @@
         android:name="com.projectx.householdtasks.presentation.fragment.ParentHomescreenFragment"
         android:label="ParentHomescreenFragment"
         tools:layout="@layout/fragment_parent_homescreen"
-        />
+        >
+        <action
+            android:id="@+id/action_parentHomescreenFragment_to_allUpdatesFragment"
+            app:destination="@id/allUpdatesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allUpdatesFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.AllUpdatesFragment"
+        tools:layout="@layout/fragment_all_updates"
+        android:label="AllUpdatesFragment" />
 </navigation>

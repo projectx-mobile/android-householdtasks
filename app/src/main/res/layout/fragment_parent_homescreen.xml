@@ -115,6 +115,7 @@
                 android:textSize="@dimen/small.TextSize" />
 
             <ImageView
+                android:id="@+id/view_all_updates_icon"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_gravity="end|center_vertical"

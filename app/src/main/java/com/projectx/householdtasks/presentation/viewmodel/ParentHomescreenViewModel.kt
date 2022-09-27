@@ -20,12 +20,22 @@ class ParentHomescreenViewModel : BaseViewModel() {
         UpdatesTest("Алиса выполнила задачу"),
         UpdatesTest("Борис выбрал награду"),
         UpdatesTest("Борис выполнил задачу"),
+        UpdatesTest("Борис выполнил задачу"),
+        UpdatesTest("Алиса создала новую задачу"),
+        UpdatesTest("Алиса выполнила задачу"),
+        UpdatesTest("Борис выбрал награду"),
+        UpdatesTest("Борис выполнил задачу"),
+        UpdatesTest("Борис выполнил задачу"),
+        UpdatesTest("Алиса создала новую задачу"),
+        UpdatesTest("Алиса выполнила задачу"),
+        UpdatesTest("Борис выбрал награду"),
+        UpdatesTest("Борис выполнил задачу"),
         UpdatesTest("Борис выполнил задачу")
-
     )
 
     fun getUpdates(): List<UpdatesTest>? {
-        return null
+
         return updates
+        return null
     }
 }
