@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.projectx.householdtasks.databinding.FragmentAllUpdatesBinding
 import com.projectx.householdtasks.presentation.UpdatesListAdapter
 import com.projectx.householdtasks.presentation.viewmodel.ParentHomescreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class AllUpdatesFragment : BaseFragment() {
 
@@ -41,7 +43,21 @@ class AllUpdatesFragment : BaseFragment() {
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }
-
+        var appBarHeight: Int
+//        flexibleExampleAppbar.background.alpha = 120
+        flexibleExampleAppbar.addOnOffsetChangedListener(OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            when (verticalOffset) {
+                0 -> {
+                    appBarHeight = flexibleExampleCollapsing.height
+                    allUpdatesRecyclerView.translationY = appBarHeight.toFloat()
+                }
+                else -> {
+                    appBarHeight = flexibleExampleCollapsing.height
+                    allUpdatesRecyclerView.translationY = appBarHeight + verticalOffset.toFloat()
+                }
+            }
+        }
+        )
     }
 
     private fun FragmentAllUpdatesBinding.subscribeUI() = this.also {

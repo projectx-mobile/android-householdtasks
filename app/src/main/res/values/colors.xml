@@ -18,6 +18,8 @@
     <color name="login_custom_button_enable_boarder_color">#181925</color>
     <color name="asdasd">#1A000000</color>
     <color name="transparent">#00000000</color>
+    <color name="appBar">#CCF9F9FB</color>
+
 
 
 </resources>
