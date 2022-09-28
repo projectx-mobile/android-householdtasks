@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
 import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
@@ -51,7 +52,7 @@ class LoginFragment : BaseFragment() {
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java] //todo ??
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
-
+        binding.appbarLogin.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         person = arguments?.getString(PERSON)
         if (person != null) {
             setStringsForCurrentPerson(person!!)
