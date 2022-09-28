@@ -38,11 +38,9 @@
         <item name="errorIconDrawable">@drawable/ic_error</item>
         <item name="hintTextColor">@color/hint_color</item>
         <item name="errorTextColor">@color/error_color</item>
-        <item name="errorTextAppearance">@string/font_family_regular</item>
         <item name="boxBackgroundColor">@color/white</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
-        <item name="android:fontFamily">@string/font_family_regular</item>
         <item name="errorEnabled">true</item>
         <item name="endIconMode">custom</item>
         <item name="android:textSize">@dimen/text_size.small</item>
