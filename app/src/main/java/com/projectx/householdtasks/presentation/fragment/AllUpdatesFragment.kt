@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.projectx.householdtasks.databinding.FragmentAllUpdatesBinding
@@ -36,6 +37,7 @@ class AllUpdatesFragment : BaseFragment() {
 
     private fun FragmentAllUpdatesBinding.bindUI() = this.also {
 
+        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         viewModel.getUpdates()?.also {
             customUpdatesAdapter.submitList(it)
             allUpdatesRecyclerView.apply {
@@ -44,7 +46,6 @@ class AllUpdatesFragment : BaseFragment() {
             }
         }
         var appBarHeight: Int
-//        flexibleExampleAppbar.background.alpha = 120
         flexibleExampleAppbar.addOnOffsetChangedListener(OnOffsetChangedListener { appBarLayout, verticalOffset ->
             when (verticalOffset) {
                 0 -> {

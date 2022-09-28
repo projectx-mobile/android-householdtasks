@@ -4,19 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_white_snow">
+    android:background="@color/primary_white_snow"
+    android:fitsSystemWindows="false">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/flexible.example.appbar"
         android:layout_width="match_parent"
-        android:backgroundTint="@color/appBar"
-        app:elevation="1dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/appBar"
+        android:backgroundTint="@color/transparent"
+        android:fitsSystemWindows="false"
+        app:elevation="1dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/flexible.example.collapsing"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:background="@color/appBar"
             app:expandedTitleMarginBottom="24dp"
             app:expandedTitleMarginStart="@dimen/horizontal_margin"
             app:expandedTitleTextAppearance="@style/ThemeAppBar"
@@ -25,9 +29,10 @@
             app:title="Обновления">
 
             <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/flexible.example.toolbar"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="@color/appBar"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_arrow_back" />
 
@@ -37,17 +42,21 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="0dp">
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:elevation="0dp"
+        android:fitsSystemWindows="false">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/all_updates_recycler_view"
             android:layout_width="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_marginStart="@dimen/horizontal_margin"
             android:layout_marginEnd="@dimen/horizontal_margin"
+            android:clipToPadding="false"
+            android:paddingBottom="56dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:itemCount="15"
             tools:listitem="@layout/update_item" />
     </androidx.core.widget.NestedScrollView>
