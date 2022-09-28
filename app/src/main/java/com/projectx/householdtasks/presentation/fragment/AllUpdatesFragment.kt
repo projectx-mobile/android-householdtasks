@@ -62,7 +62,7 @@ class AllUpdatesFragment : BaseFragment() {
     }
 
     private fun FragmentAllUpdatesBinding.subscribeUI() = this.also {
-
+        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
     }
 
     override fun onDestroy() {

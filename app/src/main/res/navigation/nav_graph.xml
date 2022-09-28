@@ -13,7 +13,10 @@
         >
         <action
             android:id="@+id/action_parentHomescreenFragment_to_allUpdatesFragment"
-            app:destination="@id/allUpdatesFragment" />
+            app:destination="@id/allUpdatesFragment"
+            app:enterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down"
+            />
     </fragment>
     <fragment
         android:id="@+id/allUpdatesFragment"

@@ -3,10 +3,10 @@ package com.projectx.householdtasks.presentation.fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentParentHomescreenBinding
 import com.projectx.householdtasks.presentation.FamilyMembersListAdapter
 import com.projectx.householdtasks.presentation.UpdatesListAdapter
@@ -18,7 +18,11 @@ class ParentHomescreenFragment : BaseFragment() {
     private var _binding: FragmentParentHomescreenBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModel<ParentHomescreenViewModel>()
-
+    private val navigateToAllUpdatesFragment by lazy {
+        OnClickListener {
+            findNavController().navigate(ParentHomescreenFragmentDirections.actionParentHomescreenFragmentToAllUpdatesFragment())
+        }
+    }
     private val customFamilyMembersAdapter = FamilyMembersListAdapter() {
 
     }
@@ -68,13 +72,8 @@ class ParentHomescreenFragment : BaseFragment() {
     }
 
     private fun FragmentParentHomescreenBinding.subscribeUI() = this.also {
-        viewAllUpdates.setOnClickListener {
-            findNavController().navigate(R.id.allUpdatesFragment)
-        }
-        viewAllUpdatesIcon.setOnClickListener {
-            findNavController().navigate(R.id.allUpdatesFragment)
-        }
-
+        viewAllUpdates.setOnClickListener(navigateToAllUpdatesFragment)
+        viewAllUpdatesIcon.setOnClickListener(navigateToAllUpdatesFragment)
     }
 
     override fun onDestroy() {
