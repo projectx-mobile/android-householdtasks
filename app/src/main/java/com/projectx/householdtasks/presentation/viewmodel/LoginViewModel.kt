@@ -32,4 +32,8 @@ class LoginViewModel : BaseViewModel() {
     private fun isContinueButtonEnabled(): Boolean {
         return email.value!!.isNotEmpty() && password.value!!.isNotEmpty()
     }
+
+    companion object{
+
+    }
 }

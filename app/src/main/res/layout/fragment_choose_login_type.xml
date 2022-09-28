@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/toolbarLayout"
-        layout="@layout/toolbar_choose_login_type"
+        android:id="@+id/appbar_choose_login_type"
+        layout="@layout/partial_appbar_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -15,54 +15,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/horizontal_margin"
-        android:paddingRight="@dimen/horizontal_margin"
+        android:paddingLeft="@dimen/spacing.normal"
+        android:paddingRight="@dimen/spacing.normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout"
+        app:layout_constraintTop_toBottomOf="@+id/appbar_choose_login_type"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:id="@+id/textview_choose_login_type_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nexa_demo_bold"
             android:text="@string/title"
-            android:textAppearance="@style/title" />
+            android:textAppearance="@style/TextAppearanceLoginTitleStyle" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
+            android:id="@+id/textview_choose_login_type_subtitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small_vertical_margin"
+            android:layout_marginTop="@dimen/spacing.small"
             android:gravity="center_vertical"
             android:text="@string/description"
             android:textAppearance="@style/description" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/sign_in_google_button"
+            android:id="@+id/layout_choose_login_type_google"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height.large"
-            android:layout_marginTop="@dimen/vertical_margin"
+            android:layout_height="@dimen/size_login_button.48"
+            android:layout_marginTop="@dimen/spacing.large"
             android:background="@drawable/custom_secondary_button"
             android:clickable="true"
             android:focusable="true"
-            app:layout_constraintBottom_toTopOf="@+id/create_account_text_view"
+            app:layout_constraintBottom_toTopOf="@+id/textview_choose_login_type_create_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/small_horizontal_margin"
+                android:layout_marginEnd="@dimen/spacing.small"
                 android:src="@drawable/ic_google"
-                app:layout_constraintBottom_toBottomOf="@+id/google_title"
-                app:layout_constraintEnd_toStartOf="@+id/google_title"
-                app:layout_constraintTop_toTopOf="@+id/google_title" />
+                app:layout_constraintBottom_toBottomOf="@+id/textview_choose_login_type_google"
+                app:layout_constraintEnd_toStartOf="@+id/textview_choose_login_type_google"
+                app:layout_constraintTop_toTopOf="@+id/textview_choose_login_type_google" />
 
             <TextView
-                android:id="@+id/google_title"
+                android:id="@+id/textview_choose_login_type_google"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_in_with_google"
@@ -74,28 +74,28 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/sign_in_email_button"
+            android:id="@+id/layout_choose_login_type_email"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height.large"
-            android:layout_marginTop="@dimen/vertical_margin"
+            android:layout_height="@dimen/size_login_button.48"
+            android:layout_marginTop="@dimen/spacing.large"
             android:background="@drawable/custom_primary_button"
             android:clickable="true"
             android:focusable="true"
-            app:layout_constraintBottom_toTopOf="@+id/create_account_text_view"
+            app:layout_constraintBottom_toTopOf="@+id/textview_choose_login_type_create_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/small_horizontal_margin"
+                android:layout_marginEnd="@dimen/spacing.small"
                 android:src="@drawable/ic_email"
-                app:layout_constraintBottom_toBottomOf="@+id/email_title"
-                app:layout_constraintEnd_toStartOf="@+id/email_title"
-                app:layout_constraintTop_toTopOf="@+id/email_title" />
+                app:layout_constraintBottom_toBottomOf="@+id/textview_choose_login_type_email"
+                app:layout_constraintEnd_toStartOf="@+id/textview_choose_login_type_email"
+                app:layout_constraintTop_toTopOf="@+id/textview_choose_login_type_email" />
 
             <TextView
-                android:id="@+id/email_title"
+                android:id="@+id/textview_choose_login_type_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_in_with_email"
@@ -109,9 +109,10 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/create_account_text_view"
+        android:id="@+id/textview_choose_login_type_create_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing.normal"
         android:layout_marginBottom="40dp"
         android:gravity="center"
         android:text="@string/create_account"

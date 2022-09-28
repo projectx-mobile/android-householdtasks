@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/icon_error"></item>
+    <item android:drawable="@drawable/ic_error"></item>
 
     <item>
         <shape android:shape="rectangle">
             <solid android:color="@color/white" />
             <stroke
-                android:width="@dimen/spacing.x_extra_small"
+                android:width="2dp"
                 android:color="@color/error_color" />
-            <size android:height="@dimen/spacing.x_extra_large" />
+            <size android:height="56dp" />
             <padding
-                android:bottom="@dimen/spacing.x_small"
-                android:left="@dimen/spacing.x_normal"
-                android:right="@dimen/spacing.x_small"
-                android:top="@dimen/spacing.x_small" />
+                android:bottom="@dimen/spacing.small"
+                android:left="@dimen/spacing.normal"
+                android:right="@dimen/spacing.small"
+                android:top="@dimen/spacing.small" />
             <corners android:radius="@dimen/spacing.small" />
         </shape>
     </item>

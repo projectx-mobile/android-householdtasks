@@ -1,4 +1,4 @@
-package com.projectx.householdtasks.presentation
+package com.projectx.householdtasks.presentation.support
 
 import android.content.Context
 import android.util.AttributeSet

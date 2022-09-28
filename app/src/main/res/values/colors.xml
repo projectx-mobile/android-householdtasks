@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- дайте цветам нормальные имена -->
     <color name="login_title_color">#373A3A</color>
     <color name="login_text_view_help_color">#3E3F40</color>
     <color name="login__custom_button_color_enable">#7D45FF</color>

@@ -11,24 +11,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
 import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
 import kotlin.random.Random
 
-const val PERSON = "person"
-
+const val PERSON = "person" //todo
 
 class LoginFragment : BaseFragment() {
+
     private lateinit var viewModel: LoginViewModel
+
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
     private var person: String? = null
 
     companion object {
-        fun newInstance(person: String): LoginFragment {
+        fun newInstance(person: String): LoginFragment { //todo
             val args = Bundle()
             args.putString(PERSON, person)
             val loginFragment = LoginFragment()
@@ -47,7 +48,7 @@ class LoginFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java] //todo ??
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -62,8 +63,8 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun setStringsForCurrentPerson(person: String) {
-        if (person == "child") {
-            binding.textViewSubtitle.text = getString(R.string.login_child_subtitle)
+        if (person == "child") { //todo
+            binding.textviewLoginSubtitle.text = getString(R.string.login_child_subtitle)
             binding.emailLogin.hint = getString(R.string.login_email_child)
             binding.familyIdLogin.hint = getString(R.string.login_password_child)
         }
@@ -82,21 +83,21 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun setLink() {
-        var start = 19
-        var end = 39
+        var start = 19 //todo
+        var end = 39 //todo
         if (person == "child") {
-            binding.helpLink.text = getString(R.string.login_with_qr_code)
-            start = 0
-            end = 21
+            binding.textviewLoginRestoreAccount.text = getString(R.string.login_with_qr_code)
+            start = 0 //todo
+            end = 21 //todo
         }
-        val spannableString = SpannableString(binding.helpLink.text)
+        val spannableString = SpannableString(binding.textviewLoginRestoreAccount.text)
         spannableString.setSpan(MyClickableSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.helpLink.text = spannableString
-        binding.helpLink.movementMethod = LinkMovementMethod.getInstance()
+        binding.textviewLoginRestoreAccount.text = spannableString
+        binding.textviewLoginRestoreAccount.movementMethod = LinkMovementMethod.getInstance()
     }
 
     private fun setButtonContinueClickListener() {
-        binding.buttonContinue.setOnClickListener {
+        binding.buttonLoginSubmit.setOnClickListener {
             resetErrors()
             if (!viewModel.isPasswordValid()) {
                 setErrorForPassword()
@@ -133,18 +134,18 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun setAuthenticationError() {
-        binding.emailLogin.error = " "
+        binding.emailLogin.error = "Error" //todo get text from BA and add to strings
         binding.familyIdLogin.error = getString(R.string.authentication_error)
     }
 
     inner class MyClickableSpan : ClickableSpan() {
         override fun onClick(widget: View) {
-            Toast.makeText(requireContext(), "Link clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Link clicked", Toast.LENGTH_SHORT).show() //todo text add to strings
         }
 
-        override fun updateDrawState(ds: TextPaint) {
-            super.updateDrawState(ds)
-            ds.bgColor = ContextCompat.getColor(requireContext(), R.color.white)
+        override fun updateDrawState(drawState: TextPaint) {
+            super.updateDrawState(drawState)
+            drawState.bgColor = ContextCompat.getColor(requireContext(), R.color.white)
         }
     }
 

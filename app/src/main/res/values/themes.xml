@@ -14,8 +14,8 @@
         <!-- Customize your theme here. -->
     </style>
 
-
-    <style name="title">
+    <!-- TextAppearance -->
+    <style name="TextAppearanceLoginTitleStyle" parent="TextAppearance.AppCompat">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/primary_midnight</item>
     </style>

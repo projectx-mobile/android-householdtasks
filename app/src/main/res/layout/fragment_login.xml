@@ -20,27 +20,26 @@
             android:fitsSystemWindows="true">
 
             <include
-                android:id="@+id/toolbar_login_layout"
-                layout="@layout/login_toolbar" />
+                android:id="@+id/appbar_login"
+                layout="@layout/partial_appbar_login" />
 
             <TextView
-                android:id="@+id/text_view_title"
+                android:id="@+id/textview_login_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:fontFamily="@font/nexa_demo_bold"
                 android:text="@string/login_title"
-                android:textColor="@color/login_title_color"
-                android:textSize="@dimen/text_size.large"
+                android:textAppearance="@style/TextAppearanceLoginTitleStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar_login_layout" />
+                app:layout_constraintTop_toBottomOf="@id/appbar_login" />
 
             <TextView
-                android:id="@+id/text_view_subtitle"
+                android:id="@+id/textview_login_subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:layout_marginTop="@dimen/spacing.small"
                 android:fontFamily="@string/font_family_regular"
                 android:text="@string/login_parent_subtitle"
@@ -48,22 +47,22 @@
                 android:textSize="@dimen/text_size.small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_title" />
+                app:layout_constraintTop_toBottomOf="@id/textview_login_title" />
 
-            <com.projectx.householdtasks.presentation.CustomTextInputLayout
+            <com.projectx.householdtasks.presentation.support.CustomTextInputLayout
                 android:id="@+id/email_login"
-                style="@style/CustomInputStyle"
+                style="@style/TextInputEditTextLoginStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:layout_marginTop="@dimen/spacing.x_medium"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
+                android:layout_marginTop="@dimen/spacing.large"
                 android:gravity="bottom"
                 android:hint="@string/login_email_parent"
                 android:inputType="textEmailAddress"
                 app:layout_constraintBottom_toTopOf="@id/family_id_login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_subtitle">
+                app:layout_constraintTop_toBottomOf="@id/textview_login_subtitle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email"
@@ -72,14 +71,14 @@
                     android:layout_height="wrap_content"
                     android:gravity="bottom"
                     android:text="@={LoginViewModel.email}" />
-            </com.projectx.householdtasks.presentation.CustomTextInputLayout>
+            </com.projectx.householdtasks.presentation.support.CustomTextInputLayout>
 
-            <com.projectx.householdtasks.presentation.CustomTextInputLayout
+            <com.projectx.householdtasks.presentation.support.CustomTextInputLayout
                 android:id="@+id/family_id_login"
-                style="@style/CustomInputStyle"
+                style="@style/TextInputEditTextLoginStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:layout_marginTop="@dimen/spacing.small"
                 android:hint="@string/login_password_parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -94,30 +93,30 @@
                     android:gravity="bottom"
                     android:inputType="textPassword"
                     android:text="@={LoginViewModel.password}" />
-            </com.projectx.householdtasks.presentation.CustomTextInputLayout>
+            </com.projectx.householdtasks.presentation.support.CustomTextInputLayout>
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_continue"
-                style="@style/OnboardingCustomButton"
+                android:id="@+id/button_login_submit"
+                style="@style/ButtonLoginStyle"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:layout_marginTop="@dimen/spacing.x_double"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
+                android:layout_marginTop="40dp"
                 android:enabled="@{LoginViewModel.isButtonEnabled}"
-                android:padding="@dimen/spacing.normal"
+                android:padding="12dp"
                 android:text="@string/login_button_continue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/family_id_login" />
 
             <TextView
-                android:id="@+id/help_link"
+                android:id="@+id/textview_login_restore_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/spacing.double"
-                android:layout_marginTop="@dimen/spacing.xxx_extra_large"
-                android:layout_marginBottom="@dimen/spacing.large"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="40dp"
                 android:fontFamily="@string/font_family_normal"
                 android:gravity="center"
                 android:text="@string/login_forgot_password"
@@ -128,8 +127,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/button_continue" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
