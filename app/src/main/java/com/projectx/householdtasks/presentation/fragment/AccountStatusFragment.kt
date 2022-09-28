@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentAccountStatusBinding
+import com.projectx.householdtasks.presentation.FamilyMember
+import com.projectx.householdtasks.presentation.FamilyMembersAdapter
 
 class AccountStatusFragment : BaseFragment() {
 
     private var _binding: FragmentAccountStatusBinding? = null
     private val binding get() = _binding!!
+    private var familyMembers: List<FamilyMember>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +32,7 @@ class AccountStatusFragment : BaseFragment() {
         binding.buttonParent.isSelected = true
 
         binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigate(R.id.profileFragment)
+            findNavController().navigateUp()
         }
 
         binding.buttonChild.setOnClickListener {
@@ -52,11 +56,31 @@ class AccountStatusFragment : BaseFragment() {
                 ContextCompat.getColor(requireContext(), (R.color.white))
             )
         }
+
+        familyMembers = createFamilyList()
+        val adapter = FamilyMembersAdapter(familyMembers!!)
+        binding.recyclerViewFamilyMembersList.adapter = adapter
+        val layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewFamilyMembersList.layoutManager = layoutManager
+    }
+
+    private fun createFamilyList(): List<FamilyMember> {
+        return listOf(
+            FamilyMember("Алиса", "А", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
+            FamilyMember("Борис", "Б", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
+            FamilyMember("Алиса", "А", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
+            FamilyMember("Борис", "Б", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
+            FamilyMember("Алиса", "А", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
+            FamilyMember("Борис", "Б", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
+            FamilyMember("Алиса", "А", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
+            FamilyMember("Борис", "Б", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
+            FamilyMember("Приглашен", null, ContextCompat.getDrawable(requireContext(), R.drawable.button_invited_person)!!),
+        )
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 }
 

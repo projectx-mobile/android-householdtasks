@@ -30,8 +30,7 @@ class EditProfilePasswordFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEditProfilePasswordBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +46,7 @@ class EditProfilePasswordFragment : BaseFragment() {
         buttonSaveChangesSetListener()
 
         binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigate(R.id.profileFragment)
+            findNavController().navigateUp()
         }
     }
 
@@ -65,7 +64,7 @@ class EditProfilePasswordFragment : BaseFragment() {
 
     private fun setLink() {
         val spannableString = SpannableString(binding.helpLink.text)
-        spannableString.setSpan(MyClickableSpan(), 15, 36, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(HelpMessageClickableSpan(), 15, 36, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.helpLink.text = spannableString
         binding.helpLink.movementMethod = LinkMovementMethod.getInstance()
     }
@@ -107,8 +106,9 @@ class EditProfilePasswordFragment : BaseFragment() {
         password.error = getString(R.string.password_error)
     }
 
-    inner class MyClickableSpan : ClickableSpan() {
+    inner class HelpMessageClickableSpan : ClickableSpan() {
         override fun onClick(widget: View) {
+//            TODO: add click
             Toast.makeText(requireContext(), "Link clicked", Toast.LENGTH_SHORT).show()
         }
 
@@ -119,7 +119,7 @@ class EditProfilePasswordFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 }

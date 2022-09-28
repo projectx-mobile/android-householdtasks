@@ -26,8 +26,7 @@ class SupportScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSupportScreenBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
 
@@ -39,20 +38,21 @@ class SupportScreenFragment : Fragment() {
 
         binding.feedback.setOnClickListener {}
         binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigate(R.id.profileFragment)
+            findNavController().navigateUp()
         }
         setLink()
     }
 
     private fun setLink() {
         val spannableString = SpannableString(binding.helpLink.text)
-        spannableString.setSpan(MyClickableSpan(), 31, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(HelpMessageClickableSpan(), 31, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.helpLink.text = spannableString
         binding.helpLink.movementMethod = LinkMovementMethod.getInstance()
     }
 
-    inner class MyClickableSpan : ClickableSpan() {
+    inner class HelpMessageClickableSpan : ClickableSpan() {
         override fun onClick(widget: View) {
+//            TODO: add click
             Toast.makeText(requireContext(), "Link clicked", Toast.LENGTH_SHORT).show()
         }
 

@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
@@ -19,7 +18,6 @@ import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
 import kotlin.random.Random
 
 const val PERSON = "person"
-
 
 class LoginFragment : BaseFragment() {
     private lateinit var viewModel: LoginViewModel
@@ -90,7 +88,7 @@ class LoginFragment : BaseFragment() {
             end = 21
         }
         val spannableString = SpannableString(binding.helpLink.text)
-        spannableString.setSpan(MyClickableSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(HelpMessageClickableSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.helpLink.text = spannableString
         binding.helpLink.movementMethod = LinkMovementMethod.getInstance()
     }
@@ -137,8 +135,9 @@ class LoginFragment : BaseFragment() {
         binding.familyIdLogin.error = getString(R.string.authentication_error)
     }
 
-    inner class MyClickableSpan : ClickableSpan() {
+    inner class HelpMessageClickableSpan : ClickableSpan() {
         override fun onClick(widget: View) {
+//            TODO: add click
             Toast.makeText(requireContext(), "Link clicked", Toast.LENGTH_SHORT).show()
         }
 
@@ -149,9 +148,9 @@ class LoginFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
         person = null
+        super.onDestroyView()
     }
 }
 

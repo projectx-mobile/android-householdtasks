@@ -13,33 +13,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 //        loadLoginFragment()
 
-//        supportFragmentManager.beginTransaction().apply {
-//            replace(R.id.fragment_container_view, ProfileFragment())
-//            commit()
-//        }
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-
-//        supportFragmentManager.beginTransaction().apply {
-//            replace(R.id.fragment_container_view, InviteUserByEmailFragment())
-//            commit()
-//        }
-//        supportFragmentManager.beginTransaction().apply {
-//            replace(R.id.fragment_container_view, AccountStatusFragment())
-//            commit()
-//        }
-//        supportFragmentManager.beginTransaction().apply {
-//            replace(R.id.fragment_container_view, NotificationFragment())
-//            commit()
-//        }
     }
 
     private fun loadLoginFragment() {
-//        supportFragmentManager.beginTransaction().apply {
-//            replace(R.id.fragment_container_view, LoginFragment.newInstance("parent"))
-//            commit()
-//        }
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment, LoginFragment.newInstance("parent"))
+            commit()
+        }
 //        supportFragmentManager.beginTransaction().apply {
 //            replace(R.id.fragment_container_view, LoginFragment.newInstance("child"))
 //            commit()

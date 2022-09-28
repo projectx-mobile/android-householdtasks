@@ -31,11 +31,11 @@ class EditProfileFragment : BaseFragment() {
         viewModel = ViewModelProvider(this)[EditProfileViewModel::class.java]
         binding.editProfileViewModel = viewModel
         binding.lifecycleOwner = this
-
+//          TODO: set current name
         viewModel.newName.postValue("Марго")
 
         binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigate(R.id.profileFragment)
+            findNavController().navigateUp()
         }
 
         binding.buttonSaveChanges.setOnClickListener {
@@ -45,7 +45,7 @@ class EditProfileFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 }

@@ -32,9 +32,8 @@ class InviteUserByEmailFragment : BaseFragment() {
         binding.lifecycleOwner = this
 
         binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigate(R.id.inviteUserFragment)
+            findNavController().navigateUp()
         }
-
 
         hideEmailErrorsOnChange()
         setButtonContinueClickListener()
@@ -66,5 +65,10 @@ class InviteUserByEmailFragment : BaseFragment() {
     private fun setErrorForEmail() {
         binding.newUserEmail.isErrorEnabled = true
         binding.newUserEmail.error = getString(R.string.email_error)
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 }

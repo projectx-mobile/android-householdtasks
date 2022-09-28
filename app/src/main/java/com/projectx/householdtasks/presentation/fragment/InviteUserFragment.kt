@@ -1,6 +1,5 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentInviteUserBinding
-import com.projectx.householdtasks.databinding.FragmentProfileBinding
 
 class InviteUserFragment : BaseFragment() {
     private var _binding: FragmentInviteUserBinding? = null
@@ -20,10 +18,8 @@ class InviteUserFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentInviteUserBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,8 +32,7 @@ class InviteUserFragment : BaseFragment() {
 
         binding.familyId.setOnClickListener {}
         binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigate(R.id.profileFragment)
-
+            findNavController().navigateUp()
         }
     }
 

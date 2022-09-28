@@ -22,8 +22,7 @@ class EditProfileEmailFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentEditProfileEmailBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,9 +30,10 @@ class EditProfileEmailFragment : BaseFragment() {
         viewModel = ViewModelProvider(this)[EditProfileEmailViewModel::class.java]
         binding.editProfileEmailViewModel = viewModel
         binding.lifecycleOwner = this
+//        TODO: set current email
         binding.currentEmailLayout.editText?.setText("name@example.com")
         binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigate(R.id.profileFragment)
+            findNavController().navigateUp()
         }
         hideEmailErrorsOnChange()
         setButtonContinueClickListener()
@@ -65,7 +65,7 @@ class EditProfileEmailFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 }

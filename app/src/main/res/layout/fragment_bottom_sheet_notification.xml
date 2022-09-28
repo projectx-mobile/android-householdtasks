@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="?attr/bottomSheetStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:id="@+id/bottom_sheet_notification"
+    android:orientation="vertical"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    tools:context=".presentation.fragment.BottomSheetNotificationFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_rectangle_bottom_sheet" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/nexa_demo_bold"
+            android:text="Напоминать"
+            android:textColor="@color/dark_text_color"
+            android:textSize="24dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical|end"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/exit_bottom_sheet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_cancel" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/first_interval"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@string/font_family_regular"
+        android:background="@drawable/bottom_sheet_selector"
+        android:padding="16dp"
+        android:text="Каждые 2 часа"
+        android:clickable="true"
+        android:focusable="true"
+        android:checked="true"
+        android:textColor="@color/dark_text_color"
+        android:textSize="14sp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/first_divider"
+        style="@style/Divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_interval" />
+
+    <TextView
+        android:id="@+id/second_interval"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:clickable="true"
+        android:background="@drawable/bottom_sheet_selector"
+        android:focusable="true"
+        android:checked="false"
+        android:fontFamily="@string/font_family_regular"
+        android:padding="16dp"
+        android:text="За Х часов до дедлайна"
+        android:textColor="@color/dark_text_color"
+        android:textSize="14sp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/second_divider"
+        style="@style/Divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/second_interval" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:checked="false"
+        android:background="@drawable/bottom_sheet_selector"
+        android:fontFamily="@string/font_family_regular"
+        android:padding="16dp"
+        android:text="За Х часов до дедлайна"
+        android:textColor="@color/dark_text_color"
+        android:textSize="14sp" />
+</LinearLayout>
