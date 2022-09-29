@@ -187,7 +187,7 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bottom_sheet_background"
@@ -244,10 +244,11 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/task_list_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/task_card" />
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

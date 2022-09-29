@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/task_card"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
-    android:layout_marginStart="@dimen/spacing.normal"
-    android:layout_marginTop="@dimen/spacing.small"
-    android:layout_marginEnd="@dimen/spacing.normal"
+    android:layout_height="75dp"
     android:background="@drawable/test"
-    app:cardUseCompatPadding="true">
+    android:clickable="true"
+    android:focusable="true">
 
 
     <TextView
@@ -29,8 +28,11 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="@dimen/spacing.small"
+        android:layout_marginBottom="@dimen/spacing.normal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/task_label"
         app:layout_constraintTop_toBottomOf="@+id/task_label"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/task_deadline_overdue" />
 
     <TextView
@@ -42,6 +44,8 @@
         android:textColor="@color/primary_midnight"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/task_status_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/task_status_icon"
         app:layout_constraintTop_toTopOf="@+id/task_status_icon" />
 
@@ -65,9 +69,10 @@
         android:textColor="@color/primary_midnight"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/reward_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.004"
         app:layout_constraintStart_toEndOf="@+id/reward_icon"
         app:layout_constraintTop_toTopOf="@+id/reward_icon" />
-
 
     <androidx.appcompat.widget.AppCompatCheckBox
         android:layout_width="24dp"
@@ -76,7 +81,13 @@
         android:button="@drawable/checkbox_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/transparent" />
 
+</androidx.constraintlayout.widget.ConstraintLayout>

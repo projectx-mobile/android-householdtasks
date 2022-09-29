@@ -35,4 +35,7 @@
     <color name="primary_juicy_grape">#7D45FF</color>
     <color name="primary_gray">#6C6E84</color>
 
+    <color name="task_completed">#D0F3D9</color>
+    <color name="task_new">#E8E7FA</color>
+
 </resources>

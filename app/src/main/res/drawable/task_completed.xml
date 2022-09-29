@@ -14,7 +14,7 @@
         android:bottom="3dp"
         android:right="2dp">
         <shape>
-            <solid android:color="@color/task_new" />
+            <solid android:color="@color/task_completed" />
             <corners android:radius="8dp" />
             <stroke
                 android:width="2dp"

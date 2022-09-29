@@ -4,12 +4,10 @@ import android.app.Dialog
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.LayoutBottomSheetBinding
 
 
@@ -38,50 +36,56 @@ class CustomBottomSheet : BottomSheetDialogFragment() {
 
 
         //setting max height of bottom sheet
-        bi?.root?.minimumHeight = Resources.getSystem().displayMetrics.heightPixels / 2
+        bi?.root?.minimumHeight = Resources.getSystem().displayMetrics.heightPixels
         //bi?.extraSpace.setMinimumHeight(Resources.getSystem().getDisplayMetrics().heightPixels / 2)
-        bottomSheetBehavior?.setBottomSheetCallback(object : BottomSheetCallback() {
-            override fun onStateChanged(view: View, i: Int) {
-                if (BottomSheetBehavior.STATE_EXPANDED == i) {
-                    showView(bi.appBarLayout, getActionBarSize())
-                    hideAppBar(bi.profileLayout)
+        bi?.apply {
+            bottomSheetBehavior?.setBottomSheetCallback(object : BottomSheetCallback() {
+                override fun onStateChanged(view: View, i: Int) {
+                    if (BottomSheetBehavior.STATE_EXPANDED == i) {
+                        showView(flexibleExampleAppbar, getActionBarSize())
+                        imageView.visibility = View.GONE
+                        //hideAppBar(bi.profileLayout)
+                    }
+                    if (BottomSheetBehavior.STATE_COLLAPSED == i) {
+                        hideAppBar(flexibleExampleAppbar)
+                        //showView(bi.profileLayout, getActionBarSize())
+                    }
+                    if (BottomSheetBehavior.STATE_HIDDEN == i) {
+                        dismiss()
+                    }
                 }
-                if (BottomSheetBehavior.STATE_COLLAPSED == i) {
-                    hideAppBar(bi.appBarLayout)
-                    showView(bi.profileLayout, getActionBarSize())
-                }
-                if (BottomSheetBehavior.STATE_HIDDEN == i) {
-                    dismiss()
-                }
-            }
 
-            override fun onSlide(view: View, v: Float) {}
-        })
+                override fun onSlide(view: View, v: Float) {}
+            })
+        }
 
-        //aap bar cancel button clicked
-        bi.cancelBtn.setOnClickListener(object : View.OnClickListener() {
-            override fun onClick(view: View?) {
-                dismiss()
-            }
-        })
-
-        //aap bar edit button clicked
-        bi.editBtn.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View?) {
-                Toast.makeText(context, "Edit button clicked", Toast.LENGTH_SHORT).show()
-            }
-        })
-
-        //aap bar more button clicked
-        bi.moreBtn.setOnClickListener(object : View.OnClickListener() {
-            override fun onClick(view: View?) {
-                Toast.makeText(context, "More button clicked", Toast.LENGTH_SHORT).show()
-            }
-        })
+//        //aap bar cancel button clicked
+//        bi.cancelBtn.setOnClickListener(
+//            object : View.OnClickListener() {
+//                override fun onClick(view: View?) {
+//                    dismiss()
+//                }
+//            })
+//
+//        //aap bar edit button clicked
+//        bi.editBtn.setOnClickListener(
+//            object : View.OnClickListener {
+//                override fun onClick(view: View?) {
+//                    Toast.makeText(context, "Edit button clicked", Toast.LENGTH_SHORT).show()
+//                }
+//            })
+//
+//        //aap bar more button clicked
+//        bi.moreBtn.setOnClickListener(
+//            object : View.OnClickListener() {
+//                override fun onClick(view: View?) {
+//                    Toast.makeText(context, "More button clicked", Toast.LENGTH_SHORT).show()
+//                }
+//            })
 
 
         //hiding app bar at the start
-        hideAppBar(bi.appBarLayout)
+        hideAppBar(bi?.flexibleExampleAppbar!!)
         return bottomSheet
     }
 
