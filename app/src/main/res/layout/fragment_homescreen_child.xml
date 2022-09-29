@@ -188,31 +188,63 @@
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/bottom_sheet_background"
+        android:elevation="1dp"
         android:orientation="vertical"
         app:behavior_peekHeight="300dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imageView234"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing.small"
+            android:elevation="1dp"
+            android:src="@drawable/rectangle_1469" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/flexible.example.appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="4dp"
+            android:background="@color/appBar"
+            android:backgroundTint="@color/transparent"
+            android:fitsSystemWindows="false"
+            app:elevation="0dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/spacing.small"
-                android:src="@drawable/rectangle_1469" />
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/flexible.example.collapsing"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/appBar"
+                app:elevation="0dp"
+                app:expandedTitleMarginBottom="24dp"
+                app:expandedTitleMarginStart="@dimen/spacing.normal"
+                app:expandedTitleTextColor="@color/primary_midnight"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="Обновления">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/appBar"
+                    app:elevation="0dp"
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/ic_arrow_back" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chips_group"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/spacing.normal"
-                android:layout_marginTop="@dimen/spacing.large"
+                app:elevation="2dp"
                 app:singleLine="true"
                 app:singleSelection="true">
 
@@ -241,14 +273,16 @@
                     android:text="по убыванию баллов" />
 
             </com.google.android.material.chip.ChipGroup>
+        </com.google.android.material.appbar.AppBarLayout>
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/task_list_recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/task_card" />
-        </LinearLayout>
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/task_list_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            tools:listitem="@layout/task_card" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.projectx.householdtasks.presentation
+package com.projectx.householdtasks.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -49,6 +49,7 @@ class TaskListAdapter(private val onItemClicked: (Int) -> Unit) :
                 oldItem: Int,
                 newItem: Int,
             ): Boolean {
+                return false
                 return oldItem == newItem + 1
             }
 
@@ -56,6 +57,7 @@ class TaskListAdapter(private val onItemClicked: (Int) -> Unit) :
                 oldItem: Int,
                 newItem: Int,
             ): Boolean {
+                return false
                 return oldItem == newItem + 1
             }
         }
