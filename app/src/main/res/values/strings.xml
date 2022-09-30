@@ -3,6 +3,6 @@
     <string name="onboarding_welcome_text">Рады видеть тебя в трекере заданий Alfredo</string>
     <string name="onboarding_main_text_1">Создавай задачи и выполняй их в срок</string>
     <string name="onboarding_main_text_2">Достигай цели и получай награды</string>
-    <string name="sign_up_text">Создать аккаунт</string>
-    <string name="sign_in_text">Войти</string>
+    <string name="signup_text">Создать аккаунт</string>
+    <string name="login_text">Войти</string>
 </resources>

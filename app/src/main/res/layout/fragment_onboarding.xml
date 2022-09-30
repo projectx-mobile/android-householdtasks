@@ -3,17 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin">
+    android:padding="@dimen/spacing.normal">
 
     <TextView
         android:id="@+id/onboarding_secondary_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/onboarding_welcome_text"
-        android:textSize="@dimen/small_text"
+        android:textSize="@dimen/text_size.small"
         app:layout_constraintBottom_toTopOf="@+id/onboarding_main_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +22,7 @@
         android:layout_height="wrap_content"
         android:inAnimation="@android:anim/slide_out_right"
         android:outAnimation="@android:anim/slide_in_left"
-        app:layout_constraintBottom_toTopOf="@+id/viewPager"
+        app:layout_constraintBottom_toTopOf="@+id/view_pager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/onboarding_secondary_text">
@@ -35,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/onboarding_main_text_1"
             android:textColor="@color/black"
-            android:textSize="@dimen/large_text"
+            android:textSize="@dimen/text_size.large"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -43,73 +40,81 @@
             android:layout_height="wrap_content"
             android:text="@string/onboarding_main_text_2"
             android:textColor="@color/black"
-            android:textSize="@dimen/large_text"
+            android:textSize="@dimen/text_size.large"
             android:textStyle="bold" />
 
     </TextSwitcher>
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="0dp"
         app:layout_constraintBottom_toTopOf="@+id/signup_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/onboarding_main_text"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/onboarding_main_text" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tab_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
-        app:layout_constraintEnd_toEndOf="@+id/viewPager"
-        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintBottom_toBottomOf="@+id/view_pager"
+        app:layout_constraintEnd_toEndOf="@+id/view_pager"
+        app:layout_constraintStart_toStartOf="@+id/view_pager"
         app:tabGravity="center"
         app:tabIndicator="@android:color/transparent"
         app:tabMode="fixed"
-        app:tabRippleColor="@android:color/transparent">
+        app:tabRippleColor="@android:color/transparent" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/flat_indicator" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/flat_indicator" />
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <com.google.android.material.button.MaterialButton
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/signup_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:backgroundTint="#7D45FF"
-        android:text="@string/sign_up_text"
-        android:textAllCaps="false"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/spacing.normal"
+        android:background="@drawable/custom_primary_button"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/view_pager">
 
-    <Button
+        <TextView
+            android:id="@+id/signup_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_text"
+            android:textColor="@color/primary_white_snow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:backgroundTint="#F9F9FB"
-        android:text="@string/sign_in_text"
-        android:textColor="#7D45FF"
-        android:textAllCaps="false"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/spacing.normal"
+        android:background="@drawable/custom_secondary_button"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_button" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_button">
+
+        <TextView
+            android:id="@+id/login_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_text"
+            android:textColor="@color/primary_midnight"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
