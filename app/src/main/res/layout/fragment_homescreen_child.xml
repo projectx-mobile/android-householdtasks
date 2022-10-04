@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/primary_white_snow">
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -166,6 +165,7 @@
                     tools:listitem="@layout/calendar_item" />
 
                 <ImageView
+                    android:id="@+id/left_calendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_left_arrow"
@@ -174,6 +174,7 @@
                     app:layout_constraintTop_toTopOf="@+id/calendar_recyclerView" />
 
                 <ImageView
+                    android:id="@+id/right_calendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_right_arrow"
@@ -212,21 +213,21 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:background="@color/appBar"
-            android:backgroundTint="@color/transparent"
-            android:fitsSystemWindows="false"
+            android:fitsSystemWindows="true"
             app:elevation="0dp">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <com.google.android.material.appbar.SubtitleCollapsingToolbarLayout
                 android:id="@+id/flexible.example.collapsing"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="132dp"
                 android:background="@color/appBar"
                 app:elevation="0dp"
                 app:expandedTitleMarginBottom="24dp"
                 app:expandedTitleMarginStart="@dimen/spacing.normal"
                 app:expandedTitleTextColor="@color/primary_midnight"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="Обновления">
+                app:subtitle="@string/active_tasks"
+                app:title="Задачи">
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
@@ -237,13 +238,15 @@
                     app:layout_collapseMode="pin"
                     app:navigationIcon="@drawable/ic_arrow_back" />
 
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.SubtitleCollapsingToolbarLayout>
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chips_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.normal"
+                android:layout_marginStart="@dimen/spacing.normal"
+                android:layout_marginTop="@dimen/spacing.normal"
+                android:layout_marginBottom="@dimen/spacing.normal"
                 app:elevation="2dp"
                 app:singleLine="true"
                 app:singleSelection="true">
@@ -273,16 +276,22 @@
                     android:text="по убыванию баллов" />
 
             </com.google.android.material.chip.ChipGroup>
+
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/task_list_recyclerView"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="0dp"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            tools:listitem="@layout/task_card" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/task_list_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                tools:listitem="@layout/task_card" />
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
