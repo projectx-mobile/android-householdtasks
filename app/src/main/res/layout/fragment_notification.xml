@@ -9,7 +9,42 @@
             type="com.projectx.householdtasks.presentation.viewmodel.NotificationViewModel" />
     </data>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/app_bar_color"
+            android:visibility="invisible">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:background="@color/app_bar_color">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/top_app_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginStart="24dp"
+                    android:elevation="@dimen/spacing.null"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    app:subtitleTextColor="@color/hint_color"
+                    android:drawableStart="@drawable/arrow_back_24_black"
+                    android:text="@string/notifications"
+                    android:gravity="center_vertical"
+                    app:titleTextColor="@color/dark_text_color" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -77,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:theme="@style/CustomSwitch"
-                        android:thumb="@drawable/switch_thumb_selector"
+                        android:thumb="@drawable/switch_thumb_enable"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:track="@drawable/switch_track_selector" />
@@ -130,7 +165,7 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:theme="@style/CustomSwitch"
-                        android:thumb="@drawable/switch_thumb_selector"
+                        android:thumb="@drawable/switch_thumb_enable"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:track="@drawable/switch_track_selector" />
@@ -176,7 +211,7 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:theme="@style/CustomSwitch"
-                        android:thumb="@drawable/switch_thumb_selector"
+                        android:thumb="@drawable/switch_thumb_enable"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:track="@drawable/switch_track_selector" />
@@ -221,7 +256,7 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:theme="@style/CustomSwitch"
-                        android:thumb="@drawable/switch_thumb_selector"
+                        android:thumb="@drawable/switch_thumb_enable"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:track="@drawable/switch_track_selector" />
@@ -277,13 +312,13 @@
                 app:layout_constraintTop_toBottomOf="@id/notification_for_tasks">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_interval"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="@dimen/spacing.normal"
                     android:drawableEnd="@drawable/ic_arrow_down_black"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Каждые 2 часа"
                     android:textColor="@color/dark_text_color"
                     android:textSize="@dimen/text_size.small" />
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -297,4 +332,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

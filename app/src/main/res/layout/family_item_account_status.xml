@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:checked="false"
             android:theme="@style/CustomSwitch"
-            android:thumb="@drawable/switch_thumb_selector"
+            android:thumb="@drawable/switch_thumb_enable"
             app:track="@drawable/switch_track_selector"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>

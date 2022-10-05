@@ -1,14 +1,17 @@
 package com.projectx.householdtasks.presentation.fragment
 
+import android.graphics.drawable.InsetDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.projectx.householdtasks.R
+import com.projectx.householdtasks.databinding.DialogChangeLanguageBinding
 import com.projectx.householdtasks.databinding.FragmentProfileBinding
 import com.projectx.householdtasks.presentation.FamilyMember
 import com.projectx.householdtasks.presentation.MyFamilyProfileAdapter
@@ -77,6 +80,10 @@ class ProfileFragment : BaseFragment() {
         binding.support.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_supportScreenFragment)
         }
+
+        binding.language.setOnClickListener {
+            createChangeLanguageDialog()
+        }
     }
 
     private fun createFamilyList(): List<FamilyMember> {
@@ -92,6 +99,30 @@ class ProfileFragment : BaseFragment() {
             FamilyMember("Борис", "Б", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
             FamilyMember("Приглашен", null, ContextCompat.getDrawable(requireContext(), R.drawable.button_invited_person)!!),
         )
+    }
+
+    private fun createChangeLanguageDialog() {
+        val dialog = DialogChangeLanguageBinding.inflate(LayoutInflater.from(requireContext()))
+
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setView(dialog.root)
+            .setCancelable(false)
+            .show()
+
+        val inset = InsetDrawable(
+            ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.rectangle_white_without_boarders
+            ), 40
+        )
+        alertDialog.window?.setBackgroundDrawable(inset)
+
+        dialog.okButton.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        dialog.negativeButton.setOnClickListener {
+            alertDialog.dismiss()
+        }
     }
 
     override fun onDestroyView() {

@@ -45,72 +45,13 @@
                 android:id="@+id/exit_bottom_sheet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_cancel" />
+                android:background="@drawable/ic_cancel_gray" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <TextView
-        android:id="@+id/first_interval"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_notification_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@string/font_family_regular"
-        android:background="@drawable/bottom_sheet_selector"
-        android:padding="16dp"
-        android:text="Каждые 2 часа"
-        android:clickable="true"
-        android:focusable="true"
-        android:checked="true"
-        android:textColor="@color/dark_text_color"
-        android:textSize="14sp" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/first_divider"
-        style="@style/Divider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/first_interval" />
-
-    <TextView
-        android:id="@+id/second_interval"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:clickable="true"
-        android:background="@drawable/bottom_sheet_selector"
-        android:focusable="true"
-        android:checked="false"
-        android:fontFamily="@string/font_family_regular"
-        android:padding="16dp"
-        android:text="За Х часов до дедлайна"
-        android:textColor="@color/dark_text_color"
-        android:textSize="14sp" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/second_divider"
-        style="@style/Divider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/second_interval" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:checked="false"
-        android:background="@drawable/bottom_sheet_selector"
-        android:fontFamily="@string/font_family_regular"
-        android:padding="16dp"
-        android:text="За Х часов до дедлайна"
-        android:textColor="@color/dark_text_color"
-        android:textSize="14sp" />
+        />
 </LinearLayout>

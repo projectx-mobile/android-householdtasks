@@ -1,16 +1,20 @@
 package com.projectx.householdtasks.presentation.fragment
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentNotificationBinding
 import com.projectx.householdtasks.presentation.FamilyMember
 import com.projectx.householdtasks.presentation.FamilyMembersAdapter
+import com.projectx.householdtasks.presentation.viewmodel.NotificationSharedViewModel
+import com.projectx.householdtasks.presentation.viewmodel.NotificationViewModel
 
 class NotificationFragment : BaseFragment() {
 
@@ -18,19 +22,27 @@ class NotificationFragment : BaseFragment() {
     private val binding get() = _binding!!
     private var familyMembers: List<FamilyMember>? = null
 
+    private val sharedViewModel: NotificationSharedViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNotificationBinding.inflate(inflater, container, false)
+
+        sharedViewModel.interval.observe(viewLifecycleOwner) { interval ->
+            binding.textViewInterval.text = interval
+        }
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lifecycleOwner = this
+//        binding.lifecycleOwner = this
         binding.toolbarLayout.toolbar.setOnClickListener {
             findNavController().navigateUp()
         }
+
+        addScrollListener()
 
         binding.notificationPicker.setOnClickListener {
             val bottomSheetFragment = BottomSheetNotificationFragment()
@@ -42,6 +54,18 @@ class NotificationFragment : BaseFragment() {
         binding.recyclerViewNotification.adapter = adapter
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewNotification.layoutManager = layoutManager
+    }
+
+    private fun addScrollListener() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.nestedScrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                if (scrollY > 0) {
+                    binding.appBarLayout.visibility = View.VISIBLE
+                } else {
+                    binding.appBarLayout.visibility = View.INVISIBLE
+                }
+            }
+        }
     }
 
     private fun createFamilyList(): List<FamilyMember> {

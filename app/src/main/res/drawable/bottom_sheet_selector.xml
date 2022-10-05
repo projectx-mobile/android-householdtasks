@@ -1,4 +1,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/rectangle_white_bottom_sheet_background" android:state_checked="false" />
-    <item android:drawable="@drawable/rectangle_selected_item_bottom_sheet" android:state_checked="true" />
+    <item android:drawable="@drawable/rectangle_white_bottom_sheet_background" android:state_selected="false" />
+    <item android:drawable="@drawable/rectangle_selected_item_bottom_sheet" android:state_selected="true" />
 </selector>
