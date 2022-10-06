@@ -1,11 +1,11 @@
 package com.projectx.householdtasks.presentation.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OVER_SCROLL_NEVER
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -44,13 +44,25 @@ class ChildHomescreenFragment : BaseFragment() {
                     }
                 }
             }
-            fd()
+            updateList()
             updateMonthTitle()
         }
     }
 
-    fun fd() {
-        customCalendarListAdapter.notifyDataSetChanged()
+    private val datePicker by lazy {
+        MaterialDatePicker.Builder.datePicker()
+            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+            .setTitleText("Select date")
+            .setTheme(R.style.ThemeOverlay_App_DatePicker)
+            .build()
+            .let { materialDatePicker ->
+                materialDatePicker.addOnPositiveButtonClickListener {
+                    firstDayInCalendar.timeInMillis = it
+                    selectedDate.timeInMillis = it
+                    updateCalendar()
+                }
+                materialDatePicker
+            }
     }
 
     private val customTaskListAdapter = TaskListAdapter() {
@@ -60,6 +72,7 @@ class ChildHomescreenFragment : BaseFragment() {
     private var firstDayInCalendar: Calendar = Calendar.getInstance()
     private val selectedDate = Calendar.getInstance()
     private val todaysDate = Calendar.getInstance()
+    var notiAmo = 3
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,6 +80,10 @@ class ChildHomescreenFragment : BaseFragment() {
     ) = FragmentHomescreenChildBinding.inflate(inflater, container, false).also {
         _binding = it
     }.root
+
+    val notificationc by lazy {
+        resources.getStringArray(R.array.notification_titles)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -82,7 +99,7 @@ class ChildHomescreenFragment : BaseFragment() {
                 orientation = LinearLayoutManager.HORIZONTAL
             }
         }
-
+        //Test while we don't have a backend
         customTaskListAdapter.submitList(List(16) { (1..3).random() })
 
         taskListRecyclerView.apply {
@@ -104,35 +121,34 @@ class ChildHomescreenFragment : BaseFragment() {
                 }
             })
 
-        flexibleExampleCollapsing.apply {
+        collapsingToolbar.apply {
             setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
             setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
         }
-        val initToolbarHeight = flexibleExampleCollapsing.layoutParams.height
-        flexibleExampleCollapsing.layoutParams =
-            flexibleExampleCollapsing.layoutParams.apply { height = 0 }
+        val initToolbarHeight = collapsingToolbar.layoutParams.height
+        collapsingToolbar.layoutParams =
+            collapsingToolbar.layoutParams.apply { height = 0 }
 
         BottomSheetBehavior.from(coordinatorLayout).setBottomSheetCallback(
             object : BottomSheetBehavior.BottomSheetCallback() {
                 override fun onStateChanged(view: View, i: Int) {
                     when (i) {
                         BottomSheetBehavior.STATE_EXPANDED -> {
-                            imageView234.visibility = View.GONE
+                            bottomSheetImageView.visibility = View.GONE
                         }
                         else -> {
-                            imageView234.visibility = View.VISIBLE
+                            bottomSheetImageView.visibility = View.VISIBLE
                         }
                     }
                 }
 
                 override fun onSlide(view: View, v: Float) {
                     val newHeight = (initToolbarHeight * v.absoluteValue).roundToInt()
-                    flexibleExampleCollapsing.layoutParams =
-                        flexibleExampleCollapsing.layoutParams.apply { height = newHeight }
+                    collapsingToolbar.layoutParams =
+                        collapsingToolbar.layoutParams.apply { height = newHeight }
                 }
             }
         )
-
         taskListRecyclerView.overScrollMode = OVER_SCROLL_NEVER
         calendarRecyclerView.overScrollMode = OVER_SCROLL_NEVER
     }
@@ -146,48 +162,59 @@ class ChildHomescreenFragment : BaseFragment() {
             firstDayInCalendar.add(Calendar.DAY_OF_MONTH, 1)
             updateCalendar()
         }
-
         selectedDateTitle.setOnClickListener {
             firstDayInCalendar.timeInMillis = todaysDate.timeInMillis
             updateCalendar()
         }
-
         toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_choose_date -> {
-                    val datePicker =
-                        MaterialDatePicker.Builder.datePicker()
-                            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-                            .setTitleText("Select date")
-                            .setTheme(R.style.ThemeOverlay_App_DatePicker)
-                            .build()
-                            .show(requireActivity().supportFragmentManager, "tag");
+                    datePicker.show(requireActivity().supportFragmentManager, "tag");
                     true
                 }
                 else -> false
             }
         }
+        toolbar.setNavigationOnClickListener {
+            BottomSheetBehavior.from(coordinatorLayout).state = BottomSheetBehavior.STATE_COLLAPSED
+        }
         calendarIcon.setOnClickListener {
-            val datePicker = MaterialDatePicker.Builder.datePicker()
-                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-                .setTitleText("Select date")
-                .setTheme(R.style.ThemeOverlay_App_DatePicker)
-                .build()
-                .let { materialDatePicker ->
-                    materialDatePicker.addOnPositiveButtonClickListener {
-                        firstDayInCalendar.timeInMillis = it
-                        selectedDate.timeInMillis = it
-                        updateCalendar()
-                    }
-                    materialDatePicker.show(requireActivity().supportFragmentManager, "tdsfag")
+            datePicker.show(requireActivity().supportFragmentManager, "tag")
+        }
+        closeNotificationButton.setOnClickListener {
+            notiAmo--
+            when (notiAmo) {
+                2 -> {
+                    notificationLayout.background =
+                        ResourcesCompat.getDrawable(resources,
+                            R.drawable.notifications_section_stack_of_notifications,
+                            null)
+                    notificationTitle.text = notificationc[1]
                 }
+                1 -> {
+                    notificationLayout.background =
+                        ResourcesCompat.getDrawable(resources,
+                            R.drawable.notifications_section_single_notification,
+                            null)
+                    notificationTitle.text = notificationc[1]
+                }
+                0 -> {
+                    notificationLayout.background =
+                        ResourcesCompat.getDrawable(resources,
+                            R.drawable.notifications_section_no_new_reminders,
+                            null)
+                    notificationTitle.text = notificationc[2]
+                }
+                else -> {
+                    notificationTitle.text = notificationc[2]
+                }
+            }
         }
     }
 
     private fun updateCalendar() {
         calendarList.clear()
         repeat(5) {
-            Log.d("Calendar", "first: ${firstDayInCalendar.time} ---- second: ${selectedDate.time}")
             if (firstDayInCalendar.timeInMillis == selectedDate.timeInMillis) {
                 calendarList.add(Pair(firstDayInCalendar.timeInMillis, true))
             } else {
@@ -198,18 +225,30 @@ class ChildHomescreenFragment : BaseFragment() {
         firstDayInCalendar.add(Calendar.DAY_OF_MONTH, -5)
         customCalendarListAdapter.submitList(calendarList)
         customCalendarListAdapter.notifyDataSetChanged()
-
         updateMonthTitle()
     }
 
     private fun updateMonthTitle() {
-        binding.monthTitle.text = monthNames[selectedDate.get(Calendar.MONTH)]
-        binding.currentTasks.text = resources.getString(
-            R.string.active_tasks_format,
-            selectedDate.get(Calendar.DAY_OF_MONTH),
-            resources.getStringArray(R.array.month_names_current_tasks)[selectedDate.get(Calendar.MONTH)],
-            5
-        )
+        val dateString =
+            if (selectedDate.timeInMillis <= todaysDate.timeInMillis && selectedDate.timeInMillis + 86400000 > todaysDate.timeInMillis) resources.getString(
+                R.string.active_tasks,
+                5
+            ) else resources.getString(
+                R.string.active_tasks_format,
+                selectedDate.get(Calendar.DAY_OF_MONTH),
+                resources.getStringArray(R.array.month_names_current_tasks)[selectedDate.get(
+                    Calendar.MONTH)],
+                5
+            )
+        binding.apply {
+            monthTitle.text = monthNames[selectedDate.get(Calendar.MONTH)]
+            currentTasks.text = dateString
+            collapsingToolbar.subtitle = dateString
+        }
+    }
+
+    private fun updateList() {
+        customCalendarListAdapter.notifyDataSetChanged()
     }
 
     override fun onDestroy() {

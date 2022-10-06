@@ -2,7 +2,7 @@
     <string name="app_name">Household Tasks</string>
     <string name="task_label_placeholder">Название задачи</string>
     <string name="tasks">Задачи</string>
-    <string name="active_tasks">Активных на сегодня (5)</string>
+    <string name="active_tasks">Активных на сегодня (%1$d)</string>
     <string name="active_tasks_format">Активных на %1$d %2$s (%3$d)</string>
 
     <string name="login_with_qr_code">Отсканировать QR-Code из профиля Родителей.</string>

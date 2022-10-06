@@ -38,4 +38,10 @@
         <item>Ноября</item>
         <item>Декабря</item>
     </string-array>
+
+    <string-array name="notification_titles">
+        <item>Some motivational message or reminder displayed here!</item>
+        <item>Some motivational message or reminder displayed here!</item>
+        <item>No new reminders</item>
+    </string-array>
 </resources>
