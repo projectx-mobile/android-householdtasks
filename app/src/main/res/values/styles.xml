@@ -56,7 +56,7 @@
     </style>
 
     <style name="CustomInputStyle">
-        <item name="errorIconDrawable">@drawable/icon_error</item>
+        <item name="errorIconDrawable">@drawable/ic_error</item>
         <item name="hintTextColor">@color/hint_color</item>
         <item name="errorTextColor">@color/error_color</item>
         <item name="errorTextAppearance">@string/font_family_regular</item>
@@ -89,7 +89,7 @@
     </style>
 
     <style name="CustomBottomSheetNotification">
-        <item name="android:background">@drawable/bottom_sheet_selector</item>
+        <item name="android:background">@drawable/bottom_sheet_item_selector</item>
         <item name="backgroundTint">@null</item>
     </style>
 
@@ -108,4 +108,12 @@
         <item name="android:textColor">@color/primary_juicy_grape</item>
     </style>
 
+
+    <style name="BottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="android:colorBackground">@color/white</item>
+    </style>
+    <style name="BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
 </resources>

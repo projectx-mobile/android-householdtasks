@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.InsetDrawable
 import android.net.Uri
@@ -14,6 +15,8 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -186,8 +189,16 @@ class EditProfileFragment : BaseFragment() {
     }
 
     private fun createDialogDeleteProfile() {
+        val textView = TextView(activity)
+        with(textView) {
+            textView.text = "Ты уверен(а), что хочешь удалить свой профиль?"
+            textView.textSize = 18.0F
+            textView.setTypeface(null, Typeface.BOLD)
+            //textView.gravity = Gravity.CENTER
+            setPadding(24,26,24,20)
+        }
         val alertDialog = AlertDialog.Builder(requireContext())
-            .setTitle("Ты уверен(а), что хочешь удалить свой профиль?")
+            .setCustomTitle(textView)
             .setMessage("Это действие нельзя отменить")
             .setNegativeButton("Отмена") { dialog, which -> dialog.dismiss() }
             .setPositiveButton("Удалить") { dialog, which ->

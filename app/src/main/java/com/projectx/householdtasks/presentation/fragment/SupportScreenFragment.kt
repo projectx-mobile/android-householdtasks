@@ -1,6 +1,5 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -11,12 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentSupportScreenBinding
 
@@ -35,25 +31,14 @@ class SupportScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.faq.setOnClickListener {
-//            val bottomSheetFragment = BottomSheetDialog(requireContext())
+        binding.faq.root.setOnClickListener {
             val bottomSheetFragment = BottomSheetFaqFragment()
-//            val bottomSheetView = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_bottom_sheet_faq, null)
-//            bottomSheetFragment.setContentView(bottomSheetView)
-//            val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView.parent as View)
-//            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-//            val layout: CoordinatorLayout? = bottomSheetFragment.findViewById(R.id.bottom_sheet)
-//            if (layout != null) {
-//                layout.minimumHeight = Resources.getSystem().displayMetrics.heightPixels
-//            }
-
-//            bottomSheetFragment.show()
             bottomSheetFragment.show(childFragmentManager, "BottomSheet")
         }
 
-        binding.privacyPolicy.setOnClickListener {}
+        binding.privacyPolicy.root.setOnClickListener {}
 
-        binding.feedback.setOnClickListener {}
+        binding.feedback.root.setOnClickListener {}
         binding.toolbarLayout.toolbar.setOnClickListener {
             findNavController().navigateUp()
         }

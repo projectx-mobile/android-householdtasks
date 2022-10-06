@@ -60,28 +60,28 @@ class ProfileFragment : BaseFragment() {
             findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
 
-        binding.profileEmail.setOnClickListener {
+        binding.profileEmail.root.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_editProfileEmailFragment)
         }
 
-        binding.profilePassword.setOnClickListener {
+        binding.profilePassword.root.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_editProfilePasswordFragment)
         }
-        binding.profilePerson.setOnClickListener {
+        binding.profilePerson.root.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_accountStatusFragment)
         }
-        binding.linkedAccounts.setOnClickListener {
+        binding.linkedAccounts.root.setOnClickListener {
 
         }
-        binding.notifications.setOnClickListener {
+        binding.notifications.root.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_notificationFragment)
         }
 
-        binding.support.setOnClickListener {
+        binding.support.root.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_supportScreenFragment)
         }
 
-        binding.language.setOnClickListener {
+        binding.language.root.setOnClickListener {
             createChangeLanguageDialog()
         }
     }

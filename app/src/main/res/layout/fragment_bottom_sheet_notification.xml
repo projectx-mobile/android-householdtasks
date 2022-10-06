@@ -8,6 +8,7 @@
     android:layout_gravity="bottom"
     android:id="@+id/bottom_sheet_notification"
     android:orientation="vertical"
+    android:background="@drawable/rounded_top_corners_background"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     tools:context=".presentation.fragment.BottomSheetNotificationFragment">
 
@@ -53,5 +54,6 @@
         android:id="@+id/recycler_view_notification_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         />
 </LinearLayout>

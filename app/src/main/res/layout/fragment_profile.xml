@@ -1,391 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
+    <data>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
+        <variable
+            name="ProfileViewModel"
+            type="com.projectx.householdtasks.presentation.viewmodel.ProfileViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/app_bar_color"
-        android:visibility="invisible">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/top_app_bar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/app_bar_color"
-            android:elevation="@dimen/spacing.null"
-            app:subtitle="@string/profile_settings"
-            app:subtitleTextColor="@color/hint_color"
-            app:title="@string/name"
-            app:titleTextColor="@color/dark_text_color" />
+            android:visibility="invisible">
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="@dimen/spacing.extra_large_xx">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/navigation_bar"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/top_app_bar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:layout_marginTop="@dimen/spacing.small"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/app_bar_color"
+                android:elevation="0dp"
+                app:subtitle="@string/profile_settings"
+                app:subtitleTextColor="@color/hint_color"
+                app:title="@string/name"
+                app:titleTextColor="@color/dark_text_color" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/oval"
-                    android:fontFamily="@font/nexa_demo_bold"
-                    android:gravity="center"
-                    android:text="И"
-                    android:textColor="@color/dark_text_color"
-                    android:textSize="@dimen/text_size.x_medium"
-                    android:textStyle="bold" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/spacing.extra_large_xx">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/navigation_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_marginHorizontal="@dimen/spacing.medium"
+                    android:layout_marginTop="@dimen/spacing.small"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/spacing.small"
-                        android:layout_weight="8"
+                        android:background="@drawable/oval"
                         android:fontFamily="@font/nexa_demo_bold"
-                        android:text="@string/name"
+                        android:gravity="center"
+                        android:text="И"
                         android:textColor="@color/dark_text_color"
                         android:textSize="@dimen/text_size.x_medium"
-                        android:textStyle="bold"
-                        app:drawableEndCompat="@drawable/ic_navigation" />
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/spacing.small"
+                            android:layout_weight="8"
+                            android:fontFamily="@font/nexa_demo_bold"
+                            android:text="@string/name"
+                            android:textColor="@color/dark_text_color"
+                            android:textSize="@dimen/text_size.x_medium"
+                            android:textStyle="bold"
+                            app:drawableEndCompat="@drawable/ic_navigation" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
-            <TextView
-                android:id="@+id/profile_subtitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing.x_medium"
-                android:fontFamily="@font/nexa_demo_bold"
-                android:text="@string/profile_settings"
-                android:textColor="@color/dark_text_color"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:textSize="@dimen/text_size.medium"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/navigation_bar" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/profile_email"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.medium"
-                android:background="@drawable/rectangle"
-                android:gravity="center_vertical"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_subtitle">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/profile_subtitle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
-                    android:background="@drawable/ic_email_black" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
-                    android:layout_marginEnd="@dimen/spacing.normal"
-                    android:layout_weight="30"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/email"
+                    android:layout_marginHorizontal="@dimen/spacing.medium"
+                    android:layout_marginTop="@dimen/spacing.x_medium"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:text="@string/profile_settings"
                     android:textColor="@color/dark_text_color"
-                    android:textSize="@dimen/text_size.small" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    android:textSize="@dimen/text_size.medium"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/navigation_bar" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/profile_password"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.small"
-                android:background="@drawable/rectangle"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_email">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/setting_list"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
-                    android:background="@drawable/ic_password" />
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="@dimen/spacing.medium"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_subtitle">
+
+                    <include
+                        android:id="@+id/profile_email"
+                        layout="@layout/profile_settings"
+                        app:arrow="@{@drawable/ic_right}"
+                        app:icon="@{@drawable/ic_email_black}"
+                        app:title="@{@string/email}" />
+
+                    <include
+                        android:id="@+id/profile_password"
+                        layout="@layout/profile_settings"
+                        app:arrow="@{@drawable/ic_right}"
+                        app:icon="@{@drawable/ic_password}"
+                        app:title="@{@string/password}" />
+
+                    <include
+                        android:id="@+id/profile_person"
+                        layout="@layout/profile_settings"
+                        app:arrow="@{@drawable/ic_right}"
+                        app:icon="@{@drawable/ic_new_task_state}"
+                        app:title="@{@string/parent}" />
+
+                    <include
+                        android:id="@+id/linked_accounts"
+                        layout="@layout/profile_settings"
+                        app:arrow="@{@drawable/ic_right}"
+                        app:icon="@{@drawable/ic_link}"
+                        app:title="@{@string/linked_accounts}" />
+
+                    <include
+                        android:id="@+id/notifications"
+                        layout="@layout/profile_settings"
+                        app:arrow="@{@drawable/ic_right}"
+                        app:icon="@{@drawable/ic_notification}"
+                        app:title="@{@string/notifications}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="0dp"
+                    android:id="@+id/my_family"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
-                    android:layout_marginEnd="@dimen/spacing.normal"
-                    android:layout_weight="30"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/password"
+                    android:layout_marginHorizontal="@dimen/spacing.medium"
+                    android:layout_marginTop="@dimen/spacing.large"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:text="@string/my_family"
                     android:textColor="@color/dark_text_color"
-                    android:textSize="@dimen/text_size.small" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    android:textSize="@dimen/text_size.medium"
+                    app:layout_constraintTop_toBottomOf="@id/setting_list" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/profile_person"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.small"
-                android:background="@drawable/rectangle"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_password">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_family_members"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/my_family"
+                    tools:listitem="@layout/family_item_profile" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/divider"
+                    style="@style/Divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing.large"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recycler_view_family_members" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/other_setting_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginHorizontal="@dimen/spacing.medium"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider">
+
+
+                    <include
+                        android:id="@+id/language"
+                        layout="@layout/profile_settings"
+                        app:arrow="@{@drawable/ic_right}"
+                        app:icon="@{@drawable/ic_language}"
+                        app:title="@{@string/select_language}" />
+
+                    <include
+                        android:id="@+id/support"
+                        layout="@layout/profile_settings"
+                        app:arrow="@{@drawable/ic_right}"
+                        app:icon="@{@drawable/ic_support}"
+                        app:title="@{@string/support}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/exit_profile"
+                    style="@style/WhiteCustomButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
-                    android:background="@drawable/ic_person" />
+                    android:layout_height="@dimen/spacing.x_extra_large"
+                    android:layout_marginHorizontal="@dimen/spacing.medium"
+                    android:layout_marginTop="@dimen/spacing.xx_medium"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/other_setting_list">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
-                    android:layout_marginEnd="@dimen/spacing.normal"
-                    android:layout_weight="30"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/parent"
-                    android:textColor="@color/dark_text_color"
-                    android:textSize="@dimen/text_size.small" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing.medium"
+                        android:background="@drawable/ic_exit" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/linked_accounts"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.small"
-                android:background="@drawable/rectangle"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_person">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing.small_xx"
+                        android:layout_marginEnd="@dimen/spacing.normal"
+                        android:layout_weight="30"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/exit"
+                        android:textColor="@color/background_nav_bar_color"
+                        android:textSize="@dimen/text_size.small" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
-                    android:background="@drawable/ic_link" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
-                    android:layout_marginEnd="@dimen/spacing.normal"
-                    android:layout_weight="30"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/linked_accounts"
-                    android:textColor="@color/dark_text_color"
-                    android:textSize="@dimen/text_size.small" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+        <include
+            android:id="@+id/nav_bar_layout"
+            layout="@layout/nav_bar"
+            app:layout_anchor="@+id/nestedScrollView"
+            app:layout_anchorGravity="center" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/notifications"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.small"
-                android:background="@drawable/rectangle"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linked_accounts">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
-                    android:background="@drawable/ic_link" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
-                    android:layout_marginEnd="@dimen/spacing.normal"
-                    android:layout_weight="30"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/notifications"
-                    android:textColor="@color/dark_text_color"
-                    android:textSize="@dimen/text_size.small" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/my_family"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing.large"
-                android:fontFamily="@font/nexa_demo_bold"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:text="@string/my_family"
-                android:textColor="@color/dark_text_color"
-                android:textSize="@dimen/text_size.medium"
-                app:layout_constraintTop_toBottomOf="@id/notifications" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_family_members"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/family_item_profile"
-                app:layout_constraintTop_toBottomOf="@id/my_family"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/divider"
-                style="@style/Divider"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing.large"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recycler_view_family_members" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/language"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.extra_large_x"
-                android:background="@drawable/rectangle"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recycler_view_family_members">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
-                    android:background="@drawable/ic_language" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
-                    android:layout_marginEnd="@dimen/spacing.normal"
-                    android:layout_weight="30"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/select_language"
-                    android:textColor="@color/dark_text_color"
-                    android:textSize="@dimen/text_size.small" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/support"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.small"
-                android:background="@drawable/rectangle"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/language">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
-                    android:background="@drawable/ic_support" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
-                    android:layout_marginEnd="@dimen/spacing.normal"
-                    android:layout_weight="30"
-                    android:drawableEnd="@drawable/ic_right"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/support"
-                    android:textColor="@color/background_nav_bar_color"
-                    android:textSize="@dimen/text_size.small" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/exit_profile"
-                style="@style/WhiteCustomButton"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.xx_medium"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/support">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
-                    android:background="@drawable/ic_exit" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
-                    android:layout_marginEnd="@dimen/spacing.normal"
-                    android:layout_weight="30"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/exit"
-                    android:textColor="@color/background_nav_bar_color"
-                    android:textSize="@dimen/text_size.small" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-
-    <include
-        android:id="@+id/nav_bar_layout"
-        layout="@layout/nav_bar"
-        app:layout_anchor="@+id/nestedScrollView"
-        app:layout_anchorGravity="center" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
