@@ -2,6 +2,7 @@ package com.projectx.householdtasks.presentation.viewmodel
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.android.material.textfield.TextInputEditText
 
 class LoginViewModel : BaseViewModel() {
     val email = MutableLiveData("")
@@ -30,5 +31,9 @@ class LoginViewModel : BaseViewModel() {
 
     private fun isContinueButtonEnabled(): Boolean {
         return email.value!!.isNotEmpty() && password.value!!.isNotEmpty()
+    }
+
+    companion object{
+
     }
 }

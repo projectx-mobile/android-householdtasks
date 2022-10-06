@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/chooseLoginTypeFragment">
+
+    <fragment
+        android:id="@+id/chooseLoginTypeFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.ChooseLoginTypeFragment"
+        android:label="ChooseLoginTypeFragment" >
+        <action
+            android:id="@+id/action_chooseLoginTypeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.LoginFragment"
+        android:label="LoginFragment" />
+
+</navigation>

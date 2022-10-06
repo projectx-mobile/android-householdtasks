@@ -12,13 +12,13 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-<!--        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>-->
         <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
         <item name="alertDialogTheme">@style/AlertDialog</item>
 
     </style>
 
-    <style name="title">
+    <!-- TextAppearance -->
+    <style name="TextAppearanceLoginTitleStyle" parent="TextAppearance.AppCompat">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/primary_midnight</item>
     </style>
@@ -28,7 +28,4 @@
         <item name="android:textColor">@color/primary_gray</item>
     </style>
 
-    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/ModalBottomSheetDialog</item>
-    </style>
 </resources>

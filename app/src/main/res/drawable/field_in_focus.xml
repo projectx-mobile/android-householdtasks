@@ -3,12 +3,12 @@
     <item>
         <shape>
             <solid android:color="@color/shadow_text_input_color" />
-            <corners android:radius="@dimen/spacing.small_x" />
+            <corners android:radius="8dp" />
         </shape>
     </item>
     <item
-        android:left="@dimen/spacing.xx_small"
-        android:top="@dimen/spacing.xx_small">
+        android:left="4dp"
+        android:top="4dp">
         <shape>
             <solid android:color="@color/white" />
             <corners android:topLeftRadius="@dimen/spacing.small" />
@@ -16,12 +16,12 @@
     </item>
     <item>
         <shape>
-            <size android:height="@dimen/spacing.x_extra_large" />
+            <size android:height="56dp" />
             <stroke
-                android:width="@dimen/spacing.x_extra_small"
+                android:width="2dp"
                 android:color="@color/login_custom_button_enable_boarder_color" />
-            <padding android:padding="@dimen/spacing.x_extra_small" />
-            <corners android:radius="@dimen/spacing.small" />
+            <padding android:padding="2dp" />
+            <corners android:radius="8dp" />
         </shape>
     </item>
 </layer-list>
