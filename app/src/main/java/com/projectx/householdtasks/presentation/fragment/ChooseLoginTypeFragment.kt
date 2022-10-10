@@ -28,6 +28,7 @@ class ChooseLoginTypeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+            appbarChooseLoginType.toolbar.setOnClickListener { findNavController().navigateUp() }
             layoutChooseLoginTypeGoogle.setOnClickListener { viewModel.loginWithGoogle() }
             layoutChooseLoginTypeEmail.setOnClickListener { viewModel.loginWithEmail(findNavController()) }
             textviewChooseLoginTypeCreateAccount.setOnClickListener { viewModel.createAccount() }
