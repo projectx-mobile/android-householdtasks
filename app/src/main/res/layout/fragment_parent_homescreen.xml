@@ -143,6 +143,7 @@
     </LinearLayout>
 
     <include
+        android:id="@+id/nav_bar_layout"
         layout="@layout/nav_bar"
         android:layout_width="match_parent"
         android:layout_height="64dp"

@@ -39,6 +39,11 @@ class ProfileFragment : BaseFragment() {
 
         familyMembers = createFamilyList()
         setAdapter()
+
+//        todo
+        binding.navBarLayout.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_parentHomescreenFragment)
+        }
     }
 
     private fun addScrollListener() {

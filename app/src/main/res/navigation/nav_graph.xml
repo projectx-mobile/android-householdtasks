@@ -47,6 +47,9 @@
             app:enterAnim="@anim/slide_up"
             app:popExitAnim="@anim/slide_down"
             />
+        <action
+            android:id="@+id/action_parentHomescreenFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/allUpdatesFragment"
@@ -79,6 +82,9 @@
         <action
             android:id="@+id/action_profileFragment_to_notificationFragment"
             app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_parentHomescreenFragment"
+            app:destination="@id/parentHomescreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"

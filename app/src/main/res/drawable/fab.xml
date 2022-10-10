@@ -1,20 +1,20 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:left="@dimen/spacing.extra_small"
-        android:top="@dimen/spacing.x_extra_small">
+        android:left="3dp"
+        android:top="2dp">
         <shape>
             <solid android:color="@color/white" />
             <corners android:radius="@dimen/spacing.small" />
         </shape>
     </item>
     <item
-        android:bottom="@dimen/spacing.extra_small"
-        android:right="@dimen/spacing.x_extra_small">
+        android:bottom="3dp"
+        android:right="2dp">
         <shape>
             <solid android:color="@color/primary_color" />
             <corners android:radius="@dimen/spacing.small" />
             <stroke
-                android:width="@dimen/spacing.x_extra_small"
+                android:width="2dp"
                 android:color="@color/login_custom_button_enable_boarder_color" />
         </shape>
     </item>

@@ -7,6 +7,7 @@ import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentParentHomescreenBinding
 import com.projectx.householdtasks.presentation.FamilyMembersListAdapter
 import com.projectx.householdtasks.presentation.UpdatesListAdapter
@@ -41,6 +42,10 @@ class ParentHomescreenFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.bindUI().subscribeUI()
+
+        binding.navBarLayout.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_parentHomescreenFragment_to_profileFragment)
+        }
     }
 
     private fun FragmentParentHomescreenBinding.bindUI() = this.also {
