@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Household Tasks</string>
+    <string name="task_label_placeholder">Название задачи</string>
+    <string name="active_tasks_format">Активных на %1$d %2$s (%3$d)</string>
+
     <string name="profile_settings">Настройки профиля</string>
     <string name="name">Имя</string>
     <string name="email">Email</string>
@@ -15,8 +18,6 @@
     <string name="login_with_qr_code">Отсканировать QR-Code из профиля Родителей.</string>
     <string name="login_forgot_password">Не помнишь пароль? Восстановить доступ.</string>
     <string name="login_title">Войти</string>
-    <string name="login_child_subtitle">Введи свой email и Family ID для доступа
-в аккаунт.</string>
     <string name="login_email_parent">Ваш email</string>
     <string name="login_email_child">Твой email</string>
     <string name="login_password_child">Family ID</string>
@@ -104,4 +105,5 @@
     <string name="tasks_label">задач</string>
     <string name="name_placeholder">Aлиса</string>
     <string name="updates_placeholder">Обновления</string>
+    <string name="login_child_subtitle">Введи свой email и Family ID для доступа в аккаунт.</string>
 </resources>

@@ -25,7 +25,7 @@ class LoginFragment : BaseFragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-//    private val viewModel by viewModel<LoginViewModel>()
+    //    private val viewModel by viewModel<LoginViewModel>()
     private lateinit var viewModel: LoginViewModel
 
     private var person: String? = null

@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_chooseLoginTypeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_chooseLoginTypeFragment_to_childHomescreenFragment"
+            app:destination="@id/childHomescreenFragment" />
     </fragment>
 
     <fragment
@@ -130,6 +133,11 @@
         android:name="com.projectx.householdtasks.presentation.fragment.NotificationFragment"
         android:label="NotificationFragment"
         tools:layout="@layout/fragment_notification"/>
+    <fragment
+        android:id="@+id/childHomescreenFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.ChildHomescreenFragment"
+        android:label="ChildHomescreenFragment" />
+
 
 
 </navigation>

@@ -7,15 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- дайте цветам нормальные имена -->
     <color name="status_bar_color">#F9F9FB</color>
     <color name="primary_color">#7D45FF</color>
     <color name="background_nav_bar_color">#181925</color>
     <color name="dark_text_color">#181925</color>
     <color name="login_custom_button_enable_boarder_color">#181925</color>
     <color name="app_bar_color">#CCF9F9FB</color>
-    <color name="login_title_color">#373A3A</color>
-    <color name="login_text_view_help_color">#3E3F40</color>
-    <color name="login__custom_button_color_enable">#7D45FF</color>
     <color name="login_custom_button_disable_color">#C0C1D2</color>
     <color name="login_custom_button_disable_boarder_color">#6C6E84</color>
     <color name="hint_color">#6C6E84</color>
@@ -30,7 +29,15 @@
     <color name="asdasd">#1A000000</color>
     <color name="transparent">#00000000</color>
     <color name="appBar">#CCF9F9FB</color>
+    <color name="login_title_color">#373A3A</color>
+    <color name="login_text_view_help_color">#3E3F40</color>
+    <color name="login__custom_button_color_enable">#7D45FF</color>
 
+    <color name="task_not_completed">#F5D1D5</color>
+    <color name="task_in_progress">#E8E7FA</color>
+    <color name="completed_task">#D0F3D9</color>
 
+    <color name="task_completed">#D0F3D9</color>
+    <color name="task_new">#E8E7FA</color>
 
 </resources>

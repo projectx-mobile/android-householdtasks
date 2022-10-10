@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="55dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="@dimen/spacing.small"
+        android:background="@color/primary_white_snow"
+        android:elevation="0dp"
+        android:padding="0dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/primary_midnight"
+        app:strokeWidth="2dp">
+
+        <TextView
+            android:id="@+id/day_of_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="@dimen/spacing.small"
+            android:text="Ср"
+            android:textColor="@color/primary_midnight"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/day_of_mont_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="@dimen/spacing.small"
+            android:text="1"
+            android:textColor="@color/primary_midnight"
+            android:textSize="14sp" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="55dp"
+            android:layout_height="1dp" />
+
+        <View
+            android:layout_width="55dp"
+            android:layout_height="64dp" />
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,9 @@
         <attr name="progressColor" format="color" />
         <attr name="progress" format="integer" />
         <attr name="progressWidth" format="float" />
+    </declare-styleable>
 
+    <declare-styleable name="ConstraintLayout">
+        <attr name="time" format="integer" />
     </declare-styleable>
 </resources>
