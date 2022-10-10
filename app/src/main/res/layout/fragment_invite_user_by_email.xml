@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing.medium"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:fitsSystemWindows="true">
 
             <include
@@ -40,7 +40,7 @@
                 android:id="@+id/radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing.extra_large"
+                android:layout_marginTop="48dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_title">
 
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:button="@null"
                     android:drawableStart="@drawable/radio_button_selector"
-                    android:drawablePadding="@dimen/spacing.small_xx"
+                    android:drawablePadding="10dp"
                     android:fontFamily="sans-serif"
                     android:text="@string/child"
                     android:textSize="@dimen/text_size.small" />
@@ -61,19 +61,19 @@
                     android:layout_height="wrap_content"
                     android:button="@null"
                     android:drawableStart="@drawable/radio_button_selector"
-                    android:drawablePadding="@dimen/spacing.small_xx"
+                    android:drawablePadding="10dp"
                     android:fontFamily="sans-serif"
                     android:text="@string/parent"
                     android:textSize="@dimen/text_size.small"
                     app:layout_constraintStart_toStartOf="parent" />
             </RadioGroup>
 
-            <com.projectx.householdtasks.presentation.CustomTextInputLayout
+            <com.projectx.householdtasks.presentation.support.CustomTextInputLayout
                 android:id="@+id/new_user_email"
-                style="@style/CustomInputStyle"
+                style="@style/TextInputEditTextLoginStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing.x_medium"
+                android:layout_marginTop="@dimen/spacing.large"
                 android:gravity="bottom"
                 android:hint="@string/email_new_user"
                 android:inputType="textEmailAddress"
@@ -89,16 +89,16 @@
                     android:gravity="bottom"
                     android:text="@={InviteUserByEmailViewModel.email}" />
 
-            </com.projectx.householdtasks.presentation.CustomTextInputLayout>
+            </com.projectx.householdtasks.presentation.support.CustomTextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_continue"
-                style="@style/OnBoardingCustomButton"
+                style="@style/ButtonLoginStyle"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.x_double"
+                android:layout_height="56dp"
+                android:layout_marginTop="40dp"
                 android:enabled="@{InviteUserByEmailViewModel.isButtonEnabled}"
-                android:padding="@dimen/spacing.normal"
+                android:padding="14dp"
                 android:text="@string/login_button_continue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

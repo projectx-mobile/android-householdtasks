@@ -17,12 +17,12 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/spacing.extra_large_xx">
+        android:paddingBottom="100dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing.medium"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:fitsSystemWindows="true">
 
             <include
@@ -70,8 +70,8 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/buttons_layout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.extra_large"
-                android:layout_marginTop="@dimen/spacing.medium"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/spacing.normal"
                 android:background="@drawable/rectangle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_role">
@@ -120,7 +120,7 @@
                 android:id="@+id/recycler_view_family_members_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/spacing.normal"
                 app:layout_constraintTop_toBottomOf="@id/text_view_set_parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

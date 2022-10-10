@@ -18,6 +18,8 @@ class BottomSheetNotificationFragment : BottomSheetDialogFragment() {
 
     private val sharedViewModel: NotificationSharedViewModel by activityViewModels()
 
+    private var adapter: BottomSheetNotificationAdapter? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,33 +27,55 @@ class BottomSheetNotificationFragment : BottomSheetDialogFragment() {
         _binding = FragmentBottomSheetNotificationBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setExitButtonClickListener()
+
+        dismissDialogAfterIntervalClick()
+
+        val intervals = createListOfIntervals()
+        setAdapter(intervals)
+
+        notifyIntervalOnChange()
+    }
+
+    private fun setExitButtonClickListener() {
         binding.exitBottomSheet.setOnClickListener {
             dismiss()
         }
+    }
 
+    private fun dismissDialogAfterIntervalClick() {
         sharedViewModel.isItemChecked.observe(viewLifecycleOwner) {
             if (it) {
                 dismiss()
                 sharedViewModel.setItemChecked(false)
             }
         }
+    }
 
-        val intervals = listOf("Каждые 2 часа", "За Х часов до дедлайна", "За Y часов до дедлайна")
+    private fun createListOfIntervals(): List<String> {
+        return listOf("Каждые 2 часа", "За Х часов до дедлайна", "За Y часов до дедлайна")
+    }
 
-        val adapter = BottomSheetNotificationAdapter(intervals, sharedViewModel)
+    private fun setAdapter(intervals: List<String>) {
+        adapter = BottomSheetNotificationAdapter(intervals, sharedViewModel)
         binding.recyclerViewNotificationBottomSheet.adapter = adapter
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewNotificationBottomSheet.layoutManager = layoutManager
+    }
 
+    private fun notifyIntervalOnChange() {
         sharedViewModel.interval.observe(viewLifecycleOwner) {
-            adapter.notifyDataSetChanged()
+            adapter?.notifyDataSetChanged()
         }
     }
 
     override fun onDestroyView() {
         _binding = null
+        adapter = null
         super.onDestroyView()
     }
 }

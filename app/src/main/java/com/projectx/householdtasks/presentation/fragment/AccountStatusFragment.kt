@@ -11,12 +11,17 @@ import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentAccountStatusBinding
 import com.projectx.householdtasks.presentation.FamilyMember
 import com.projectx.householdtasks.presentation.FamilyMembersAdapter
+import com.projectx.householdtasks.presentation.Role
+import com.projectx.householdtasks.presentation.viewmodel.AccountStatusViewModel
+import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountStatusFragment : BaseFragment() {
 
     private var _binding: FragmentAccountStatusBinding? = null
     private val binding get() = _binding!!
     private var familyMembers: List<FamilyMember>? = null
+//    private val viewModel by viewModel<AccountStatusViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +35,7 @@ class AccountStatusFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = this
         binding.buttonParent.isSelected = true
-
-        binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        binding.toolbarLayout.toolbar.setOnClickListener { findNavController().navigateUp() }
 
         binding.buttonChild.setOnClickListener {
             binding.buttonParent.setTextColor(
@@ -47,6 +49,7 @@ class AccountStatusFragment : BaseFragment() {
 
         }
         binding.buttonParent.setOnClickListener {
+//            viewModel.setRole(Role.PARENT)
             binding.buttonParent.isSelected = true
             binding.buttonChild.isSelected = false
             binding.buttonChild.setTextColor(

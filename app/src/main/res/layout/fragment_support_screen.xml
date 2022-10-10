@@ -21,7 +21,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/spacing.medium"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:fitsSystemWindows="true">
 
                 <include
@@ -44,7 +44,7 @@
                     android:id="@+id/setting_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/spacing.normal"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="63dp"
-                    android:layout_marginBottom="@dimen/spacing.large"
+                    android:layout_marginBottom="40dp"
                     android:fontFamily="@string/font_family_regular"
                     android:gravity="center"
                     android:text="@string/help_message_support"

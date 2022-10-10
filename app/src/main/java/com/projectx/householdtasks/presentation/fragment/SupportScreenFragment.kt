@@ -31,17 +31,18 @@ class SupportScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.faq.root.setOnClickListener {
-            val bottomSheetFragment = BottomSheetFaqFragment()
-            bottomSheetFragment.show(childFragmentManager, "BottomSheet")
+
+        binding.apply {
+            faq.root.setOnClickListener {
+                val bottomSheetFragment = BottomSheetFaqFragment()
+                bottomSheetFragment.show(childFragmentManager, "BottomSheet")
+            }
+            privacyPolicy.root.setOnClickListener {}
+            toolbarLayout.toolbar.setOnClickListener {
+                findNavController().navigateUp()
+            }
         }
 
-        binding.privacyPolicy.root.setOnClickListener {}
-
-        binding.feedback.root.setOnClickListener {}
-        binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigateUp()
-        }
         setLink()
     }
 

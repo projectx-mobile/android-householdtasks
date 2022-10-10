@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing.medium"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:fitsSystemWindows="true">
 
             <include
@@ -38,12 +38,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
 
-            <com.projectx.householdtasks.presentation.CustomTextInputLayout
+            <com.projectx.householdtasks.presentation.support.CustomTextInputLayout
                 android:id="@+id/current_email_layout"
-                style="@style/CustomInputStyle"
+                style="@style/TextInputEditTextLoginStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing.x_medium"
+                android:layout_marginTop="@dimen/spacing.large"
                 android:focusable="false"
                 android:gravity="bottom"
                 android:hint="@string/current_email"
@@ -61,11 +61,11 @@
                     android:layout_height="wrap_content"
                     android:focusable="false"
                     android:gravity="bottom" />
-            </com.projectx.householdtasks.presentation.CustomTextInputLayout>
+            </com.projectx.householdtasks.presentation.support.CustomTextInputLayout>
 
-            <com.projectx.householdtasks.presentation.CustomTextInputLayout
+            <com.projectx.householdtasks.presentation.support.CustomTextInputLayout
                 android:id="@+id/new_email_layout"
-                style="@style/CustomInputStyle"
+                style="@style/TextInputEditTextLoginStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing.small"
@@ -82,15 +82,15 @@
                     android:gravity="bottom"
                     android:inputType="textEmailAddress"
                     android:text="@={EditProfileEmailViewModel.newEmail}" />
-            </com.projectx.householdtasks.presentation.CustomTextInputLayout>
+            </com.projectx.householdtasks.presentation.support.CustomTextInputLayout>
 
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_save_changes"
-                style="@style/OnBoardingCustomButton"
+                style="@style/ButtonLoginStyle"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
-                android:layout_marginTop="@dimen/spacing.x_double"
+                android:layout_height="56dp"
+                android:layout_marginTop="40dp"
                 android:enabled="@{EditProfileEmailViewModel.isButtonEnabled}"
                 android:padding="@dimen/spacing.normal"
                 android:text="@string/save_changes"
@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/spacing.large"
-                android:layout_marginTop="@dimen/spacing.medium"
+                android:layout_marginTop="@dimen/spacing.normal"
                 android:layout_marginBottom="@dimen/spacing.large"
                 android:fontFamily="@string/font_family_regular"
                 android:gravity="center"

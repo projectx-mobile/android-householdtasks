@@ -2,21 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet_notification"
     style="?attr/bottomSheetStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
-    android:id="@+id/bottom_sheet_notification"
-    android:orientation="vertical"
     android:background="@drawable/rounded_top_corners_background"
+    android:orientation="vertical"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     tools:context=".presentation.fragment.BottomSheetNotificationFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/spacing.small"
         android:background="@drawable/ic_rectangle_bottom_sheet" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -28,12 +28,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/spacing.normal"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/nexa_demo_bold"
-            android:text="Напоминать"
+            android:text="@string/remind"
             android:textColor="@color/dark_text_color"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -54,6 +54,5 @@
         android:id="@+id/recycler_view_notification_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        />
+        android:layout_marginTop="36dp" />
 </LinearLayout>

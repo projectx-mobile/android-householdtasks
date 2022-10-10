@@ -15,7 +15,6 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -36,6 +35,7 @@ class EditProfileFragment : BaseFragment() {
     private var _binding: FragmentEditProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: EditProfileViewModel
+
     private val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK && result.data != null) {
@@ -86,20 +86,22 @@ class EditProfileFragment : BaseFragment() {
 //          TODO: set current name
         viewModel.newName.postValue("Марго")
 
-        binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        binding.apply {
+            toolbarLayout.toolbar.setOnClickListener {
+                findNavController().navigateUp()
+            }
+            buttonSaveChanges.setOnClickListener {
+                binding.textVewSaveChanges.visibility = View.VISIBLE
+                findNavController().navigate(R.id.profileFragment)
+            }
 
-        binding.profilePhoto.setOnClickListener {
-            createDialogSetPhoto()
-        }
+            profilePhoto.setOnClickListener {
+                createDialogSetPhoto()
 
-        binding.buttonSaveChanges.setOnClickListener {
-            binding.textVewSaveChanges.visibility = View.VISIBLE
-            findNavController().navigate(R.id.profileFragment)
-        }
-        binding.buttonDeleteProfile.setOnClickListener {
-            createDialogDeleteProfile()
+            }
+            buttonDeleteProfile.setOnClickListener {
+                createDialogDeleteProfile()
+            }
         }
     }
 
@@ -168,15 +170,15 @@ class EditProfileFragment : BaseFragment() {
 
     private fun buildAlertMessageNoCameraPermission() {
         val alertDialog = AlertDialog.Builder(requireContext())
-            .setTitle("Приложению “Alfredo” необходим доступ к камере.")
-            .setMessage("Чтобы продолжить, измени настройки доступа.")
+            .setTitle(getString(R.string.title_no_camera_permission))
+            .setMessage(getString(R.string.message_no_camera_permission))
             .setPositiveButton(
-                "Настройки"
+                getString(R.string.settings)
             ) { dialog, id -> startActivity(Intent(
                 Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                 Uri.fromParts("package", requireActivity().packageName, null)
             )) }
-            .setNegativeButton("Отмена") { dialog, which -> dialog.dismiss() }
+            .setNegativeButton(getString(R.string.cancel)) { dialog, which -> dialog.dismiss() }
             .setCancelable(false)
             .show()
         val inset = InsetDrawable(
@@ -191,20 +193,19 @@ class EditProfileFragment : BaseFragment() {
     private fun createDialogDeleteProfile() {
         val textView = TextView(activity)
         with(textView) {
-            textView.text = "Ты уверен(а), что хочешь удалить свой профиль?"
+            textView.text = context.getString(R.string.title_dialog_delete_profile)
             textView.textSize = 18.0F
             textView.setTypeface(null, Typeface.BOLD)
-            //textView.gravity = Gravity.CENTER
             setPadding(24,26,24,20)
         }
         val alertDialog = AlertDialog.Builder(requireContext())
             .setCustomTitle(textView)
-            .setMessage("Это действие нельзя отменить")
-            .setNegativeButton("Отмена") { dialog, which -> dialog.dismiss() }
-            .setPositiveButton("Удалить") { dialog, which ->
+            .setMessage(getString(R.string.message_dialog_delete_profile))
+            .setNegativeButton(getString(R.string.cancel)) { dialog, which -> dialog.dismiss() }
+            .setPositiveButton(getString(R.string.delete)) { dialog, which ->
                 Toast.makeText(
                     requireContext(),
-                    "Профиль удален", Toast.LENGTH_SHORT
+                    getString(R.string.profile_is_deleted), Toast.LENGTH_SHORT
                 ).show()
             }
             .setCancelable(false)
@@ -219,7 +220,7 @@ class EditProfileFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        _binding = null
         super.onDestroyView()
+        _binding = null
     }
 }

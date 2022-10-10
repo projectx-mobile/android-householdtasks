@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingBottom="@dimen/spacing.extra_large_xx">
+            android:paddingBottom="100dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -49,8 +49,8 @@
                     android:id="@+id/navigation_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/spacing.medium"
-                    android:layout_marginTop="@dimen/spacing.small"
+                    android:layout_marginHorizontal="@dimen/spacing.normal"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
                         android:gravity="center"
                         android:text="И"
                         android:textColor="@color/dark_text_color"
-                        android:textSize="@dimen/text_size.x_medium"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -81,7 +81,7 @@
                             android:fontFamily="@font/nexa_demo_bold"
                             android:text="@string/name"
                             android:textColor="@color/dark_text_color"
-                            android:textSize="@dimen/text_size.x_medium"
+                            android:textSize="24sp"
                             android:textStyle="bold"
                             app:drawableEndCompat="@drawable/ic_navigation" />
                     </LinearLayout>
@@ -91,8 +91,8 @@
                     android:id="@+id/profile_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/spacing.medium"
-                    android:layout_marginTop="@dimen/spacing.x_medium"
+                    android:layout_marginHorizontal="@dimen/spacing.normal"
+                    android:layout_marginTop="@dimen/spacing.large"
                     android:fontFamily="@font/nexa_demo_bold"
                     android:text="@string/profile_settings"
                     android:textColor="@color/dark_text_color"
@@ -106,8 +106,8 @@
                     android:id="@+id/setting_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginHorizontal="@dimen/spacing.medium"
+                    android:layout_marginTop="@dimen/spacing.normal"
+                    android:layout_marginHorizontal="@dimen/spacing.normal"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +154,7 @@
                     android:id="@+id/my_family"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/spacing.medium"
+                    android:layout_marginHorizontal="@dimen/spacing.normal"
                     android:layout_marginTop="@dimen/spacing.large"
                     android:fontFamily="@font/nexa_demo_bold"
                     android:text="@string/my_family"
@@ -183,8 +183,8 @@
                     android:id="@+id/other_setting_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginHorizontal="@dimen/spacing.medium"
+                    android:layout_marginTop="@dimen/spacing.large"
+                    android:layout_marginHorizontal="@dimen/spacing.normal"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -211,9 +211,9 @@
                     android:id="@+id/exit_profile"
                     style="@style/WhiteCustomButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/spacing.x_extra_large"
-                    android:layout_marginHorizontal="@dimen/spacing.medium"
-                    android:layout_marginTop="@dimen/spacing.xx_medium"
+                    android:layout_height="56dp"
+                    android:layout_marginHorizontal="@dimen/spacing.normal"
+                    android:layout_marginTop="@dimen/spacing.double"
                     android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -223,13 +223,13 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/spacing.medium"
+                        android:layout_marginStart="@dimen/spacing.normal"
                         android:background="@drawable/ic_exit" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/spacing.small_xx"
+                        android:layout_marginStart="12dp"
                         android:layout_marginEnd="@dimen/spacing.normal"
                         android:layout_weight="30"
                         android:fontFamily="sans-serif-medium"

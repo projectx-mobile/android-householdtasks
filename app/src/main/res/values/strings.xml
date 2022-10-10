@@ -38,7 +38,7 @@
     <string name="passwords_not_match">Введенные пароли не совпадают</string>
     <string name="send_invitation">Приглашение отправлено</string>
     <string name="my_profile">Мой профиль</string>
-    <string name="save_changes">Изменения сохранены</string>
+    <string name="save_changes">Сохранить изменения</string>
     <string name="delete_profile">Удалить профиль</string>
     <string name="current_email">Текущий email</string>
     <string name="enter_new_email">Введи новый email</string>
@@ -70,6 +70,26 @@
     <string name="sign_in_with_google">Войти с Google</string>
     <string name="sign_in_with_email">Войти по email</string>
     <string name="create_account">Впервые в Трекере Заданий? <b><a href="">Создать аккаунт.</a></b></string>
+    <string name="title_no_camera_permission">Приложению “Alfredo” необходим доступ к камере.</string>
+    <string name="message_no_camera_permission">Чтобы продолжить, измени настройки доступа.</string>
+    <string name="settings">Настройки</string>
+    <string name="cancel">Отмена</string>
+    <string name="title_dialog_delete_profile">Ты уверен(а), что хочешь удалить свой профиль?</string>
+    <string name="delete">Удалить</string>
+    <string name="message_dialog_delete_profile">Это действие нельзя отменить</string>
+    <string name="profile_is_deleted">Профиль удален</string>
+    <string name="turn_off">Выключить все</string>
+    <string name="remind_about_tasks">Напоминать о задачах</string>
+    <string name="remind">Напоминать</string>
+    <string name="change_photo_profile">Изменить фото профиля</string>
+    <string name="choose_method_change_photo">Выбери способ изменения фото.</string>
+    <string name="take_selfie">Сделать селфи</string>
+    <string name="load_from_gallery">Загрузить из галереи</string>
+    <string name="choose_language">Выбрать язык приложения</string>
+    <string name="russian">Русский</string>
+    <string name="english">English</string>
+    <string name="ok">ОК</string>
+    <string name="text_interval">Каждые 2 часа</string>
 
     <!-- /Strings related to login -->
 </resources>

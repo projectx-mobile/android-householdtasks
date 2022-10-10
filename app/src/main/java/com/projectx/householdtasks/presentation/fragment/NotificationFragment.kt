@@ -15,14 +15,18 @@ import com.projectx.householdtasks.presentation.FamilyMember
 import com.projectx.householdtasks.presentation.FamilyMembersAdapter
 import com.projectx.householdtasks.presentation.viewmodel.NotificationSharedViewModel
 import com.projectx.householdtasks.presentation.viewmodel.NotificationViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NotificationFragment : BaseFragment() {
 
     private var _binding: FragmentNotificationBinding? = null
     private val binding get() = _binding!!
+
+    private var bottomSheetFragment: BottomSheetNotificationFragment? = null
     private var familyMembers: List<FamilyMember>? = null
 
     private val sharedViewModel: NotificationSharedViewModel by activityViewModels()
+    private val viewModel by viewModel<NotificationViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,25 +39,22 @@ class NotificationFragment : BaseFragment() {
         }
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.lifecycleOwner = this
         binding.toolbarLayout.toolbar.setOnClickListener {
             findNavController().navigateUp()
         }
 
         addScrollListener()
 
+        bottomSheetFragment = BottomSheetNotificationFragment()
         binding.notificationPicker.setOnClickListener {
-            val bottomSheetFragment = BottomSheetNotificationFragment()
-            bottomSheetFragment.show(childFragmentManager, "BottomSheet")
+            bottomSheetFragment?.show(childFragmentManager, "BottomSheet")
         }
 
         familyMembers = createFamilyList()
-        val adapter = FamilyMembersAdapter(familyMembers!!)
-        binding.recyclerViewNotification.adapter = adapter
-        val layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewNotification.layoutManager = layoutManager
+        setAdapter()
     }
 
     private fun addScrollListener() {
@@ -70,21 +71,64 @@ class NotificationFragment : BaseFragment() {
 
     private fun createFamilyList(): List<FamilyMember> {
         return listOf(
-            FamilyMember("Алиса", "А", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
-            FamilyMember("Борис", "Б", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
-            FamilyMember("Алиса", "А", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
-            FamilyMember("Борис", "Б", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
-            FamilyMember("Алиса", "А", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
-            FamilyMember("Борис", "Б", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
-            FamilyMember("Алиса", "А", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
-            FamilyMember("Борис", "Б", ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!),
-            FamilyMember("Приглашен", null, ContextCompat.getDrawable(requireContext(), R.drawable.button_invited_person)!!),
+            FamilyMember(
+                "Алиса",
+                "А",
+                ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!
+            ),
+            FamilyMember(
+                "Борис",
+                "Б",
+                ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!
+            ),
+            FamilyMember(
+                "Алиса",
+                "А",
+                ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!
+            ),
+            FamilyMember(
+                "Борис",
+                "Б",
+                ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!
+            ),
+            FamilyMember(
+                "Алиса",
+                "А",
+                ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!
+            ),
+            FamilyMember(
+                "Борис",
+                "Б",
+                ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!
+            ),
+            FamilyMember(
+                "Алиса",
+                "А",
+                ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!
+            ),
+            FamilyMember(
+                "Борис",
+                "Б",
+                ContextCompat.getDrawable(requireContext(), R.drawable.oval)!!
+            ),
+            FamilyMember(
+                "Приглашен",
+                null,
+                ContextCompat.getDrawable(requireContext(), R.drawable.button_invited_person)!!
+            ),
         )
     }
 
+    private fun setAdapter() {
+        val adapter = FamilyMembersAdapter(familyMembers!!)
+        binding.recyclerViewNotification.adapter = adapter
+        val layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewNotification.layoutManager = layoutManager
+    }
+
     override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
         familyMembers = null
-        super.onDestroyView()
     }
 }

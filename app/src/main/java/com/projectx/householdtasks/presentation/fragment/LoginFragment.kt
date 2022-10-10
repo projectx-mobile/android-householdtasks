@@ -12,19 +12,21 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
 import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.random.Random
 
 const val PERSON = "person" //todo
 
 class LoginFragment : BaseFragment() {
 
-    private lateinit var viewModel: LoginViewModel
-
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+//    private val viewModel by viewModel<LoginViewModel>()
+    private lateinit var viewModel: LoginViewModel
 
     private var person: String? = null
 
@@ -40,18 +42,18 @@ class LoginFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+        savedInstanceState: Bundle?,
+    ) = FragmentLoginBinding.inflate(inflater, container, false).also {
+        _binding = it
+    }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java] //todo ??
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
 
+        binding.appbarLogin.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         person = arguments?.getString(PERSON)
         if (person != null) {
             setStringsForCurrentPerson(person!!)
@@ -90,10 +92,15 @@ class LoginFragment : BaseFragment() {
             start = 0 //todo
             end = 21 //todo
         }
-        val spannableString = SpannableString(binding.helpLink.text)
-        spannableString.setSpan(HelpMessageClickableSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.helpLink.text = spannableString
-        binding.helpLink.movementMethod = LinkMovementMethod.getInstance()
+        val spannableString = SpannableString(binding.textviewLoginRestoreAccount.text)
+        spannableString.setSpan(
+            HelpMessageClickableSpan(),
+            start,
+            end,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        binding.textviewLoginRestoreAccount.text = spannableString
+        binding.textviewLoginRestoreAccount.movementMethod = LinkMovementMethod.getInstance()
     }
 
     private fun setButtonContinueClickListener() {
@@ -110,9 +117,19 @@ class LoginFragment : BaseFragment() {
                 var requestSucceeded = true
                 requestSucceeded = Random.nextBoolean()
                 if (requestSucceeded) {
-                    Toast.makeText(context, getString(R.string.authentication_success), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        getString(R.string.authentication_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    findNavController().navigate(R.id.profileFragment)
+
                 } else {
-                    Toast.makeText(context, getString(R.string.authentication_failed), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        getString(R.string.authentication_failed),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     setAuthenticationError()
                 }
             }
@@ -134,7 +151,8 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun setAuthenticationError() {
-        binding.emailLogin.error = "Error" //todo get text from BA and add to strings
+//        reset error in emailLogin field and show general mistake for two fields
+        binding.emailLogin.error = " " //todo get text from BA and add to strings
         binding.familyIdLogin.error = getString(R.string.authentication_error)
     }
 
@@ -150,9 +168,9 @@ class LoginFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
         person = null
+        super.onDestroyView()
     }
 }
 

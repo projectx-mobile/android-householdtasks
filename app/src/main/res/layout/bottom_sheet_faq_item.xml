@@ -2,26 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
+    android:layout_marginHorizontal="@dimen/spacing.normal"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_view_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/nexa_demo_bold"
         android:textColor="@color/dark_text_color"
-        android:layout_marginTop="32dp"
-        android:textSize="16sp"
-        />
+        android:textSize="16sp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_view_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="13sp"
+        android:layout_marginTop="@dimen/spacing.normal"
         android:textColor="@color/dark_text_color"
-        android:layout_marginTop="16dp"
-        />
+        android:textSize="13sp" />
 
 </LinearLayout>

@@ -12,7 +12,7 @@
             <size android:height="56dp" />
             <padding
                 android:bottom="@dimen/spacing.small"
-                android:left="@dimen/spacing.normal"
+                android:left="14dp"
                 android:right="@dimen/spacing.small"
                 android:top="@dimen/spacing.small" />
             <corners android:radius="@dimen/spacing.small" />

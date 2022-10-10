@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/app_bar_color"
-            android:visibility="visible">
+            android:visibility="invisible">
 
             <com.google.android.material.appbar.MaterialToolbar
                 style="@style/Widget.MaterialComponents.Toolbar.Primary"
@@ -32,7 +32,7 @@
                     android:id="@+id/top_app_bar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="@dimen/spacing.large"
                     android:textSize="16sp"
                     android:fontFamily="@font/nexa_demo_bold"
                     android:textColor="@color/dark_text_color"
@@ -50,12 +50,12 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/spacing.extra_large_xx">
+        android:paddingBottom="100dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing.medium"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:fitsSystemWindows="true">
 
             <include
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="?attr/actionBarSize"
                 android:fontFamily="@font/nexa_demo_bold"
-                android:text="Уведомления"
+                android:text="@string/notifications"
                 android:textColor="@color/login_title_color"
                 android:textSize="@dimen/text_size.large"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,16 +89,16 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
+                    android:layout_marginStart="@dimen/spacing.normal"
                     android:background="@drawable/ic_notification_off" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginStart="12dp"
                     android:layout_marginEnd="@dimen/spacing.normal"
                     android:fontFamily="@font/nexa_demo_bold"
-                    android:text="Выключить все"
+                    android:text="@string/turn_off"
                     android:textColor="@color/dark_text_color"
                     android:textSize="@dimen/text_size.medium" />
 
@@ -177,16 +177,16 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.medium"
+                    android:layout_marginStart="@dimen/spacing.normal"
                     android:background="@drawable/ic_notification" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing.small_xx"
+                    android:layout_marginStart="12dp"
                     android:layout_marginEnd="@dimen/spacing.normal"
                     android:fontFamily="@font/nexa_demo_bold"
-                    android:text="Напоминать о задачах"
+                    android:text="@string/remind_about_tasks"
                     android:textColor="@color/dark_text_color"
                     android:textSize="@dimen/text_size.medium" />
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -194,7 +194,7 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/notification_picker"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing.x_extra_large"
+                android:layout_height="56dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/rectangle"
                 android:gravity="center_vertical"
@@ -207,7 +207,7 @@
                     android:id="@+id/text_view_interval"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/spacing.normal"
                     android:layout_marginEnd="@dimen/spacing.normal"
                     android:drawableEnd="@drawable/ic_arrow_down_black"
                     android:fontFamily="sans-serif-medium"
@@ -219,7 +219,7 @@
                 android:id="@+id/recycler_view_notification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/spacing.large"
                 app:layout_constraintTop_toBottomOf="@id/notification_picker" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

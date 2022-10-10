@@ -1,8 +1,8 @@
 package com.projectx.householdtasks.di.modules
 
 import com.projectx.householdtasks.data.example.repository.ExampleRepository
-import com.projectx.householdtasks.presentation.viewmodel.ChooseLoginTypeViewModel
-import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
+import com.projectx.householdtasks.presentation.fragment.EditProfileEmailFragment
+import com.projectx.householdtasks.presentation.viewmodel.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -11,4 +11,14 @@ val appModule = module {
 
     viewModel { ChooseLoginTypeViewModel() }
     viewModel { LoginViewModel() }
+    viewModel { EditProfileViewModel() }
+    viewModel { EditProfileEmailViewModel() }
+    viewModel { EditProfilePasswordViewModel() }
+    viewModel { AccountStatusViewModel() }
+    viewModel { InviteUserByEmailViewModel() }
+    viewModel { NotificationSharedViewModel() }
+    viewModel { NotificationViewModel() }
+    viewModel { ProfileViewModel() }
+    viewModel { SupportViewModel() }
+
 }

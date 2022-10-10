@@ -85,7 +85,7 @@
 
     <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">16dp</item>
+        <item name="cornerSize">"@dimen/spacing.normal"</item>
     </style>
 
     <style name="CustomBottomSheetNotification">

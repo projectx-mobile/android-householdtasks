@@ -36,11 +36,9 @@ class ProfileFragment : BaseFragment() {
 
         addScrollListener()
         setNavigation()
+
         familyMembers = createFamilyList()
-        val adapter = MyFamilyProfileAdapter(familyMembers!!)
-        binding.recyclerViewFamilyMembers.adapter = adapter
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerViewFamilyMembers.layoutManager = layoutManager
+        setAdapter()
     }
 
     private fun addScrollListener() {
@@ -86,6 +84,13 @@ class ProfileFragment : BaseFragment() {
         }
     }
 
+    private fun setAdapter() {
+        val adapter = MyFamilyProfileAdapter(familyMembers!!)
+        binding.recyclerViewFamilyMembers.adapter = adapter
+        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerViewFamilyMembers.layoutManager = layoutManager
+    }
+
     private fun createFamilyList(): List<FamilyMember> {
         return listOf(
             FamilyMember("Добавить", null, ContextCompat.getDrawable(requireContext(), R.drawable.selector_add_button)!!),
@@ -126,9 +131,9 @@ class ProfileFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
         familyMembers = null
-        super.onDestroyView()
     }
 }
 
