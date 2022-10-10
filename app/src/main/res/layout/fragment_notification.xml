@@ -55,7 +55,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:fitsSystemWindows="true">
 
             <include
@@ -69,6 +68,7 @@
                 android:layout_marginTop="?attr/actionBarSize"
                 android:fontFamily="@font/nexa_demo_bold"
                 android:text="@string/notifications"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:textColor="@color/login_title_color"
                 android:textSize="@dimen/text_size.large"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -80,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="52dp"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -124,6 +125,7 @@
                 android:id="@id/divider"
                 style="@style/Divider"
                 android:layout_width="match_parent"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 app:layout_constraintTop_toBottomOf="@id/turn_off_notifications_layout" />
@@ -131,6 +133,7 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:orientation="vertical"
                 android:id="@+id/switch_list"
                 app:layout_constraintTop_toBottomOf="@id/divider">
@@ -157,6 +160,7 @@
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider_second"
                 style="@style/Divider"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing.large"
@@ -168,6 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing.large"
                 android:gravity="center_vertical"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -197,6 +202,7 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/rectangle"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -218,6 +224,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_notification"
                 android:layout_width="match_parent"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing.large"
                 app:layout_constraintTop_toBottomOf="@id/notification_picker" />

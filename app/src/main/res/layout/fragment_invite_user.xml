@@ -8,7 +8,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing.normal"
         android:fitsSystemWindows="true">
 
         <include
@@ -21,6 +20,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/nexa_demo_bold"
             android:text="@string/new_user"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:textColor="@color/login_title_color"
             android:textSize="@dimen/text_size.large"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing.small"
             android:fontFamily="@string/font_family_regular"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:text="@string/help_message_invite_user"
             android:textColor="@color/hint_color"
             android:textSize="@dimen/text_size.small"
@@ -46,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="48dp"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:background="@drawable/rectangle"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -78,6 +80,7 @@
             android:layout_height="56dp"
             android:layout_marginTop="@dimen/spacing.small"
             android:background="@drawable/rectangle"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,6 +112,7 @@
             android:layout_height="56dp"
             android:layout_marginTop="@dimen/spacing.small"
             android:background="@drawable/rectangle"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"

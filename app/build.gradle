@@ -72,4 +72,7 @@ dependencies {
 
     /* UI */
     implementation 'de.hdodenhof:circleimageview:1.2.1'
+
+    /* Collapsing ToolBar */
+    implementation "com.hendraanggrian.material:collapsingtoolbarlayout-subtitle:1.5.0"
 }

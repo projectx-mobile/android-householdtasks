@@ -17,7 +17,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:fitsSystemWindows="true">
 
             <include
@@ -30,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_demo_bold"
                 android:text="@string/invite_by_email"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:textColor="@color/login_title_color"
                 android:textSize="@dimen/text_size.large"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +40,7 @@
                 android:id="@+id/radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:layout_marginTop="48dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_title">
@@ -74,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing.large"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:gravity="bottom"
                 android:hint="@string/email_new_user"
                 android:inputType="textEmailAddress"
@@ -97,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:enabled="@{InviteUserByEmailViewModel.isButtonEnabled}"
                 android:padding="14dp"
                 android:text="@string/login_button_continue"

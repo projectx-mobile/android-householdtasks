@@ -43,8 +43,13 @@ class ParentHomescreenFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.bindUI().subscribeUI()
 
+//        todo
         binding.navBarLayout.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_parentHomescreenFragment_to_profileFragment)
+            findNavController().navigate(R.id.action_parentHomescreenFragment_to_childHomescreenFragment)
+        }
+//        todo delete
+        binding.familyMembersRecyclerView.setOnClickListener {
+            findNavController().navigate(R.id.action_parentHomescreenFragment_to_childHomescreenFragment)
         }
     }
 

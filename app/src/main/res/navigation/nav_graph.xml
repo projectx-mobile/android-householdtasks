@@ -53,6 +53,10 @@
         <action
             android:id="@+id/action_parentHomescreenFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+<!--        todo delete-->
+        <action
+            android:id="@+id/action_parentHomescreenFragment_to_childHomescreenFragment"
+            app:destination="@id/childHomescreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/allUpdatesFragment"
@@ -136,8 +140,7 @@
     <fragment
         android:id="@+id/childHomescreenFragment"
         android:name="com.projectx.householdtasks.presentation.fragment.ChildHomescreenFragment"
-        android:label="ChildHomescreenFragment" />
-
-
+        android:label="ChildHomescreenFragment"
+        tools:layout="@layout/fragment_homescreen_child"/>
 
 </navigation>
