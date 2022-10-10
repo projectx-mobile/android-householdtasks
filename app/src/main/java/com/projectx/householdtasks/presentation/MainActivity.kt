@@ -4,12 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import com.projectx.householdtasks.R
-import com.projectx.householdtasks.presentation.fragment.*
+import com.projectx.householdtasks.databinding.ActivityMainBinding
+import com.projectx.householdtasks.presentation.fragment.LoginFragment
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setContentView(R.layout.activity_main)
 //        loadLoginFragment()
 
@@ -29,4 +35,3 @@ class MainActivity : AppCompatActivity() {
 //        }
     }
 }
-

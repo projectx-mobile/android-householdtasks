@@ -10,44 +10,7 @@
     <dimen name="text_size.medium">16sp</dimen>
     <dimen name="text_size.large">32sp</dimen>
 
-<!--    <dimen name="text_size.xx_small">12sp</dimen>-->
-<!--    <dimen name="text_size.x_small">13sp</dimen>-->
-<!--    <dimen name="text_size.small">14sp</dimen>-->
-<!--    <dimen name="text_size.medium">16sp</dimen>-->
-<!--    <dimen name="text_size.x_medium">24sp</dimen>-->
-<!--    <dimen name="text_size.large">32sp</dimen>-->
-
-
-<!--    <dimen name="spacing.null">0dp</dimen>-->
-<!--    <dimen name="spacing.xx_extra_small">1dp</dimen>-->
-<!--    <dimen name="spacing.x_extra_small">2dp</dimen>-->
-<!--    <dimen name="spacing.extra_small">3dp</dimen>-->
-<!--    <dimen name="spacing.xx_small">4dp</dimen>-->
-<!--    <dimen name="spacing.x_small">7dp</dimen>-->
-<!--    <dimen name="spacing.small_x">9dp</dimen>-->
-<!--    <dimen name="spacing.small_xx">10dp</dimen>-->
-<!--    <dimen name="spacing.normal_x">12dp</dimen>-->
-<!--    <dimen name="spacing.normal">14dp</dimen>-->
-<!--    <dimen name="spacing.x_normal">15dp</dimen>-->
-<!--    <dimen name="spacing.medium">16dp</dimen>-->
-<!--    <dimen name="spacing.x_x_medium">18dp</dimen>-->
-<!--    <dimen name="spacing.x_medium">24dp</dimen>-->
-<!--    <dimen name="spacing.xx_medium">32dp</dimen>-->
-<!--    <dimen name="spacing.double">36dp</dimen>-->
-<!--    <dimen name="spacing.x_double">39dp</dimen>-->
-<!--    <dimen name="spacing.large">40dp</dimen>-->
-<!--    <dimen name="spacing.x_large">46dp</dimen>-->
-<!--    <dimen name="spacing.extra_large">48dp</dimen>-->
-<!--    <dimen name="spacing.x_extra_large">56dp</dimen>-->
-<!--    <dimen name="spacing.xx_extra_large">63dp</dimen>-->
-<!--    <dimen name="spacing.extra_large_x">72dp</dimen>-->
-<!--    <dimen name="spacing.extra_large_x_x">82dp</dimen>-->
-<!--    <dimen name="spacing.extra_large_xx">100dp</dimen>-->
-<!--    <dimen name="spacing.xxx_extra_large">200dp</dimen>-->
-
-<!--    -->
     <dimen name="size_login_button.48">48dp</dimen>
-
 
     <string name="font_family_regular">sans-serif</string>
     <string name="font_family_light">sans-serif-thin</string>
