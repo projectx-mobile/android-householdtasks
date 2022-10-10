@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Household Tasks</string>
-    <string name="tasks">Задачи</string>
-    <string name="wallet">Кошелек</string>
-    <string name="awards">Награды</string>
-    <string name="profile">Профиль</string>
     <string name="profile_settings">Настройки профиля</string>
     <string name="name">Имя</string>
     <string name="email">Email</string>
@@ -11,7 +7,6 @@
     <string name="parent">Родитель</string>
     <string name="linked_accounts">Присоединенные аккаунты</string>
     <string name="notifications">Уведомления</string>
-    <string name="my_family">Моя семья</string>
     <string name="invited">Приглашен</string>
     <string name="add">Добавить</string>
     <string name="select_language">Выбрать язык</string>
@@ -97,4 +92,16 @@
     <string name="onboarding_main_text_2">Достигай цели и получай награды</string>
     <string name="signup_text">Создать аккаунт</string>
     <string name="login_text">Войти</string>
+    <string name="tasks">Задачи</string>
+    <string name="wallet">Кошелек</string>
+    <string name="awards">Награды</string>
+    <string name="profile">Профиль</string>
+    <string name="my_family">Моя семья</string>
+    <string name="updates">Обновления</string>
+    <string name="view_all_updates">Просмотреть все</string>
+    <string name="active_tasks">Активных на сегодня (0)</string>
+    <string name="task_completed_placeholder">Aлиса выполнила новую задачу</string>
+    <string name="tasks_label">задач</string>
+    <string name="name_placeholder">Aлиса</string>
+    <string name="updates_placeholder">Обновления</string>
 </resources>
