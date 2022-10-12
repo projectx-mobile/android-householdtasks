@@ -9,8 +9,7 @@
         android:id="@+id/parentHomescreenFragment"
         android:name="com.projectx.householdtasks.presentation.fragment.ParentHomescreenFragment"
         android:label="ParentHomescreenFragment"
-        tools:layout="@layout/fragment_parent_homescreen"
-        >
+        tools:layout="@layout/fragment_parent_homescreen">
         <action
             android:id="@+id/action_parentHomescreenFragment_to_allUpdatesFragment"
             app:destination="@id/allUpdatesFragment"
@@ -18,9 +17,25 @@
             app:popExitAnim="@anim/slide_down"
             />
     </fragment>
+
     <fragment
         android:id="@+id/allUpdatesFragment"
         android:name="com.projectx.householdtasks.presentation.fragment.AllUpdatesFragment"
         tools:layout="@layout/fragment_all_updates"
-        android:label="AllUpdatesFragment" />
+        android:label="AllUpdatesFragment"/>
+
+    <fragment
+        android:id="@+id/chooseLoginTypeFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.ChooseLoginTypeFragment"
+        android:label="ChooseLoginTypeFragment" >
+        <action
+            android:id="@+id/action_chooseLoginTypeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.LoginFragment"
+        android:label="LoginFragment" />
+
 </navigation>
