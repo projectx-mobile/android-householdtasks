@@ -10,12 +10,14 @@ import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentInviteUserByEmailBinding
 import com.projectx.householdtasks.presentation.viewmodel.InviteUserByEmailViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class InviteUserByEmailFragment : BaseFragment() {
-    private lateinit var viewModel: InviteUserByEmailViewModel
+
     private var _binding: FragmentInviteUserByEmailBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModel<InviteUserByEmailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +29,6 @@ class InviteUserByEmailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[InviteUserByEmailViewModel::class.java]
         binding.inviteUserByEmailViewModel = viewModel
         binding.lifecycleOwner = this
 

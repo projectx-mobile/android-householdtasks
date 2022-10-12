@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
@@ -25,8 +24,7 @@ class LoginFragment : BaseFragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-//    private val viewModel by viewModel<LoginViewModel>()
-    private lateinit var viewModel: LoginViewModel
+    private val viewModel by viewModel<LoginViewModel>()
 
     private var person: String? = null
 
@@ -49,7 +47,6 @@ class LoginFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
 
@@ -85,12 +82,12 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun setLink() {
-        var start = 19 //todo
-        var end = 39 //todo
+        var start = LoginViewModel.START_PARENT_LINK //todo
+        var end = LoginViewModel.END_PARENT_LINK //todo
         if (person == "child") {
             binding.textviewLoginRestoreAccount.text = getString(R.string.login_with_qr_code)
-            start = 0 //todo
-            end = 21 //todo
+            start = LoginViewModel.START_CHILD_LINK //todo
+            end = LoginViewModel.END_CHILD_LINK //todo
         }
         val spannableString = SpannableString(binding.textviewLoginRestoreAccount.text)
         spannableString.setSpan(
@@ -113,6 +110,7 @@ class LoginFragment : BaseFragment() {
                 setErrorForEmail()
             }
             if (viewModel.isValid()) {
+
                 // TODO: send API request
                 var requestSucceeded = true
                 requestSucceeded = Random.nextBoolean()
@@ -168,9 +166,8 @@ class LoginFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
         person = null
-        super.onDestroyView()
     }
 }
-

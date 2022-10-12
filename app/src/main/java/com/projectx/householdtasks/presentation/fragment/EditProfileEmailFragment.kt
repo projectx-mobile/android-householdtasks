@@ -9,12 +9,13 @@ import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentEditProfileEmailBinding
 import com.projectx.householdtasks.presentation.viewmodel.EditProfileEmailViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EditProfileEmailFragment : BaseFragment() {
 
     private var _binding: FragmentEditProfileEmailBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: EditProfileEmailViewModel
+    private val viewModel by viewModel<EditProfileEmailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,9 +28,9 @@ class EditProfileEmailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[EditProfileEmailViewModel::class.java]
         binding.editProfileEmailViewModel = viewModel
         binding.lifecycleOwner = this
+
 //        TODO: set current email
         binding.currentEmailLayout.editText?.setText("name@example.com")
         binding.toolbarLayout.toolbar.setOnClickListener {
