@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
@@ -40,10 +41,11 @@ class LoginFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ) = FragmentLoginBinding.inflate(inflater, container, false).also {
-        _binding = it
-    }.root
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -110,7 +112,6 @@ class LoginFragment : BaseFragment() {
                 setErrorForEmail()
             }
             if (viewModel.isValid()) {
-
                 // TODO: send API request
                 var requestSucceeded = true
                 requestSucceeded = Random.nextBoolean()
@@ -149,8 +150,7 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun setAuthenticationError() {
-//        reset error in emailLogin field and show general mistake for two fields
-        binding.emailLogin.error = " " //todo get text from BA and add to strings
+        binding.emailLogin.error = "Error" //todo reset error in emailLogin field and show general mistake for two fields
         binding.familyIdLogin.error = getString(R.string.authentication_error)
     }
 

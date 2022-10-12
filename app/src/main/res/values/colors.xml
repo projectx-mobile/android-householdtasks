@@ -25,4 +25,14 @@
     <color name="primary_white_snow">#F9F9FB</color>
     <color name="primary_juicy_grape">#7D45FF</color>
     <color name="primary_gray">#6C6E84</color>
+
+    <color name="card_background_color_homescreen">#E8E7FA</color>
+    <color name="secondary_lavander_grey">#C0C1D2</color>
+    <color name="background_nav_bar_color">#181925</color>
+    <color name="asdasd">#1A000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="appBar">#CCF9F9FB</color>
+
+
+
 </resources>

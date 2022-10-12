@@ -3,7 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/chooseLoginTypeFragment">
+    app:startDestination="@id/parentHomescreenFragment">
+
+    <fragment
+        android:id="@+id/parentHomescreenFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.ParentHomescreenFragment"
+        android:label="ParentHomescreenFragment"
+        tools:layout="@layout/fragment_parent_homescreen">
+        <action
+            android:id="@+id/action_parentHomescreenFragment_to_allUpdatesFragment"
+            app:destination="@id/allUpdatesFragment"
+            app:enterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/allUpdatesFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.AllUpdatesFragment"
+        tools:layout="@layout/fragment_all_updates"
+        android:label="AllUpdatesFragment"/>
 
     <fragment
         android:id="@+id/chooseLoginTypeFragment"

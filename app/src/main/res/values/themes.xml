@@ -28,4 +28,22 @@
         <item name="android:textColor">@color/primary_gray</item>
     </style>
 
+    <style name="bottomSheet" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="cornerRadius">3dp</item>
+        <item name="cornerSize">1dp</item>
+        <item name="backgroundColor">@color/primary_white_snow</item>
+        <item name="android:strokeColor">@color/secondary_lavander_grey</item>
+        <item name="android:strokeWidth">1</item>
+    </style>
+
+    <style name="ThemeAppBar"
+        parent="Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@color/asdasd</item>
+        <!-- Support library compatibility -->
+        <item name="background">@color/asdasd</item>
+        <item name="colorPrimary">@color/asdasd</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+
 </resources>

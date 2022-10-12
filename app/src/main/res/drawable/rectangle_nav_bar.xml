@@ -3,8 +3,8 @@
     android:shape="rectangle">
     <solid android:color="@color/background_nav_bar_color" />
     <size android:height="56dp" />
-    <padding android:padding="7dp" />
+    <padding android:padding="@dimen/spacing.small" />
     <corners
-        android:topLeftRadius="14dp"
-        android:topRightRadius="14dp" />
+        android:topLeftRadius="@dimen/spacing.normal"
+        android:topRightRadius="@dimen/spacing.normal" />
 </shape>
