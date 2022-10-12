@@ -33,7 +33,6 @@ class AccountStatusFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lifecycleOwner = this
         binding.buttonParent.isSelected = true
         binding.toolbarLayout.toolbar.setOnClickListener { findNavController().navigateUp() }
 

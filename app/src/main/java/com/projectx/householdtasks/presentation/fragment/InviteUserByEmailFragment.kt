@@ -29,8 +29,6 @@ class InviteUserByEmailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.inviteUserByEmailViewModel = viewModel
-        binding.lifecycleOwner = this
 
         binding.toolbarLayout.toolbar.setOnClickListener {
             findNavController().navigateUp()

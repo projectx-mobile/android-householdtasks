@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
@@ -49,8 +48,6 @@ class LoginFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.loginViewModel = viewModel
-        binding.lifecycleOwner = this
 
         binding.appbarLogin.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         person = arguments?.getString(PERSON)

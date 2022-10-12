@@ -1,7 +1,6 @@
 package com.projectx.householdtasks.di.modules
 
 import com.projectx.householdtasks.data.example.repository.ExampleRepository
-import com.projectx.householdtasks.presentation.fragment.EditProfileEmailFragment
 import com.projectx.householdtasks.presentation.viewmodel.*
 import com.projectx.householdtasks.presentation.viewmodel.ChooseLoginTypeViewModel
 import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel

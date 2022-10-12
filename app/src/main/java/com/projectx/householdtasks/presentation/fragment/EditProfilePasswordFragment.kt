@@ -36,8 +36,6 @@ class EditProfilePasswordFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.editProfilePasswordViewModel = viewModel
-        binding.lifecycleOwner = this
         binding.currentPasswordLayout.isErrorEnabled = false
         binding.newPasswordLayout.isErrorEnabled = false
 

@@ -1,97 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <data>
-
-        <variable
-            name="SupportViewModel"
-            type="com.projectx.householdtasks.presentation.viewmodel.SupportViewModel" />
-    </data>
-
-    <ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="wrap_content">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
+            android:fitsSystemWindows="true">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <include
+                android:id="@+id/toolbar_layout"
+                layout="@layout/login_toolbar" />
+
+            <TextView
+                android:id="@+id/text_view_title"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/spacing.normal"
-                android:fitsSystemWindows="true">
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="@string/support"
+                android:textColor="@color/login_title_color"
+                android:textSize="@dimen/text_size.large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/setting_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.normal"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_title">
 
                 <include
-                    android:id="@+id/toolbar_layout"
-                    layout="@layout/login_toolbar" />
+                    android:id="@+id/faq"
+                    layout="@layout/profile_settings"
+                    app:arrow="@{@drawable/ic_right}"
+                    app:icon="@{@drawable/ic_support}"
+                    app:title="@{@string/faq}" />
 
-                <TextView
-                    android:id="@+id/text_view_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nexa_demo_bold"
-                    android:text="@string/support"
-                    android:textColor="@color/login_title_color"
-                    android:textSize="@dimen/text_size.large"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+                <include
+                    android:id="@+id/privacy_policy"
+                    layout="@layout/profile_settings"
+                    app:arrow="@{@drawable/ic_right}"
+                    app:icon="@{@drawable/ic_privacy_policy}"
+                    app:title="@{@string/privacy_policy}" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/setting_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing.normal"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text_view_title">
+                <include
+                    android:id="@+id/feedback"
+                    layout="@layout/profile_settings"
+                    app:arrow="@{@drawable/ic_right}"
+                    app:icon="@{@drawable/ic_feedback}"
+                    app:title="@{@string/feedback}" />
 
-                    <include
-                        android:id="@+id/faq"
-                        layout="@layout/profile_settings"
-                        app:arrow="@{@drawable/ic_right}"
-                        app:icon="@{@drawable/ic_support}"
-                        app:title="@{@string/faq}" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <include
-                        android:id="@+id/privacy_policy"
-                        layout="@layout/profile_settings"
-                        app:arrow="@{@drawable/ic_right}"
-                        app:icon="@{@drawable/ic_privacy_policy}"
-                        app:title="@{@string/privacy_policy}" />
-
-                    <include
-                        android:id="@+id/feedback"
-                        layout="@layout/profile_settings"
-                        app:arrow="@{@drawable/ic_right}"
-                        app:icon="@{@drawable/ic_feedback}"
-                        app:title="@{@string/feedback}" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <TextView
-                    android:id="@+id/help_link"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="63dp"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@string/font_family_regular"
-                    android:gravity="center"
-                    android:text="@string/help_message_support"
-                    android:textAllCaps="false"
-                    android:textColor="@color/login_text_view_help_color"
-                    android:textColorLink="@color/primary_color"
-                    android:textSize="@dimen/text_size.small"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    </ScrollView>
-</layout>
+            <TextView
+                android:id="@+id/help_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="63dp"
+                android:layout_marginBottom="40dp"
+                android:fontFamily="@string/font_family_regular"
+                android:gravity="center"
+                android:text="@string/help_message_support"
+                android:textAllCaps="false"
+                android:textColor="@color/login_text_view_help_color"
+                android:textColorLink="@color/primary_color"
+                android:textSize="@dimen/text_size.small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</ScrollView>
 
 

@@ -49,8 +49,9 @@ class EditProfileFragment : BaseFragment() {
             }
         }
 
-    private val resultCameraLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+    private val resultCameraLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK && result.data != null) {
 
             val bundle = result.data?.extras
             val bitmap: Bitmap = bundle?.get("data") as Bitmap
@@ -81,8 +82,6 @@ class EditProfileFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.editProfileViewModel = viewModel
-        binding.lifecycleOwner = this
 
 //          TODO: set current name
         viewModel.newName.postValue("Марго")
@@ -96,10 +95,10 @@ class EditProfileFragment : BaseFragment() {
                 findNavController().navigate(R.id.profileFragment)
             }
 
-            profilePhoto.setOnClickListener {
+            binding.profilePhoto.setOnClickListener {
                 createDialogSetPhoto()
-
             }
+
             buttonDeleteProfile.setOnClickListener {
                 createDialogDeleteProfile()
             }
@@ -175,10 +174,14 @@ class EditProfileFragment : BaseFragment() {
             .setMessage(getString(R.string.message_no_camera_permission))
             .setPositiveButton(
                 getString(R.string.settings)
-            ) { dialog, id -> startActivity(Intent(
-                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                Uri.fromParts("package", requireActivity().packageName, null)
-            )) }
+            ) { dialog, id ->
+                startActivity(
+                    Intent(
+                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.fromParts("package", requireActivity().packageName, null)
+                    )
+                )
+            }
             .setNegativeButton(getString(R.string.cancel)) { dialog, which -> dialog.dismiss() }
             .setCancelable(false)
             .show()
@@ -197,7 +200,7 @@ class EditProfileFragment : BaseFragment() {
             textView.text = context.getString(R.string.title_dialog_delete_profile)
             textView.textSize = 18.0F
             textView.setTypeface(null, Typeface.BOLD)
-            setPadding(24,26,24,20)
+            setPadding(24, 26, 24, 20)
         }
         val alertDialog = AlertDialog.Builder(requireContext())
             .setCustomTitle(textView)

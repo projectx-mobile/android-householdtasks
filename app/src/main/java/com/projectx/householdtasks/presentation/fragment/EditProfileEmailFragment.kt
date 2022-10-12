@@ -28,8 +28,6 @@ class EditProfileEmailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.editProfileEmailViewModel = viewModel
-        binding.lifecycleOwner = this
 
 //        TODO: set current email
         binding.currentEmailLayout.editText?.setText("name@example.com")
