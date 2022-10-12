@@ -27,9 +27,11 @@ class ChooseLoginTypeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.layoutChooseLoginTypeGoogle.setOnClickListener { viewModel.loginWithGoogle() }
-        binding.layoutChooseLoginTypeEmail.setOnClickListener { viewModel.loginWithEmail(findNavController()) }
-        binding.textviewChooseLoginTypeCreateAccount.setOnClickListener { viewModel.createAccount() }
+        binding.apply {
+            layoutChooseLoginTypeGoogle.setOnClickListener { viewModel.loginWithGoogle() }
+            layoutChooseLoginTypeEmail.setOnClickListener { viewModel.loginWithEmail(findNavController()) }
+            textviewChooseLoginTypeCreateAccount.setOnClickListener { viewModel.createAccount() }
+        }
     }
 
     override fun onDestroy() {
