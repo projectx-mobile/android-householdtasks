@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentNotificationBinding
 import com.projectx.householdtasks.presentation.FamilyMember
-import com.projectx.householdtasks.presentation.FamilyMembersAdapter
+import com.projectx.householdtasks.presentation.adapters.FamilyMembersAdapter
 import com.projectx.householdtasks.presentation.viewmodel.NotificationSharedViewModel
 import com.projectx.householdtasks.presentation.viewmodel.NotificationViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

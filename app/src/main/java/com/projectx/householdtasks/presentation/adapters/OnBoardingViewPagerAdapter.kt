@@ -1,4 +1,4 @@
-package com.projectx.householdtasks.presentation.adapter
+package com.projectx.householdtasks.presentation.adapters
 
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle

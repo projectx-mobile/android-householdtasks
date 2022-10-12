@@ -21,7 +21,7 @@ class LoginViewModel : BaseViewModel() {
 
     fun isPasswordValid(): Boolean {
         // TODO: add matching with password and Family Id
-        return password.value!!.length > 7
+        return password.value!!.length > MIN_PASSWORD_LENGTH
     }
 
     fun isValid(): Boolean {
@@ -32,7 +32,13 @@ class LoginViewModel : BaseViewModel() {
         return email.value!!.isNotEmpty() && password.value!!.isNotEmpty()
     }
 
+    fun createRequest() {}
     companion object {
+        const val MIN_PASSWORD_LENGTH = 7
+        const val START_PARENT_LINK = 19
+        const val END_PARENT_LINK = 39
+        const val START_CHILD_LINK = 0
+        const val END_CHILD_LINK = 21
 
     }
 }

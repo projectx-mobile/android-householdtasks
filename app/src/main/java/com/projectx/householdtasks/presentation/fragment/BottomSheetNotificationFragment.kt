@@ -8,7 +8,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.projectx.householdtasks.databinding.FragmentBottomSheetNotificationBinding
-import com.projectx.householdtasks.presentation.BottomSheetNotificationAdapter
+import com.projectx.householdtasks.presentation.adapters.BottomSheetNotificationAdapter
 import com.projectx.householdtasks.presentation.viewmodel.NotificationSharedViewModel
 
 class BottomSheetNotificationFragment : BottomSheetDialogFragment() {

@@ -14,7 +14,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentOnboardingBinding
-import com.projectx.householdtasks.presentation.adapter.OnBoardingViewPagerAdapter
+import com.projectx.householdtasks.presentation.adapters.OnBoardingViewPagerAdapter
 import com.projectx.householdtasks.presentation.viewmodel.OnBoardingViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

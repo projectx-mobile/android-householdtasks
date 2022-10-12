@@ -16,13 +16,15 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentEditProfilePasswordBinding
+import com.projectx.householdtasks.presentation.viewmodel.EditProfileEmailViewModel
 import com.projectx.householdtasks.presentation.viewmodel.EditProfilePasswordViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EditProfilePasswordFragment : BaseFragment() {
 
     private var _binding: FragmentEditProfilePasswordBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: EditProfilePasswordViewModel
+    private val viewModel by viewModel<EditProfilePasswordViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +37,6 @@ class EditProfilePasswordFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[EditProfilePasswordViewModel::class.java]
         binding.editProfilePasswordViewModel = viewModel
         binding.lifecycleOwner = this
         binding.currentPasswordLayout.isErrorEnabled = false

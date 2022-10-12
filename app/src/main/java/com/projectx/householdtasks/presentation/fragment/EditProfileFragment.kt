@@ -28,13 +28,14 @@ import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.DialogChangeProfilePhotoBinding
 import com.projectx.householdtasks.databinding.FragmentEditProfileBinding
 import com.projectx.householdtasks.presentation.viewmodel.EditProfileViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class EditProfileFragment : BaseFragment() {
 
     private var _binding: FragmentEditProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: EditProfileViewModel
+    private val viewModel by viewModel<EditProfileViewModel>()
 
     private val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -80,7 +81,6 @@ class EditProfileFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[EditProfileViewModel::class.java]
         binding.editProfileViewModel = viewModel
         binding.lifecycleOwner = this
 //          TODO: set current name

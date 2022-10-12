@@ -1,4 +1,4 @@
-package com.projectx.householdtasks.presentation
+package com.projectx.householdtasks.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FamilyItemProfileBinding
+import com.projectx.householdtasks.presentation.FamilyMember
 
 class MyFamilyProfileAdapter(private val familyMembers: List<FamilyMember>): RecyclerView.Adapter<MyFamilyProfileAdapter.FamilyViewHolder>() {
     inner class FamilyViewHolder(val binding: FamilyItemProfileBinding) : RecyclerView.ViewHolder(binding.root)

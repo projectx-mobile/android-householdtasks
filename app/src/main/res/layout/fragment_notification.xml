@@ -36,7 +36,7 @@
                     android:textSize="16sp"
                     android:fontFamily="@font/nexa_demo_bold"
                     android:textColor="@color/dark_text_color"
-                    android:drawableStart="@drawable/arrow_back_24_black"
+                    android:drawableStart="@drawable/ic_arrow_back"
                     android:text="@string/notifications"
                     android:gravity="center_vertical" />
 
@@ -59,7 +59,7 @@
 
             <include
                 android:id="@+id/toolbar_layout"
-                layout="@layout/login_toolbar" />
+                layout="@layout/partial_appbar_login" />
 
             <TextView
                 android:id="@+id/text_view_title"

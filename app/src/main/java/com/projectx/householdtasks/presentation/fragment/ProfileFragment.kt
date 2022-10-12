@@ -14,7 +14,7 @@ import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.DialogChangeLanguageBinding
 import com.projectx.householdtasks.databinding.FragmentProfileBinding
 import com.projectx.householdtasks.presentation.FamilyMember
-import com.projectx.householdtasks.presentation.MyFamilyProfileAdapter
+import com.projectx.householdtasks.presentation.adapters.MyFamilyProfileAdapter
 
 class ProfileFragment : BaseFragment() {
 

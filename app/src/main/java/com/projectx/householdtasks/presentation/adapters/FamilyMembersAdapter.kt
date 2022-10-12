@@ -1,9 +1,10 @@
-package com.projectx.householdtasks.presentation
+package com.projectx.householdtasks.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.projectx.householdtasks.databinding.FamilyItemAccountStatusBinding
+import com.projectx.householdtasks.presentation.FamilyMember
 
 class FamilyMembersAdapter(private val familyMembers: List<FamilyMember>): RecyclerView.Adapter<FamilyMembersAdapter.FamilyViewHolder>() {
     inner class FamilyViewHolder(val binding: FamilyItemAccountStatusBinding) : RecyclerView.ViewHolder(binding.root)

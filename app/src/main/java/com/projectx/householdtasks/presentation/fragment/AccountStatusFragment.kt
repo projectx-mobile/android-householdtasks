@@ -10,10 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentAccountStatusBinding
 import com.projectx.householdtasks.presentation.FamilyMember
-import com.projectx.householdtasks.presentation.FamilyMembersAdapter
-import com.projectx.householdtasks.presentation.Role
-import com.projectx.householdtasks.presentation.viewmodel.AccountStatusViewModel
-import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
+import com.projectx.householdtasks.presentation.adapters.FamilyMembersAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AccountStatusFragment : BaseFragment() {

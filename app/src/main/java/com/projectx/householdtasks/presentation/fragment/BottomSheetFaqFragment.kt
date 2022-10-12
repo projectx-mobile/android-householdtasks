@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentBottomSheetFaqBinding
-import com.projectx.householdtasks.presentation.BottomSheetFaqAdapter
+import com.projectx.householdtasks.presentation.adapters.BottomSheetFaqAdapter
 import com.projectx.householdtasks.presentation.Faq
 
 
