@@ -1,17 +1,15 @@
 package com.projectx.householdtasks.presentation
 
+
 import androidx.appcompat.app.AppCompatActivity
+import com.projectx.householdtasks.R
 import android.os.Bundle
-import com.projectx.householdtasks.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
     }
 }

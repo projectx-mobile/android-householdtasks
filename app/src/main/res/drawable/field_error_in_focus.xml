@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/shadow_text_input_color" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <item
+        android:left="4dp"
+        android:top="4dp">
+        <shape>
+            <solid android:color="@color/white" />
+            <corners android:topLeftRadius="@dimen/spacing.small" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <size android:height="56dp" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/error_color" />
+            <padding android:padding="2dp" />
+            <corners android:radius="@dimen/spacing.small" />
+        </shape>
+    </item>
+</layer-list>

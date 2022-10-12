@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    app:elevation="0dp">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        app:navigationIcon="@drawable/ic_arrow_back">
+
+    </com.google.android.material.appbar.MaterialToolbar>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/vertical_margin"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:fontFamily="@font/nexa_demo"
+        android:text="@string/updates_placeholder"
+        android:textFontWeight="700"
+        android:textColor="@color/primary_midnight"
+        android:textSize="@dimen/big.TextSize"
+        android:textStyle="bold" />
+
+</com.google.android.material.appbar.AppBarLayout>
