@@ -22,8 +22,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.DialogChangeProfilePhotoBinding
 import com.projectx.householdtasks.databinding.FragmentEditProfileBinding
@@ -41,10 +41,12 @@ class EditProfileFragment : BaseFragment() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK && result.data != null) {
                 val data: Intent = result.data!!
-                binding.profilePhoto.setImageBitmap(
-                    Drawable.createFromStream(requireActivity().contentResolver.openInputStream(data.data!!),
-                        null)!!.toBitmap()
-                )
+                val bitmap = Drawable.createFromStream(
+                    requireActivity().contentResolver.openInputStream(data.data!!),
+                    null
+                )!!.toBitmap()
+                Glide.with(this).load(bitmap).circleCrop().into(binding.profilePhoto)
+
                 binding.personNameFirstLetter.text = ""
             }
         }
@@ -53,12 +55,12 @@ class EditProfileFragment : BaseFragment() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK && result.data != null) {
 
-            val bundle = result.data?.extras
-            val bitmap: Bitmap = bundle?.get("data") as Bitmap
-            binding.profilePhoto.setImageBitmap(bitmap)
-            binding.personNameFirstLetter.text = ""
+                val bundle = result.data?.extras
+                val bitmap: Bitmap = bundle?.get("data") as Bitmap
+                Glide.with(this).load(bitmap).circleCrop().into(binding.profilePhoto)
+                binding.personNameFirstLetter.text = ""
+            }
         }
-    }
 
     private val requestPermissionLauncher =
         registerForActivityResult(
