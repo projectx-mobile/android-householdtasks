@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -12,17 +13,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="@dimen/spacing.normal"
             android:fitsSystemWindows="true">
 
             <include
                 android:id="@+id/toolbar_layout"
-                layout="@layout/login_toolbar" />
+                layout="@layout/partial_appbar_primary" />
 
             <TextView
                 android:id="@+id/text_view_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing.normal"
                 android:fontFamily="@font/nexa_demo_bold"
                 android:text="@string/support"
                 android:textColor="@color/login_title_color"
@@ -31,38 +32,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/setting_list"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
                 android:layout_marginTop="@dimen/spacing.normal"
                 android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_title">
-
-                <include
-                    android:id="@+id/faq"
-                    layout="@layout/profile_settings"
-                    app:arrow="@{@drawable/ic_right}"
-                    app:icon="@{@drawable/ic_support}"
-                    app:title="@{@string/faq}" />
-
-                <include
-                    android:id="@+id/privacy_policy"
-                    layout="@layout/profile_settings"
-                    app:arrow="@{@drawable/ic_right}"
-                    app:icon="@{@drawable/ic_privacy_policy}"
-                    app:title="@{@string/privacy_policy}" />
-
-                <include
-                    android:id="@+id/feedback"
-                    layout="@layout/profile_settings"
-                    app:arrow="@{@drawable/ic_right}"
-                    app:icon="@{@drawable/ic_feedback}"
-                    app:title="@{@string/feedback}" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                app:layout_constraintTop_toBottomOf="@id/text_view_title"
+                tools:itemCount="3"
+                tools:listitem="@layout/list_item_settings" />
 
             <TextView
                 android:id="@+id/help_link"

@@ -14,18 +14,27 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
-import com.projectx.householdtasks.databinding.FragmentSupportScreenBinding
+import com.projectx.householdtasks.databinding.FragmentSupportBinding
+import com.projectx.householdtasks.presentation.adapter.SettingModel
+import com.projectx.householdtasks.presentation.adapter.SettingsAdapter
+import com.projectx.householdtasks.presentation.viewmodel.SupportViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SupportScreenFragment : Fragment() {
-    private var _binding: FragmentSupportScreenBinding? = null
+class SupportFragment : Fragment() {
+    private var _binding: FragmentSupportBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var settingsAdapter: SettingsAdapter
+
+    private val viewModel by viewModel<SupportViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSupportScreenBinding.inflate(inflater, container, false)
+        _binding = FragmentSupportBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -33,11 +42,10 @@ class SupportScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            faq.root.setOnClickListener {
-                val bottomSheetFragment = BottomSheetFaqFragment()
-                bottomSheetFragment.show(childFragmentManager, "BottomSheet")
-            }
-            privacyPolicy.root.setOnClickListener {}
+            settingsAdapter = SettingsAdapter(requireContext(), SettingListener())
+            recyclerViewSettings.adapter = settingsAdapter
+            settingsAdapter.submitList(viewModel.getSettingList())
+
             toolbarLayout.toolbar.setOnClickListener {
                 findNavController().navigateUp()
             }
@@ -68,5 +76,12 @@ class SupportScreenFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private inner class SettingListener : SettingsAdapter.SettingListener {
+
+        override fun onItemClicked(item: SettingModel) {
+            viewModel.handleClick(item)
+        }
     }
 }
