@@ -105,6 +105,9 @@
     <string name="english">English</string>
     <string name="ok">ОК</string>
     <string name="text_interval">Каждые 2 часа</string>
+    <string name="notification_new_tasks_status">Новый статус задач</string>
+    <string name="notifications_tasks_request">Запросы на задачи</string>
+    <string name="notifications_awards_request">Запросы на награды</string>
 
     <!-- /Strings related to login -->
 </resources>

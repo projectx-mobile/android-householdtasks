@@ -108,37 +108,37 @@
                 <include
                     android:id="@+id/profile_email"
                     layout="@layout/profile_settings"
-                    app:arrow="@{@drawable/ic_right}"
-                    app:icon="@{@drawable/ic_email_black}"
-                    app:title="@{@string/email}" />
+                    app:arrow="@drawable/ic_right"
+                    app:icon="@drawable/ic_email_black"
+                    app:title="@string/email" />
 
                 <include
                     android:id="@+id/profile_password"
                     layout="@layout/profile_settings"
-                    app:arrow="@{@drawable/ic_right}"
-                    app:icon="@{@drawable/ic_password}"
-                    app:title="@{@string/password}" />
+                    app:arrow="@drawable/ic_right"
+                    app:icon="@drawable/ic_password"
+                    app:title="@string/password" />
 
                 <include
                     android:id="@+id/profile_person"
                     layout="@layout/profile_settings"
-                    app:arrow="@{@drawable/ic_right}"
-                    app:icon="@{@drawable/ic_new_task_state}"
-                    app:title="@{@string/parent}" />
+                    app:arrow="@drawable/ic_right"
+                    app:icon="@drawable/ic_new_task_state"
+                    app:title="@string/parent" />
 
                 <include
                     android:id="@+id/linked_accounts"
                     layout="@layout/profile_settings"
-                    app:arrow="@{@drawable/ic_right}"
-                    app:icon="@{@drawable/ic_link}"
-                    app:title="@{@string/linked_accounts}" />
+                    app:arrow="@drawable/ic_right"
+                    app:icon="@drawable/ic_link"
+                    app:title="@string/linked_accounts" />
 
                 <include
                     android:id="@+id/notifications"
                     layout="@layout/profile_settings"
-                    app:arrow="@{@drawable/ic_right}"
-                    app:icon="@{@drawable/ic_notification}"
-                    app:title="@{@string/notifications}" />
+                    app:arrow="@drawable/ic_right"
+                    app:icon="@drawable/ic_notification"
+                    app:title="@string/notifications" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

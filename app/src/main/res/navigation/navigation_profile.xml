@@ -63,9 +63,9 @@
         tools:layout="@layout/fragment_invite_user_by_email"/>
     <fragment
         android:id="@+id/supportScreenFragment"
-        android:name="com.projectx.householdtasks.presentation.fragment.SupportScreenFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.SupportFragment"
         android:label="SupportScreenFragment"
-        tools:layout="@layout/fragment_support_screen"/>
+        tools:layout="@layout/fragment_support"/>
     <fragment
         android:id="@+id/accountStatusFragment"
         android:name="com.projectx.householdtasks.presentation.fragment.AccountStatusFragment"

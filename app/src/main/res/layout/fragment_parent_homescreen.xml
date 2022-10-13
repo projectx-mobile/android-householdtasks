@@ -50,7 +50,7 @@
             android:paddingLeft="@dimen/spacing.normal"
             android:paddingRight="@dimen/spacing.normal"
             tools:itemCount="2"
-            tools:listitem="@layout/family_member_item" />
+            tools:listitem="@layout/list_item_family_member" />
 
         <ImageView
             android:id="@+id/empty_family"

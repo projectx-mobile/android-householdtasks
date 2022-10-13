@@ -13,7 +13,7 @@
 
         <include
             android:id="@+id/toolbar_layout"
-            layout="@layout/login_toolbar" />
+            layout="@layout/partial_appbar_primary" />
 
         <TextView
             android:id="@+id/text_view_title"

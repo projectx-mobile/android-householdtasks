@@ -50,7 +50,7 @@
 
             <include
                 android:id="@+id/toolbar_layout"
-                layout="@layout/login_toolbar" />
+                layout="@layout/partial_appbar_primary" />
 
             <TextView
                 android:id="@+id/text_view_title"
@@ -128,20 +128,20 @@
                 <include
                     android:id="@+id/new_tasks_state"
                     layout="@layout/setting_switch"
-                    app:icon="@{@drawable/ic_new_task_state}"
-                    app:title="@{`Новый статус задач`}" />
+                    app:icon="@drawable/ic_new_task_state"
+                    app:title="@string/notification_new_tasks_status" />
 
                 <include
                     android:id="@+id/tasks_request"
                     layout="@layout/setting_switch"
-                    app:icon="@{@drawable/ic_request_for_tasks}"
-                    app:title="@{`Запросы на задачи`}" />
+                    app:icon="@drawable/ic_request_for_tasks"
+                    app:title="@string/notifications_tasks_request" />
 
                 <include
                     android:id="@+id/awards_request"
                     layout="@layout/setting_switch"
-                    app:icon="@{@drawable/ic_awards_black}"
-                    app:title="@{`Запросы на награды`}" />
+                    app:icon="@drawable/ic_awards_black"
+                    app:title="@string/notifications_awards_request" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <com.google.android.material.divider.MaterialDivider
@@ -160,7 +160,6 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider_second">
 

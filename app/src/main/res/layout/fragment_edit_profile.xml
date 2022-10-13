@@ -13,7 +13,7 @@
 
         <include
             android:id="@+id/toolbar_layout"
-            layout="@layout/login_toolbar" />
+            layout="@layout/partial_appbar_primary" />
 
         <TextView
             android:id="@+id/text_view_title"
@@ -33,7 +33,6 @@
             android:layout_height="72dp"
             android:layout_marginTop="40dp"
             android:src="@drawable/oval_without_boarders"
-            app:border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_title" />
@@ -97,7 +96,6 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="@dimen/spacing.large"
-            android:enabled="@{EditProfileViewModel.isButtonEnabled}"
             android:padding="@dimen/spacing.normal"
             android:text="@string/save_changes"
             app:layout_constraintEnd_toEndOf="parent"
