@@ -91,6 +91,7 @@ class ChildHomescreenFragment : BaseFragment() {
     }
 
     private fun FragmentHomescreenChildBinding.bindUI() = this.also {
+        updateNotification()
         updateCalendar()
         toolbar.inflateMenu(R.menu.date_chooser)
         calendarRecyclerView.apply {
@@ -183,6 +184,12 @@ class ChildHomescreenFragment : BaseFragment() {
         }
         closeNotificationButton.setOnClickListener {
             notiAmo--
+            updateNotification()
+        }
+    }
+
+    private fun updateNotification() {
+        binding.apply {
             when (notiAmo) {
                 2 -> {
                     notificationLayout.background =

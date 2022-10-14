@@ -77,10 +77,10 @@
 
     <style name="ThemeAppBar"
         parent="Widget.AppCompat.Light.ActionBar.Solid">
-        <item name="android:background">@color/asdasd</item>
+        <item name="android:background">@color/unknown_color</item>
         <!-- Support library compatibility -->
-        <item name="background">@color/asdasd</item>
-        <item name="colorPrimary">@color/asdasd</item>
+        <item name="background">@color/unknown_color</item>
+        <item name="colorPrimary">@color/unknown_color</item>
         <item name="windowActionBarOverlay">true</item>
     </style>
 

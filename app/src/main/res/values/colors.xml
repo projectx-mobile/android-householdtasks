@@ -16,6 +16,7 @@
     <color name="completed_task">#D0F3D9</color>
     <color name="transparent">#00000000</color>
     <color name="appBar">#CCF9F9FB</color>
+    <color name="unknown_color">#CCF9F9FB</color>
 
 
     <!-- дайте цветам нормальные имена -->

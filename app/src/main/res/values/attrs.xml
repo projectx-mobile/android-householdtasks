@@ -2,6 +2,8 @@
 <resources>
     <declare-styleable name="ConstraintLayout">
         <attr name="time" format="integer" />
+    </declare-styleable>
+
     <declare-styleable name="CustomImage">
         <attr name="borderStrokeWidth" format="float" />
         <attr name="strokeColor" format="color" />
