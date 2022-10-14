@@ -1,9 +1,9 @@
 package com.projectx.householdtasks.presentation
 
 
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.projectx.householdtasks.R
-import android.os.Bundle
 
 
 class MainActivity : AppCompatActivity() {

@@ -17,13 +17,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/vertical_margin"
-        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginBottom="@dimen/spacing.large"
+        android:layout_marginStart="@dimen/spacing.normal"
         android:fontFamily="@font/nexa_demo"
         android:text="@string/updates_placeholder"
         android:textFontWeight="700"
         android:textColor="@color/primary_midnight"
-        android:textSize="@dimen/big.TextSize"
+        android:textSize="@dimen/text_size.large"
         android:textStyle="bold" />
 
 </com.google.android.material.appbar.AppBarLayout>
