@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -17,15 +17,19 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildFeatures {
         viewBinding = true
-        dataBinding true
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -67,6 +71,8 @@ dependencies {
 
 
     // Collapsing ToolBar
+    /* lottie animation */
+    implementation "com.airbnb.android:lottie:3.4.0"
 
     implementation "com.hendraanggrian.material:collapsingtoolbarlayout-subtitle:1.5.0"
 

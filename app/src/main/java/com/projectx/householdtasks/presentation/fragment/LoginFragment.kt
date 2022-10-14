@@ -41,7 +41,7 @@ class LoginFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -50,8 +50,7 @@ class LoginFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java] //todo ??
-        binding.loginViewModel = viewModel
-        binding.lifecycleOwner = this
+
         binding.appbarLogin.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         person = arguments?.getString(PERSON)
         if (person != null) {
@@ -111,9 +110,13 @@ class LoginFragment : BaseFragment() {
                 var requestSucceeded = true
                 requestSucceeded = Random.nextBoolean()
                 if (requestSucceeded) {
-                    Toast.makeText(context, getString(R.string.authentication_success), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,
+                        getString(R.string.authentication_success),
+                        Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(context, getString(R.string.authentication_failed), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,
+                        getString(R.string.authentication_failed),
+                        Toast.LENGTH_SHORT).show()
                     setAuthenticationError()
                 }
             }
@@ -141,7 +144,8 @@ class LoginFragment : BaseFragment() {
 
     inner class MyClickableSpan : ClickableSpan() {
         override fun onClick(widget: View) {
-            Toast.makeText(requireContext(), "Link clicked", Toast.LENGTH_SHORT).show() //todo text add to strings
+            Toast.makeText(requireContext(), "Link clicked", Toast.LENGTH_SHORT)
+                .show() //todo text add to strings
         }
 
         override fun updateDrawState(drawState: TextPaint) {

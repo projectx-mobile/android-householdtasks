@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_white_snow">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_tasks"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tasks_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing.normal"
+            android:layout_marginTop="@dimen/spacing.normal"
+            android:fontFamily="@font/nexa_demo"
+            android:text="@string/tasks"
+            android:textColor="@color/primary_midnight"
+            android:textSize="@dimen/text_size.large"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/current_tasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing.normal"
+            android:layout_marginTop="@dimen/spacing.normal"
+            android:layout_marginBottom="@dimen/spacing.large"
+            android:text="@string/active_tasks"
+            android:textColor="@color/primary_gray"
+            android:textSize="@dimen/text_size.small"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tasks_label" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/family_members_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/spacing.normal"
+            android:paddingRight="@dimen/spacing.normal"
+            tools:itemCount="2"
+            tools:listitem="@layout/family_member_item" />
+
+        <ImageView
+            android:id="@+id/empty_family"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/spacing.large"
+            android:src="@drawable/ic_empty_family"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/test"
+        android:orientation="vertical"
+        android:paddingBottom="64dp"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="320dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_tasks"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="5dp"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="@dimen/spacing.normal"
+            android:src="@drawable/rectangle_bottom_sheet" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/updates_title"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginStart="@dimen/spacing.normal"
+                android:layout_weight="10"
+                android:fontFamily="@font/nexa_demo"
+                android:gravity="center_vertical"
+                android:text="@string/updates"
+                android:textColor="@color/primary_midnight"
+                android:textSize="@dimen/text_size.large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/view_all_updates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="4dp"
+                android:text="@string/view_all_updates"
+                android:textColor="@color/primary_gray"
+                android:textSize="@dimen/text_size.small" />
+
+            <ImageView
+                android:id="@+id/view_all_updates_icon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/spacing.normal"
+                android:src="@drawable/ic__righrt_arrow_gray" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/updates_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing.normal"
+            android:layout_marginEnd="@dimen/spacing.normal"
+            tools:itemCount="5"
+            tools:listitem="@layout/update_item" />
+
+        <ImageView
+            android:id="@+id/empty_updates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing.normal"
+            android:src="@drawable/ic_empty_updates"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

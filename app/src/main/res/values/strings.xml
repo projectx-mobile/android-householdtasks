@@ -5,6 +5,26 @@
     <string name="active_tasks">Активных на сегодня (%1$d)</string>
     <string name="active_tasks_format">Активных на %1$d %2$s (%3$d)</string>
 
+
+    <string name="onboarding_welcome_text">Рады видеть тебя в трекере заданий Alfredo</string>
+    <string name="onboarding_main_text_1">Создавай задачи и выполняй их в срок</string>
+    <string name="onboarding_main_text_2">Достигай цели и получай награды</string>
+    <string name="signup_text">Создать аккаунт</string>
+    <string name="login_text">Войти</string>
+
+    <string name="tasks">Задачи</string>
+    <string name="wallet">Кошелек</string>
+    <string name="awards">Награды</string>
+    <string name="profile">Профиль</string>
+    <string name="my_family">Моя семья</string>
+    <string name="updates">Обновления</string>
+    <string name="view_all_updates">Просмотреть все</string>
+    <string name="active_tasks">Активных на сегодня (0)</string>
+    <string name="task_completed_placeholder">Aлиса выполнила новую задачу</string>
+    <string name="tasks_label">задач</string>
+    <string name="name_placeholder">Aлиса</string>
+    <string name="updates_placeholder">Обновления</string>
+
     <string name="login_with_qr_code">Отсканировать QR-Code из профиля Родителей.</string>
     <string name="login_forgot_password">Не помнишь пароль? Восстановить доступ.</string>
     <string name="login_title">Войти</string>
