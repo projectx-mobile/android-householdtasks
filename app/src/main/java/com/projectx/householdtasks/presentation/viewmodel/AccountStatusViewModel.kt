@@ -1,32 +1,21 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
-import android.widget.Button
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavController
 import com.projectx.householdtasks.R
-import com.projectx.householdtasks.presentation.Role
+import com.projectx.householdtasks.presentation.FamilyMember
 
 class AccountStatusViewModel : BaseViewModel() {
 
-    private var _role = MutableLiveData(Role.PARENT)
-    val role: LiveData<Role> = _role
-
-    fun setRole(role: Role) {
-        _role.value = role
+    fun createFamilyList(): List<FamilyMember> {
+        return listOf(
+            FamilyMember("Алиса", null),
+            FamilyMember("Борис", R.drawable.ic_avata),
+            FamilyMember("Алиса", null),
+            FamilyMember("Борис", null),
+            FamilyMember("Алиса", null),
+            FamilyMember("Борис", null),
+            FamilyMember("Алиса", null),
+            FamilyMember("Борис", null),
+            FamilyMember("Приглашен", R.drawable.button_invited_person),
+        )
     }
-
-//    fun setPersonRole(buttonParent: Button, buttonChild: Button) {
-//        buttonParent.setTextColor(
-//            ContextCompat.getColor(requireContext(), (R.color.dark_text_color))
-//        )
-//        buttonChild.setTextColor(
-//            ContextCompat.getColor(requireContext(), (R.color.white))
-//        )
-//        buttonChild.isSelected = true
-//        buttonParent.isSelected = false
-//    }
-
 }

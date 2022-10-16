@@ -4,7 +4,7 @@
     <size
         android:width="56dp"
         android:height="56dp" />
-    <solid android:color="@android:color/transparent" />
+    <solid android:color="#D0C0F5" />
     <stroke
         android:width="2dp"
         android:color="@color/login_custom_button_enable_boarder_color" />

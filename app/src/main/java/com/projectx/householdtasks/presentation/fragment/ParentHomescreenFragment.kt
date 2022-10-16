@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.projectx.householdtasks.databinding.FragmentParentHomescreenBinding
-import com.projectx.householdtasks.presentation.FamilyMembersListAdapter
-import com.projectx.householdtasks.presentation.UpdatesListAdapter
+import com.projectx.householdtasks.presentation.adapter.FamilyMembersListAdapter
+import com.projectx.householdtasks.presentation.adapter.UpdatesListAdapter
 import com.projectx.householdtasks.presentation.viewmodel.ParentHomescreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package com.projectx.householdtasks.presentation
+package com.projectx.householdtasks.presentation.adapter
 
 import android.graphics.Typeface
 import android.view.LayoutInflater

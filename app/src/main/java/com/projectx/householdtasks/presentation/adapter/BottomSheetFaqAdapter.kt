@@ -1,9 +1,10 @@
-package com.projectx.householdtasks.presentation
+package com.projectx.householdtasks.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.projectx.householdtasks.databinding.BottomSheetFaqItemBinding
+import com.projectx.householdtasks.presentation.Faq
 
 class BottomSheetFaqAdapter(private val faq: List<Faq>) :
     RecyclerView.Adapter<BottomSheetFaqAdapter.FaqViewHolder>() {

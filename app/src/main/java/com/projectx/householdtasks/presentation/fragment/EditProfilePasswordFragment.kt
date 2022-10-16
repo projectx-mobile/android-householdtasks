@@ -11,11 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
+import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentEditProfilePasswordBinding
+import com.projectx.householdtasks.presentation.*
 import com.projectx.householdtasks.presentation.viewmodel.EditProfilePasswordViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,57 +37,101 @@ class EditProfilePasswordFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.currentPasswordLayout.isErrorEnabled = false
-        binding.newPasswordLayout.isErrorEnabled = false
 
-        hidePasswordErrorsOnChange()
+        addTextChangeListeners()
+        addPasswordsObservers()
+        addUiStateObserver()
         setLink()
-        buttonSaveChangesSetListener()
 
-        binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigateUp()
+        binding.apply {
+            buttonSaveChanges.setOnClickListener {
+                viewModel.handleSaveChanges()
+            }
+            toolbarLayout.toolbar.setOnClickListener {
+                findNavController().navigateUp()
+            }
         }
     }
 
-    private fun hidePasswordErrorsOnChange() {
+    private fun addTextChangeListeners() {
+        binding.currentPassword.addTextChangedListener {
+            viewModel.setCurrentPasswordValue(it.toString())
+            viewModel.resetCurrentPasswordError()
+        }
+        binding.newPassword.addTextChangedListener {
+            viewModel.setNewPasswordValue(it.toString())
+            viewModel.resetNewPasswordError()
+        }
+        binding.passwordConfirmation.addTextChangedListener {
+            viewModel.setPasswordConfirmationValue(it.toString())
+            viewModel.resetPasswordConfirmationError()
+        }
+    }
+
+    private fun addPasswordsObservers() {
         viewModel.currentPassword.observe(viewLifecycleOwner) {
-            binding.currentPasswordLayout.isErrorEnabled = false
+            if (binding.currentPasswordLayout.editText!!.text.toString() != it) {
+                binding.currentPasswordLayout.editText!!.setText(it)
+            }
+            binding.buttonSaveChanges.isEnabled = viewModel.isSaveButtonEnabled()
         }
         viewModel.newPassword.observe(viewLifecycleOwner) {
-            binding.newPasswordLayout.isErrorEnabled = false
+            if (binding.newPasswordLayout.editText!!.text.toString() != it) {
+                binding.newPasswordLayout.editText!!.setText(it)
+            }
+            binding.buttonSaveChanges.isEnabled = viewModel.isSaveButtonEnabled()
         }
         viewModel.passwordConfirmation.observe(viewLifecycleOwner) {
-            binding.passwordConfirmationLayout.error = null
+            if (binding.passwordConfirmationLayout.editText!!.text.toString() != it) {
+                binding.passwordConfirmationLayout.editText!!.setText(it)
+            }
+            binding.buttonSaveChanges.isEnabled = viewModel.isSaveButtonEnabled()
+        }
+    }
+
+    private fun addUiStateObserver() {
+        viewModel.uiState.observe(viewLifecycleOwner) {
+            resetErrors()
+            binding.helpMessage.visibility = View.INVISIBLE
+
+            when (it.currentPasswordValidationResult) {
+                CurrentPasswordValidationResult.LengthError -> setErrorForPassword(binding.currentPasswordLayout)
+                CurrentPasswordValidationResult.InvalidPasswordError -> setCurrentPasswordError()
+                CurrentPasswordValidationResult.OK -> {}
+            }
+
+            when (it.newPasswordValidationResult) {
+                NewPasswordValidationResult.LengthError -> setErrorForPassword(binding.newPasswordLayout)
+                NewPasswordValidationResult.OK -> {}
+            }
+
+            when (it.confirmationValidationResult) {
+                PasswordConfirmationValidationResult.LengthError -> setErrorForPassword(binding.passwordConfirmationLayout)
+                PasswordConfirmationValidationResult.PasswordsMismatchError -> setErrorForNewPasswords()
+                PasswordConfirmationValidationResult.OK -> {}
+            }
+
+            when (it.requestResult) {
+                RequestResult.Success -> {
+                    binding.helpMessage.visibility = View.VISIBLE
+                    findNavController().navigate(R.id.profileFragment)
+                }
+                RequestResult.RequestFailedError -> setConnectionError()
+                else -> {}
+            }
         }
     }
 
     private fun setLink() {
         val spannableString = SpannableString(binding.helpLink.text)
-        spannableString.setSpan(HelpMessageClickableSpan(), 15, 36, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            HelpMessageClickableSpan(),
+            START_PARENT_LINK,
+            END_PARENT_LINK,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         binding.helpLink.text = spannableString
         binding.helpLink.movementMethod = LinkMovementMethod.getInstance()
-    }
-
-    private fun buttonSaveChangesSetListener() {
-        binding.buttonSaveChanges.setOnClickListener {
-            resetErrors()
-            if (viewModel.isPasswordsMatch() && viewModel.isValid()) {
-                binding.helpMessage.visibility = View.VISIBLE
-            } else {
-                if (!viewModel.isPasswordsMatch()) {
-                    setErrorForNewPasswords()
-                }
-                if (!viewModel.isCurrentPasswordValid()) {
-                    setErrorForPassword(binding.currentPasswordLayout)
-                }
-                if (!viewModel.isNewPasswordValid()) {
-                    setErrorForPassword(binding.newPasswordLayout)
-                }
-                if (!viewModel.isPasswordConfirmationValid()) {
-                    setErrorForPassword(binding.passwordConfirmationLayout)
-                }
-            }
-        }
     }
 
     private fun resetErrors() {
@@ -104,6 +149,15 @@ class EditProfilePasswordFragment : BaseFragment() {
         password.error = getString(R.string.password_error)
     }
 
+    private fun setCurrentPasswordError() {
+        binding.currentPasswordLayout.error = getString(R.string.wrong_password)
+    }
+
+    //    todo add error for failure request
+    private fun setConnectionError() {
+        binding.passwordConfirmationLayout.error = getString(R.string.connection_error)
+    }
+
     inner class HelpMessageClickableSpan : ClickableSpan() {
         override fun onClick(widget: View) {
 //            TODO: add click
@@ -119,5 +173,10 @@ class EditProfilePasswordFragment : BaseFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val START_PARENT_LINK = 15
+        const val END_PARENT_LINK = 36
     }
 }

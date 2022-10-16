@@ -71,8 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
-                android:inputType="textEmailAddress"
-                android:text="@={EditProfileEmailViewModel.newEmail}" />
+                android:inputType="textEmailAddress" />
         </com.projectx.householdtasks.presentation.support.CustomTextInputLayout>
 
 
@@ -84,6 +83,7 @@
             android:layout_marginTop="40dp"
             android:padding="@dimen/spacing.normal"
             android:text="@string/save_changes"
+            android:enabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/new_email_layout" />

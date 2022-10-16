@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentBottomSheetFaqBinding
-import com.projectx.householdtasks.presentation.BottomSheetFaqAdapter
+import com.projectx.householdtasks.presentation.adapter.BottomSheetFaqAdapter
 import com.projectx.householdtasks.presentation.Faq
 
 
@@ -44,7 +44,8 @@ class BottomSheetFaqFragment : BottomSheetDialogFragment() {
     }
 
     private fun setBottomSheetHeight() {
-        val bottomSheetBehavior: BottomSheetBehavior<View> = BottomSheetBehavior.from(view?.parent as View)
+        val bottomSheetBehavior: BottomSheetBehavior<View> =
+            BottomSheetBehavior.from(view?.parent as View)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         val layout: CoordinatorLayout = dialog?.findViewById(R.id.bottom_sheet) ?: return
         layout.minimumHeight = Resources.getSystem().displayMetrics.heightPixels
@@ -133,7 +134,7 @@ class BottomSheetFaqFragment : BottomSheetDialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): BottomSheetDialog {
-         dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         return dialog as BottomSheetDialog
     }
 

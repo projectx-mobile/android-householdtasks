@@ -56,7 +56,12 @@ class SupportFragment : Fragment() {
 
     private fun setLink() {
         val spannableString = SpannableString(binding.helpLink.text)
-        spannableString.setSpan(HelpMessageClickableSpan(), 31, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(
+            HelpMessageClickableSpan(),
+            START_PARENT_LINK,
+            END_PARENT_LINK,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         binding.helpLink.text = spannableString
         binding.helpLink.movementMethod = LinkMovementMethod.getInstance()
     }
@@ -81,7 +86,12 @@ class SupportFragment : Fragment() {
     private inner class SettingListener : SettingsAdapter.SettingListener {
 
         override fun onItemClicked(item: SettingModel) {
-            viewModel.handleClick(item)
+            viewModel.handleClick(item, findNavController())
         }
+    }
+
+    companion object {
+        const val START_PARENT_LINK = 31
+        const val END_PARENT_LINK = 48
     }
 }

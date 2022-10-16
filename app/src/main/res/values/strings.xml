@@ -108,6 +108,10 @@
     <string name="notification_new_tasks_status">Новый статус задач</string>
     <string name="notifications_tasks_request">Запросы на задачи</string>
     <string name="notifications_awards_request">Запросы на награды</string>
+    <string name="wrong_password">Неверный пароль</string>
+    <string name="connection_error">Ошибка подключения к серверуу</string>
+    <string name="name_length_error">Имя должно содержать 1 - 20 символов</string>
+    <string name="name_not_contains_letter">Имя должно содержать хотя бы одну букву</string>
 
     <!-- /Strings related to login -->
 </resources>
