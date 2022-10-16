@@ -184,11 +184,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <include
-        android:id="@+id/nav_bar_layout"
-        layout="@layout/nav_bar"
-        app:layout_anchor="@+id/nestedScrollView"
-        app:layout_anchorGravity="center" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -161,8 +161,7 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun setAuthenticationError() {
-        binding.emailLogin.error =
-            " " // reset error in emailLogin field and show general mistake for two fields
+        binding.emailLogin.error = " " // reset error in emailLogin field and show general mistake for two fields
         binding.familyIdLogin.error = getString(R.string.authentication_error)
     }
 
