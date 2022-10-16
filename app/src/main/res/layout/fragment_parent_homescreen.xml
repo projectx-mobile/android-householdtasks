@@ -33,8 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing.normal"
-            android:layout_marginTop="@dimen/spacing.small"
-            android:layout_marginBottom="@dimen/spacing.normal"
+            android:layout_marginTop="@dimen/spacing.normal"
+            android:layout_marginBottom="@dimen/spacing.large"
             android:text="@string/active_tasks"
             android:textColor="@color/primary_gray"
             android:textSize="@dimen/text_size.small"
@@ -50,28 +50,28 @@
             android:paddingLeft="@dimen/spacing.normal"
             android:paddingRight="@dimen/spacing.normal"
             tools:itemCount="2"
-            tools:listitem="@layout/list_item_family_member" />
+            tools:listitem="@layout/family_member_item" />
 
         <ImageView
             android:id="@+id/empty_family"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/spacing.normal"
-            android:src="@drawable/ic_empty_family"/>
+            android:layout_marginTop="@dimen/spacing.large"
+            android:src="@drawable/ic_empty_family"
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/test"
         android:orientation="vertical"
+        android:paddingBottom="64dp"
         app:behavior_hideable="false"
         app:behavior_peekHeight="320dp"
-        android:paddingBottom="64dp"
-        android:layout_marginBottom="64dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/current_tasks"
@@ -81,7 +81,7 @@
             android:layout_width="42dp"
             android:layout_height="5dp"
             android:layout_gravity="top|center_horizontal"
-            android:layout_marginTop="@dimen/spacing.small"
+            android:layout_marginTop="@dimen/spacing.normal"
             android:src="@drawable/rectangle_bottom_sheet" />
 
         <LinearLayout
@@ -97,8 +97,8 @@
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginStart="@dimen/spacing.normal"
                 android:layout_weight="10"
-                android:gravity="center_vertical"
                 android:fontFamily="@font/nexa_demo"
+                android:gravity="center_vertical"
                 android:text="@string/updates"
                 android:textColor="@color/primary_midnight"
                 android:textSize="@dimen/text_size.large"
@@ -112,7 +112,7 @@
                 android:layout_marginEnd="4dp"
                 android:text="@string/view_all_updates"
                 android:textColor="@color/primary_gray"
-                android:textSize="@dimen/text_size.small"/>
+                android:textSize="@dimen/text_size.small" />
 
             <ImageView
                 android:id="@+id/view_all_updates_icon"
@@ -137,15 +137,9 @@
             android:id="@+id/empty_updates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:layout_marginStart="@dimen/spacing.normal"
             android:src="@drawable/ic_empty_updates"
-            android:layout_marginStart="@dimen/spacing.normal"/>
+            android:visibility="gone" />
     </LinearLayout>
 
-    <include
-        layout="@layout/nav_bar"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_gravity="bottom"
-      />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

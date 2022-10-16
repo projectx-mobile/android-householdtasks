@@ -12,6 +12,7 @@
     <dimen name="text_size.large">32sp</dimen>
 
     <dimen name="size_login_button.48">48dp</dimen>
+    <dimen name="core_radius">10dp</dimen>
 
     <string name="font_family_regular">sans-serif</string>
     <string name="font_family_light">sans-serif-thin</string>
