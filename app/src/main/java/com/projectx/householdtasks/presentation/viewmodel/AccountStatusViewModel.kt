@@ -1,9 +1,15 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.presentation.FamilyMember
+import com.projectx.householdtasks.presentation.event.NavEvent
+import com.projectx.householdtasks.presentation.state.UiState
 
-class AccountStatusViewModel : BaseViewModel() {
+class AccountStatusViewModel : BaseViewModel<List<FamilyMember>, NavEvent>() {
+
+    override val state =
+        object : LiveData<UiState<List<FamilyMember>>>(UiState.Ready(createFamilyList())) {}
 
     fun createFamilyList(): List<FamilyMember> {
         return listOf(

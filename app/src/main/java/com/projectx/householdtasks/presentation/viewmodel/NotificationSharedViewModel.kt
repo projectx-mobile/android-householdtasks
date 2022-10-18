@@ -2,8 +2,9 @@ package com.projectx.householdtasks.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-class NotificationSharedViewModel : BaseViewModel() {
+class NotificationSharedViewModel : ViewModel() {
 
     private var _interval = MutableLiveData("Каждые 2 часа")
     val interval: LiveData<String> = _interval

@@ -1,9 +1,5 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,62 +7,51 @@ import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentAccountStatusBinding
 import com.projectx.householdtasks.presentation.FamilyMember
 import com.projectx.householdtasks.presentation.adapter.FamilyMembersAdapter
+import com.projectx.householdtasks.presentation.event.NavEvent
 import com.projectx.householdtasks.presentation.viewmodel.AccountStatusViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AccountStatusFragment : BaseFragment() {
+class AccountStatusFragment :
+    BaseFragment<FragmentAccountStatusBinding, List<FamilyMember>, NavEvent>() {
 
-    private var _binding: FragmentAccountStatusBinding? = null
-    private val binding get() = _binding!!
-    private var familyMembers: List<FamilyMember>? = null
-    private val viewModel by viewModel<AccountStatusViewModel>()
+    override fun getViewBinding() = FragmentAccountStatusBinding.inflate(layoutInflater)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentAccountStatusBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun getBaseViewModel() = viewModel<AccountStatusViewModel>().value
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.buttonParent.isSelected = true
-        binding.toolbarLayout.toolbar.setOnClickListener { findNavController().navigateUp() }
+    override fun bindUI() = super.bindUI().apply {
+        buttonParent.isSelected = true
+        toolbarLayout.toolbar.setOnClickListener {
+            viewModel.onEvent(NavEvent.NavBack(findNavController()))
+        }
 
-        binding.buttonChild.setOnClickListener {
-            binding.buttonParent.setTextColor(
+        buttonChild.setOnClickListener {
+            buttonParent.setTextColor(
                 ContextCompat.getColor(requireContext(), (R.color.dark_text_color))
             )
-            binding.buttonChild.setTextColor(
+            buttonChild.setTextColor(
                 ContextCompat.getColor(requireContext(), (R.color.white))
             )
-            binding.buttonChild.isSelected = true
-            binding.buttonParent.isSelected = false
-
+            buttonChild.isSelected = true
+            buttonParent.isSelected = false
         }
-        binding.buttonParent.setOnClickListener {
-//            viewModel.setRole(Role.PARENT)
-            binding.buttonParent.isSelected = true
-            binding.buttonChild.isSelected = false
-            binding.buttonChild.setTextColor(
+        buttonParent.setOnClickListener {
+            buttonParent.isSelected = true
+            buttonChild.isSelected = false
+
+            buttonChild.setTextColor(
                 ContextCompat.getColor(requireContext(), (R.color.dark_text_color))
             )
-            binding.buttonParent.setTextColor(
+            buttonParent.setTextColor(
                 ContextCompat.getColor(requireContext(), (R.color.white))
             )
         }
-
-        familyMembers = viewModel.createFamilyList()
-        val adapter = FamilyMembersAdapter(requireContext(), familyMembers!!)
-        binding.recyclerViewFamilyMembersList.adapter = adapter
-        val layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewFamilyMembersList.layoutManager = layoutManager
     }
 
-    override fun onDestroyView() {
-        _binding = null
-        super.onDestroyView()
+    override fun FragmentAccountStatusBinding.processState(state: List<FamilyMember>) {
+        recyclerViewFamilyMembersList.apply {
+            adapter = FamilyMembersAdapter(requireContext(), state)
+            layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 }
 

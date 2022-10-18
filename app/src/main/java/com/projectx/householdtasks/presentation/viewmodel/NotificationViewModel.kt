@@ -1,17 +1,33 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.presentation.FamilyMember
 import com.projectx.householdtasks.presentation.adapter.NotificationSwitchersModel
 import com.projectx.householdtasks.presentation.adapter.notificationSwitchesList
+import com.projectx.householdtasks.presentation.event.NotificationScreenEvent
+import com.projectx.householdtasks.presentation.state.NotificationScreenUiState
+import com.projectx.householdtasks.presentation.state.UiState
 
-class NotificationViewModel : BaseViewModel() {
+class NotificationViewModel : BaseViewModel<NotificationScreenUiState, NotificationScreenEvent>() {
 
-    fun getSwitchersList(): List<NotificationSwitchersModel> {
-        return notificationSwitchesList
+    override val state = object : LiveData<UiState<NotificationScreenUiState>>(
+        UiState.Ready(
+            NotificationScreenUiState(
+                notificationSwitchesList,
+                getFamilyList()
+            )
+        )
+    ) {}
+
+    override fun onEvent(event: NotificationScreenEvent) {
+        when (event) {
+            is NotificationScreenEvent.OnItemClicked -> handleClick(event.item)
+            else -> super.onEvent(event)
+        }
     }
 
-    fun handleClick(item: NotificationSwitchersModel) {
+    private fun handleClick(item: NotificationSwitchersModel) {
         when (item) {
             NotificationSwitchersModel.NEW_TASK_STATUS -> {}
             NotificationSwitchersModel.AWARDS_REQUEST -> {}
@@ -19,7 +35,7 @@ class NotificationViewModel : BaseViewModel() {
         }
     }
 
-    fun getFamilyList(): List<FamilyMember> {
+    private fun getFamilyList(): List<FamilyMember> {
         return listOf(
             FamilyMember("Алиса", null),
             FamilyMember("Борис", R.drawable.ic_avata),

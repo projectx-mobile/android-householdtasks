@@ -1,72 +1,50 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.projectx.householdtasks.databinding.FragmentAllUpdatesBinding
+import com.projectx.householdtasks.domain.model.UpdatesTest
 import com.projectx.householdtasks.presentation.adapter.UpdatesListAdapter
+import com.projectx.householdtasks.presentation.event.NavEvent
 import com.projectx.householdtasks.presentation.viewmodel.ParentHomescreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+class AllUpdatesFragment : BaseFragment<FragmentAllUpdatesBinding, List<UpdatesTest>, NavEvent>() {
 
-class AllUpdatesFragment : BaseFragment() {
+    override fun getViewBinding() = FragmentAllUpdatesBinding.inflate(layoutInflater)
 
-    private var _binding: FragmentAllUpdatesBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel by viewModel<ParentHomescreenViewModel>()
+    override fun getBaseViewModel() = viewModel<ParentHomescreenViewModel>().value
 
-    private val customUpdatesAdapter = UpdatesListAdapter() {
+    private val customUpdatesAdapter by lazy { UpdatesListAdapter {} }
 
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ) = FragmentAllUpdatesBinding.inflate(inflater, container, false).also {
-        _binding = it
-    }.root
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.bindUI().subscribeUI()
-    }
-
-    private fun FragmentAllUpdatesBinding.bindUI() = this.also {
-
-        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        viewModel.getUpdates()?.also {
-            customUpdatesAdapter.submitList(it)
-            allUpdatesRecyclerView.apply {
-                adapter = customUpdatesAdapter
-                layoutManager = LinearLayoutManager(requireContext())
-            }
-        }
+    override fun bindUI() = super.bindUI().apply {
         var appBarHeight: Int
-        flexibleExampleAppbar.addOnOffsetChangedListener(OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            when (verticalOffset) {
-                0 -> {
-                    appBarHeight = flexibleExampleCollapsing.height
-                    allUpdatesRecyclerView.translationY = appBarHeight.toFloat()
-                }
-                else -> {
-                    appBarHeight = flexibleExampleCollapsing.height
-                    allUpdatesRecyclerView.translationY = appBarHeight + verticalOffset.toFloat()
+        flexibleExampleAppbar.addOnOffsetChangedListener(
+            OnOffsetChangedListener { _, verticalOffset ->
+                when (verticalOffset) {
+                    0 -> {
+                        appBarHeight = flexibleExampleCollapsing.height
+                        allUpdatesRecyclerView.translationY = appBarHeight.toFloat()
+                    }
+                    else -> {
+                        appBarHeight = flexibleExampleCollapsing.height
+                        allUpdatesRecyclerView.translationY =
+                            appBarHeight + verticalOffset.toFloat()
+                    }
                 }
             }
-        }
         )
+        allUpdatesRecyclerView.apply {
+            adapter = customUpdatesAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+        toolbar.setNavigationOnClickListener {
+            viewModel.onEvent(NavEvent.NavBack(findNavController()))
+        }
     }
 
-    private fun FragmentAllUpdatesBinding.subscribeUI() = this.also {
-        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
+    override fun FragmentAllUpdatesBinding.processState(state: List<UpdatesTest>) {
+        customUpdatesAdapter.submitList(state)
     }
 }

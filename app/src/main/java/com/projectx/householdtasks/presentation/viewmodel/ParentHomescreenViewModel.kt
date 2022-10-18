@@ -1,18 +1,17 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import com.projectx.householdtasks.domain.model.FamilyMemberTest
 import com.projectx.householdtasks.domain.model.UpdatesTest
+import com.projectx.householdtasks.presentation.event.NavEvent
+import com.projectx.householdtasks.presentation.state.UiState
 
-class ParentHomescreenViewModel : BaseViewModel() {
+class ParentHomescreenViewModel : BaseViewModel<List<UpdatesTest>, NavEvent>() {
 
-    private val familyMembers = listOf(
-        FamilyMemberTest("John", 5, 1),
-        FamilyMemberTest("Алиса", 3, 2),
-    )
+    override val state = object : LiveData<UiState<List<UpdatesTest>>>(UiState.Ready(getUpdates())) {}
 
-    fun getFamilyMembers(): List<FamilyMemberTest>? {
-        return null
-        return familyMembers
+    fun getUpdates(): List<UpdatesTest> {
+        return updates
     }
 
     private val updates = listOf(
@@ -32,10 +31,4 @@ class ParentHomescreenViewModel : BaseViewModel() {
         UpdatesTest("Борис выполнил задачу"),
         UpdatesTest("Борис выполнил задачу")
     )
-
-    fun getUpdates(): List<UpdatesTest>? {
-
-        return updates
-        return null
-    }
 }

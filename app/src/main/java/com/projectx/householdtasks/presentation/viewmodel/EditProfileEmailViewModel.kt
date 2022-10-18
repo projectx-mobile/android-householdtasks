@@ -1,68 +1,86 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import com.projectx.householdtasks.R
 import com.projectx.householdtasks.presentation.EmailValidationResult
 import com.projectx.householdtasks.presentation.RequestResult
+import com.projectx.householdtasks.presentation.event.EditProfileEmailScreenEvent
+import com.projectx.householdtasks.presentation.state.UiState
 import kotlin.random.Random
 
-class EditProfileEmailViewModel : BaseViewModel() {
-    private val _newEmail = MutableLiveData("")
-    val newEmail: LiveData<String> = Transformations.distinctUntilChanged(_newEmail)
-    private val _uiState: MutableLiveData<UiState> = MutableLiveData(
-        UiState(EmailValidationResult.OK, false, null)
+class EditProfileEmailViewModel :
+    BaseViewModel<EditProfileEmailViewModel.EditProfileEmailUiState, EditProfileEmailScreenEvent>() {
+
+    override val state = MutableLiveData<UiState<EditProfileEmailUiState>>(
+        UiState.Ready(EditProfileEmailUiState(MutableLiveData(EmailValidationResult.OK)))
     )
-    val uiState get() = _uiState
+
+    override fun onEvent(event: EditProfileEmailScreenEvent) {
+        when (event) {
+            is EditProfileEmailScreenEvent.NavigateToProfile -> event.navController.navigate(R.id.profileFragment)
+            is EditProfileEmailScreenEvent.HandleSaveChanges -> handleSaveChanges()
+            else -> super.onEvent(event)
+        }
+    }
 
     fun setNewEmailValue(newEmail: String) {
-        _newEmail.value = newEmail
+        when (state.value) {
+            is UiState.Ready -> (state.value as UiState.Ready<EditProfileEmailUiState>).data.newEmail.value =
+                newEmail
+            else -> {}
+        }
     }
 
     fun isSaveButtonEnabled(): Boolean {
-        return newEmail.value!!.isNotEmpty()
+        return when (state.value) {
+            is UiState.Ready -> (state.value as UiState.Ready<EditProfileEmailUiState>).data.newEmail.value?.isNotEmpty()
+                ?: false
+            else -> false
+        }
     }
 
     fun resetEmailError() {
-        _uiState.postValue(_uiState.value!!.copy(emailValidationResult = EmailValidationResult.OK))
+        //state.postValue(state.value.copy(emailValidationResult = EmailValidationResult.OK))
     }
 
     fun handleSaveChanges() {
         val emailValidationResult = validateEmail()
-
-        if (emailValidationResult != EmailValidationResult.OK) {
-            _uiState.postValue(UiState(emailValidationResult, false, null))
-            return
-        }
-
-        val requestSucceeded = sendRequest()
-        if (requestSucceeded) {
-            _uiState.postValue(
-                UiState(
-                    emailValidationResult,
-                    false,
-                    RequestResult.Success
-                )
-            )
-        } else {
-            _uiState.postValue(
-                UiState(
-                    emailValidationResult,
-                    false,
-                    RequestResult.RequestFailedError
-                )
-            )
+        when (state.value) {
+            is UiState.Ready -> {
+                (state.value as UiState.Ready<EditProfileEmailUiState>).apply {
+                    data.emailValidationResult.value = emailValidationResult
+                    data.requestResult.value = when {
+                        emailValidationResult != EmailValidationResult.OK -> null
+                        else -> {
+                            val requestSucceeded = sendRequest()
+                            if (requestSucceeded) {
+                                RequestResult.Success
+                            } else {
+                                RequestResult.RequestFailedError
+                            }
+                        }
+                    }
+                }
+            }
+            else -> {}
         }
     }
 
     private fun isEmailValid(): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(newEmail.value!!.trim())
-            .matches()
+        return when (state.value) {
+            is UiState.Ready -> android.util.Patterns.EMAIL_ADDRESS.matcher(
+                (state.value as UiState.Ready<EditProfileEmailUiState>).data.newEmail.value?.trim()
+                    ?: ""
+            ).matches()
+            else -> false
+        }
     }
 
     private fun validateEmail(): EmailValidationResult {
-        if (!isEmailValid()) return EmailValidationResult.InvalidEmailError
-        return EmailValidationResult.OK
+        return when (isEmailValid()) {
+            true -> EmailValidationResult.OK
+            false -> EmailValidationResult.InvalidEmailError
+        }
     }
 
     //  TODO: request
@@ -70,10 +88,9 @@ class EditProfileEmailViewModel : BaseViewModel() {
         return Random.nextBoolean()
     }
 
-    data class UiState(
-        val emailValidationResult: EmailValidationResult,
-
-        val isLoading: Boolean,
-        val requestResult: RequestResult?
+    data class EditProfileEmailUiState(
+        val emailValidationResult: MutableLiveData<EmailValidationResult>,
+        val newEmail: MutableLiveData<String> = MutableLiveData<String>(""),
+        val requestResult: MutableLiveData<RequestResult?> = MutableLiveData(null)
     )
 }

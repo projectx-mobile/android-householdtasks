@@ -1,5 +1,3 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
-class OnBoardingImageViewModel : BaseViewModel() {
-
-}
+class OnBoardingImageViewModel : BaseViewModel<Nothing, Nothing>()

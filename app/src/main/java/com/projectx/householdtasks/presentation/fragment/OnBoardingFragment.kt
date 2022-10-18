@@ -1,13 +1,11 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.AnimRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
@@ -15,14 +13,16 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentOnboardingBinding
 import com.projectx.householdtasks.presentation.adapter.OnBoardingViewPagerAdapter
+import com.projectx.householdtasks.presentation.event.OnBoardingScreenEvent
 import com.projectx.householdtasks.presentation.viewmodel.OnBoardingViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OnBoardingFragment : BaseFragment() {
+class OnBoardingFragment :
+    BaseFragment<FragmentOnboardingBinding, LiveData<Pair<Int?, Int?>>, OnBoardingScreenEvent>() {
 
-    private var _binding: FragmentOnboardingBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel by viewModel<OnBoardingViewModel>()
+    override fun getViewBinding() = FragmentOnboardingBinding.inflate(layoutInflater)
+
+    override fun getBaseViewModel() = viewModel<OnBoardingViewModel>().value
 
     private val inLeft by lazy { getAnimation(android.R.anim.slide_in_left) }
     private val outRight by lazy { getAnimation(android.R.anim.slide_out_right) }
@@ -49,60 +49,12 @@ class OnBoardingFragment : BaseFragment() {
     private fun getDrawable(@DrawableRes id: Int) =
         ResourcesCompat.getDrawable(resources, id, requireContext().applicationContext.theme)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = FragmentOnboardingBinding.inflate(inflater, container, false).also {
-        _binding = it
-    }.root
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.bindUI().subscribeUI()
-
-//        TODO: navigation
-        binding.loginButton.setOnClickListener {
-            findNavController().navigate(R.id.action_onBoardingFragment_to_chooseLoginTypeFragment)
-        }
-    }
-
-    private fun FragmentOnboardingBinding.bindUI() = this.apply {
+    override fun bindUI() = super.bindUI().apply {
         setupViewPager()
         setupTabLayout()
-    }
-
-    private fun FragmentOnboardingBinding.subscribeUI() = this.apply {
-        viewModel.apply {
-
-            positionChange.observe(viewLifecycleOwner) { positions ->
-                val (previousPosition, currentPosition) = positions
-
-                onboardingMainText.apply {
-                    when {
-                        previousPosition == null || currentPosition == null || previousPosition == currentPosition -> {
-                            return@observe
-                        }
-                        previousPosition < currentPosition -> {
-                            inAnimation = inRight
-                            outAnimation = outLeft
-                        }
-                        else -> {
-                            inAnimation = inLeft
-                            outAnimation = outRight
-                        }
-                    }
-
-                    setText(
-                        resources.getString(
-                            when (currentPosition) {
-                                0 -> R.string.onboarding_main_text_1
-                                1 -> R.string.onboarding_main_text_2
-                                else -> R.string.onboarding_main_text_1
-                            }
-                        )
-                    )
-                }
-            }
+        //TODO: navigation
+        loginButton.setOnClickListener {
+            viewModel.onEvent(OnBoardingScreenEvent.NavigateToChooseLoginType(findNavController()))
         }
     }
 
@@ -127,14 +79,14 @@ class OnBoardingFragment : BaseFragment() {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.let {
                     it.customView?.findViewById<View>(R.id.icon)?.background = selectedIndicator
-                    viewModel.onImageSelected(position = it.position)
+                    viewModel.onEvent(OnBoardingScreenEvent.OnImageSelected(position = it.position))
                 }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 tab?.let {
                     it.customView?.findViewById<View>(R.id.icon)?.background = unselectedIndicator
-                    viewModel.onImageUnselected(position = it.position)
+                    viewModel.onEvent(OnBoardingScreenEvent.OnImageUnselected(position = it.position))
                 }
             }
 
@@ -142,8 +94,34 @@ class OnBoardingFragment : BaseFragment() {
         })
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun FragmentOnboardingBinding.processState(state: LiveData<Pair<Int?, Int?>>) {
+        val previousPosition = state.value?.first
+        val currentPosition = state.value?.second
+
+        onboardingMainText.apply {
+            when {
+                previousPosition == null || currentPosition == null || previousPosition == currentPosition -> {
+                    return
+                }
+                previousPosition < currentPosition -> {
+                    inAnimation = inRight
+                    outAnimation = outLeft
+                }
+                else -> {
+                    inAnimation = inLeft
+                    outAnimation = outRight
+                }
+            }
+
+            setText(
+                resources.getString(
+                    when (currentPosition) {
+                        0 -> R.string.onboarding_main_text_1
+                        1 -> R.string.onboarding_main_text_2
+                        else -> R.string.onboarding_main_text_1
+                    }
+                )
+            )
+        }
     }
 }
