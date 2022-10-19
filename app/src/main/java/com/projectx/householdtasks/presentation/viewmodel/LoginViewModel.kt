@@ -1,6 +1,7 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.projectx.householdtasks.presentation.*
 import kotlin.random.Random
@@ -14,6 +15,19 @@ class LoginViewModel : BaseViewModel() {
     private val _uiState: MutableLiveData<UiState> =
         MutableLiveData(UiState(LoginEmailResult.OK, LoginPasswordResult.OK, false, null))
     val uiState get() = _uiState
+
+    val isButtonEnabled = MediatorLiveData<Boolean>().apply {
+        addSource(email) {
+            value = isContinueButtonEnabled()
+        }
+        addSource(password) {
+            value = isContinueButtonEnabled()
+        }
+    }
+
+    private fun isContinueButtonEnabled(): Boolean {
+        return email.value!!.isNotEmpty() && password.value!!.isNotEmpty()
+    }
 
     private fun isEmailValid(): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email.value!!.trim()).matches()

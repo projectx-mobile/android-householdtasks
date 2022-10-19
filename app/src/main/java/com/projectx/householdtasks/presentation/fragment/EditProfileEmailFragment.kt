@@ -46,6 +46,10 @@ class EditProfileEmailFragment : BaseFragment() {
                 viewModel.handleSaveChanges()
             }
         }
+
+        viewModel.isButtonEnabled.observe(viewLifecycleOwner) {
+            binding.buttonSaveChanges.isEnabled = it
+        }
     }
 
     private fun addEmailChangedListener() {

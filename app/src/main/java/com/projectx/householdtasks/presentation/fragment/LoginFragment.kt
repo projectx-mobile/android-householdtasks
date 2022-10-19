@@ -60,6 +60,10 @@ class LoginFragment : BaseFragment() {
         addUiStateObserver()
         setLink()
 
+        viewModel.isButtonEnabled.observe(viewLifecycleOwner) {
+            binding.buttonLoginSubmit.isEnabled = it
+        }
+
         binding.apply {
             appbarLogin.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
             buttonLoginSubmit.setOnClickListener {
@@ -85,14 +89,12 @@ class LoginFragment : BaseFragment() {
             if (binding.emailLogin.editText!!.text.toString() != it) {
                 binding.emailLogin.editText!!.setText(it)
             }
-            binding.buttonLoginSubmit.isEnabled = viewModel.isSaveButtonEnabled()
         }
 
         viewModel.password.observe(viewLifecycleOwner) {
             if (binding.familyIdLogin.editText!!.text.toString() != it) {
                 binding.familyIdLogin.editText!!.setText(it)
             }
-            binding.buttonLoginSubmit.isEnabled = viewModel.isSaveButtonEnabled()
         }
     }
 

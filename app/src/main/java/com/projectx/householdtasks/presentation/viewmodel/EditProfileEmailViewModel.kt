@@ -1,6 +1,7 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.projectx.householdtasks.presentation.EmailValidationResult
@@ -14,6 +15,16 @@ class EditProfileEmailViewModel : BaseViewModel() {
         UiState(EmailValidationResult.OK, false, null)
     )
     val uiState get() = _uiState
+
+    val isButtonEnabled = MediatorLiveData<Boolean>().apply {
+        addSource(newEmail) {
+            value = isContinueButtonEnabled()
+        }
+    }
+
+    private fun isContinueButtonEnabled(): Boolean {
+        return newEmail.value!!.isNotEmpty()
+    }
 
     fun setNewEmailValue(newEmail: String) {
         _newEmail.value = newEmail
