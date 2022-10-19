@@ -31,7 +31,7 @@ class InviteUserFragment : BaseFragment() {
         }
 
         binding.familyId.setOnClickListener {}
-        binding.toolbarLayout.toolbar.setOnClickListener {
+        binding.toolbarLayout.toolbarArrowBack.setOnClickListener {
             findNavController().navigateUp()
         }
     }

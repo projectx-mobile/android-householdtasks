@@ -19,7 +19,7 @@
 
             <include
                 android:id="@+id/toolbar_layout"
-                layout="@layout/partial_appbar_primary" />
+                layout="@layout/partial_layout_edit_information" />
 
             <TextView
                 android:id="@+id/text_view_title"

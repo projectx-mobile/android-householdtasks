@@ -31,7 +31,7 @@ class InviteUserByEmailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarLayout.toolbar.setOnClickListener {
+        binding.toolbarLayout.toolbarArrowBack.setOnClickListener {
             findNavController().navigateUp()
         }
 
@@ -71,7 +71,7 @@ class InviteUserByEmailFragment : BaseFragment() {
 
             when (it.requestResult) {
                 RequestResult.Success -> {
-                    findNavController().navigate(R.id.profileFragment)
+                    findNavController().navigate(R.id.action_inviteUserByEmailFragment_to_sendInvitationFragment)
                 }
                 RequestResult.RequestFailedError -> setConnectionError()
                 else -> {}

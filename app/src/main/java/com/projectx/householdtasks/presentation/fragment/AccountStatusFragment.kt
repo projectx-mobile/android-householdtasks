@@ -32,7 +32,7 @@ class AccountStatusFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonParent.isSelected = true
-        binding.toolbarLayout.toolbar.setOnClickListener { findNavController().navigateUp() }
+        binding.toolbarLayout.toolbarArrowBack.setOnClickListener { findNavController().navigateUp() }
 
         binding.buttonChild.setOnClickListener {
             binding.buttonParent.setTextColor(

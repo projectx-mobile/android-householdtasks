@@ -47,7 +47,7 @@ class EditProfilePasswordFragment : BaseFragment() {
             buttonSaveChanges.setOnClickListener {
                 viewModel.handleSaveChanges()
             }
-            toolbarLayout.toolbar.setOnClickListener {
+            toolbarLayout.toolbarArrowBack.setOnClickListener {
                 findNavController().navigateUp()
             }
         }

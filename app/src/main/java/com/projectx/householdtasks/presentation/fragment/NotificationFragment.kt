@@ -1,6 +1,5 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.AppBarLayout
 import com.projectx.householdtasks.databinding.FragmentNotificationBinding
 import com.projectx.householdtasks.presentation.adapter.FamilyMembersAdapter
 import com.projectx.householdtasks.presentation.adapter.NotificationSwitchersAdapter
@@ -49,12 +49,10 @@ class NotificationFragment : BaseFragment() {
             recyclerViewSwitches.adapter = switchesListAdapter
             switchesListAdapter.submitList(viewModel.getSwitchersList())
 
-            toolbarLayout.toolbar.setOnClickListener {
+            appbarLayout.setOnClickListener {
                 findNavController().navigateUp()
             }
         }
-
-        addScrollListener()
 
         bottomSheetFragment = BottomSheetNotificationFragment()
         binding.notificationPicker.setOnClickListener {
@@ -62,18 +60,21 @@ class NotificationFragment : BaseFragment() {
         }
 
         setAdapter()
-    }
 
-    private fun addScrollListener() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            binding.nestedScrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                if (scrollY > 0) {
-                    binding.appBarLayout.visibility = View.VISIBLE
-                } else {
-                    binding.appBarLayout.visibility = View.INVISIBLE
+        var appBarHeight: Int
+        binding.appbarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            when (verticalOffset) {
+                0 -> {
+                    appBarHeight = binding.collapsingToolbar.height
+                    binding.constraintLayout.translationY = appBarHeight.toFloat()
+                }
+                else -> {
+                    appBarHeight = binding.collapsingToolbar.height
+                    binding.constraintLayout.translationY = appBarHeight + verticalOffset.toFloat()
                 }
             }
         }
+        )
     }
 
     private fun setAdapter() {

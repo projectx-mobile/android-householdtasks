@@ -112,6 +112,7 @@
     <string name="connection_error">Ошибка подключения к серверуу</string>
     <string name="name_length_error">Имя должно содержать 1 - 20 символов</string>
     <string name="name_not_contains_letter">Имя должно содержать хотя бы одну букву</string>
+    <string name="invitation_sent">Приглашение отправлено</string>
 
     <!-- /Strings related to login -->
 </resources>

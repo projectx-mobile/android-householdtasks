@@ -95,7 +95,7 @@ class EditProfileFragment : BaseFragment() {
         addUiStateObserver()
 
         binding.apply {
-            toolbarLayout.toolbar.setOnClickListener {
+            toolbarLayout.toolbarArrowBack.setOnClickListener {
                 findNavController().navigateUp()
             }
             buttonSaveChanges.setOnClickListener {

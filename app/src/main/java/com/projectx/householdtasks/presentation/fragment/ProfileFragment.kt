@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentProfileBinding
+import com.projectx.householdtasks.presentation.MainActivity
 import com.projectx.householdtasks.presentation.adapter.MyFamilyProfileAdapter
 import com.projectx.householdtasks.presentation.adapter.SettingModel
 import com.projectx.householdtasks.presentation.adapter.SettingsAdapter
@@ -36,7 +36,6 @@ class ProfileFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        requireActivity().findViewById<CoordinatorLayout>(R.id.navigation).visibility = View.VISIBLE
         addScrollListener()
 
         binding.apply {
@@ -48,8 +47,8 @@ class ProfileFragment : BaseFragment() {
             recyclerViewOtherSettings.adapter = otherSettingsAdapter
             otherSettingsAdapter.submitList(viewModel.getOtherSettingList())
         }
-        setNavigation()
 
+        setNavigation()
         setAdapter()
     }
 
@@ -66,7 +65,7 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun setNavigation() {
-        binding.navigationBar.setOnClickListener {
+        binding.navigationEditProfile.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
     }

@@ -3,68 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:background="@color/primary_white_snow"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
+        android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/app_bar_color"
-        android:visibility="invisible">
+        android:layout_height="wrap_content"
+        android:background="@color/appBar"
+        android:fitsSystemWindows="false"
+        app:elevation="1dp">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/app_bar_color"
-            android:elevation="0dp">
+            android:layout_height="100dp"
+            android:background="@color/appBar"
+            app:expandedTitleMarginBottom="24dp"
+            app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
+            app:expandedTitleTextAppearance="@style/ExpandedAppBar"
+            app:expandedTitleMarginStart="@dimen/spacing.normal"
+            app:expandedTitleTextColor="@color/primary_midnight"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="@string/notifications">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/top_app_bar"
+            <ImageView
+                android:id="@+id/toolbar_image"
+                android:background="@drawable/ic_arrow_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_collapseMode="pin" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:layout_marginStart="@dimen/spacing.large"
-                android:drawableStart="@drawable/ic_arrow_back"
-                android:fontFamily="@font/nexa_demo_bold"
-                android:gravity="center_vertical"
-                android:text="@string/notifications"
-                android:textColor="@color/dark_text_color"
-                android:textSize="16sp" />
+                android:background="@color/appBar"
+                android:backgroundTint="@color/transparent"
+                android:elevation="0dp"
+                android:layout_marginStart="36dp"
+                app:layout_collapseMode="pin" />
 
-        </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:fillViewport="true"
+        android:elevation="0dp"
         android:paddingBottom="100dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing.normal"
             android:fitsSystemWindows="true">
-
-            <include
-                android:id="@+id/toolbar_layout"
-                layout="@layout/partial_appbar_primary" />
-
-            <TextView
-                android:id="@+id/text_view_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="?attr/actionBarSize"
-                android:fontFamily="@font/nexa_demo_bold"
-                android:text="@string/notifications"
-                android:textColor="@color/login_title_color"
-                android:textSize="@dimen/text_size.large"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/turn_off_notifications_layout"
@@ -75,7 +74,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_title">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"

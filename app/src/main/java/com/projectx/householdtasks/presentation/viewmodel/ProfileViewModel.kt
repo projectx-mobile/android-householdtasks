@@ -1,15 +1,24 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.presentation.FamilyMember
+import com.projectx.householdtasks.presentation.Role
 import com.projectx.householdtasks.presentation.adapter.SettingModel
 import com.projectx.householdtasks.presentation.adapter.profileOtherSettingList
 import com.projectx.householdtasks.presentation.adapter.profileSettingList
 
 class ProfileViewModel : BaseViewModel() {
+
+    private val userRole: MutableLiveData<Role> = MutableLiveData(Role.CHILD)
+
     fun getSettingList(): List<SettingModel> {
         return profileSettingList
+    }
+
+    private fun setRole() {
+
     }
 
     fun getOtherSettingList(): List<SettingModel> {
