@@ -1,30 +1,21 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentInviteUserBinding
+import com.projectx.householdtasks.presentation.event.InviteUserScreenEvent
+import com.projectx.householdtasks.presentation.viewmodel.InviteUserViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class InviteUserFragment : BaseFragment() {
-    private var _binding: FragmentInviteUserBinding? = null
-    private val binding get() = _binding!!
+class InviteUserFragment :
+    BaseFragment<FragmentInviteUserBinding, Nothing, InviteUserScreenEvent>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentInviteUserBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun getViewBinding() = FragmentInviteUserBinding.inflate(layoutInflater)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun getBaseViewModel() = viewModel<InviteUserViewModel>().value
+
+    override fun bindUI() = super.bindUI().apply {
         binding.inviteByEmail.setOnClickListener {
-            findNavController().navigate(R.id.action_inviteUserFragment_to_inviteUserByEmailFragment)
+            viewModel.onEvent(InviteUserScreenEvent.NavigateToInviteUserByEmail(findNavController()))
         }
 
         binding.shareLink.setOnClickListener {
@@ -32,13 +23,7 @@ class InviteUserFragment : BaseFragment() {
 
         binding.familyId.setOnClickListener {}
         binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigateUp()
+            viewModel.onEvent(InviteUserScreenEvent.NavBack(findNavController()))
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
-

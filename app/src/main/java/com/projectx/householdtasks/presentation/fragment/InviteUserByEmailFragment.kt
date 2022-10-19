@@ -1,67 +1,57 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentInviteUserByEmailBinding
 import com.projectx.householdtasks.presentation.EmailValidationResult
 import com.projectx.householdtasks.presentation.RequestResult
+import com.projectx.householdtasks.presentation.event.InviteUserByEmailScreenEvent
 import com.projectx.householdtasks.presentation.viewmodel.InviteUserByEmailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+class InviteUserByEmailFragment :
+    BaseFragment<FragmentInviteUserByEmailBinding, InviteUserByEmailViewModel.InviteUserByEmailUiState, InviteUserByEmailScreenEvent>() {
 
-class InviteUserByEmailFragment : BaseFragment() {
+    override fun getViewBinding() = FragmentInviteUserByEmailBinding.inflate(layoutInflater)
 
-    private var _binding: FragmentInviteUserByEmailBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel by viewModel<InviteUserByEmailViewModel>()
+    override fun getBaseViewModel() = viewModel<InviteUserByEmailViewModel>().value
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentInviteUserByEmailBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun bindUI() = super.bindUI().apply {
         binding.toolbarLayout.toolbar.setOnClickListener {
-            findNavController().navigateUp()
+            viewModel.onEvent(InviteUserByEmailScreenEvent.NavBack(findNavController()))
         }
-
         addEmailChangedListener()
-        addEmailObserver()
-        addUiStateObserver()
-
-        hideEmailErrorsOnChange()
         setButtonContinueClickListener()
     }
 
     private fun addEmailChangedListener() {
         binding.email.addTextChangedListener {
-            viewModel.setEmailValue(it.toString())
-            binding.buttonContinue.isEnabled = viewModel.isSaveButtonEnabled()
-            viewModel.resetEmailError()
+            viewModel.onEvent(InviteUserByEmailScreenEvent.SetEmailValue(it.toString()))
+            binding.buttonContinue.isEnabled =
+                (viewModel as InviteUserByEmailViewModel).isSaveButtonEnabled()
+            viewModel.onEvent(InviteUserByEmailScreenEvent.ResetEmailError)
         }
     }
 
-    private fun addEmailObserver() {
-        viewModel.email.observe(viewLifecycleOwner) {
+    override fun FragmentInviteUserByEmailBinding.processState(state: InviteUserByEmailViewModel.InviteUserByEmailUiState) {
+        addEmailObserver(state)
+        addUiStateObserver(state)
+        hideEmailErrorsOnChange(state)
+    }
+
+    private fun addEmailObserver(state: InviteUserByEmailViewModel.InviteUserByEmailUiState) {
+        state.email.let {
             if (binding.newUserEmail.editText!!.text.toString() != it) {
                 binding.newUserEmail.editText!!.setText(it)
             }
-            binding.buttonContinue.isEnabled = viewModel.isSaveButtonEnabled()
+            binding.buttonContinue.isEnabled =
+                (viewModel as InviteUserByEmailViewModel).isSaveButtonEnabled()
         }
     }
 
-    private fun addUiStateObserver() {
-        viewModel.uiState.observe(viewLifecycleOwner) {
+    private fun addUiStateObserver(state: InviteUserByEmailViewModel.InviteUserByEmailUiState) {
+        state.let {
             resetError()
 
             when (it.emailValidationResult) {
@@ -71,7 +61,11 @@ class InviteUserByEmailFragment : BaseFragment() {
 
             when (it.requestResult) {
                 RequestResult.Success -> {
-                    findNavController().navigate(R.id.profileFragment)
+                    viewModel.onEvent(
+                        InviteUserByEmailScreenEvent.NavigateToProfile(
+                            findNavController()
+                        )
+                    )
                 }
                 RequestResult.RequestFailedError -> setConnectionError()
                 else -> {}
@@ -83,30 +77,25 @@ class InviteUserByEmailFragment : BaseFragment() {
         binding.newUserEmail.error = ""
     }
 
-    //    TODO: add error for failure request
+    //TODO: add error for failure request
     private fun setConnectionError() {
         binding.newUserEmail.error = getString(R.string.connection_error)
     }
 
-    private fun hideEmailErrorsOnChange() {
-        viewModel.email.observe(viewLifecycleOwner) {
+    private fun hideEmailErrorsOnChange(state: InviteUserByEmailViewModel.InviteUserByEmailUiState) {
+        state.email.let {
             binding.newUserEmail.isErrorEnabled = false
         }
     }
 
     private fun setButtonContinueClickListener() {
         binding.buttonContinue.setOnClickListener {
-            viewModel.handleSaveChanges()
+            viewModel.onEvent(InviteUserByEmailScreenEvent.HandleSaveChanges)
         }
     }
 
     private fun setErrorForEmail() {
         binding.newUserEmail.isErrorEnabled = true
         binding.newUserEmail.error = getString(R.string.email_error)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -6,8 +6,8 @@ sealed interface UiState<out Type> {
     open class Ready<out Type>(val data: Type) : UiState<Type>
 
     companion object {
-        fun <Type> process(
-            state: UiState<Type>,
+        inline fun <Type> process(
+            state: UiState<Type>?,
             onLoading: () -> Unit = {},
             onError: (message: String) -> Unit = {},
             onReady: (data: Type) -> Unit = {}
@@ -15,6 +15,7 @@ sealed interface UiState<out Type> {
             is Loading -> onLoading()
             is Error -> onError(state.message)
             is Ready -> onReady(state.data)
+            else -> {}
         }
     }
 }

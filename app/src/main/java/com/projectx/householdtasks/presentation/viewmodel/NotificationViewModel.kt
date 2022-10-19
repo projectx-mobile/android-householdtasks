@@ -6,14 +6,13 @@ import com.projectx.householdtasks.presentation.FamilyMember
 import com.projectx.householdtasks.presentation.adapter.NotificationSwitchersModel
 import com.projectx.householdtasks.presentation.adapter.notificationSwitchesList
 import com.projectx.householdtasks.presentation.event.NotificationScreenEvent
-import com.projectx.householdtasks.presentation.state.NotificationScreenUiState
 import com.projectx.householdtasks.presentation.state.UiState
 
-class NotificationViewModel : BaseViewModel<NotificationScreenUiState, NotificationScreenEvent>() {
+class NotificationViewModel : BaseViewModel<NotificationSharedViewModel.NotificationScreenUiState, NotificationScreenEvent>() {
 
-    override val state = object : LiveData<UiState<NotificationScreenUiState>>(
+    override val state = object : LiveData<UiState<NotificationSharedViewModel.NotificationScreenUiState>>(
         UiState.Ready(
-            NotificationScreenUiState(
+            NotificationSharedViewModel.NotificationScreenUiState(
                 notificationSwitchesList,
                 getFamilyList()
             )

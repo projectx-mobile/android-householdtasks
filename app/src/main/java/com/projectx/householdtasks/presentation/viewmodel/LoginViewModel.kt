@@ -1,27 +1,46 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.projectx.householdtasks.presentation.*
+import com.projectx.householdtasks.R
+import com.projectx.householdtasks.presentation.LoginEmailResult
+import com.projectx.householdtasks.presentation.LoginPasswordResult
+import com.projectx.householdtasks.presentation.RequestResult
+import com.projectx.householdtasks.presentation.event.LoginScreenEvent
+import com.projectx.householdtasks.presentation.state.UiState
 import kotlin.random.Random
 
-class LoginViewModel : BaseViewModel() {
+class LoginViewModel : BaseViewModel<LoginViewModel.LoginScreenUiState, LoginScreenEvent>() {
+//TODO: REFACTOR LOGIC
+    override val state = MutableLiveData<UiState<LoginScreenUiState>>(
+        UiState.Ready(LoginScreenUiState())
+    )
 
-    private var _email = MutableLiveData("")
-    var email: LiveData<String> = _email
-    private var _password = MutableLiveData("")
-    var password: LiveData<String> = _password
-    private val _uiState: MutableLiveData<UiState> =
-        MutableLiveData(UiState(LoginEmailResult.OK, LoginPasswordResult.OK, false, null))
-    val uiState get() = _uiState
+    override fun onEvent(event: LoginScreenEvent) {
+        when (event) {
+            is LoginScreenEvent.SetEmailValue -> setEmailValue(event.email)
+            is LoginScreenEvent.SetPasswordValue -> setPasswordValue(event.password)
+            is LoginScreenEvent.ResetEmailError -> resetErrorForEmail()
+            is LoginScreenEvent.ResetPasswordError -> resetErrorForPassword()
+            is LoginScreenEvent.NavigateToProfile -> event.navController.navigate(R.id.profileFragment)
+            else -> super.onEvent(event)
+        }
+    }
 
     private fun isEmailValid(): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email.value!!.trim()).matches()
+        var result = false
+        UiState.process(state.value, onReady = {
+            result = android.util.Patterns.EMAIL_ADDRESS.matcher(it.email.trim()).matches()
+        })
+        return result
     }
 
     private fun isPasswordValid(): Boolean {
-        // TODO: add matching with password and Family Id
-        return password.value!!.length >= MIN_PASSWORD_LENGTH
+        var result = false
+        UiState.process(state.value, onReady = {
+            //TODO: add matching with password and Family Id
+            result = it.password.length >= MIN_PASSWORD_LENGTH
+        })
+        return result
     }
 
     private fun validateEmail(): LoginEmailResult {
@@ -34,24 +53,36 @@ class LoginViewModel : BaseViewModel() {
         return LoginPasswordResult.OK
     }
 
-    fun setEmailValue(email: String) {
-        _email.value = email
+    private fun setEmailValue(email: String) {
+        UiState.process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(email = email)))
+        })
     }
 
-    fun setPasswordValue(password: String) {
-        _password.value = password
+    private fun setPasswordValue(password: String) {
+        UiState.process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(password = password)))
+        })
     }
 
     fun isSaveButtonEnabled(): Boolean {
-        return email.value!!.isNotEmpty() && password.value!!.isNotEmpty()
+        var result = false
+        UiState.process(state.value, onReady = {
+            result = it.email.isNotEmpty() && it.password.isNotEmpty()
+        })
+        return result
     }
 
-    fun resetErrorForEmail() {
-        _uiState.postValue(_uiState.value!!.copy(loginEmailResult = LoginEmailResult.OK))
+    private fun resetErrorForEmail() {
+        UiState.process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(loginEmailResult = LoginEmailResult.OK)))
+        })
     }
 
-    fun resetErrorForPassword() {
-        _uiState.postValue(_uiState.value!!.copy(loginPasswordResult = LoginPasswordResult.OK))
+    private fun resetErrorForPassword() {
+        UiState.process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(loginPasswordResult = LoginPasswordResult.OK)))
+        })
     }
 
     private fun isValid(): Boolean {
@@ -60,39 +91,19 @@ class LoginViewModel : BaseViewModel() {
     }
 
     fun handleSaveChanges() {
-
-        if (!isValid()) {
-            _uiState.postValue(
-                UiState(
-                    validateEmail(),
-                    validatePassword(),
-                    false,
-                    null
-                )
+        UiState.process(state.value, onReady = {
+            val requestSucceeded = sendRequest()
+            val newState = it.copy(
+                loginEmailResult = validateEmail(),
+                loginPasswordResult = validatePassword(),
+                requestResult = when {
+                    !isValid() -> null
+                    requestSucceeded -> RequestResult.Success
+                    else -> RequestResult.RequestFailedError
+                }
             )
-            return
-        }
-
-        val requestSucceeded = sendRequest()
-        if (requestSucceeded) {
-            _uiState.postValue(
-                UiState(
-                    validateEmail(),
-                    validatePassword(),
-                    false,
-                    RequestResult.Success
-                )
-            )
-        } else {
-            _uiState.postValue(
-                UiState(
-                    validateEmail(),
-                    validatePassword(),
-                    false,
-                    RequestResult.RequestFailedError
-                )
-            )
-        }
+            state.postValue(UiState.Ready(newState))
+        })
     }
 
     // TODO: send API request
@@ -100,12 +111,12 @@ class LoginViewModel : BaseViewModel() {
         return Random.nextBoolean()
     }
 
-    data class UiState(
-        val loginEmailResult: LoginEmailResult,
-        val loginPasswordResult: LoginPasswordResult,
-
-        val isLoading: Boolean,
-        val requestResult: RequestResult?
+    data class LoginScreenUiState(
+        val email: String = "",
+        val password: String = "",
+        val loginEmailResult: LoginEmailResult = LoginEmailResult.OK,
+        val loginPasswordResult: LoginPasswordResult = LoginPasswordResult.OK,
+        val requestResult: RequestResult? = null
     )
 
     companion object {

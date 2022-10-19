@@ -1,71 +1,75 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import com.projectx.householdtasks.R
 import com.projectx.householdtasks.presentation.EmailValidationResult
 import com.projectx.householdtasks.presentation.RequestResult
+import com.projectx.householdtasks.presentation.event.InviteUserByEmailScreenEvent
+import com.projectx.householdtasks.presentation.state.UiState
 import kotlin.random.Random
 
-class InviteUserByEmailViewModel : BaseViewModel() {
-    private val _email = MutableLiveData("")
-    val email: LiveData<String> = Transformations.distinctUntilChanged(_email)
-    private val _uiState: MutableLiveData<UiState> = MutableLiveData(
-        UiState(EmailValidationResult.OK, false, null)
-    )
-    val uiState get() = _uiState
+class InviteUserByEmailViewModel :
+    BaseViewModel<InviteUserByEmailViewModel.InviteUserByEmailUiState, InviteUserByEmailScreenEvent>() {
 
-    fun setEmailValue(email: String) {
-        _email.value = email
+    override val state = MutableLiveData<UiState<InviteUserByEmailUiState>>(
+        UiState.Ready(InviteUserByEmailUiState())
+    )
+
+    override fun onEvent(event: InviteUserByEmailScreenEvent) {
+        when (event) {
+            is InviteUserByEmailScreenEvent.SetEmailValue -> setEmailValue(event.email)
+            is InviteUserByEmailScreenEvent.ResetEmailError -> resetEmailError()
+            is InviteUserByEmailScreenEvent.HandleSaveChanges -> handleSaveChanges()
+            is InviteUserByEmailScreenEvent.NavigateToProfile -> event.navController.navigate(R.id.profileFragment)
+            else -> super.onEvent(event)
+        }
+    }
+
+    private fun setEmailValue(email: String) {
+        UiState.process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(email = email)))
+        })
     }
 
     private fun isEmailValid(): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email.value!!.trim()).matches()
+        var result = false
+        UiState.process(state.value, onReady = {
+            result = android.util.Patterns.EMAIL_ADDRESS.matcher(it.email.trim()).matches()
+        })
+        return result
     }
 
     fun isSaveButtonEnabled(): Boolean {
-        return email.value!!.isNotEmpty()
+        var result = false
+        UiState.process(state.value, onReady = {
+            result = it.email.isNotEmpty()
+        })
+        return result
     }
 
-    fun resetEmailError() {
-        _uiState.postValue(_uiState.value!!.copy(emailValidationResult = EmailValidationResult.OK))
+    private fun resetEmailError() {
+        UiState.process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(emailValidationResult = EmailValidationResult.OK)))
+        })
     }
 
     fun handleSaveChanges() {
         val emailValidationResult = validateEmail()
-
-        if (emailValidationResult != EmailValidationResult.OK) {
-            _uiState.postValue(
-                UiState(
-                    emailValidationResult,
-                    false,
-                    null
-                )
+        UiState.process(state.value, onReady = {
+            val requestSucceeded = sendRequest()
+            val newState = it.copy(
+                emailValidationResult = emailValidationResult,
+                requestResult = when {
+                    emailValidationResult != EmailValidationResult.OK -> null
+                    requestSucceeded -> RequestResult.Success
+                    else -> RequestResult.RequestFailedError
+                }
             )
-            return
-        }
-
-        val requestSucceeded = sendRequest()
-        if (requestSucceeded) {
-            _uiState.postValue(
-                UiState(
-                    emailValidationResult,
-                    false,
-                    RequestResult.Success
-                )
-            )
-        } else {
-            _uiState.postValue(
-                UiState(
-                    emailValidationResult,
-                    false,
-                    RequestResult.RequestFailedError
-                )
-            )
-        }
+            state.postValue(UiState.Ready(newState))
+        })
     }
 
-    //  TODO: request
+    //TODO: request
     private fun sendRequest(): Boolean {
         return Random.nextBoolean()
     }
@@ -75,10 +79,9 @@ class InviteUserByEmailViewModel : BaseViewModel() {
         return EmailValidationResult.OK
     }
 
-    data class UiState(
-        val emailValidationResult: EmailValidationResult,
-
-        val isLoading: Boolean,
-        val requestResult: RequestResult?
+    data class InviteUserByEmailUiState(
+        val email: String = "",
+        val emailValidationResult: EmailValidationResult = EmailValidationResult.OK,
+        val requestResult: RequestResult? = null
     )
 }

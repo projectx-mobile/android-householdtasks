@@ -1,70 +1,81 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import com.projectx.householdtasks.presentation.*
+import com.projectx.householdtasks.presentation.CurrentPasswordValidationResult
+import com.projectx.householdtasks.presentation.NewPasswordValidationResult
+import com.projectx.householdtasks.presentation.PasswordConfirmationValidationResult
+import com.projectx.householdtasks.presentation.RequestResult
+import com.projectx.householdtasks.presentation.event.EditProfilePasswordScreenEvent
+import com.projectx.householdtasks.presentation.state.UiState
+import com.projectx.householdtasks.presentation.state.UiState.Companion.process
 import kotlin.random.Random
 
-class EditProfilePasswordViewModel : BaseViewModel() {
-    private val _currentPassword = MutableLiveData("")
-    val currentPassword: LiveData<String> = Transformations.distinctUntilChanged(_currentPassword)
-    private val _newPassword = MutableLiveData("")
-    val newPassword: LiveData<String> = Transformations.distinctUntilChanged(_newPassword)
-    private val _passwordConfirmation = MutableLiveData("")
-    val passwordConfirmation: LiveData<String> =
-        Transformations.distinctUntilChanged(_passwordConfirmation)
+class EditProfilePasswordViewModel :
+    BaseViewModel<EditProfilePasswordViewModel.EditProfilePasswordUiState, EditProfilePasswordScreenEvent>() {
 
-    private val _uiState: MutableLiveData<UiState> =
-        MutableLiveData(
-            UiState(
-                CurrentPasswordValidationResult.OK,
-                NewPasswordValidationResult.OK,
-                PasswordConfirmationValidationResult.OK,
-                false,
-                null
+    override val state = MutableLiveData<UiState<EditProfilePasswordUiState>>(
+        UiState.Ready(EditProfilePasswordUiState())
+    )
+
+    override fun onEvent(event: EditProfilePasswordScreenEvent) {
+        when (event) {
+            is EditProfilePasswordScreenEvent.SetCurrentPasswordValue -> setCurrentPasswordValue(
+                event.password
             )
-        )
-    val uiState get() = _uiState
-
-    fun setCurrentPasswordValue(password: String) {
-        _currentPassword.value = password
-    }
-
-    fun setNewPasswordValue(password: String) {
-        _newPassword.value = password
-    }
-
-    fun setPasswordConfirmationValue(password: String) {
-        _passwordConfirmation.value = password
-    }
-
-    fun resetCurrentPasswordError() {
-        _uiState.postValue(
-            _uiState.value!!.copy(
-                currentPasswordValidationResult = CurrentPasswordValidationResult.OK,
+            is EditProfilePasswordScreenEvent.SetNewPasswordValue -> setNewPasswordValue(event.password)
+            is EditProfilePasswordScreenEvent.SetPasswordConfirmationValue -> setPasswordConfirmationValue(
+                event.password
             )
-        )
+            is EditProfilePasswordScreenEvent.ResetCurrentPasswordError -> resetCurrentPasswordError()
+            is EditProfilePasswordScreenEvent.ResetNewPasswordError -> resetNewPasswordError()
+            is EditProfilePasswordScreenEvent.ResetPasswordConfirmationError -> resetPasswordConfirmationError()
+            else -> super.onEvent(event)
+        }
     }
 
-    fun resetNewPasswordError() {
-        _uiState.postValue(
-            _uiState.value!!.copy(
-                newPasswordValidationResult = NewPasswordValidationResult.OK,
-            )
-        )
+    private fun setCurrentPasswordValue(password: String) {
+        process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(currentPassword = password)))
+        })
     }
 
-    fun resetPasswordConfirmationError() {
-        _uiState.postValue(
-            _uiState.value!!.copy(
-                confirmationValidationResult = PasswordConfirmationValidationResult.OK,
-            )
-        )
+    private fun setNewPasswordValue(password: String) {
+        process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(newPassword = password)))
+        })
+    }
+
+    private fun setPasswordConfirmationValue(password: String) {
+        process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(passwordConfirmation = password)))
+        })
+    }
+
+    private fun resetCurrentPasswordError() {
+        process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(currentPasswordValidationResult = CurrentPasswordValidationResult.OK)))
+        })
+    }
+
+    private fun resetNewPasswordError() {
+        process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(newPasswordValidationResult = NewPasswordValidationResult.OK)))
+        })
+    }
+
+    private fun resetPasswordConfirmationError() {
+        process(state.value, onReady = {
+            state.postValue(UiState.Ready(it.copy(confirmationValidationResult = PasswordConfirmationValidationResult.OK)))
+        })
     }
 
     fun isSaveButtonEnabled(): Boolean {
-        return currentPassword.value!!.isNotEmpty() && newPassword.value!!.isNotEmpty() && passwordConfirmation.value!!.isNotEmpty()
+        var result = false
+        process(state.value, onReady = {
+            result =
+                it.currentPassword.isNotEmpty() && it.newPassword.isNotEmpty() && it.passwordConfirmation.isNotEmpty()
+        })
+        return result
     }
 
     private fun isPasswordValid(password: String): Boolean {
@@ -73,7 +84,11 @@ class EditProfilePasswordViewModel : BaseViewModel() {
     }
 
     private fun isPasswordsMatch(): Boolean {
-        return newPassword.value == passwordConfirmation.value
+        var result = false
+        process(state.value, onReady = {
+            result = it.newPassword == it.passwordConfirmation
+        })
+        return result
     }
 
     private fun isPasswordsValid(): Boolean {
@@ -90,73 +105,71 @@ class EditProfilePasswordViewModel : BaseViewModel() {
     }
 
     private fun validateCurrentPassword(): CurrentPasswordValidationResult {
-        if (!isPasswordValid(currentPassword.value!!)) return CurrentPasswordValidationResult.LengthError
-        if (!isCurrentPasswordCoincide()) return CurrentPasswordValidationResult.InvalidPasswordError
-        return CurrentPasswordValidationResult.OK
+        var result: CurrentPasswordValidationResult = CurrentPasswordValidationResult.OK
+        process(state.value, onReady = {
+            result = when {
+                !isPasswordValid(it.currentPassword) -> CurrentPasswordValidationResult.LengthError
+                !isCurrentPasswordCoincide() -> CurrentPasswordValidationResult.InvalidPasswordError
+                else -> result
+            }
+        })
+        return result
     }
 
     private fun validateNewPassword(): NewPasswordValidationResult {
-        if (!isPasswordValid(newPassword.value!!)) return NewPasswordValidationResult.LengthError
-        return NewPasswordValidationResult.OK
+        var result: NewPasswordValidationResult = NewPasswordValidationResult.OK
+        process(state.value, onReady = {
+            result = when {
+                !isPasswordValid(it.newPassword) -> NewPasswordValidationResult.LengthError
+                else -> result
+            }
+        })
+        return result
     }
 
     private fun validatePasswordConfirmation(): PasswordConfirmationValidationResult {
-        if (!isPasswordValid(passwordConfirmation.value!!)) return PasswordConfirmationValidationResult.LengthError
-        if (!isPasswordsMatch()) return PasswordConfirmationValidationResult.PasswordsMismatchError
-        return PasswordConfirmationValidationResult.OK
+        var result: PasswordConfirmationValidationResult = PasswordConfirmationValidationResult.OK
+        process(state.value, onReady = {
+            result = when {
+                !isPasswordValid(it.passwordConfirmation) -> PasswordConfirmationValidationResult.LengthError
+                !isPasswordsMatch() -> PasswordConfirmationValidationResult.PasswordsMismatchError
+                else -> result
+            }
+        })
+        return result
     }
 
     fun handleSaveChanges() {
-        if (!isPasswordsValid()) {
-            _uiState.postValue(
-                UiState(
-                    validateCurrentPassword(),
-                    validateNewPassword(),
-                    validatePasswordConfirmation(),
-                    false,
-                    null
-                )
+        process(state.value, onReady = {
+            val requestSucceeded = sendRequest()
+            val newState = EditProfilePasswordUiState(
+                validateCurrentPassword(),
+                validateNewPassword(),
+                validatePasswordConfirmation(),
+                when {
+                    !isPasswordsValid() -> null
+                    requestSucceeded -> RequestResult.Success
+                    else -> RequestResult.RequestFailedError
+                }
             )
-            return
-        }
-
-        val requestSucceeded = sendRequest()
-        if (requestSucceeded) {
-            _uiState.postValue(
-                UiState(
-                    validateCurrentPassword(),
-                    validateNewPassword(),
-                    validatePasswordConfirmation(),
-                    false,
-                    RequestResult.Success
-                )
-            )
-        } else {
-            _uiState.postValue(
-                UiState(
-                    validateCurrentPassword(),
-                    validateNewPassword(),
-                    validatePasswordConfirmation(),
-                    false,
-                    RequestResult.RequestFailedError
-                )
-            )
-        }
+            state.postValue(UiState.Ready(newState))
+        })
     }
-
-    data class UiState(
-        val currentPasswordValidationResult: CurrentPasswordValidationResult,
-        val newPasswordValidationResult: NewPasswordValidationResult,
-        val confirmationValidationResult: PasswordConfirmationValidationResult,
-
-        val isLoading: Boolean,
-        val requestResult: RequestResult?
-    )
 
     // TODO: send API request
     private fun sendRequest(): Boolean {
         return Random.nextBoolean()
     }
+
+    data class EditProfilePasswordUiState(
+        val currentPasswordValidationResult: CurrentPasswordValidationResult = CurrentPasswordValidationResult.OK,
+        val newPasswordValidationResult: NewPasswordValidationResult = NewPasswordValidationResult.OK,
+        val confirmationValidationResult: PasswordConfirmationValidationResult = PasswordConfirmationValidationResult.OK,
+        val requestResult: RequestResult? = null,
+        val currentPassword: String = "",
+        val newPassword: String = "",
+        val passwordConfirmation: String = ""
+    )
 
     companion object {
         const val MIN_PASSWORD_LENGTH = 8

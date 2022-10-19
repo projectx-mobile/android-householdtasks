@@ -1,14 +1,11 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
@@ -16,109 +13,103 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentEditProfilePasswordBinding
-import com.projectx.householdtasks.presentation.*
+import com.projectx.householdtasks.presentation.CurrentPasswordValidationResult
+import com.projectx.householdtasks.presentation.NewPasswordValidationResult
+import com.projectx.householdtasks.presentation.PasswordConfirmationValidationResult
+import com.projectx.householdtasks.presentation.RequestResult
+import com.projectx.householdtasks.presentation.event.EditProfilePasswordScreenEvent
 import com.projectx.householdtasks.presentation.viewmodel.EditProfilePasswordViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class EditProfilePasswordFragment : BaseFragment() {
+class EditProfilePasswordFragment :
+    BaseFragment<FragmentEditProfilePasswordBinding, EditProfilePasswordViewModel.EditProfilePasswordUiState, EditProfilePasswordScreenEvent>() {
 
-    private var _binding: FragmentEditProfilePasswordBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel by viewModel<EditProfilePasswordViewModel>()
+    override fun getViewBinding() = FragmentEditProfilePasswordBinding.inflate(layoutInflater)
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentEditProfilePasswordBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun getBaseViewModel() = viewModel<EditProfilePasswordViewModel>().value
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun bindUI() = super.bindUI().apply {
         addTextChangeListeners()
-        addPasswordsObservers()
-        addUiStateObserver()
         setLink()
 
-        binding.apply {
-            buttonSaveChanges.setOnClickListener {
-                viewModel.handleSaveChanges()
-            }
-            toolbarLayout.toolbar.setOnClickListener {
-                findNavController().navigateUp()
-            }
+        buttonSaveChanges.setOnClickListener {
+            viewModel.onEvent(EditProfilePasswordScreenEvent.HandleSaveChanges)
+        }
+        toolbarLayout.toolbar.setOnClickListener {
+            viewModel.onEvent(EditProfilePasswordScreenEvent.NavBack(findNavController()))
         }
     }
 
     private fun addTextChangeListeners() {
         binding.currentPassword.addTextChangedListener {
-            viewModel.setCurrentPasswordValue(it.toString())
-            viewModel.resetCurrentPasswordError()
+            viewModel.onEvent(EditProfilePasswordScreenEvent.SetCurrentPasswordValue(it.toString()))
+            viewModel.onEvent(EditProfilePasswordScreenEvent.ResetCurrentPasswordError)
         }
         binding.newPassword.addTextChangedListener {
-            viewModel.setNewPasswordValue(it.toString())
-            viewModel.resetNewPasswordError()
+            viewModel.onEvent(EditProfilePasswordScreenEvent.SetNewPasswordValue(it.toString()))
+            viewModel.onEvent(EditProfilePasswordScreenEvent.ResetNewPasswordError)
         }
         binding.passwordConfirmation.addTextChangedListener {
-            viewModel.setPasswordConfirmationValue(it.toString())
-            viewModel.resetPasswordConfirmationError()
+            viewModel.onEvent(EditProfilePasswordScreenEvent.SetPasswordConfirmationValue(it.toString()))
+            viewModel.onEvent(EditProfilePasswordScreenEvent.ResetPasswordConfirmationError)
         }
     }
 
-    private fun addPasswordsObservers() {
-        viewModel.currentPassword.observe(viewLifecycleOwner) {
+    override fun FragmentEditProfilePasswordBinding.processState(state: EditProfilePasswordViewModel.EditProfilePasswordUiState) {
+        addPasswordsObservers(state)
+        addUiStateObserver(state)
+    }
+
+    private fun addPasswordsObservers(state: EditProfilePasswordViewModel.EditProfilePasswordUiState) {
+        val isSaveButtonEnabled = (viewModel as EditProfilePasswordViewModel).isSaveButtonEnabled()
+        state.currentPassword.let {
             if (binding.currentPasswordLayout.editText!!.text.toString() != it) {
                 binding.currentPasswordLayout.editText!!.setText(it)
             }
-            binding.buttonSaveChanges.isEnabled = viewModel.isSaveButtonEnabled()
+            binding.buttonSaveChanges.isEnabled = isSaveButtonEnabled
         }
-        viewModel.newPassword.observe(viewLifecycleOwner) {
+        state.newPassword.let {
             if (binding.newPasswordLayout.editText!!.text.toString() != it) {
                 binding.newPasswordLayout.editText!!.setText(it)
             }
-            binding.buttonSaveChanges.isEnabled = viewModel.isSaveButtonEnabled()
+            binding.buttonSaveChanges.isEnabled = isSaveButtonEnabled
         }
-        viewModel.passwordConfirmation.observe(viewLifecycleOwner) {
+        state.passwordConfirmation.let {
             if (binding.passwordConfirmationLayout.editText!!.text.toString() != it) {
                 binding.passwordConfirmationLayout.editText!!.setText(it)
             }
-            binding.buttonSaveChanges.isEnabled = viewModel.isSaveButtonEnabled()
+            binding.buttonSaveChanges.isEnabled = isSaveButtonEnabled
         }
     }
 
-    private fun addUiStateObserver() {
-        viewModel.uiState.observe(viewLifecycleOwner) {
-            resetErrors()
-            binding.helpMessage.visibility = View.INVISIBLE
+    private fun addUiStateObserver(state: EditProfilePasswordViewModel.EditProfilePasswordUiState) {
+        resetErrors()
+        binding.helpMessage.visibility = View.INVISIBLE
 
-            when (it.currentPasswordValidationResult) {
-                CurrentPasswordValidationResult.LengthError -> setErrorForPassword(binding.currentPasswordLayout)
-                CurrentPasswordValidationResult.InvalidPasswordError -> setCurrentPasswordError()
-                CurrentPasswordValidationResult.OK -> {}
-            }
+        when (state.currentPasswordValidationResult) {
+            CurrentPasswordValidationResult.LengthError -> setErrorForPassword(binding.currentPasswordLayout)
+            CurrentPasswordValidationResult.InvalidPasswordError -> setCurrentPasswordError()
+            CurrentPasswordValidationResult.OK -> {}
+        }
 
-            when (it.newPasswordValidationResult) {
-                NewPasswordValidationResult.LengthError -> setErrorForPassword(binding.newPasswordLayout)
-                NewPasswordValidationResult.OK -> {}
-            }
+        when (state.newPasswordValidationResult) {
+            NewPasswordValidationResult.LengthError -> setErrorForPassword(binding.newPasswordLayout)
+            NewPasswordValidationResult.OK -> {}
+        }
 
-            when (it.confirmationValidationResult) {
-                PasswordConfirmationValidationResult.LengthError -> setErrorForPassword(binding.passwordConfirmationLayout)
-                PasswordConfirmationValidationResult.PasswordsMismatchError -> setErrorForNewPasswords()
-                PasswordConfirmationValidationResult.OK -> {}
-            }
+        when (state.confirmationValidationResult) {
+            PasswordConfirmationValidationResult.LengthError -> setErrorForPassword(binding.passwordConfirmationLayout)
+            PasswordConfirmationValidationResult.PasswordsMismatchError -> setErrorForNewPasswords()
+            PasswordConfirmationValidationResult.OK -> {}
+        }
 
-            when (it.requestResult) {
-                RequestResult.Success -> {
-                    binding.helpMessage.visibility = View.VISIBLE
-                    findNavController().navigate(R.id.profileFragment)
-                }
-                RequestResult.RequestFailedError -> setConnectionError()
-                else -> {}
+        when (state.requestResult) {
+            RequestResult.Success -> {
+                binding.helpMessage.visibility = View.VISIBLE
+                findNavController().navigate(R.id.profileFragment)
             }
+            RequestResult.RequestFailedError -> setConnectionError()
+            else -> {}
         }
     }
 
@@ -160,7 +151,7 @@ class EditProfilePasswordFragment : BaseFragment() {
 
     inner class HelpMessageClickableSpan : ClickableSpan() {
         override fun onClick(widget: View) {
-//            TODO: add click
+            //TODO: add click
             Toast.makeText(requireContext(), "Link clicked", Toast.LENGTH_SHORT).show()
         }
 
@@ -168,11 +159,6 @@ class EditProfilePasswordFragment : BaseFragment() {
             super.updateDrawState(ds)
             ds.bgColor = ContextCompat.getColor(requireContext(), R.color.white)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {

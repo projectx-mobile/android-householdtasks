@@ -3,6 +3,8 @@ package com.projectx.householdtasks.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.projectx.householdtasks.presentation.FamilyMember
+import com.projectx.householdtasks.presentation.adapter.NotificationSwitchersModel
 
 class NotificationSharedViewModel : ViewModel() {
 
@@ -19,4 +21,9 @@ class NotificationSharedViewModel : ViewModel() {
     fun setItemChecked(value: Boolean) {
         _isItemChecked.value = value
     }
+
+    data class NotificationScreenUiState(
+        val switchersList: List<NotificationSwitchersModel>,
+        val familyList: List<FamilyMember>
+    )
 }

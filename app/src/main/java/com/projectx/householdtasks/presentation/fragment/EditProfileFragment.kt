@@ -8,12 +8,10 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.InsetDrawable
 import android.net.Uri
-import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -30,15 +28,16 @@ import com.projectx.householdtasks.databinding.DialogPermissionSettingsBinding
 import com.projectx.householdtasks.databinding.FragmentEditProfileBinding
 import com.projectx.householdtasks.presentation.NameValidationResult
 import com.projectx.householdtasks.presentation.RequestResult
+import com.projectx.householdtasks.presentation.event.EditProfileScreenEvent
 import com.projectx.householdtasks.presentation.viewmodel.EditProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+class EditProfileFragment :
+    BaseFragment<FragmentEditProfileBinding, EditProfileViewModel.EditProfileUiState, EditProfileScreenEvent>() {
 
-class EditProfileFragment : BaseFragment() {
+    override fun getViewBinding() = FragmentEditProfileBinding.inflate(layoutInflater)
 
-    private var _binding: FragmentEditProfileBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel by viewModel<EditProfileViewModel>()
+    override fun getBaseViewModel() = viewModel<EditProfileViewModel>().value
 
     private val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -57,7 +56,6 @@ class EditProfileFragment : BaseFragment() {
     private val resultCameraLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK && result.data != null) {
-
                 val bundle = result.data?.extras
                 val bitmap: Bitmap = bundle?.get("data") as Bitmap
                 Glide.with(this).load(bitmap).circleCrop().into(binding.profilePhoto)
@@ -65,126 +63,117 @@ class EditProfileFragment : BaseFragment() {
             }
         }
 
-    private val requestPermissionLauncher =
-        registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) {
-            resultCameraLauncher.launch(
-                Intent(
-                    MediaStore.ACTION_IMAGE_CAPTURE,
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) {
+        resultCameraLauncher.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
+    }
+
+    override fun bindUI() = super.bindUI().apply {
+        //TODO: set current name
+        viewModel.onEvent(EditProfileScreenEvent.SetNameValue("Марго"))
+
+        addNameChangedListener()
+
+        toolbarLayout.toolbar.setOnClickListener {
+            viewModel.onEvent(EditProfileScreenEvent.NavBack(findNavController()))
+        }
+        buttonSaveChanges.setOnClickListener {
+            viewModel.onEvent(EditProfileScreenEvent.HandleSaveChanges)
+        }
+
+        profilePhoto.setOnClickListener {
+            createDialogSetPhoto()
+        }
+
+        buttonDeleteProfile.setOnClickListener {
+            createDialogDeleteProfile()
+        }
+    }
+
+    private fun FragmentEditProfileBinding.addNameChangedListener() {
+        name.addTextChangedListener {
+            viewModel.onEvent(EditProfileScreenEvent.SetNameValue(it.toString()))
+            viewModel.onEvent(EditProfileScreenEvent.ResetNameError)
+        }
+    }
+
+    override fun FragmentEditProfileBinding.processState(state: EditProfileViewModel.EditProfileUiState) {
+        resetError()
+        textVewSaveChanges.visibility = View.INVISIBLE
+
+        state.newName.value?.let {
+            addNameObserver(it)
+        }
+        state.nameValidationResult.value?.let {
+            addValidationResultObserver(it)
+        }
+        state.requestResult.value?.let {
+            addRequestResultObserver(it)
+        }
+    }
+
+    private fun FragmentEditProfileBinding.addNameObserver(newName: String) {
+        if (personNameLayout.editText?.text.toString() != newName) {
+            personNameLayout.editText?.setText(newName)
+        }
+        val isSaveButtonEnabled = (viewModel as EditProfileViewModel).isSaveButtonEnabled()
+        buttonSaveChanges.isEnabled = isSaveButtonEnabled
+        if (isSaveButtonEnabled) {
+            buttonSaveChanges.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.dark_text_color
+                )
+            )
+        } else {
+            buttonSaveChanges.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.white
                 )
             )
         }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        //          TODO: set current name
-        viewModel.setNameValue("Марго")
-
-        addNameChangedListener()
-        addNameObserver()
-        addUiStateObserver()
-
-        binding.apply {
-            toolbarLayout.toolbar.setOnClickListener {
-                findNavController().navigateUp()
-            }
-            buttonSaveChanges.setOnClickListener {
-                viewModel.handleSaveChanges()
-            }
-
-            binding.profilePhoto.setOnClickListener {
-                createDialogSetPhoto()
-            }
-
-            buttonDeleteProfile.setOnClickListener {
-                createDialogDeleteProfile()
-            }
+    private fun FragmentEditProfileBinding.addValidationResultObserver(nameValidationResult: NameValidationResult) {
+        when (nameValidationResult) {
+            NameValidationResult.LengthError -> setErrorForNameLength()
+            NameValidationResult.NoLettersError -> setErrorForNameNotContainsLetters()
+            NameValidationResult.InvalidCharacterError -> setErrorForNameContainsOtherSymbols()
+            NameValidationResult.OK -> {}
         }
     }
 
-    private fun addNameChangedListener() {
-        binding.name.addTextChangedListener {
-            viewModel.setNameValue(it.toString())
-            viewModel.resetNameError()
+    private fun FragmentEditProfileBinding.addRequestResultObserver(requestResult: RequestResult) {
+        when (requestResult) {
+            RequestResult.Success -> {
+                textVewSaveChanges.visibility = View.VISIBLE
+                viewModel.onEvent(EditProfileScreenEvent.NavigateToProfile(findNavController()))
+            }
+            RequestResult.RequestFailedError -> setConnectionError()
         }
     }
 
-    private fun addNameObserver() {
-        viewModel.newName.observe(viewLifecycleOwner) {
-            if (binding.personNameLayout.editText!!.text.toString() != it) {
-                binding.personNameLayout.editText!!.setText(it)
-            }
-            binding.buttonSaveChanges.isEnabled = viewModel.isSaveButtonEnabled()
-            if (viewModel.isSaveButtonEnabled()) {
-                binding.buttonSaveChanges.setTextColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.dark_text_color
-                    )
-                )
-            } else {
-                binding.buttonSaveChanges.setTextColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.white
-                    )
-                )
-            }
-        }
+    private fun FragmentEditProfileBinding.resetError() {
+        personNameLayout.error = ""
     }
 
-    private fun addUiStateObserver() {
-        viewModel.uiState.observe(viewLifecycleOwner) {
-            resetError()
-            binding.textVewSaveChanges.visibility = View.INVISIBLE
-
-            when (it.nameValidationResult) {
-                NameValidationResult.LengthError -> setErrorForNameLength()
-                NameValidationResult.NoLettersError -> setErrorForNameNotContainsLetters()
-                NameValidationResult.InvalidCharacterError -> setErrorForNameContainsOtherSymbols()
-                NameValidationResult.OK -> {}
-            }
-
-            when (it.requestResult) {
-                RequestResult.Success -> {
-                    binding.textVewSaveChanges.visibility = View.VISIBLE
-                    findNavController().navigate(R.id.profileFragment)
-                }
-                RequestResult.RequestFailedError -> setConnectionError()
-                else -> {}
-            }
-        }
+    private fun FragmentEditProfileBinding.setErrorForNameLength() {
+        personNameLayout.error = getString(R.string.name_length_error)
     }
 
-    private fun resetError() {
-        binding.personNameLayout.error = ""
+    private fun FragmentEditProfileBinding.setErrorForNameNotContainsLetters() {
+        personNameLayout.error = getString(R.string.name_not_contains_letter)
     }
 
-    private fun setErrorForNameLength() {
-        binding.personNameLayout.error = getString(R.string.name_length_error)
+    private fun FragmentEditProfileBinding.setErrorForNameContainsOtherSymbols() {
+        personNameLayout.error = getString(R.string.name_not_contains_letter)
     }
 
-    private fun setErrorForNameNotContainsLetters() {
-        binding.personNameLayout.error = getString(R.string.name_not_contains_letter)
-    }
-
-    private fun setErrorForNameContainsOtherSymbols() {
-        binding.personNameLayout.error = getString(R.string.name_not_contains_letter)
-    }
-
-    //    TODO: add error for failure request
-    private fun setConnectionError() {
-        binding.personNameLayout.error = getString(R.string.connection_error)
+    //TODO: add error for failure request
+    private fun FragmentEditProfileBinding.setConnectionError() {
+        personNameLayout.error = getString(R.string.connection_error)
     }
 
     private fun createDialogSetPhoto() {
@@ -300,17 +289,12 @@ class EditProfileFragment : BaseFragment() {
             alertDialog.dismiss()
         }
         dialog.positiveButton.setOnClickListener {
-//            TODO: send request
+            //TODO: send request
             alertDialog.dismiss()
             Toast.makeText(
                 requireContext(),
                 getString(R.string.profile_is_deleted), Toast.LENGTH_SHORT
             ).show()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

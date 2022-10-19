@@ -6,26 +6,28 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
-import com.projectx.householdtasks.presentation.*
+import com.projectx.householdtasks.presentation.LoginEmailResult
+import com.projectx.householdtasks.presentation.LoginPasswordResult
+import com.projectx.householdtasks.presentation.RequestResult
+import com.projectx.householdtasks.presentation.event.LoginScreenEvent
 import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val PERSON = "person" //todo
 
-class LoginFragment : BaseFragment() {
+class LoginFragment :
+    BaseFragment<FragmentLoginBinding, LoginViewModel.LoginScreenUiState, LoginScreenEvent>() {
 
-    private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel by viewModel<LoginViewModel>()
+    override fun getViewBinding() = FragmentLoginBinding.inflate(layoutInflater)
+
+    override fun getBaseViewModel() = viewModel<LoginViewModel>().value
 
     private var person: String? = null
 
@@ -39,65 +41,59 @@ class LoginFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun bindUI() = super.bindUI().apply {
         person = arguments?.getString(PERSON)
         if (person != null) {
             setStringsForCurrentPerson(person!!)
         }
 
         addTextChangeListeners()
-        addObservers()
-        addUiStateObserver()
         setLink()
 
-        binding.apply {
-            appbarLogin.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-            buttonLoginSubmit.setOnClickListener {
-                viewModel.handleSaveChanges()
-            }
+        appbarLogin.toolbar.setNavigationOnClickListener {
+            viewModel.onEvent(LoginScreenEvent.NavBack(findNavController()))
         }
+        buttonLoginSubmit.setOnClickListener {
+            viewModel.onEvent(LoginScreenEvent.HandleSaveChanges)
+        }
+    }
+
+    override fun FragmentLoginBinding.processState(state: LoginViewModel.LoginScreenUiState) {
+        addObservers(state)
+        addUiStateObserver(state)
     }
 
     private fun addTextChangeListeners() {
         binding.emailLogin.editText?.addTextChangedListener {
-            viewModel.setEmailValue(it.toString())
-            viewModel.resetErrorForEmail()
+            viewModel.onEvent(LoginScreenEvent.SetEmailValue(it.toString()))
+            viewModel.onEvent(LoginScreenEvent.ResetEmailError)
         }
 
         binding.familyIdLogin.editText?.addTextChangedListener {
-            viewModel.setPasswordValue(it.toString())
-            viewModel.resetErrorForPassword()
+            viewModel.onEvent(LoginScreenEvent.SetPasswordValue(it.toString()))
+            viewModel.onEvent(LoginScreenEvent.ResetPasswordError)
         }
     }
 
-    private fun addObservers() {
-        viewModel.email.observe(viewLifecycleOwner) {
-            if (binding.emailLogin.editText!!.text.toString() != it) {
-                binding.emailLogin.editText!!.setText(it)
-            }
-            binding.buttonLoginSubmit.isEnabled = viewModel.isSaveButtonEnabled()
+    private fun addObservers(state: LoginViewModel.LoginScreenUiState) {
+        val isSaveButtonEnabled = (viewModel as LoginViewModel).isSaveButtonEnabled()
+        state.email.let {
+            //if (binding.emailLogin.editText!!.text.toString() != it) {
+            //    binding.emailLogin.editText!!.setText(it)
+            //}
+            binding.buttonLoginSubmit.isEnabled = isSaveButtonEnabled
         }
 
-        viewModel.password.observe(viewLifecycleOwner) {
-            if (binding.familyIdLogin.editText!!.text.toString() != it) {
-                binding.familyIdLogin.editText!!.setText(it)
-            }
-            binding.buttonLoginSubmit.isEnabled = viewModel.isSaveButtonEnabled()
+        state.password.let {
+            //if (binding.familyIdLogin.editText!!.text.toString() != it) {
+            //    binding.familyIdLogin.editText!!.setText(it)
+            //}
+            binding.buttonLoginSubmit.isEnabled = isSaveButtonEnabled
         }
     }
 
-    private fun addUiStateObserver() {
-        viewModel.uiState.observe(viewLifecycleOwner) {
+    private fun addUiStateObserver(state: LoginViewModel.LoginScreenUiState) {
+        state.let {
             resetErrors()
 
             when (it.loginEmailResult) {
@@ -111,7 +107,7 @@ class LoginFragment : BaseFragment() {
             }
             when (it.requestResult) {
                 RequestResult.Success -> {
-                    findNavController().navigate(R.id.profileFragment)
+                    viewModel.onEvent(LoginScreenEvent.NavigateToProfile(findNavController()))
                 }
                 RequestResult.RequestFailedError -> setAuthenticationError()
                 else -> {}
@@ -161,7 +157,8 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun setAuthenticationError() {
-        binding.emailLogin.error = " " // reset error in emailLogin field and show general mistake for two fields
+        binding.emailLogin.error =
+            " " // reset error in emailLogin field and show general mistake for two fields
         binding.familyIdLogin.error = getString(R.string.authentication_error)
     }
 
@@ -182,9 +179,8 @@ class LoginFragment : BaseFragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onDestroy() {
+        super.onDestroy()
         person = null
     }
 }

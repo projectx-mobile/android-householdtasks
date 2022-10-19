@@ -43,12 +43,12 @@ class EditProfileEmailFragment :
         resetError()
         helpMessage.visibility = View.INVISIBLE
 
-        when (state.emailValidationResult.value) {
+        when (state.emailValidationResult) {
             EmailValidationResult.InvalidEmailError -> setErrorForEmail()
             else -> {}
         }
 
-        when (state.requestResult.value) {
+        when (state.requestResult) {
             RequestResult.Success -> {
                 helpMessage.visibility = View.VISIBLE
                 viewModel.onEvent(EditProfileEmailScreenEvent.NavigateToProfile(findNavController()))
@@ -57,7 +57,7 @@ class EditProfileEmailFragment :
             else -> {}
         }
 
-        state.newEmail.observe(viewLifecycleOwner) {
+        state.newEmail.let {
             if (newEmailLayout.editText!!.text.toString() != it) {
                 newEmailLayout.editText!!.setText(it)
             }

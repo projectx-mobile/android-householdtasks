@@ -1,66 +1,51 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.projectx.householdtasks.databinding.FragmentParentHomescreenBinding
 import com.projectx.householdtasks.presentation.adapter.FamilyMembersListAdapter
 import com.projectx.householdtasks.presentation.adapter.UpdatesListAdapter
+import com.projectx.householdtasks.presentation.event.ParentHomeScreenEvent
 import com.projectx.householdtasks.presentation.viewmodel.ParentHomescreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ParentHomescreenFragment : BaseFragment() {
+class ParentHomescreenFragment :
+    BaseFragment<FragmentParentHomescreenBinding, ParentHomescreenViewModel.ParentHomeScreenUiState, ParentHomeScreenEvent>() {
 
-    private var _binding: FragmentParentHomescreenBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel by viewModel<ParentHomescreenViewModel>()
+    override fun getViewBinding() = FragmentParentHomescreenBinding.inflate(layoutInflater)
+
+    override fun getBaseViewModel() = viewModel<ParentHomescreenViewModel>().value
+
     private val navigateToAllUpdatesFragment by lazy {
         OnClickListener {
-            findNavController().navigate(ParentHomescreenFragmentDirections.actionParentHomescreenFragmentToAllUpdatesFragment())
+            viewModel.onEvent(ParentHomeScreenEvent.NavigateToAllUpdates(findNavController()))
         }
     }
-    private val customFamilyMembersAdapter = FamilyMembersListAdapter() {
 
+    private val customFamilyMembersAdapter = FamilyMembersListAdapter {}
+    private val customUpdatesAdapter = UpdatesListAdapter {}
+
+    override fun bindUI() = super.bindUI().apply {
+        familyMembersRecyclerView.apply {
+            adapter = customFamilyMembersAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+        updatesRecyclerView.apply {
+            adapter = customUpdatesAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+        viewAllUpdates.setOnClickListener(navigateToAllUpdatesFragment)
+        viewAllUpdatesIcon.setOnClickListener(navigateToAllUpdatesFragment)
     }
 
-    private val customUpdatesAdapter = UpdatesListAdapter() {
+    override fun FragmentParentHomescreenBinding.processState(state: ParentHomescreenViewModel.ParentHomeScreenUiState) {
+        customFamilyMembersAdapter.submitList(state.familyMemberTests)
+        customUpdatesAdapter.submitList(state.updates)
 
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ) = FragmentParentHomescreenBinding.inflate(inflater, container, false).also {
-        _binding = it
-    }.root
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.bindUI().subscribeUI()
-    }
-
-    private fun FragmentParentHomescreenBinding.bindUI() = this.also {
-        viewModel.getFamilyMembers()?.also {
-            customFamilyMembersAdapter.submitList(it)
-            familyMembersRecyclerView.apply {
-                adapter = customFamilyMembersAdapter
-                layoutManager = LinearLayoutManager(requireContext())
-            }
-        } ?: emptyFamily()
-
-
-        viewModel.getUpdates()?.also {
-            customUpdatesAdapter.submitList(it)
-            updatesRecyclerView.apply {
-                adapter = customUpdatesAdapter
-                layoutManager = LinearLayoutManager(requireContext())
-            }
-        } ?: emptyUpdates()
-
+        if (state.familyMemberTests.isEmpty()) emptyFamily()
+        if (state.updates.isEmpty()) emptyUpdates()
     }
 
     private fun emptyUpdates() {
@@ -69,15 +54,5 @@ class ParentHomescreenFragment : BaseFragment() {
 
     private fun emptyFamily() {
         binding.emptyFamily.visibility = View.VISIBLE
-    }
-
-    private fun FragmentParentHomescreenBinding.subscribeUI() = this.also {
-        viewAllUpdates.setOnClickListener(navigateToAllUpdatesFragment)
-        viewAllUpdatesIcon.setOnClickListener(navigateToAllUpdatesFragment)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

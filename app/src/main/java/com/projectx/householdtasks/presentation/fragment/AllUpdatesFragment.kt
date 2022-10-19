@@ -4,13 +4,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.projectx.householdtasks.databinding.FragmentAllUpdatesBinding
-import com.projectx.householdtasks.domain.model.UpdatesTest
 import com.projectx.householdtasks.presentation.adapter.UpdatesListAdapter
-import com.projectx.householdtasks.presentation.event.NavEvent
+import com.projectx.householdtasks.presentation.event.ParentHomeScreenEvent
 import com.projectx.householdtasks.presentation.viewmodel.ParentHomescreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AllUpdatesFragment : BaseFragment<FragmentAllUpdatesBinding, List<UpdatesTest>, NavEvent>() {
+class AllUpdatesFragment :
+    BaseFragment<FragmentAllUpdatesBinding, ParentHomescreenViewModel.ParentHomeScreenUiState, ParentHomeScreenEvent>() {
 
     override fun getViewBinding() = FragmentAllUpdatesBinding.inflate(layoutInflater)
 
@@ -40,11 +40,11 @@ class AllUpdatesFragment : BaseFragment<FragmentAllUpdatesBinding, List<UpdatesT
             layoutManager = LinearLayoutManager(requireContext())
         }
         toolbar.setNavigationOnClickListener {
-            viewModel.onEvent(NavEvent.NavBack(findNavController()))
+            viewModel.onEvent(ParentHomeScreenEvent.NavBack(findNavController()))
         }
     }
 
-    override fun FragmentAllUpdatesBinding.processState(state: List<UpdatesTest>) {
-        customUpdatesAdapter.submitList(state)
+    override fun FragmentAllUpdatesBinding.processState(state: ParentHomescreenViewModel.ParentHomeScreenUiState) {
+        customUpdatesAdapter.submitList(state.updates)
     }
 }

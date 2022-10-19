@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.distinctUntilChanged
 import androidx.viewbinding.ViewBinding
 import com.projectx.householdtasks.presentation.event.UiEvent
 import com.projectx.householdtasks.presentation.state.UiState.Companion.process
@@ -13,7 +14,7 @@ import com.projectx.householdtasks.presentation.viewmodel.BaseViewModel
 abstract class BaseFragment<Binding : ViewBinding, State : Any, Event : UiEvent> : Fragment() {
 
     private var _binding: Binding? = null
-    private val binding: Binding get() = _binding!!
+    protected val binding: Binding get() = _binding!!
     protected abstract fun getViewBinding(): Binding
 
     protected val viewModel: BaseViewModel<State, Event> by lazy { getBaseViewModel() }
@@ -33,8 +34,10 @@ abstract class BaseFragment<Binding : ViewBinding, State : Any, Event : UiEvent>
 
     open fun bindUI() = binding
 
-    open fun subscribeUI() = binding.apply {
-        viewModel.state.observe(viewLifecycleOwner) { UiState ->
+    open fun subscribeUI(isDistinctUntilChangedEnabled: Boolean = true) = binding.apply {
+        val state =
+            if (isDistinctUntilChangedEnabled) viewModel.state.distinctUntilChanged() else viewModel.state
+        state.observe(viewLifecycleOwner) { UiState ->
             process(UiState,
                 onLoading = { processLoading() },
                 onError = { message -> processError(message) },

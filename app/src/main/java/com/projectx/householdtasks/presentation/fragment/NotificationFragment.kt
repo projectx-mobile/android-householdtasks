@@ -10,13 +10,12 @@ import com.projectx.householdtasks.presentation.adapter.FamilyMembersAdapter
 import com.projectx.householdtasks.presentation.adapter.NotificationSwitchersAdapter
 import com.projectx.householdtasks.presentation.adapter.NotificationSwitchersModel
 import com.projectx.householdtasks.presentation.event.NotificationScreenEvent
-import com.projectx.householdtasks.presentation.state.NotificationScreenUiState
 import com.projectx.householdtasks.presentation.viewmodel.NotificationSharedViewModel
 import com.projectx.householdtasks.presentation.viewmodel.NotificationViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NotificationFragment :
-    BaseFragment<FragmentNotificationBinding, NotificationScreenUiState, NotificationScreenEvent>() {
+    BaseFragment<FragmentNotificationBinding, NotificationSharedViewModel.NotificationScreenUiState, NotificationScreenEvent>() {
 
     override fun getViewBinding() = FragmentNotificationBinding.inflate(layoutInflater)
 
@@ -58,13 +57,14 @@ class NotificationFragment :
         }
     }
 
-    override fun subscribeUI() = super.subscribeUI().apply {
-        sharedViewModel.interval.observe(viewLifecycleOwner) { interval ->
-            textViewInterval.text = interval
+    override fun subscribeUI(isDistinctUntilChangedEnabled: Boolean) =
+        super.subscribeUI(isDistinctUntilChangedEnabled).apply {
+            sharedViewModel.interval.observe(viewLifecycleOwner) { interval ->
+                textViewInterval.text = interval
+            }
         }
-    }
 
-    override fun FragmentNotificationBinding.processState(state: NotificationScreenUiState) {
+    override fun FragmentNotificationBinding.processState(state: NotificationSharedViewModel.NotificationScreenUiState) {
         switchesListAdapter.submitList(state.switchersList)
         recyclerViewNotification.adapter = FamilyMembersAdapter(requireContext(), state.familyList)
     }

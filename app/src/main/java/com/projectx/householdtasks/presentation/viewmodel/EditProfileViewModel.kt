@@ -1,37 +1,67 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations.distinctUntilChanged
+import com.projectx.householdtasks.R
 import com.projectx.householdtasks.presentation.NameValidationResult
 import com.projectx.householdtasks.presentation.RequestResult
+import com.projectx.householdtasks.presentation.event.EditProfileScreenEvent
+import com.projectx.householdtasks.presentation.state.UiState
 import kotlin.random.Random
 
+class EditProfileViewModel :
+    BaseViewModel<EditProfileViewModel.EditProfileUiState, EditProfileScreenEvent>() {
 
-class EditProfileViewModel : BaseViewModel() {
-    private val _newName = MutableLiveData("")
-    val newName: LiveData<String> = distinctUntilChanged(_newName)
-    private val _uiState: MutableLiveData<UiState> =
-        MutableLiveData(UiState(NameValidationResult.OK, false, null))
-    val uiState get() = _uiState
+    override val state = MutableLiveData<UiState<EditProfileUiState>>(
+        UiState.Ready(EditProfileUiState(MutableLiveData(NameValidationResult.OK)))
+    )
 
-    fun setNameValue(name: String) {
-        _newName.value = name
+    override fun onEvent(event: EditProfileScreenEvent) {
+        when (event) {
+            is EditProfileScreenEvent.NavigateToProfile -> event.navController.navigate(R.id.profileFragment)
+            is EditProfileScreenEvent.SetNameValue -> setNameValue(event.name)
+            is EditProfileScreenEvent.ResetNameError -> resetNameError()
+            else -> super.onEvent(event)
+        }
     }
 
-    fun resetNameError() {
-        _uiState.postValue(_uiState.value!!.copy(nameValidationResult = NameValidationResult.OK))
+    private fun setNameValue(name: String) {
+        when (state.value) {
+            is UiState.Ready -> (state.value as UiState.Ready<EditProfileUiState>).data.newName.value =
+                name
+            else -> {}
+        }
+    }
+
+    private fun resetNameError() {
+        when (state.value) {
+            is UiState.Ready -> (state.value as UiState.Ready<EditProfileUiState>).data.nameValidationResult.value =
+                NameValidationResult.OK
+            else -> {}
+        }
     }
 
     fun isSaveButtonEnabled(): Boolean {
-        return newName.value!!.isNotEmpty()
+        return when (state.value) {
+            is UiState.Ready -> (state.value as UiState.Ready<EditProfileUiState>).data.newName.value?.isNotEmpty()
+                ?: false
+            else -> false
+        }
     }
 
     private fun validateName(): NameValidationResult {
-        if (!nameContainsLetter(newName.value!!)) return NameValidationResult.NoLettersError
-        if (!nameHasInvalidCharacter(newName.value!!)) return NameValidationResult.InvalidCharacterError
-        if (!isNameLengthValid(newName.value!!)) return NameValidationResult.LengthError
-        return NameValidationResult.OK
+        return when (state.value) {
+            is UiState.Ready -> {
+                val newName =
+                    (state.value as UiState.Ready<EditProfileUiState>).data.newName.value ?: ""
+                when {
+                    !nameContainsLetter(newName) -> NameValidationResult.NoLettersError
+                    !nameHasInvalidCharacter(newName) -> NameValidationResult.InvalidCharacterError
+                    !isNameLengthValid(newName) -> NameValidationResult.LengthError
+                    else -> NameValidationResult.OK
+                }
+            }
+            else -> NameValidationResult.OK
+        }
     }
 
     private fun nameContainsLetter(name: String): Boolean {
@@ -48,23 +78,24 @@ class EditProfileViewModel : BaseViewModel() {
 
     fun handleSaveChanges() {
         val nameValidationResult = validateName()
-
-        if (nameValidationResult != NameValidationResult.OK) {
-            _uiState.postValue(UiState(nameValidationResult, false, null))
-            return
-        }
-
-        val requestSucceeded = sendRequest()
-        if (requestSucceeded) {
-            _uiState.postValue(UiState(nameValidationResult, false, RequestResult.Success))
-        } else {
-            _uiState.postValue(
-                UiState(
-                    nameValidationResult,
-                    false,
-                    RequestResult.RequestFailedError
-                )
-            )
+        when (state.value) {
+            is UiState.Ready -> {
+                (state.value as UiState.Ready<EditProfileUiState>).apply {
+                    data.nameValidationResult.value = nameValidationResult
+                    data.requestResult.value = when {
+                        nameValidationResult != NameValidationResult.OK -> null
+                        else -> {
+                            val requestSucceeded = sendRequest()
+                            if (requestSucceeded) {
+                                RequestResult.Success
+                            } else {
+                                RequestResult.RequestFailedError
+                            }
+                        }
+                    }
+                }
+            }
+            else -> {}
         }
     }
 
@@ -73,11 +104,10 @@ class EditProfileViewModel : BaseViewModel() {
         return Random.nextBoolean()
     }
 
-    data class UiState(
-        val nameValidationResult: NameValidationResult,
-
-        val isLoading: Boolean,
-        val requestResult: RequestResult?
+    data class EditProfileUiState(
+        val nameValidationResult: MutableLiveData<NameValidationResult>,
+        val newName: MutableLiveData<String> = MutableLiveData<String>(""),
+        val requestResult: MutableLiveData<RequestResult?> = MutableLiveData(null)
     )
 
     companion object {
