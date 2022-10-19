@@ -59,59 +59,34 @@ class LoginFragment :
     }
 
     override fun FragmentLoginBinding.processState(state: LoginViewModel.LoginScreenUiState) {
-        addObservers(state)
-        addUiStateObserver(state)
+        when (state.loginEmailResult) {
+            LoginEmailResult.Empty -> resetErrorForEmail()
+            LoginEmailResult.InvalidEmailError -> setErrorForEmail()
+            LoginEmailResult.OK -> resetErrorForEmail()
+        }
+        when (state.loginPasswordResult) {
+            LoginPasswordResult.Empty -> resetErrorForPassword()
+            LoginPasswordResult.LengthError -> setErrorForPassword()
+            LoginPasswordResult.OK -> resetErrorForPassword()
+        }
+        binding.buttonLoginSubmit.isEnabled = state.loginEmailResult == LoginEmailResult.OK && state.loginPasswordResult == LoginPasswordResult.OK
+
+        when (state.requestResult) {
+            RequestResult.Success -> {
+                viewModel.onEvent(LoginScreenEvent.NavigateToProfile(findNavController()))
+            }
+            RequestResult.RequestFailedError -> setAuthenticationError()
+            else -> {}
+        }
     }
 
     private fun addTextChangeListeners() {
         binding.emailLogin.editText?.addTextChangedListener {
-            viewModel.onEvent(LoginScreenEvent.SetEmailValue(it.toString()))
-            viewModel.onEvent(LoginScreenEvent.ResetEmailError)
+            viewModel.onEvent(LoginScreenEvent.EmailValidate(it.toString()))
         }
 
         binding.familyIdLogin.editText?.addTextChangedListener {
-            viewModel.onEvent(LoginScreenEvent.SetPasswordValue(it.toString()))
-            viewModel.onEvent(LoginScreenEvent.ResetPasswordError)
-        }
-    }
-
-    private fun addObservers(state: LoginViewModel.LoginScreenUiState) {
-        val isSaveButtonEnabled = (viewModel as LoginViewModel).isSaveButtonEnabled()
-        state.email.let {
-            //if (binding.emailLogin.editText!!.text.toString() != it) {
-            //    binding.emailLogin.editText!!.setText(it)
-            //}
-            binding.buttonLoginSubmit.isEnabled = isSaveButtonEnabled
-        }
-
-        state.password.let {
-            //if (binding.familyIdLogin.editText!!.text.toString() != it) {
-            //    binding.familyIdLogin.editText!!.setText(it)
-            //}
-            binding.buttonLoginSubmit.isEnabled = isSaveButtonEnabled
-        }
-    }
-
-    private fun addUiStateObserver(state: LoginViewModel.LoginScreenUiState) {
-        state.let {
-            resetErrors()
-
-            when (it.loginEmailResult) {
-                LoginEmailResult.InvalidEmailError -> setErrorForEmail()
-                LoginEmailResult.OK -> {}
-            }
-
-            when (it.loginPasswordResult) {
-                LoginPasswordResult.LengthError -> setErrorForPassword()
-                LoginPasswordResult.OK -> {}
-            }
-            when (it.requestResult) {
-                RequestResult.Success -> {
-                    viewModel.onEvent(LoginScreenEvent.NavigateToProfile(findNavController()))
-                }
-                RequestResult.RequestFailedError -> setAuthenticationError()
-                else -> {}
-            }
+            viewModel.onEvent(LoginScreenEvent.PasswordValidate(it.toString()))
         }
     }
 
@@ -142,8 +117,11 @@ class LoginFragment :
         binding.textviewLoginRestoreAccount.movementMethod = LinkMovementMethod.getInstance()
     }
 
-    private fun resetErrors() {
+    private fun resetErrorForEmail() {
         binding.emailLogin.isErrorEnabled = false
+    }
+
+    private fun resetErrorForPassword() {
         binding.familyIdLogin.error = null
     }
 

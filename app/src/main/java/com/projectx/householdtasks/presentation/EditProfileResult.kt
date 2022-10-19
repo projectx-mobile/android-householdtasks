@@ -9,10 +9,12 @@ sealed class NameValidationResult {
 
 sealed class LoginEmailResult {
     object OK : LoginEmailResult()
+    object Empty : LoginEmailResult()
     object InvalidEmailError : LoginEmailResult()
 }
 sealed class LoginPasswordResult {
     object OK : LoginPasswordResult()
+    object Empty : LoginPasswordResult()
     object LengthError: LoginPasswordResult()
 }
 
