@@ -13,8 +13,7 @@ import com.projectx.householdtasks.databinding.ListItemSettingsBinding
 class SettingsAdapter(
     private val context: Context,
     private val listener: SettingListener
-) :
-    ListAdapter<SettingModel, SettingsAdapter.ViewHolder>(SettingDiffCallback()) {
+) : ListAdapter<SettingModel, SettingsAdapter.ViewHolder>(SettingDiffCallback()) {
 
     private var _binding: ListItemSettingsBinding? = null
     private val binding get() = _binding!!

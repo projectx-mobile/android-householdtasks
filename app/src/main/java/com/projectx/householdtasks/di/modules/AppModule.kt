@@ -1,6 +1,7 @@
 package com.projectx.householdtasks.di.modules
 
 import com.projectx.householdtasks.data.example.repository.ExampleRepository
+import com.projectx.householdtasks.domain.use_case.GetFamilyMembersUseCase
 import com.projectx.householdtasks.domain.use_case.ValidateEmailUseCase
 import com.projectx.householdtasks.domain.use_case.ValidatePasswordUseCase
 import com.projectx.householdtasks.presentation.viewmodel.*
@@ -15,8 +16,9 @@ import org.koin.dsl.module
 val appModule = module {
     single { ExampleRepository(get()) }
 
-    single { ValidateEmailUseCase }
-    single { ValidatePasswordUseCase }
+    factory { GetFamilyMembersUseCase() }
+    factory { ValidateEmailUseCase() }
+    factory { ValidatePasswordUseCase() }
 
     viewModel { OnBoardingViewModel() }
     viewModel { OnBoardingImageViewModel() }

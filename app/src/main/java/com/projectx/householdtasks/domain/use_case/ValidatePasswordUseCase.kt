@@ -2,7 +2,7 @@ package com.projectx.householdtasks.domain.use_case
 
 import com.projectx.householdtasks.presentation.LoginPasswordResult
 
-object ValidatePasswordUseCase : BaseUseCase<LoginPasswordResult, String>() {
+class ValidatePasswordUseCase : BaseUseCase<LoginPasswordResult, String>() {
     override suspend fun run(params: String): LoginPasswordResult {
         return when {
             params.isEmpty() -> LoginPasswordResult.Empty

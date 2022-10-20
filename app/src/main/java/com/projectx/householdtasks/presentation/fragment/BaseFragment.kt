@@ -7,50 +7,52 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.distinctUntilChanged
 import androidx.viewbinding.ViewBinding
-import com.projectx.householdtasks.presentation.event.UiEvent
 import com.projectx.householdtasks.presentation.state.UiState.Companion.process
 import com.projectx.householdtasks.presentation.viewmodel.BaseViewModel
 
-abstract class BaseFragment<Binding : ViewBinding, State : Any, Event : UiEvent> : Fragment() {
+abstract class BaseFragment<Binding : ViewBinding, ViewModel : BaseViewModel>(
+    private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> Binding
+) : Fragment() {
 
     private var _binding: Binding? = null
     protected val binding: Binding get() = _binding!!
-    protected abstract fun getViewBinding(): Binding
 
-    protected val viewModel: BaseViewModel<State, Event> by lazy { getBaseViewModel() }
-    protected abstract fun getBaseViewModel(): BaseViewModel<State, Event>
+    protected abstract val viewModel: ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = getViewBinding().apply { _binding = this }.root
+    ) = inflate.invoke(inflater, container, false).apply { _binding = this }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindUI()
-        subscribeUI()
-    }
-
-    open fun bindUI() = binding
-
-    open fun subscribeUI(isDistinctUntilChangedEnabled: Boolean = true) = binding.apply {
-        val state =
-            if (isDistinctUntilChangedEnabled) viewModel.state.distinctUntilChanged() else viewModel.state
-        state.observe(viewLifecycleOwner) { UiState ->
-            process(UiState,
-                onLoading = { processLoading() },
-                onError = { message -> processError(message) },
-                onReady = { state: State -> processState(state) }
-            )
+        binding.apply {
+            bindUI()
+            viewModel.subscribeUI()
         }
     }
 
-    open fun Binding.processLoading() {}
+    open fun Binding.bindUI() {}
 
-    open fun Binding.processError(message: String) {}
+    open fun ViewModel.subscribeUI() {}
 
-    open fun Binding.processState(state: State) {}
+    fun <Type> BaseViewModel.MutableUiState<Type>.observeUiState(
+        isDistinctUntilChangedEnabled: Boolean = true,
+        processLoading: () -> Unit = {},
+        processError: (error: Throwable?) -> Unit = {},
+        processState: (state: Type) -> Unit = {}
+    ) {
+        val state =
+            if (isDistinctUntilChangedEnabled) this@observeUiState.distinctUntilChanged() else this@observeUiState
+        state.observe(viewLifecycleOwner) { UiState ->
+            process(UiState,
+                onLoading = { processLoading() },
+                onError = { error -> processError(error) },
+                onReady = { state -> processState(state) }
+            )
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()

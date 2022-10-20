@@ -8,33 +8,33 @@ import com.projectx.householdtasks.databinding.FragmentProfileBinding
 import com.projectx.householdtasks.presentation.adapter.MyFamilyProfileAdapter
 import com.projectx.householdtasks.presentation.adapter.SettingModel
 import com.projectx.householdtasks.presentation.adapter.SettingsAdapter
-import com.projectx.householdtasks.presentation.event.ProfileScreenEvent
 import com.projectx.householdtasks.presentation.viewmodel.ProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment :
-    BaseFragment<FragmentProfileBinding, ProfileViewModel.ProfileViewUiState, ProfileScreenEvent>() {
+    BaseFragment<FragmentProfileBinding, ProfileViewModel>(FragmentProfileBinding::inflate) {
 
-    override fun getViewBinding() = FragmentProfileBinding.inflate(layoutInflater)
+    override val viewModel by viewModel<ProfileViewModel>()
 
-    override fun getBaseViewModel() = viewModel<ProfileViewModel>().value
+    private val settingsAdapter by lazy { SettingsAdapter(requireContext(), SettingListener()) }
+    private val otherSettingsAdapter by lazy { SettingsAdapter(requireContext(), SettingListener()) }
 
-    private lateinit var settingsAdapter: SettingsAdapter
-    private lateinit var otherSettingsAdapter: SettingsAdapter
-
-    override fun bindUI() = super.bindUI().apply {
-        //requireActivity().findViewById<CoordinatorLayout>(R.id.navigation).visibility = View.VISIBLE
+    override fun FragmentProfileBinding.bindUI() {
         addScrollListener()
         setNavigation()
         setupAdapters()
     }
 
-    override fun FragmentProfileBinding.processState(state: ProfileViewModel.ProfileViewUiState) {
-        recyclerViewFamilyMembers.adapter =
-            MyFamilyProfileAdapter(requireContext(), state.familyMembers)
-
-        settingsAdapter.submitList(state.settingList)
-        otherSettingsAdapter.submitList(state.otherSettingList)
+    override fun ProfileViewModel.subscribeUI() {
+        familyMembers.observeUiState {
+            binding.recyclerViewFamilyMembers.adapter = MyFamilyProfileAdapter(requireContext(), it)
+        }
+        settingList.observeUiState {
+            settingsAdapter.submitList(it)
+        }
+        otherSettingList.observeUiState {
+            otherSettingsAdapter.submitList(it)
+        }
     }
 
     private fun FragmentProfileBinding.addScrollListener() {
@@ -51,7 +51,7 @@ class ProfileFragment :
 
     private fun FragmentProfileBinding.setNavigation() {
         navigationBar.setOnClickListener {
-            viewModel.onEvent(ProfileScreenEvent.NavigateToEditProfile(findNavController()))
+            viewModel.navigateToEditProfile(findNavController())
         }
     }
 
@@ -59,17 +59,14 @@ class ProfileFragment :
         recyclerViewFamilyMembers.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        settingsAdapter = SettingsAdapter(requireContext(), SettingListener())
         recyclerViewSettings.adapter = settingsAdapter
-
-        otherSettingsAdapter = SettingsAdapter(requireContext(), SettingListener())
         recyclerViewOtherSettings.adapter = otherSettingsAdapter
     }
 
     private inner class SettingListener : SettingsAdapter.SettingListener {
 
         override fun onItemClicked(item: SettingModel) {
-            viewModel.onEvent(ProfileScreenEvent.OnItemClicked(item, findNavController()))
+            viewModel.handleClick(item, findNavController())
         }
     }
 }
