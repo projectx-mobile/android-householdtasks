@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="ConstraintLayout">
+        <attr name="time" format="integer" />
+    </declare-styleable>
+
     <declare-styleable name="CustomImage">
         <attr name="borderStrokeWidth" format="float" />
         <attr name="strokeColor" format="color" />

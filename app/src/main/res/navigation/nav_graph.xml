@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/childHomescreenFragment">
 
     <fragment
         android:id="@+id/onBoardingFragment"
@@ -41,6 +41,12 @@
         <action
             android:id="@+id/action_chooseLoginTypeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_chooseLoginTypeFragment_to_childHomescreenFragment"
+            app:destination="@id/childHomescreenFragment" />
+        <action
+            android:id="@+id/action_chooseLoginTypeFragment_to_parentHomescreenFragment"
+            app:destination="@id/parentHomescreenFragment" />
     </fragment>
 
     <fragment
@@ -48,5 +54,11 @@
         android:name="com.projectx.householdtasks.presentation.fragment.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/childHomescreenFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.ChildHomescreenFragment"
+        android:label="ChildHomescreenFragment"
+        tools:layout="@layout/fragment_homescreen_child" />
 
 </navigation>

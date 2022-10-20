@@ -8,6 +8,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="card_background_color_homescreen">#E8E7FA</color>
+    <color name="secondary_lavander_grey">#C0C1D2</color>
+    <color name="background_nav_bar_color">#181925</color>
+    <color name="task_not_completed">#F5D1D5</color>
+    <color name="task_in_progress">#E8E7FA</color>
+    <color name="completed_task">#D0F3D9</color>
+    <color name="transparent">#00000000</color>
+    <color name="appBar">#CCF9F9FB</color>
+    <color name="unknown_color">#CCF9F9FB</color>
+
+
     <!-- дайте цветам нормальные имена -->
     <color name="login_title_color">#373A3A</color>
     <color name="login_text_view_help_color">#3E3F40</color>
@@ -25,13 +36,7 @@
     <color name="primary_juicy_grape">#7D45FF</color>
     <color name="primary_gray">#6C6E84</color>
 
-    <color name="card_background_color_homescreen">#E8E7FA</color>
-    <color name="secondary_lavander_grey">#C0C1D2</color>
-    <color name="background_nav_bar_color">#181925</color>
-    <color name="asdasd">#1A000000</color>
-    <color name="transparent">#00000000</color>
-    <color name="appBar">#CCF9F9FB</color>
-
-
+    <color name="task_completed">#D0F3D9</color>
+    <color name="task_new">#E8E7FA</color>
 
 </resources>

@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.projectx.householdtasks.databinding.FragmentChooseLoginTypeBinding
 import androidx.navigation.fragment.findNavController
+import com.projectx.householdtasks.R
+import com.projectx.householdtasks.databinding.FragmentChooseLoginTypeBinding
 import com.projectx.householdtasks.presentation.viewmodel.ChooseLoginTypeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,7 +19,7 @@ class ChooseLoginTypeFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentChooseLoginTypeBinding.inflate(inflater, container, false)
         return binding.root
@@ -28,8 +29,12 @@ class ChooseLoginTypeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            layoutChooseLoginTypeGoogle.setOnClickListener { viewModel.loginWithGoogle() }
-            layoutChooseLoginTypeEmail.setOnClickListener { viewModel.loginWithEmail(findNavController()) }
+            layoutChooseLoginTypeGoogle.setOnClickListener {
+                findNavController().navigate(R.id.childHomescreenFragment)
+            }
+            layoutChooseLoginTypeEmail.setOnClickListener {
+                viewModel.loginWithEmail(findNavController())
+            }
             textviewChooseLoginTypeCreateAccount.setOnClickListener { viewModel.createAccount() }
         }
     }

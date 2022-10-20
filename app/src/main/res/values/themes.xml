@@ -2,6 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.HouseholdTasks" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -11,7 +13,47 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+    </style>
+
+
+    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="colorPrimary">#7d45fe</item>
+        <item name="daySelectedStyle">@style/MaterialCalendar.Day.Selected.</item>
+        <item name="itemStrokeColor">@color/primary_midnight</item>
+        <item name="colorOnPrimary">@color/primary_midnight</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
+        </item>
+        <!-- Customize text field of the text input mode. -->
+    </style>
+
+    <style name="MaterialCalendar.Day.Selected." parent="@style/Widget.MaterialComponents.MaterialCalendar.Day.Selected">
+        <item name="itemFillColor">@color/white</item>
+        <item name="itemStrokeColor">@color/primary_midnight</item>
+        <item name="itemStrokeWidth">1dp</item>
+    </style>
+
+    <style name="Widget.MyApp.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
+        ...
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MyApp.Chip.Choice</item>
+
+
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="chipStrokeColor">@color/primary_midnight</item>
+        <item name="chipCornerRadius">6dp</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/nexa_demo</item>
+        <item name="android:textStyle">bold</item>
+
+        <item name="android:textColor">@color/choice_chip_text_color</item>
+        <item name="chipBackgroundColor">@color/choice_chip_background_color</item>
+    </style>
+
+    <style name="ThemeOverlay.MyApp.Chip.Choice" parent="">
+        <item name="elevationOverlayEnabled">false</item>
     </style>
 
     <!-- TextAppearance -->
@@ -35,10 +77,10 @@
 
     <style name="ThemeAppBar"
         parent="Widget.AppCompat.Light.ActionBar.Solid">
-        <item name="android:background">@color/asdasd</item>
+        <item name="android:background">@color/unknown_color</item>
         <!-- Support library compatibility -->
-        <item name="background">@color/asdasd</item>
-        <item name="colorPrimary">@color/asdasd</item>
+        <item name="background">@color/unknown_color</item>
+        <item name="colorPrimary">@color/unknown_color</item>
         <item name="windowActionBarOverlay">true</item>
     </style>
 
