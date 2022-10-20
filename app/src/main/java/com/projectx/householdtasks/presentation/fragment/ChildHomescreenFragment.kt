@@ -30,6 +30,10 @@ class ChildHomescreenFragment : BaseFragment() {
         resources.getStringArray(R.array.month_names)
     }
 
+    private val notifications: Array<String> by lazy {
+        resources.getStringArray(R.array.notification_titles)
+    }
+
     private val customCalendarListAdapter by lazy {
         CalendarListAdapter(weekDaysNames) { clickedDate ->
             calendarList.forEachIndexed { index, pair ->
@@ -72,7 +76,7 @@ class ChildHomescreenFragment : BaseFragment() {
     private var firstDayInCalendar: Calendar = Calendar.getInstance()
     private val selectedDate = Calendar.getInstance()
     private val todaysDate = Calendar.getInstance()
-    var notiAmo = 3
+    private var notiAmount = 3
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,9 +85,7 @@ class ChildHomescreenFragment : BaseFragment() {
         _binding = it
     }.root
 
-    val notificationc by lazy {
-        resources.getStringArray(R.array.notification_titles)
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -183,37 +185,37 @@ class ChildHomescreenFragment : BaseFragment() {
             datePicker.show(requireActivity().supportFragmentManager, "tag")
         }
         closeNotificationButton.setOnClickListener {
-            notiAmo--
+            notiAmount--
             updateNotification()
         }
     }
 
     private fun updateNotification() {
         binding.apply {
-            when (notiAmo) {
-                2 -> {
+            when (notiAmount) {
+                in 2..100 -> {
                     notificationLayout.background =
                         ResourcesCompat.getDrawable(resources,
                             R.drawable.notifications_section_stack_of_notifications,
                             null)
-                    notificationTitle.text = notificationc[1]
+                    notificationTitle.text = notifications[1]
                 }
                 1 -> {
                     notificationLayout.background =
                         ResourcesCompat.getDrawable(resources,
                             R.drawable.notifications_section_single_notification,
                             null)
-                    notificationTitle.text = notificationc[1]
+                    notificationTitle.text = notifications[1]
                 }
                 0 -> {
                     notificationLayout.background =
                         ResourcesCompat.getDrawable(resources,
                             R.drawable.notifications_section_no_new_reminders,
                             null)
-                    notificationTitle.text = notificationc[2]
+                    notificationTitle.text = notifications[2]
                 }
                 else -> {
-                    notificationTitle.text = notificationc[2]
+                    notificationTitle.text = notifications[2]
                 }
             }
         }
