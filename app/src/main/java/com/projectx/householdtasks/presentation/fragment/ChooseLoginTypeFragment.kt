@@ -2,6 +2,7 @@ package com.projectx.householdtasks.presentation.fragment
 
 import androidx.appcompat.app.AppCompatActivity
 import com.projectx.householdtasks.databinding.FragmentChooseLoginTypeBinding
+import com.projectx.householdtasks.presentation.navigation.NavEvent
 import com.projectx.householdtasks.presentation.viewmodel.ChooseLoginTypeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -13,6 +14,9 @@ class ChooseLoginTypeFragment :
     override val viewModel by viewModel<ChooseLoginTypeViewModel>()
 
     override fun FragmentChooseLoginTypeBinding.bindUI() {
+        binding.appbarChooseLoginType.toolbar.setNavigationOnClickListener {
+            viewModel.navigate(NavEvent.Up)
+        }
         layoutChooseLoginTypeGoogle.setOnClickListener {
             viewModel.loginWithGoogle(requireActivity() as AppCompatActivity)
         }
