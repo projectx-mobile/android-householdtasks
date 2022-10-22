@@ -3,6 +3,8 @@ package com.projectx.householdtasks.presentation.viewmodel
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.distinctUntilChanged
+import com.projectx.householdtasks.presentation.fragment.OnBoardingFragmentDirections
+import com.projectx.householdtasks.presentation.navigation.NavEvent
 
 class OnBoardingViewModel : BaseViewModel() {
 
@@ -28,4 +30,7 @@ class OnBoardingViewModel : BaseViewModel() {
     fun onImageUnselected(position: Int) {
         _imagePreviousPosition.value = position
     }
+
+    fun navigateToChooseLoginType() =
+        navigate(NavEvent.To(OnBoardingFragmentDirections.actionOnBoardingFragmentToChooseLoginTypeFragment()))
 }

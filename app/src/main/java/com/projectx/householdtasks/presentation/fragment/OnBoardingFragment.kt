@@ -1,9 +1,6 @@
 package com.projectx.householdtasks.presentation.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.AnimRes
 import androidx.annotation.DrawableRes
@@ -17,11 +14,10 @@ import com.projectx.householdtasks.presentation.adapter.OnBoardingViewPagerAdapt
 import com.projectx.householdtasks.presentation.viewmodel.OnBoardingViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OnBoardingFragment : BaseFragment() {
+class OnBoardingFragment :
+    BaseFragment<FragmentOnboardingBinding, OnBoardingViewModel>(FragmentOnboardingBinding::inflate) {
 
-    private var _binding: FragmentOnboardingBinding? = null
-    private val binding get() = _binding!!
-    private val viewModel by viewModel<OnBoardingViewModel>()
+    override val viewModel by viewModel<OnBoardingViewModel>()
 
     private val inLeft by lazy { getAnimation(android.R.anim.slide_in_left) }
     private val outRight by lazy { getAnimation(android.R.anim.slide_out_right) }
@@ -48,26 +44,16 @@ class OnBoardingFragment : BaseFragment() {
     private fun getDrawable(@DrawableRes id: Int) =
         ResourcesCompat.getDrawable(resources, id, requireContext().applicationContext.theme)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ) = FragmentOnboardingBinding.inflate(inflater, container, false).also {
-        _binding = it
-    }.root
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.bindUI().subscribeUI()
-    }
-
-    private fun FragmentOnboardingBinding.bindUI() = this.apply {
+    override fun FragmentOnboardingBinding.bindUI() {
         setupViewPager()
         setupTabLayout()
+        loginButton.setOnClickListener {
+            viewModel.navigateToChooseLoginType()
+        }
     }
 
-    private fun FragmentOnboardingBinding.subscribeUI() = this.apply {
-        viewModel.apply {
-
+    override fun OnBoardingViewModel.subscribeUI() {
+        binding.apply {
             positionChange.observe(viewLifecycleOwner) { positions ->
                 val (previousPosition, currentPosition) = positions
 
@@ -134,10 +120,5 @@ class OnBoardingFragment : BaseFragment() {
 
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

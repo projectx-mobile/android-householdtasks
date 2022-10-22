@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "420886722619",
+    "project_id": "kidsapptest-d7995",
+    "storage_bucket": "kidsapptest-d7995.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420886722619:android:9dfe1b6196182dc438441e",
+        "android_client_info": {
+          "package_name": "com.projectx.householdtasks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420886722619-10ie2j2i3to282i0gvuis6qsbnol7a3s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projectx.householdtasks",
+            "certificate_hash": "2ae836aedfb719abe411eb73c2f3b9484e14719f"
+          }
+        },
+        {
+          "client_id": "420886722619-r9q7hqrf7sfvdlt28a7n24q4ma7s6i1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhqrpwHot4HdbWSIrGF1xJwsxfbBFwlnM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420886722619-r9q7hqrf7sfvdlt28a7n24q4ma7s6i1m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,15 +1,21 @@
 package com.projectx.householdtasks.presentation.viewmodel
 
-import androidx.navigation.NavController
-import com.projectx.householdtasks.R
+import androidx.appcompat.app.AppCompatActivity
+import com.projectx.auth.Authentication
+import com.projectx.householdtasks.presentation.fragment.ChooseLoginTypeFragmentDirections
+import com.projectx.householdtasks.presentation.navigation.NavEvent
 
 class ChooseLoginTypeViewModel : BaseViewModel() {
 
-    fun loginWithGoogle(){}
-
-    fun loginWithEmail(navController: NavController){
-        navController.navigate(R.id.action_chooseLoginTypeFragment_to_loginFragment)
+    fun loginWithGoogle(activity: AppCompatActivity) {
+        Authentication.signInWithGoogle(activity)
     }
 
-    fun createAccount(){}
+    fun loginWithEmail() {
+        navigate(NavEvent.To(ChooseLoginTypeFragmentDirections.actionChooseLoginTypeFragmentToLoginFragment()))
+    }
+
+    fun createAccount() {
+
+    }
 }

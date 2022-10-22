@@ -2,8 +2,13 @@ package com.projectx.householdtasks.presentation.viewmodel
 
 import com.projectx.householdtasks.domain.model.FamilyMemberTest
 import com.projectx.householdtasks.domain.model.UpdatesTest
+import com.projectx.householdtasks.presentation.fragment.ParentHomescreenFragmentDirections
+import com.projectx.householdtasks.presentation.navigation.NavEvent
 
 class ParentHomescreenViewModel : BaseViewModel() {
+
+    fun navigateToAllUpdates() =
+        navigate(NavEvent.To(ParentHomescreenFragmentDirections.actionParentHomescreenFragmentToAllUpdatesFragment()))
 
     private val familyMembers = listOf(
         FamilyMemberTest("John", 5, 1),

@@ -6,26 +6,22 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
 import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.random.Random
 
 const val PERSON = "person" //todo
 
-class LoginFragment : BaseFragment() {
+class LoginFragment :
+    BaseFragment<FragmentLoginBinding, LoginViewModel>(FragmentLoginBinding::inflate) {
 
-    private lateinit var viewModel: LoginViewModel
-
-    private var _binding: FragmentLoginBinding? = null
-    private val binding get() = _binding!!
+    override val viewModel by viewModel<LoginViewModel>()
 
     private var person: String? = null
 
@@ -39,23 +35,15 @@ class LoginFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java] //todo ??
-
-        binding.appbarLogin.toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        person = arguments?.getString(PERSON)
-        if (person != null) {
-            setStringsForCurrentPerson(person!!)
+    override fun FragmentLoginBinding.bindUI() {
+        binding.appbarLogin.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
         }
+        person = arguments?.getString(PERSON)
+        person?.let {
+            setStringsForCurrentPerson(it)
+        }
+
         hideEmailErrorsOnChange()
         hidePasswordErrorsOnChange()
         setLink()
@@ -70,16 +58,21 @@ class LoginFragment : BaseFragment() {
         }
     }
 
-    private fun hideEmailErrorsOnChange() {
-        viewModel.email.observe(viewLifecycleOwner) {
-            binding.emailLogin.isErrorEnabled = false
+    override fun LoginViewModel.subscribeUI() {
+        email.observe(viewLifecycleOwner) {
+            hideEmailErrorsOnChange()
+        }
+        password.observe(viewLifecycleOwner) {
+            hidePasswordErrorsOnChange()
         }
     }
 
+    private fun hideEmailErrorsOnChange() {
+        binding.emailLogin.isErrorEnabled = false
+    }
+
     private fun hidePasswordErrorsOnChange() {
-        viewModel.password.observe(viewLifecycleOwner) {
-            binding.familyIdLogin.error = null
-        }
+        binding.familyIdLogin.error = null
     }
 
     private fun setLink() {
@@ -110,13 +103,17 @@ class LoginFragment : BaseFragment() {
                 var requestSucceeded = true
                 requestSucceeded = Random.nextBoolean()
                 if (requestSucceeded) {
-                    Toast.makeText(context,
+                    Toast.makeText(
+                        context,
                         getString(R.string.authentication_success),
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    Toast.makeText(context,
+                    Toast.makeText(
+                        context,
                         getString(R.string.authentication_failed),
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT
+                    ).show()
                     setAuthenticationError()
                 }
             }
@@ -154,9 +151,8 @@ class LoginFragment : BaseFragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onDestroy() {
+        super.onDestroy()
         person = null
     }
 }

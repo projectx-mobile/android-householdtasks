@@ -3,17 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onBoardingFragment">
-
-    <fragment
-        android:id="@+id/onBoardingFragment"
-        android:name="com.projectx.householdtasks.presentation.fragment.OnBoardingFragment"
-        android:label="OnBoardingFragment"
-        tools:layout="@layout/fragment_onboarding">
-        <action
-            android:id="@+id/action_onBoardingFragment_to_chooseLoginTypeFragment"
-            app:destination="@id/chooseLoginTypeFragment" />
-    </fragment>
+    app:startDestination="@id/login_flow">
 
     <fragment
         android:id="@+id/parentHomescreenFragment"
@@ -33,20 +23,32 @@
         android:label="AllUpdatesFragment"
         tools:layout="@layout/fragment_all_updates" />
 
-    <fragment
-        android:id="@+id/chooseLoginTypeFragment"
-        android:name="com.projectx.householdtasks.presentation.fragment.ChooseLoginTypeFragment"
-        android:label="ChooseLoginTypeFragment"
-        tools:layout="@layout/fragment_choose_login_type">
-        <action
-            android:id="@+id/action_chooseLoginTypeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.projectx.householdtasks.presentation.fragment.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/fragment_login" />
+    <navigation
+        android:id="@+id/login_flow"
+        app:startDestination="@id/onBoardingFragment">
+        <fragment
+            android:id="@+id/onBoardingFragment"
+            android:name="com.projectx.householdtasks.presentation.fragment.OnBoardingFragment"
+            android:label="OnBoardingFragment"
+            tools:layout="@layout/fragment_onboarding">
+            <action
+                android:id="@+id/action_onBoardingFragment_to_chooseLoginTypeFragment"
+                app:destination="@id/chooseLoginTypeFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/chooseLoginTypeFragment"
+            android:name="com.projectx.householdtasks.presentation.fragment.ChooseLoginTypeFragment"
+            android:label="ChooseLoginTypeFragment"
+            tools:layout="@layout/fragment_choose_login_type">
+            <action
+                android:id="@+id/action_chooseLoginTypeFragment_to_loginFragment"
+                app:destination="@id/loginFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.projectx.householdtasks.presentation.fragment.LoginFragment"
+            android:label="LoginFragment"
+            tools:layout="@layout/fragment_login" />
+    </navigation>
 
 </navigation>
