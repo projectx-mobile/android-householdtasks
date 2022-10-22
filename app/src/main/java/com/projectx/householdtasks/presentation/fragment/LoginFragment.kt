@@ -9,9 +9,9 @@ import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentLoginBinding
+import com.projectx.householdtasks.presentation.navigation.NavEvent
 import com.projectx.householdtasks.presentation.viewmodel.LoginViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.random.Random
@@ -37,7 +37,7 @@ class LoginFragment :
 
     override fun FragmentLoginBinding.bindUI() {
         binding.appbarLogin.toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
+            viewModel.navigate(NavEvent.Up)
         }
         person = arguments?.getString(PERSON)
         person?.let {
