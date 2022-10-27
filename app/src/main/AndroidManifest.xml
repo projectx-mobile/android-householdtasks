@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.projectx.householdtasks">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -15,7 +15,7 @@
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize|adjustPan">
+            android:windowSoftInputMode="adjustResize|adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

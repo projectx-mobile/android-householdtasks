@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:420886722619:android:9dfe1b6196182dc438441e",
         "android_client_info": {
-          "package_name": "com.projectx.householdtasks"
+          "package_name": "com.projectx.auth"
         }
       },
       "oauth_client": [
@@ -37,6 +37,13 @@
             {
               "client_id": "420886722619-r9q7hqrf7sfvdlt28a7n24q4ma7s6i1m.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "420886722619-4k63hcp5187ngqdiqpnr3g9l4vt3fcq2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ViktorIvanov.Project-X"
+              }
             }
           ]
         }

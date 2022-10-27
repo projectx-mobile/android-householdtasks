@@ -20,15 +20,6 @@
         <item name="colorControlActivated">@color/black</item>
     </style>
 
-    <style name="CustomTextInputLayoutLogin">
-        <item name="android:background">@drawable/text_input_layout</item>
-        <item name="android:textColorHint">"#D74457"</item>
-    </style>
-
-    <style name="CustomTextInputLayoutLoginError" parent="CustomTextInputLayoutLogin">
-        <item name="android:background">@drawable/rectangle_error</item>
-    </style>
-
     <style name="error_appearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/hint_color</item>
 

@@ -1,0 +1,30 @@
+<resources>
+    <string name="onboarding_welcome_text">Рады видеть тебя в трекере заданий Alfredo</string>
+    <string name="onboarding_main_text_1">Создавай задачи и выполняй их в срок</string>
+    <string name="onboarding_main_text_2">Достигай цели и получай награды</string>
+    <string name="signup_text">Создать аккаунт</string>
+    <string name="login_text">Войти</string>
+
+    <string name="login_with_qr_code">Отсканировать QR-Code из профиля Родителей.</string>
+    <string name="login_forgot_password">Не помнишь пароль? Восстановить доступ.</string>
+    <string name="login_title">Войти</string>
+    <string name="login_child_subtitle">Введи свой email и Family ID для доступа в аккаунт.</string>
+
+    <string name="login_email_parent">Ваш email</string>
+    <string name="login_email_child">Твой email</string>
+    <string name="login_password_child">Family ID</string>
+    <string name="login_button_continue">Продолжить</string>
+    <string name="login_parent_subtitle">Введи свои данные для доступа в аккаунт.</string>
+    <string name="login_password_parent">Пароль или Family ID</string>
+    <string name="authentication_success">Authentication success</string>
+    <string name="authentication_failed">Authentication failed</string>
+    <string name="email_error">Неверный формат email.</string>
+    <string name="password_error">Неверный формат или количество символов.</string>
+    <string name="authentication_error">Неверный email или Family ID.</string>
+
+    <string name="title">Войти</string>
+    <string name="description">Выбери способ доступа в свой аккаунт.</string>
+    <string name="sign_in_with_google">Войти с Google</string>
+    <string name="sign_in_with_email">Войти по email</string>
+    <string name="create_account">Впервые в Трекере Заданий? <b><a href="">Создать аккаунт.</a></b></string>
+</resources>
