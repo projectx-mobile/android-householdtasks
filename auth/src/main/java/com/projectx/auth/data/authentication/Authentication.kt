@@ -1,16 +1,9 @@
 package com.projectx.auth.data.authentication
 
-import android.app.PendingIntent
 import android.content.Intent
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.os.bundleOf
-import com.google.android.gms.auth.api.identity.GetSignInIntentRequest
-import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.ktx.auth

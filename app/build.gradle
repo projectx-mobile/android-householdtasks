@@ -6,12 +6,13 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    namespace 'com.projectx.householdtasks'
+    compileSdk rootProject.compileSdkVersion
 
     defaultConfig {
         applicationId "com.projectx.householdtasks"
-        minSdk 21
-        targetSdk 32
+        minSdk rootProject.minSdkVersion
+        targetSdk rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -47,5 +48,9 @@ dependencies {
     implementation project(path: ':parent')
     implementation project(path: ':common')
 
+    /* test */
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.testExtJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
 }
 

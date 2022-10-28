@@ -1,4 +1,4 @@
-package com.projectx.householdtasks.data.example.contracts.response
+package com.projectx.auth.data.authentication.contracts.response
 
 import com.google.gson.annotations.SerializedName
 
