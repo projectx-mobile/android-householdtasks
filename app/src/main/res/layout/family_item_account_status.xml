@@ -24,7 +24,7 @@
             android:background="@drawable/oval"
             android:fontFamily="@font/nexa_demo_bold"
             android:gravity="center"
-            android:textColor="@color/dark_text_color"
+            android:textColor="@color/primary_midnight"
             android:textSize="24sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -36,7 +36,7 @@
             android:layout_marginStart="10dp"
             android:fontFamily="@font/nexa_demo_bold"
             android:text="@string/name"
-            android:textColor="@color/dark_text_color"
+            android:textColor="@color/primary_midnight"
             android:textSize="16sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
     <androidx.appcompat.widget.LinearLayoutCompat

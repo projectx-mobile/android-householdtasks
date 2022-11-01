@@ -36,7 +36,7 @@ class AccountStatusFragment : BaseFragment() {
 
         binding.buttonChild.setOnClickListener {
             binding.buttonParent.setTextColor(
-                ContextCompat.getColor(requireContext(), (R.color.dark_text_color))
+                ContextCompat.getColor(requireContext(), (R.color.primary_midnight))
             )
             binding.buttonChild.setTextColor(
                 ContextCompat.getColor(requireContext(), (R.color.white))
@@ -50,7 +50,7 @@ class AccountStatusFragment : BaseFragment() {
             binding.buttonParent.isSelected = true
             binding.buttonChild.isSelected = false
             binding.buttonChild.setTextColor(
-                ContextCompat.getColor(requireContext(), (R.color.dark_text_color))
+                ContextCompat.getColor(requireContext(), (R.color.primary_midnight))
             )
             binding.buttonParent.setTextColor(
                 ContextCompat.getColor(requireContext(), (R.color.white))

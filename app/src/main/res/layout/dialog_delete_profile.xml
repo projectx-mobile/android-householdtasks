@@ -12,7 +12,7 @@
         android:fontFamily="sans-serif-medium"
         android:paddingHorizontal="@dimen/spacing.large"
         android:text="@string/title_dialog_delete_profile"
-        android:textColor="@color/dark_text_color"
+        android:textColor="@color/primary_midnight"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_marginTop="20dp"
         android:paddingHorizontal="@dimen/spacing.large"
         android:text="@string/message_dialog_delete_profile"
-        android:textColor="@color/hint_color"
+        android:textColor="@color/primary_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
 
@@ -53,7 +53,7 @@
         android:paddingBottom="20dp"
         android:text="@string/cancel"
         android:textAllCaps="true"
-        android:textColor="@color/dark_text_color"
+        android:textColor="@color/primary_midnight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/positive_button"
         app:layout_constraintTop_toBottomOf="@id/message"/>

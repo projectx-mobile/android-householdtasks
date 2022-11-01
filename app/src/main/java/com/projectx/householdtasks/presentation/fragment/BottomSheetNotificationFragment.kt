@@ -4,19 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.projectx.householdtasks.databinding.FragmentBottomSheetNotificationBinding
 import com.projectx.householdtasks.presentation.adapter.BottomSheetNotificationAdapter
 import com.projectx.householdtasks.presentation.viewmodel.NotificationSharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class BottomSheetNotificationFragment : BottomSheetDialogFragment() {
 
     private var _binding: FragmentBottomSheetNotificationBinding? = null
     private val binding get() = _binding!!
 
-    private val sharedViewModel: NotificationSharedViewModel by activityViewModels()
+    private val sharedViewModel by sharedViewModel<NotificationSharedViewModel>()
 
     private var adapter: BottomSheetNotificationAdapter? = null
 

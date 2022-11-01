@@ -28,7 +28,7 @@ class DialogChangeLanguageFragment : DialogFragment() {
         dialog?.window?.setBackgroundDrawable(
             ContextCompat.getDrawable(
                 requireContext(),
-                R.drawable.rectangle_white_without_boarders
+                R.drawable.rectangle_white_without_borders
             )
         )
         binding.okButton.setOnClickListener {

@@ -36,7 +36,7 @@ class FamilyMembersAdapter(
         holder.binding.personName.text = familyMembers[adapterPosition].name
         if (familyMembers[adapterPosition].image == null) {
             holder.binding.personPhoto.background =
-                ContextCompat.getDrawable(context, R.drawable.oval_with_boarder)
+                ContextCompat.getDrawable(context, R.drawable.oval_with_border)
             holder.binding.personPhoto.text = familyMembers[adapterPosition].name.first().toString()
         } else {
             holder.binding.personPhoto.background =

@@ -25,7 +25,7 @@
         android:layout_marginEnd="@dimen/spacing.normal"
         android:layout_weight="30"
         android:fontFamily="sans-serif-medium"
-        android:textColor="@color/dark_text_color"
+        android:textColor="@color/primary_midnight"
         android:textSize="@dimen/text_size.small" />
 
     <ImageView

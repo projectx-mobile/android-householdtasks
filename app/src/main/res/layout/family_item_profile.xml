@@ -20,10 +20,10 @@
             android:id="@+id/person_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/oval_with_boarder"
+            android:background="@drawable/oval_with_border"
             android:fontFamily="@font/nexa_demo_bold"
             android:gravity="center"
-            android:textColor="@color/dark_text_color"
+            android:textColor="@color/primary_midnight"
             android:textSize="24sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -34,7 +34,7 @@
             android:layout_marginTop="6dp"
             android:fontFamily="@font/nexa_demo_bold"
             android:text="@string/name"
-            android:textColor="@color/dark_text_color"
+            android:textColor="@color/primary_midnight"
             android:textSize="12sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

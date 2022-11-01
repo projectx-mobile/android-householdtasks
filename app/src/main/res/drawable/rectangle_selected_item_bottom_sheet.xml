@@ -8,7 +8,7 @@
     <item android:bottom="2dp">
         <shape>
             <stroke
-                android:color="@color/login_custom_button_disable_boarder_color" />
+                android:color="@color/secondary_lavander_grey" />
         </shape>
     </item>
 </layer-list>

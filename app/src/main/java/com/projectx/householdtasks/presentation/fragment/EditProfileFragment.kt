@@ -129,7 +129,7 @@ class EditProfileFragment : BaseFragment() {
                 binding.buttonSaveChanges.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
-                        R.color.dark_text_color
+                        R.color.primary_midnight
                     )
                 )
             } else {
@@ -198,7 +198,7 @@ class EditProfileFragment : BaseFragment() {
         val inset = InsetDrawable(
             ContextCompat.getDrawable(
                 requireContext(),
-                R.drawable.rectangle_white_without_boarders
+                R.drawable.rectangle_white_without_borders
             ), 40
         )
         alertDialog.window?.setBackgroundDrawable(inset)
@@ -261,7 +261,7 @@ class EditProfileFragment : BaseFragment() {
         val inset = InsetDrawable(
             ContextCompat.getDrawable(
                 requireContext(),
-                R.drawable.rectangle_white_without_boarders
+                R.drawable.rectangle_white_without_borders
             ), 40
         )
         alertDialog.window?.setBackgroundDrawable(inset)
@@ -291,7 +291,7 @@ class EditProfileFragment : BaseFragment() {
         val inset = InsetDrawable(
             ContextCompat.getDrawable(
                 requireContext(),
-                R.drawable.rectangle_white_without_boarders
+                R.drawable.rectangle_white_without_borders
             ), 40
         )
         alertDialog.window?.setBackgroundDrawable(inset)

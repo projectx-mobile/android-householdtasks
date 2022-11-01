@@ -7,5 +7,5 @@
     <solid android:color="@android:color/transparent" />
     <stroke
         android:width="2dp"
-        android:color="@color/login_custom_button_enable_boarder_color" />
+        android:color="@color/primary_midnight" />
 </shape>

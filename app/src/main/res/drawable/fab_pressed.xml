@@ -7,7 +7,7 @@
             <corners android:radius="@dimen/spacing.small" />
             <stroke
                 android:width="@dimen/spacing.small_extra"
-                android:color="@color/login_custom_button_enable_boarder_color" />
+                android:color="@color/primary_midnight" />
         </shape>
     </item>
 </layer-list>

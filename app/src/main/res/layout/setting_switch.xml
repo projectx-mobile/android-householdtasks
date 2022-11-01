@@ -20,7 +20,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="@dimen/spacing.normal"
         android:fontFamily="@font/nexa_demo_bold"
-        android:textColor="@color/dark_text_color"
+        android:textColor="@color/primary_midnight"
         android:textSize="@dimen/text_size.medium" />
 
     <androidx.appcompat.widget.LinearLayoutCompat

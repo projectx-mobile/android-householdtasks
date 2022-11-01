@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/nexa_demo_bold"
             android:text="@string/email"
-            android:textColor="@color/login_title_color"
+            android:textColor="@color/primary_midnight"
             android:textSize="@dimen/text_size.large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
 
         <com.projectx.householdtasks.presentation.support.CustomTextInputLayout
             android:id="@+id/current_email_layout"
-            style="@style/TextInputEditTextLoginStyle"
+            style="@style/CustomTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing.large"
@@ -47,7 +47,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email"
-                style="@style/CustomTextInputLayoutLogin"
+                style="@style/CustomTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"
@@ -56,7 +56,7 @@
 
         <com.projectx.householdtasks.presentation.support.CustomTextInputLayout
             android:id="@+id/new_email_layout"
-            style="@style/TextInputEditTextLoginStyle"
+            style="@style/CustomTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing.small"
@@ -67,7 +67,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/new_email"
-                style="@style/CustomTextInputLayoutLogin"
+                style="@style/CustomTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
@@ -77,7 +77,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_save_changes"
-            style="@style/ButtonLoginStyle"
+            style="@style/PrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="40dp"
@@ -99,7 +99,7 @@
             android:gravity="center"
             android:text="@string/help_message_edit_email"
             android:textAllCaps="false"
-            android:textColor="@color/login_text_view_help_color"
+            android:textColor="@color/primary_midnight"
             android:textColorLink="@color/primary_color"
             android:textSize="@dimen/text_size.small"
             android:visibility="invisible"

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/nexa_demo_bold"
             android:text="@string/new_user"
-            android:textColor="@color/login_title_color"
+            android:textColor="@color/primary_midnight"
             android:textSize="@dimen/text_size.large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             android:layout_marginTop="@dimen/spacing.small"
             android:fontFamily="@string/font_family_regular"
             android:text="@string/help_message_invite_user"
-            android:textColor="@color/hint_color"
+            android:textColor="@color/primary_gray"
             android:textSize="@dimen/text_size.small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
                 android:drawableEnd="@drawable/ic_right"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/invite_by_email"
-                android:textColor="@color/dark_text_color"
+                android:textColor="@color/primary_midnight"
                 android:textSize="@dimen/text_size.small" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -99,7 +99,7 @@
                 android:drawableEnd="@drawable/ic_right"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/share_link"
-                android:textColor="@color/dark_text_color"
+                android:textColor="@color/primary_midnight"
                 android:textSize="@dimen/text_size.small" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -130,7 +130,7 @@
                 android:drawableEnd="@drawable/ic_right"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/family_id"
-                android:textColor="@color/dark_text_color"
+                android:textColor="@color/primary_midnight"
                 android:textSize="@dimen/text_size.small" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
