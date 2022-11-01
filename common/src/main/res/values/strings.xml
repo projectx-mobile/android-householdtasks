@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Setting model -->
+    <string name="faq">Часто задаваемые вопросы</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="feedback">Оставить отзыв</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="parent">Родитель</string>
+    <string name="linked_accounts">Присоединенные аккаунты</string>
+    <string name="notifications">Уведомления</string>
+    <string name="choose_language">Выбрать язык приложения</string>
+    <string name="support">Поддержка</string>
+
+    <!-- Fragment profile -->
+    <string name="profile_settings">Настройки профиля</string>
+    <string name="name">Имя</string>
+    <string name="my_family">Моя семья</string>
+    <string name="exit">Выйти</string>
+
+    <!-- Fragment edit profile -->
+    <string name="my_profile">Мой профиль</string>
+    <string name="save_changes">Сохранить изменения</string>
+    <string name="changes_saved">Изменения сохранены.</string>
+    <string name="delete_profile">Удалить профиль</string>
+    <string name="connection_error">Ошибка подключения к серверу</string>
+    <string name="name_length_error">Имя должно содержать 1 – 20 символов</string>
+    <string name="name_not_contains_letter">Имя должно содержать хотя бы одну букву</string>
+    <string name="profile_is_deleted">Профиль удален</string>
+
+    <!-- Dialog permission settings -->
+    <string name="title_no_camera_permission">Приложению “Alfredo” необходим доступ к камере.</string>
+    <string name="message_no_camera_permission">Чтобы продолжить, измени настройки доступа.</string>
+    <string name="settings">Настройки</string>
+    <string name="cancel">Отмена</string>
+
+    <!-- Dialog delete profile -->
+    <string name="title_dialog_delete_profile">Ты уверен(а), что хочешь удалить свой профиль?</string>
+    <string name="message_dialog_delete_profile">Это действие нельзя отменить</string>
+    <string name="delete">Удалить</string>
+
+    <!-- Dialog change profile -->
+    <string name="change_photo_profile">Изменить фото профиля</string>
+    <string name="choose_method_change_photo">Выбери способ изменения фото.</string>
+    <string name="take_selfie">Сделать селфи</string>
+    <string name="load_from_gallery">Загрузить из галереи</string>
+</resources>

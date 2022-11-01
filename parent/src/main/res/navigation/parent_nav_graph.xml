@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/parentHomescreenFragment"
-        android:name="com.projectx.parent.presentation.fragment.ParentHomescreenFragment"
+        android:name="com.projectx.householdtasks.parent.presentation.fragment.ParentHomescreenFragment"
         android:label="ParentHomescreenFragment"
         tools:layout="@layout/fragment_parent_homescreen">
         <action
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/allUpdatesFragment"
-        android:name="com.projectx.parent.presentation.fragment.AllUpdatesFragment"
+        android:name="com.projectx.householdtasks.parent.presentation.fragment.AllUpdatesFragment"
         android:label="AllUpdatesFragment"
         tools:layout="@layout/fragment_all_updates" />
 </navigation>

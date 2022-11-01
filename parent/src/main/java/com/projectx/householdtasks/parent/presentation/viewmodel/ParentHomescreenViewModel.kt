@@ -1,45 +1,34 @@
-package com.projectx.parent.presentation.viewmodel
+package com.projectx.householdtasks.parent.presentation.viewmodel
 
+import com.projectx.common.domain.use_case.GetFamilyMemberTestListUseCase
+import com.projectx.common.domain.use_case.GetUpdatesTestListUseCase
+import com.projectx.common.presentation.navigation.NavEvent
 import com.projectx.common.presentation.viewmodel.BaseViewModel
-import com.projectx.householdtasks.parent.domain.model.FamilyMemberTest
-import com.projectx.householdtasks.parent.domain.model.UpdatesTest
-//import com.projectx.parent.presentation.fragment.ParentHomescreenFragmentDirections
+import com.projectx.common.presentation.model.FamilyMemberTest
+import com.projectx.common.presentation.model.UpdatesTest
+import com.projectx.householdtasks.parent.presentation.fragment.ParentHomescreenFragmentDirections
 
-class ParentHomescreenViewModel : BaseViewModel() {
+class ParentHomescreenViewModel(
+    private val getFamilyMemberTestListUseCase: GetFamilyMemberTestListUseCase,
+    private val getUpdatesTestListUseCase: GetUpdatesTestListUseCase
+) : BaseViewModel() {
 
-    fun navigateToAllUpdates() {}//= navigate(NavEvent.To(ParentHomescreenFragmentDirections.actionParentHomescreenFragmentToAllUpdatesFragment()))
-
-    private val familyMembers = listOf(
-        FamilyMemberTest("John", 5, 1),
-        FamilyMemberTest("Алиса", 3, 2),
-    )
-
-    fun getFamilyMembers(): List<FamilyMemberTest>? {
-        return null
-        return familyMembers
+    init {
+        getFamilyMembers()
+        getUpdates()
     }
 
-    private val updates = listOf(
-        UpdatesTest("Алиса создала новую задачу"),
-        UpdatesTest("Алиса выполнила задачу"),
-        UpdatesTest("Борис выбрал награду"),
-        UpdatesTest("Борис выполнил задачу"),
-        UpdatesTest("Борис выполнил задачу"),
-        UpdatesTest("Алиса создала новую задачу"),
-        UpdatesTest("Алиса выполнила задачу"),
-        UpdatesTest("Борис выбрал награду"),
-        UpdatesTest("Борис выполнил задачу"),
-        UpdatesTest("Борис выполнил задачу"),
-        UpdatesTest("Алиса создала новую задачу"),
-        UpdatesTest("Алиса выполнила задачу"),
-        UpdatesTest("Борис выбрал награду"),
-        UpdatesTest("Борис выполнил задачу"),
-        UpdatesTest("Борис выполнил задачу")
-    )
+    val familyMemberTestList = MutableUiState<List<FamilyMemberTest>>()
 
-    fun getUpdates(): List<UpdatesTest>? {
+    val updatesTestList = MutableUiState<List<UpdatesTest>>()
 
-        return updates
-        return null
+    fun navigateToAllUpdates() = navigate(NavEvent.To(ParentHomescreenFragmentDirections.actionParentHomescreenFragmentToAllUpdatesFragment()))
+
+    fun getFamilyMembers() {
+        useCaseHandler(getFamilyMemberTestListUseCase, Unit, familyMemberTestList)
+    }
+
+    fun getUpdates() {
+        useCaseHandler(getUpdatesTestListUseCase, Unit, updatesTestList)
     }
 }

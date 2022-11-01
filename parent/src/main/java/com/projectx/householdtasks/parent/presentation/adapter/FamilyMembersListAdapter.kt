@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.projectx.householdtasks.parent.databinding.FamilyMemberItemBinding
-import com.projectx.householdtasks.parent.domain.model.FamilyMemberTest
+import com.projectx.common.presentation.model.FamilyMemberTest
 
 class FamilyMembersListAdapter(private val onItemClicked: (FamilyMemberTest) -> Unit) :
     ListAdapter<FamilyMemberTest, FamilyMembersListAdapter.FamilyMembersHolder>(DiffCallback) {

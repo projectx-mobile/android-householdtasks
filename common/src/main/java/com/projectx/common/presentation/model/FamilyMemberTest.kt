@@ -1,4 +1,4 @@
-package com.projectx.householdtasks.parent.domain.model
+package com.projectx.common.presentation.model
 
 data class FamilyMemberTest(
     val name: String,

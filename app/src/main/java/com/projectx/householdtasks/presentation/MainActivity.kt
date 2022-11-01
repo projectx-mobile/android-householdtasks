@@ -81,9 +81,3 @@ class MainActivity :
     }
 
 }
-
-
-
-
-
-

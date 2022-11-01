@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -59,6 +60,9 @@ dependencies {
 
     /* lottie animation */
     api "com.airbnb.android:lottie:$rootProject.lottieVersion"
+
+    /* glide image loading */
+    api "com.github.bumptech.glide:glide:$rootProject.glideVersion"
 
     /* test */
     testImplementation "junit:junit:$rootProject.junitVersion"

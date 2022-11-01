@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.projectx.householdtasks.parent.databinding.UpdateItemBinding
-import com.projectx.householdtasks.parent.domain.model.UpdatesTest
+import com.projectx.common.presentation.model.UpdatesTest
 
 class UpdatesListAdapter(private val onItemClicked: (UpdatesTest) -> Unit) :
     ListAdapter<UpdatesTest, UpdatesListAdapter.UpdateHolder>(DiffCallback) {

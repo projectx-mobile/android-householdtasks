@@ -1,4 +1,4 @@
-package com.projectx.householdtasks.parent.presentation.support
+package com.projectx.common.presentation.support
 
 import android.content.Context
 import android.graphics.*

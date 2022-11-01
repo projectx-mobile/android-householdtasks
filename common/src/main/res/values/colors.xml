@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="dark_text_color">#181925</color>
+
     <color name="primary_color">#7D45FF</color>
     <color name="hint_color">#6C6E84</color>
     <color name="error_color">#D74457</color>
@@ -21,7 +23,7 @@
     <color name="background_nav_bar_color">#181925</color>
     <color name="asdasd">#1A000000</color>
     <color name="transparent">#00000000</color>
-    <color name="appBar">#CCF9F9FB</color>
+    <color name="app_bar_color">#CCF9F9FB</color>
 
     <!-- дайте цветам нормальные имена -->
     <color name="login_title_color">#373A3A</color>
@@ -29,6 +31,6 @@
     <color name="login__custom_button_color_enable">#7D45FF</color>
     <!--    <color name="login_custom_button_color_disable">#E7EAEB</color>-->
     <color name="login_custom_button_disable_color">#C0C1D2</color>
-    <color name="login_custom_button_disable_boarder_color">#6C6E84</color>
-    <color name="login_custom_button_enable_boarder_color">#181925</color>
+    <color name="login_custom_button_disable_border_color">#6C6E84</color>
+    <color name="login_custom_button_enable_border_color">#181925</color>
 </resources>
