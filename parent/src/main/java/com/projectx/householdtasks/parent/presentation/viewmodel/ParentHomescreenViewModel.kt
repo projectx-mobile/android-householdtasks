@@ -13,14 +13,14 @@ class ParentHomescreenViewModel(
     private val getUpdatesTestListUseCase: GetUpdatesTestListUseCase
 ) : BaseViewModel() {
 
+    val familyMemberTestList = MutableUiState<List<FamilyMemberTest>>()
+
+    val updatesTestList = MutableUiState<List<UpdatesTest>>()
+
     init {
         getFamilyMembers()
         getUpdates()
     }
-
-    val familyMemberTestList = MutableUiState<List<FamilyMemberTest>>()
-
-    val updatesTestList = MutableUiState<List<UpdatesTest>>()
 
     fun navigateToAllUpdates() = navigate(NavEvent.To(ParentHomescreenFragmentDirections.actionParentHomescreenFragmentToAllUpdatesFragment()))
 

@@ -10,7 +10,7 @@
         <shape>
             <stroke
                 android:width="2dp"
-                android:color="@color/login_custom_button_disable_boarder_color" />
+                android:color="@color/login_custom_button_disable_border_color" />
             <corners android:radius="8dp" />
         </shape>
     </item>

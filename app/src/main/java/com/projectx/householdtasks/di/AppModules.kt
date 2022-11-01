@@ -4,9 +4,10 @@ import com.projectx.householdtasks.di.modules.appModule
 import com.projectx.householdtasks.di.modules.authModule
 import com.projectx.householdtasks.di.modules.childModule
 import com.projectx.householdtasks.di.modules.parentModule
-import org.koin.core.module.Module
 
-internal val appModules: List<Module> = appModule +
-        authModule +
-        childModule +
-        parentModule
+internal val appModules = listOf(
+    appModule,
+    authModule,
+    childModule,
+    parentModule
+)

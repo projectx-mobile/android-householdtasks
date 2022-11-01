@@ -19,7 +19,7 @@
             <size android:height="56dp" />
             <stroke
                 android:width="2dp"
-                android:color="@color/login_custom_button_enable_boarder_color" />
+                android:color="@color/login_custom_button_enable_border_color" />
             <padding android:padding="2dp" />
             <corners android:radius="8dp" />
         </shape>

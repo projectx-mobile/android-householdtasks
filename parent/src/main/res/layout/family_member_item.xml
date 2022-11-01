@@ -23,7 +23,7 @@
             android:layout_height="0dp" />
     </LinearLayout>
 
-    <com.projectx.householdtasks.parent.presentation.support.CustomImage
+    <com.projectx.common.presentation.support.CustomImage
         android:id="@+id/avatar"
         android:layout_width="72dp"
         android:layout_height="72dp"
