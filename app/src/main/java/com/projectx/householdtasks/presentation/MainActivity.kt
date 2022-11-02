@@ -1,18 +1,10 @@
 package com.projectx.householdtasks.presentation
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import com.google.android.gms.auth.api.Auth
-import com.google.android.gms.auth.api.signin.GoogleSignInResult
-import com.google.firebase.auth.AuthCredential
-import com.google.firebase.auth.GoogleAuthProvider
 import com.projectx.householdtasks.R
-import com.projectx.householdtasks.data.example.authentication.Authentication
 import com.projectx.householdtasks.databinding.ActivityMainBinding
 
 
@@ -64,47 +56,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setCheckedItemBottomNavigation() {
         binding.navigation.bottomNavigation.menu.getItem(4).isChecked = true
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == Authentication.REQUEST_CODE_GOOGLE_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            val result = data?.let { Auth.GoogleSignInApi.getSignInResultFromIntent(it) }
-            result?.let {
-                handleSignInResult(result)
-            }
-        }
-    }
-
-    private fun handleSignInResult(result: GoogleSignInResult) {
-        if (result.isSuccess) {
-            val account = result.signInAccount
-
-            // you can store user data to SharedPreference
-            val credential: AuthCredential =
-                GoogleAuthProvider.getCredential(account?.idToken, null)
-            firebaseAuthWithGoogle(credential)
-        } else {
-            // Google Sign In failed, update UI appropriately
-            Log.e("MAIN", "Login Unsuccessful. $result")
-            Toast.makeText(this, "Login Unsuccessful", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun firebaseAuthWithGoogle(credential: AuthCredential) {
-        Authentication.auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                Log.d("MAIN", "signInWithCredential:onComplete:" + task.isSuccessful)
-                if (task.isSuccessful) {
-                    //TODO save/update credentials & other
-//                    viewModel.navigateToParentGraph()
-                } else {
-                    Log.w("MAIN", "signInWithCredential" + task.exception?.message)
-                }
-            }
     }
 
 }
