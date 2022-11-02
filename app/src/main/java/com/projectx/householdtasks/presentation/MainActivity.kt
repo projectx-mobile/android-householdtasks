@@ -25,7 +25,7 @@ class MainActivity :
     }
 
     private fun setupNavigation() {
-        val navController = getNavController(R.id.my_nav_host_fragment)
+        val navController = getNavController(R.id.nav_host_fragment)
         val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
         when (Authentication.isUserSignedIn()) {
             true -> {

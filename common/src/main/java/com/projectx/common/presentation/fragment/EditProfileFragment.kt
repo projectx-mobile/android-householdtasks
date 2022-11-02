@@ -19,19 +19,19 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.widget.addTextChangedListener
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.projectx.common.R
 import com.projectx.common.databinding.DialogChangeProfilePhotoBinding
 import com.projectx.common.databinding.DialogDeleteProfileBinding
 import com.projectx.common.databinding.DialogPermissionSettingsBinding
 import com.projectx.common.databinding.FragmentEditProfileBinding
-import com.projectx.common.presentation.viewmodel.EditProfileViewModel.Companion.RequestResult
-import com.projectx.common.presentation.viewmodel.EditProfileViewModel.Companion.NameValidationResult
 import com.projectx.common.presentation.viewmodel.EditProfileViewModel
+import com.projectx.common.presentation.viewmodel.EditProfileViewModel.Companion.NameValidationResult
+import com.projectx.common.presentation.viewmodel.EditProfileViewModel.Companion.RequestResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, EditProfileViewModel>(FragmentEditProfileBinding::inflate) {
+class EditProfileFragment :
+    BaseFragment<FragmentEditProfileBinding, EditProfileViewModel>(FragmentEditProfileBinding::inflate) {
 
     override val viewModel by viewModel<EditProfileViewModel>()
 

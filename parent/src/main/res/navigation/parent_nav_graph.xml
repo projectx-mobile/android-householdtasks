@@ -2,7 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent_nav_graph"
-    app:startDestination="@id/parentHomescreenFragment">
+    app:startDestination="@id/profile_nav_graph">
+
+    <include
+        android:id="@+id/profile_nav_graph"
+        app:graph="@navigation/profile_nav_graph" />
 
     <fragment
         android:id="@+id/parentHomescreenFragment"

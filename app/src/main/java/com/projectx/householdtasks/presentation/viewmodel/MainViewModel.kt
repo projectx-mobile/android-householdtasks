@@ -12,7 +12,7 @@ class MainViewModel : BaseViewModel() {
     override fun navigateTo(event: NavEvent.To, fragment: Fragment) {
         super.navigateTo(event, fragment)
         Log.d("MAIN", "navigateTo: $event")
-        //findNavController(fragment.requireActivity(), R.id.my_nav_host_fragment).apply {
+        //findNavController(fragment.requireActivity(), R.id.nav_host_fragment).apply {
         //setGraph(R.navigation.nav_graph)
         //navigate(event.directions)
 //            graph.setStartDestination(

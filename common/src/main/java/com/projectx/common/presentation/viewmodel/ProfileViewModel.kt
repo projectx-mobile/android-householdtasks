@@ -5,6 +5,7 @@ import com.projectx.common.presentation.fragment.ProfileFragmentDirections
 import com.projectx.common.presentation.model.FamilyMember
 import com.projectx.common.presentation.model.SettingModel
 import com.projectx.common.presentation.model.profileOtherSettingList
+import com.projectx.common.presentation.model.profileSettingList
 import com.projectx.common.presentation.navigation.NavEvent
 import com.projectx.common.presentation.state.UiState
 
@@ -51,7 +52,7 @@ class ProfileViewModel(
     }
 
     private fun getSettingList() {
-        settingList.postValue(UiState.Ready(profileOtherSettingList))
+        settingList.postValue(UiState.Ready(profileSettingList))
     }
 
     private fun getFamilyMembers() {

@@ -4,6 +4,9 @@ import com.projectx.auth.data.authentication.repository.ExampleRepository
 import com.projectx.common.domain.use_case.GetFamilyMemberTestListUseCase
 import com.projectx.common.domain.use_case.GetFamilyMembersUseCase
 import com.projectx.common.domain.use_case.GetUpdatesTestListUseCase
+import com.projectx.common.presentation.viewmodel.AccountStatusViewModel
+import com.projectx.common.presentation.viewmodel.EditProfileViewModel
+import com.projectx.common.presentation.viewmodel.ProfileViewModel
 import com.projectx.householdtasks.presentation.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -16,4 +19,7 @@ val appModule = module {
     factory { GetUpdatesTestListUseCase() }
 
     viewModel { MainViewModel() }
+    viewModel { ProfileViewModel(get()) }
+    viewModel { EditProfileViewModel() }
+    viewModel { AccountStatusViewModel(get()) }
 }

@@ -44,4 +44,11 @@
     <string name="choose_method_change_photo">Выбери способ изменения фото.</string>
     <string name="take_selfie">Сделать селфи</string>
     <string name="load_from_gallery">Загрузить из галереи</string>
+
+    <!-- Fragment account status -->
+    <string name="role_management">Управление ролями</string>
+    <string name="role_management_subtitle">К вашему Family ID должен дыть привязан хотя бы один пользователь с ролью родитель.</string>
+    <string name="my_role">Моя роль</string>
+    <string name="set_parent">Назначить родителя</string>
+    <string name="child">Ребенок</string>
 </resources>
