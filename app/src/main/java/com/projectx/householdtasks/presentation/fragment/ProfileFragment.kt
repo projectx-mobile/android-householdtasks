@@ -37,6 +37,7 @@ class ProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addScrollListener()
+        (requireActivity() as MainActivity).setBottomNavViewVisibility(true)
 
         binding.apply {
             settingsAdapter = SettingsAdapter(requireContext(), SettingListener())

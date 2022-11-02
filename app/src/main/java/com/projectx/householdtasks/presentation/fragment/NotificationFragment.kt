@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.projectx.householdtasks.databinding.FragmentNotificationBinding
+import com.projectx.householdtasks.presentation.MainActivity
 import com.projectx.householdtasks.presentation.adapter.FamilyMembersAdapter
 import com.projectx.householdtasks.presentation.adapter.NotificationSwitchersAdapter
 import com.projectx.householdtasks.presentation.adapter.NotificationSwitchersModel
@@ -42,7 +43,7 @@ class NotificationFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity() as MainActivity).setBottomNavViewVisibility(false)
         binding.apply {
             switchesListAdapter =
                 NotificationSwitchersAdapter(requireContext(), NotificationSwitchersListener())

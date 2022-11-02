@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentSupportBinding
+import com.projectx.householdtasks.presentation.MainActivity
 import com.projectx.householdtasks.presentation.adapter.SettingModel
 import com.projectx.householdtasks.presentation.adapter.SettingsAdapter
 import com.projectx.householdtasks.presentation.viewmodel.SupportViewModel
@@ -40,7 +41,7 @@ class SupportFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity() as MainActivity).setBottomNavViewVisibility(false)
         binding.apply {
             settingsAdapter = SettingsAdapter(requireContext(), SettingListener())
             recyclerViewSettings.adapter = settingsAdapter

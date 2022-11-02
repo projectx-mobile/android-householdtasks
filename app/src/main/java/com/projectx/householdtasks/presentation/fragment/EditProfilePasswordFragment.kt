@@ -38,6 +38,7 @@ class EditProfilePasswordFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (requireActivity() as MainActivity).setBottomNavViewVisibility(false)
         addTextChangeListeners()
         addPasswordsObservers()
         addUiStateObserver()

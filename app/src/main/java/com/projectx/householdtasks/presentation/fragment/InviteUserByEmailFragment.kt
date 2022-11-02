@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentInviteUserByEmailBinding
 import com.projectx.householdtasks.presentation.EmailValidationResult
+import com.projectx.householdtasks.presentation.MainActivity
 import com.projectx.householdtasks.presentation.RequestResult
 import com.projectx.householdtasks.presentation.viewmodel.InviteUserByEmailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,7 +31,7 @@ class InviteUserByEmailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity() as MainActivity).setBottomNavViewVisibility(false)
         binding.toolbarLayout.toolbarArrowBack.setOnClickListener {
             findNavController().navigateUp()
         }

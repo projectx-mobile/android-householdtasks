@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentAccountStatusBinding
 import com.projectx.householdtasks.presentation.FamilyMember
+import com.projectx.householdtasks.presentation.MainActivity
 import com.projectx.householdtasks.presentation.adapter.FamilyMembersAdapter
 import com.projectx.householdtasks.presentation.viewmodel.AccountStatusViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,6 +32,7 @@ class AccountStatusFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).setBottomNavViewVisibility(false)
         binding.buttonParent.isSelected = true
         binding.toolbarLayout.toolbarArrowBack.setOnClickListener { findNavController().navigateUp() }
 

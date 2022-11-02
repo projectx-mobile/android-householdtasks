@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentInviteUserBinding
+import com.projectx.householdtasks.presentation.MainActivity
 
 class InviteUserFragment : BaseFragment() {
     private var _binding: FragmentInviteUserBinding? = null
@@ -23,6 +24,7 @@ class InviteUserFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).setBottomNavViewVisibility(false)
         binding.inviteByEmail.setOnClickListener {
             findNavController().navigate(R.id.action_inviteUserFragment_to_inviteUserByEmailFragment)
         }

@@ -28,6 +28,7 @@ import com.projectx.householdtasks.databinding.DialogChangeProfilePhotoBinding
 import com.projectx.householdtasks.databinding.DialogDeleteProfileBinding
 import com.projectx.householdtasks.databinding.DialogPermissionSettingsBinding
 import com.projectx.householdtasks.databinding.FragmentEditProfileBinding
+import com.projectx.householdtasks.presentation.MainActivity
 import com.projectx.householdtasks.presentation.NameValidationResult
 import com.projectx.householdtasks.presentation.RequestResult
 import com.projectx.householdtasks.presentation.viewmodel.EditProfileViewModel
@@ -89,6 +90,8 @@ class EditProfileFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         //          TODO: set current name
         viewModel.setNameValue("Марго")
+
+        (requireActivity() as MainActivity).setBottomNavViewVisibility(false)
 
         addNameChangedListener()
         addNameObserver()

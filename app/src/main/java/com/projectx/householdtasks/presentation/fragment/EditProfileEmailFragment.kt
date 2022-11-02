@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.projectx.householdtasks.R
 import com.projectx.householdtasks.databinding.FragmentEditProfileEmailBinding
 import com.projectx.householdtasks.presentation.EmailValidationResult
+import com.projectx.householdtasks.presentation.MainActivity
 import com.projectx.householdtasks.presentation.RequestResult
 import com.projectx.householdtasks.presentation.viewmodel.EditProfileEmailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,7 +31,7 @@ class EditProfileEmailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (requireActivity() as MainActivity).setBottomNavViewVisibility(false)
 //        TODO: set current email
         binding.currentEmailLayout.editText?.setText("name@example.com")
 

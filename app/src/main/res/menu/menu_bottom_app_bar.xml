@@ -3,13 +3,13 @@
     <item
         android:id="@+id/parentHomescreenFragment"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/selector_ic_home_nav_bar"
         android:title="@string/tasks" />
 
     <item
         android:id="@+id/wallet"
         android:enabled="true"
-        android:icon="@drawable/ic_wallet"
+        android:icon="@drawable/selector_ic_wallet_nav_bar"
         android:title="@string/wallet" />
 
     <item
@@ -20,11 +20,11 @@
     <item
         android:id="@+id/awards"
         android:enabled="true"
-        android:icon="@drawable/ic_awards"
+        android:icon="@drawable/selector_ic_awards_nav_bar"
         android:title="@string/awards" />
     <item
         android:id="@+id/profile"
         android:enabled="true"
-        android:icon="@drawable/ic_user_profile"
+        android:icon="@drawable/selector_ic_profile_nav_bar"
         android:title="@string/profile" />
 </menu>

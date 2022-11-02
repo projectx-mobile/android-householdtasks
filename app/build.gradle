@@ -69,6 +69,10 @@ dependencies {
     /* lottie animation */
     implementation "com.airbnb.android:lottie:3.4.0"
 
+    /* authentication */
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
+
     /* test */
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
