@@ -16,7 +16,6 @@
         android:id="@+id/parent_nav_graph"
         app:graph="@navigation/parent_nav_graph" />
 
-
     <action
         android:id="@+id/action_global_login_nav_graph"
         app:destination="@id/login_nav_graph"

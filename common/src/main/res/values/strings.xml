@@ -51,4 +51,13 @@
     <string name="my_role">Моя роль</string>
     <string name="set_parent">Назначить родителя</string>
     <string name="child">Ребенок</string>
+
+    <!-- Fragment edit profile email -->
+    <string name="email_error">Неверный формат email.</string>
+    <string name="current_email">Текущий email</string>
+    <string name="enter_new_email">Введи новый email</string>
+    <string name="help_message_edit_email">Мы отправили ссылку для подтверждения на указанный email.</string>
+
+    <!-- Fragment support -->
+    <string name="help_message_support">Остались вопросы? Напишите нам support@email.com</string>
 </resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing.normal"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/partial_layout_edit_information"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nexa_demo_bold"
+            android:text="@string/email"
+            android:textColor="@color/primary_midnight"
+            android:textSize="@dimen/text_size.large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
+        <com.projectx.common.presentation.support.CustomTextInputLayout
+            android:id="@+id/current_email_layout"
+            style="@style/CustomTextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing.large"
+            android:focusable="false"
+            android:gravity="bottom"
+            android:hint="@string/current_email"
+            app:errorEnabled="false"
+            app:layout_constraintBottom_toTopOf="@id/new_email_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                style="@style/CustomTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:enabled="false"
+                android:gravity="bottom" />
+        </com.projectx.common.presentation.support.CustomTextInputLayout>
+
+        <com.projectx.common.presentation.support.CustomTextInputLayout
+            android:id="@+id/new_email_layout"
+            style="@style/CustomTextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing.small"
+            android:hint="@string/enter_new_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/current_email_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/new_email"
+                style="@style/CustomTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:inputType="textEmailAddress" />
+        </com.projectx.common.presentation.support.CustomTextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_save_changes"
+            style="@style/PrimaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="40dp"
+            android:padding="@dimen/spacing.normal"
+            android:text="@string/save_changes"
+            android:enabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/new_email_layout" />
+
+        <TextView
+            android:id="@+id/help_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing.large"
+            android:layout_marginTop="@dimen/spacing.normal"
+            android:layout_marginBottom="@dimen/spacing.large"
+            android:fontFamily="@string/font_family_regular"
+            android:gravity="center"
+            android:text="@string/help_message_edit_email"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_midnight"
+            android:textColorLink="@color/primary_color"
+            android:textSize="@dimen/text_size.small"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_save_changes" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -81,7 +81,7 @@
 
         <com.projectx.common.presentation.support.CustomTextInputLayout
             android:id="@+id/person_name_layout"
-            style="@style/TextInputEditTextLoginStyle"
+            style="@style/CustomTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
@@ -93,7 +93,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name"
-                style="@style/CustomTextInputLayoutLogin"
+                style="@style/CustomTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="bottom" />

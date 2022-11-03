@@ -2,6 +2,7 @@ package com.projectx.common.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.projectx.common.ProfileNavGraphDirections
+import com.projectx.common.domain.use_case.ValidateEmailUseCase
 import com.projectx.common.presentation.navigation.NavEvent
 import com.projectx.common.presentation.state.UiState
 import kotlin.random.Random
@@ -130,20 +131,10 @@ class EditProfileViewModel : BaseViewModel() {
             object InvalidCharacterError: NameValidationResult()
         }
 
-        sealed class LoginEmailResult {
-            object OK : LoginEmailResult()
-            object Empty : LoginEmailResult()
-            object InvalidEmailError : LoginEmailResult()
-        }
         sealed class LoginPasswordResult {
             object OK : LoginPasswordResult()
             object Empty : LoginPasswordResult()
             object LengthError: LoginPasswordResult()
-        }
-
-        sealed class EmailValidationResult {
-            object OK : EmailValidationResult()
-            object InvalidEmailError: EmailValidationResult()
         }
 
         sealed class CurrentPasswordValidationResult {
@@ -171,7 +162,7 @@ class EditProfileViewModel : BaseViewModel() {
 
         data class EditProfileResult(
             val nameValidationResult: NameValidationResult,
-            val emailValidationResult: EmailValidationResult,
+            val emailValidationResult: ValidateEmailUseCase.EmailValidationResult,
             val currentPasswordValidationResult: CurrentPasswordValidationResult,
             val newPasswordValidationResult: NewPasswordValidationResult,
             val passwordConfirmationValidationResult: PasswordConfirmationValidationResult,

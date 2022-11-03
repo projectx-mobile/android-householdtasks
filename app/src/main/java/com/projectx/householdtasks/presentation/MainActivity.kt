@@ -3,6 +3,8 @@ package com.projectx.householdtasks.presentation
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.firebase.auth.AuthCredential
