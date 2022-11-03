@@ -10,6 +10,7 @@ import com.projectx.common.presentation.viewmodel.AccountStatusViewModel
 import com.projectx.common.presentation.viewmodel.EditProfileEmailViewModel
 import com.projectx.common.presentation.viewmodel.EditProfileViewModel
 import com.projectx.common.presentation.viewmodel.ProfileViewModel
+import com.projectx.common.presentation.viewmodel.SupportViewModel
 import com.projectx.householdtasks.presentation.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -28,4 +29,5 @@ val appModule = module {
     viewModel { EditProfileViewModel() }
     viewModel { AccountStatusViewModel(get()) }
     viewModel { EditProfileEmailViewModel(get(), get()) }
+    viewModel { SupportViewModel() }
 }
