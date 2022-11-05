@@ -2,6 +2,8 @@ package com.projectx.auth.presentation.viewmodel
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import com.projectx.auth.presentation.fragment.SignUpWithEmailFragmentDirections
+import com.projectx.common.presentation.navigation.NavEvent
 import com.projectx.common.presentation.viewmodel.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -34,6 +36,6 @@ class SignUpWithEmailViewModel: BaseViewModel() {
     }
 
     fun checkEmail() {
-//        navigate(NavEvent.To(SignUpWithEmailFragmentDirections.actionSignUpWithEmailFragmentToSignUpEmailConfirmationFragment()))
+        navigate(NavEvent.To(SignUpWithEmailFragmentDirections.actionSignUpWithEmailFragmentToSignUpEmailConfirmationFragment()))
     }
 }

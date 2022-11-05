@@ -37,9 +37,19 @@
         android:name="com.projectx.auth.presentation.fragment.SignUpWithEmailFragment"
         android:label="SignUpWithEmailFragment"
         tools:layout="@layout/fragment_sign_up_with_email">
-<!--        <action
+        <action
             android:id="@+id/action_signUpWithEmailFragment_to_signUpEmailConfirmationFragment"
-            app:destination="@id/signUpEmailConfirmationFragment" />-->
+            app:destination="@id/signUpEmailConfirmationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpEmailConfirmationFragment"
+        android:name="com.projectx.auth.presentation.fragment.SignUpEmailConfirmationFragment"
+        android:label="SignUpEmailConfirmationFragment"
+        tools:layout="@layout/fragment_sign_up_email_confirmation">
+<!--    <action
+        android:id="@+id/action_signUpEmailConfirmationFragment_to_createNewAccountFragment"
+        app:destination="@id/createAccountFragment" />-->
     </fragment>
 
 </navigation>
