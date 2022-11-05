@@ -60,9 +60,16 @@
         <action
             android:id="@+id/action_createAccountFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment" />
-<!--        <action
+        <action
             android:id="@+id/action_createAccountFragment_to_createAccountNotificationsFragment"
-            app:destination="@id/createAccountNotificationsFragment" />-->
+            app:destination="@id/createAccountNotificationsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createAccountNotificationsFragment"
+        android:name="com.projectx.auth.presentation.fragment.CreateAccountNotificationsFragment"
+        android:label="CreateAccountNotificationsFragment"
+        tools:layout="@layout/fragment_create_account_notifications">
     </fragment>
 
 </navigation>

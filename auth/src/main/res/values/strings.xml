@@ -41,4 +41,14 @@
     <string name="create_account_name">Твое имя</string>
     <string name="create_account_password">Придумай пароль</string>
     <string name="create_account_password_confirm">Подтверди пароль</string>
+
+    <string name="create_account_notifications_title">Оставайся в курсе</string>
+    <string name="create_account_notifications_subtitle">Позволь держать тебя в курсе главных обновлений твоей семьи. </string>
+    <string name="create_account_notifications_skip">Не уверен нужны ли уведомления?<b><a href="">Пропустить настройку.</a></b></string>
+    <string name="create_account_notifications_button_permit">Разрешить уведомления</string>
+
+    <string name="dialog_notification_permission_title">“Alfredo” просит разрешить отправку уведомлений.</string>
+    <string name="dialog_notification_permission_subtitle">Изменить настройки уведомлений возможно в Настройках.</string>
+    <string name="dialog_notification_button_permit">РАЗРЕШИТЬ</string>
+    <string name="dialog_notification_button_cancel">ОТМЕНА</string>
 </resources>

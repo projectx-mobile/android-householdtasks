@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    app:elevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/sign_up_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/progress_fill"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/toolbar_progress_filling"
+            app:layout_constraintBottom_toBottomOf="@+id/progress_corner"
+            app:layout_constraintStart_toStartOf="@+id/progress_corner"
+            app:layout_constraintTop_toTopOf="@+id/progress_corner" />
+
+        <ImageView
+            android:id="@+id/progress_corner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/toolbar_progress_corner"
+            app:layout_constraintBottom_toBottomOf="@+id/sign_up_toolbar"
+            app:layout_constraintEnd_toEndOf="@+id/sign_up_toolbar"
+            app:layout_constraintStart_toStartOf="@+id/sign_up_toolbar"
+            app:layout_constraintTop_toTopOf="@+id/sign_up_toolbar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.appbar.AppBarLayout>
