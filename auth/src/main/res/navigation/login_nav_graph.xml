@@ -47,9 +47,22 @@
         android:name="com.projectx.auth.presentation.fragment.SignUpEmailConfirmationFragment"
         android:label="SignUpEmailConfirmationFragment"
         tools:layout="@layout/fragment_sign_up_email_confirmation">
-<!--    <action
+    <action
         android:id="@+id/action_signUpEmailConfirmationFragment_to_createNewAccountFragment"
-        app:destination="@id/createAccountFragment" />-->
+        app:destination="@id/createAccountFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.projectx.auth.presentation.fragment.CreateAccountFragment"
+        android:label="CreateNewAccountFragment"
+        tools:layout="@layout/fragment_create_account">
+        <action
+            android:id="@+id/action_createAccountFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+<!--        <action
+            android:id="@+id/action_createAccountFragment_to_createAccountNotificationsFragment"
+            app:destination="@id/createAccountNotificationsFragment" />-->
     </fragment>
 
 </navigation>

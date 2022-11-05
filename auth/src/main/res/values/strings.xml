@@ -35,4 +35,10 @@
     <string name="sign_up_confirmation_title">Подтверди email</string>
     <string name="sign_up_confirmation_subtitle">Мы отправили ссылку на твой email. Пройди по ссылке, чтобы завершить регистрацию.</string>
     <string name="sign_up_confirmation_support">Не видишь наше сообщение? Проверь папку спам.<b><a href=""> Поддержка здесь.</a></b></string>
+
+    <string name="create_account_subtitle">Заполни данные для своего аккаунта. Аккаунту автоматически присвоена роль родителя.</string>
+    <string name="create_account_button_finish_registration">Завершить регистрацию</string>
+    <string name="create_account_name">Твое имя</string>
+    <string name="create_account_password">Придумай пароль</string>
+    <string name="create_account_password_confirm">Подтверди пароль</string>
 </resources>

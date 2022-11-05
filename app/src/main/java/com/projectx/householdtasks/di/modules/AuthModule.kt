@@ -11,4 +11,5 @@ val authModule = module {
     viewModel { LoginViewModel() }
     viewModel { SignUpWithEmailViewModel() }
     viewModel { SignUpConfirmationViewModel() }
+    viewModel { CreateAccountViewModel() }
 }
