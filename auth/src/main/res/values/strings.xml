@@ -27,4 +27,8 @@
     <string name="sign_in_with_google">Войти с Google</string>
     <string name="sign_in_with_email">Войти по email</string>
     <string name="create_account">Впервые в Трекере Заданий? <b><a href="">Создать аккаунт.</a></b></string>
+
+    <string name="sign_up_with_email_title">Новый аккаунт</string>
+    <string name="sign_up_with_email_subtitle">Внесенный email будет использован для восстановления доступа к твоему аккаунту.</string>
+    <string name="sign_up_with_email_terms_and_conditions">Продолжая регистрацию, ты подверждаешь согласие с <b><a href="">Правилами пользования.</a></b></string>
 </resources>

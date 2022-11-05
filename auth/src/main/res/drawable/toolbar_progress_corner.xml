@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <stroke
+                android:width="2dp"
+                android:color="@color/login_custom_button_enable_border_color" />
+            <corners android:radius="4dp" />
+            <size
+                android:height="@dimen/spacing.normal"
+                android:width="@dimen/toolbar_progress_width"/>
+        </shape>
+    </item>
+</layer-list>
+

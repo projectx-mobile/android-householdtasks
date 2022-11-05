@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_onBoardingFragment_to_chooseLoginTypeFragment"
             app:destination="@id/chooseLoginTypeFragment" />
+        <action
+            android:id="@+id/action_onBoardingFragment_to_signUpWithEmailFragment"
+            app:destination="@id/signUpWithEmailFragment"/>
     </fragment>
     <fragment
         android:id="@+id/chooseLoginTypeFragment"
@@ -28,5 +31,15 @@
         android:name="com.projectx.auth.presentation.fragment.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/signUpWithEmailFragment"
+        android:name="com.projectx.auth.presentation.fragment.SignUpWithEmailFragment"
+        android:label="SignUpWithEmailFragment"
+        tools:layout="@layout/fragment_sign_up_with_email">
+<!--        <action
+            android:id="@+id/action_signUpWithEmailFragment_to_signUpEmailConfirmationFragment"
+            app:destination="@id/signUpEmailConfirmationFragment" />-->
+    </fragment>
 
 </navigation>
