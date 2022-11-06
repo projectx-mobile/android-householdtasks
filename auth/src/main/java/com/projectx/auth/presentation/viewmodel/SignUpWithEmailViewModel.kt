@@ -63,7 +63,7 @@ class SignUpWithEmailViewModel(
                         UiState(
                             it,
                             false,
-                            if (requestSucceeded) EditProfileViewModel.Companion.RequestResult.Success else EditProfileViewModel.Companion.RequestResult.RequestFailedError
+                            if (requestSucceeded) RequestResult.SUCCESS else RequestResult.REQUESTFAILEDERROR
                         )
                     )
                 }
@@ -79,11 +79,6 @@ class SignUpWithEmailViewModel(
         return Random.nextBoolean()
     }
 
-    private fun isEmailValid(): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email.value!!.trim())
-            .matches()
-    }
-
     private fun validateEmail(result: (ValidateEmailUseCase.EmailValidationResult) -> Unit) {
         useCaseHandler(validateEmailUseCase, email.value ?: "") {
             result(it.getOrDefault(ValidateEmailUseCase.EmailValidationResult.ERROR))
@@ -93,6 +88,12 @@ class SignUpWithEmailViewModel(
     data class UiState(
         val emailValidationResult: ValidateEmailUseCase.EmailValidationResult = ValidateEmailUseCase.EmailValidationResult.OK,
         val isLoading: Boolean = false,
-        val requestResult: EditProfileViewModel.Companion.RequestResult? = null
+        val requestResult: RequestResult? = null
     )
+
+    enum class RequestResult{
+        SUCCESS,
+        REQUESTFAILEDERROR
+    }
+
 }

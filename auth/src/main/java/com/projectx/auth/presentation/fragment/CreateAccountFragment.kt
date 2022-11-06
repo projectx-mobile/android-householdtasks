@@ -15,7 +15,7 @@ class CreateAccountFragment :
         appbarCreateAccount.signUpToolbar.setNavigationOnClickListener {
             viewModel.backToOnBoardingFragment()
         }
-        buttonPermitNotifications.setOnClickListener {
+        buttonFinishRegistration.setOnClickListener {
             viewModel.goToNotificationPermissionScreen()
         }
     }

@@ -91,7 +91,7 @@
     </com.projectx.common.presentation.support.CustomTextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_permit_notifications"
+        android:id="@+id/button_finish_registration"
         style="@style/ButtonLoginStyle"
         android:layout_width="match_parent"
         android:layout_height="64dp"

@@ -53,7 +53,7 @@ class SignUpWithEmailFragment :
         }
     }
 
-    private fun SignUpWithEmailViewModel.addUiStateObserver() {
+    private fun FragmentSignUpWithEmailBinding.addUiStateObserver() {
         viewModel.uiState.observe(viewLifecycleOwner) {
             resetError()
 //           helpMessage.visibility = View.INVISIBLE
@@ -65,11 +65,11 @@ class SignUpWithEmailFragment :
             }
 
             when (it.requestResult) {
-                EditProfileViewModel.Companion.RequestResult.Success -> {
+                SignUpWithEmailViewModel.RequestResult.SUCCESS -> {
 //                    helpMessage.visibility = View.VISIBLE
                     viewModel.onRequestSuccess()
                 }
-                EditProfileViewModel.Companion.RequestResult.RequestFailedError -> setConnectionError()
+                SignUpWithEmailViewModel.RequestResult.REQUESTFAILEDERROR -> setConnectionError()
                 else -> {}
             }
         }
