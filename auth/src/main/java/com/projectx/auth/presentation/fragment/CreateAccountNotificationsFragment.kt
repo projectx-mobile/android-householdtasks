@@ -46,10 +46,11 @@ class CreateAccountNotificationsFragment:
         alertDialog.window?.setBackgroundDrawable(inset)
         with(dialogBinding) {
             negativeButton.setOnClickListener {
+                viewModel.goToFinishFragment()
                 alertDialog.dismiss()
             }
             buttonPermit.setOnClickListener {
-                // todo notifications
+                viewModel.goToFinishFragment()
                 alertDialog.dismiss()
             }
         }

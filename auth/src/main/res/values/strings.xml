@@ -51,4 +51,7 @@
     <string name="dialog_notification_permission_subtitle">Изменить настройки уведомлений возможно в Настройках.</string>
     <string name="dialog_notification_button_permit">РАЗРЕШИТЬ</string>
     <string name="dialog_notification_button_cancel">ОТМЕНА</string>
+
+    <string name="create_account_finish_title">Почти готово</string>
+    <string name="create_account_finish_subtitle">Твой аккаунт создан. Дай нам еще пару секунд.</string>
 </resources>

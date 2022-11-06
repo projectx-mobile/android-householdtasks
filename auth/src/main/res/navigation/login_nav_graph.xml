@@ -70,6 +70,16 @@
         android:name="com.projectx.auth.presentation.fragment.CreateAccountNotificationsFragment"
         android:label="CreateAccountNotificationsFragment"
         tools:layout="@layout/fragment_create_account_notifications">
+        <action
+            android:id="@+id/action_createAccountNotificationsFragment_to_createAccountFinishFragment"
+            app:destination="@id/createAccountFinishFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createAccountFinishFragment"
+        android:name="com.projectx.auth.presentation.fragment.CreateAccountFinishFragment"
+        android:label="CreateAccountFinishFragment"
+        tools:layout="@layout/fragment_create_account_finish">
     </fragment>
 
 </navigation>
