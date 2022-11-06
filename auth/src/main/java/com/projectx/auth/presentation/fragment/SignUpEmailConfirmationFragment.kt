@@ -11,9 +11,8 @@ class SignUpEmailConfirmationFragment:
     override val viewModel by viewModel<SignUpConfirmationViewModel>()
 
     override fun FragmentSignUpEmailConfirmationBinding.bindUI() {
-        imageviewCheckEmail.setOnClickListener {
-            viewModel.createAccount()
-        }
+//            viewModel.createAccount()
+            viewModel.createAccountWithDelay()
     }
 
     override fun SignUpConfirmationViewModel.subscribeUI() {
