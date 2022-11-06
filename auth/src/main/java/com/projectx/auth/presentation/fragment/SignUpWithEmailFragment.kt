@@ -1,10 +1,14 @@
 package com.projectx.auth.presentation.fragment
 
-import com.projectx.auth.R
+import android.view.View
+import androidx.core.widget.addTextChangedListener
 import com.projectx.auth.databinding.FragmentSignUpWithEmailBinding
 import com.projectx.auth.presentation.viewmodel.SignUpWithEmailViewModel
+import com.projectx.common.R
+import com.projectx.common.databinding.FragmentEditProfileEmailBinding
+import com.projectx.common.domain.use_case.ValidateEmailUseCase
 import com.projectx.common.presentation.fragment.BaseFragment
-import com.projectx.common.presentation.navigation.NavEvent
+import com.projectx.common.presentation.viewmodel.EditProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpWithEmailFragment :
@@ -13,31 +17,74 @@ class SignUpWithEmailFragment :
     override val viewModel by viewModel<SignUpWithEmailViewModel>()
 
     override fun FragmentSignUpWithEmailBinding.bindUI() {
+        addEmailChangedListener()
         appbarSignUp.signUpToolbar.setNavigationOnClickListener {
-            viewModel.navigate(NavEvent.Up)
+            viewModel.onToolbarArrowClick()
         }
-        buttonSignUpSubmitEmail.setOnClickListener {
-            viewModel.checkEmail()
+        buttonSubmitEmail.setOnClickListener {
+            viewModel.handleSaveChanges()
         }
-
-        buttonSignUpSubmitEmail.isEnabled = true
-        hideEmailErrorsOnChange()
     }
 
     override fun SignUpWithEmailViewModel.subscribeUI() {
-        email.observe(viewLifecycleOwner) {
-            hideEmailErrorsOnChange()
+        binding.apply {
+            addEmailObserver()
+            addUiStateObserver()
+            isContinueButtonEnabled.observe(viewLifecycleOwner) {
+                buttonSubmitEmail.isEnabled = it
+            }
         }
     }
 
-    private fun hideEmailErrorsOnChange() {
-        binding.emailLogin.isErrorEnabled = false
+    private fun FragmentSignUpWithEmailBinding.addEmailChangedListener() {
+        email.addTextChangedListener {
+            viewModel.setEmailValue(it.toString())
+            buttonSubmitEmail.isEnabled = viewModel.isContinueButtonEnabled.value ?: false
+            viewModel.resetEmailError()
+        }
+    }
+
+    private fun FragmentSignUpWithEmailBinding.addEmailObserver() {
+        viewModel.email.observe(viewLifecycleOwner) {
+            if (emailSignUpLayout.editText?.text.toString() != it) {
+                emailSignUpLayout.editText?.setText(it)
+            }
+            buttonSubmitEmail.isEnabled = viewModel.isContinueButtonEnabled.value ?: false
+        }
+    }
+
+    private fun SignUpWithEmailViewModel.addUiStateObserver() {
+        viewModel.uiState.observe(viewLifecycleOwner) {
+            resetError()
+//           helpMessage.visibility = View.INVISIBLE
+
+            when (it.emailValidationResult) {
+                ValidateEmailUseCase.EmailValidationResult.ERROR -> setErrorForEmail()
+                ValidateEmailUseCase.EmailValidationResult.OK -> {}
+                else -> {}
+            }
+
+            when (it.requestResult) {
+                EditProfileViewModel.Companion.RequestResult.Success -> {
+//                    helpMessage.visibility = View.VISIBLE
+                    viewModel.onRequestSuccess()
+                }
+                EditProfileViewModel.Companion.RequestResult.RequestFailedError -> setConnectionError()
+                else -> {}
+            }
+        }
+    }
+
+    private fun resetError() {
+        binding.emailSignUpLayout.error = ""
     }
 
     private fun setErrorForEmail() {
-        binding.emailLogin.isErrorEnabled = true
-        binding.emailLogin.error = getString(R.string.email_error)
+        binding.emailSignUpLayout.error = getString(R.string.email_error)
     }
 
-
+    //    TODO: add error for failure request
+    private fun setConnectionError() {
+        binding.emailSignUpLayout.error = "Ошибка подключения к серверу"
+    }
 }

@@ -9,7 +9,7 @@ val authModule = module {
     viewModel { OnBoardingImageViewModel() }
     viewModel { ChooseLoginTypeViewModel() }
     viewModel { LoginViewModel() }
-    viewModel { SignUpWithEmailViewModel() }
+    viewModel { SignUpWithEmailViewModel(get()) }
     viewModel { SignUpConfirmationViewModel() }
     viewModel { CreateAccountViewModel() }
     viewModel { CreateAccountNotificationsViewModel() }
