@@ -4,16 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import com.projectx.auth.presentation.fragment.CreateAccountFragmentDirections
 import com.projectx.auth.presentation.fragment.SignUpWithEmailFragmentDirections
-import com.projectx.common.ProfileNavGraphDirections
 import com.projectx.common.domain.use_case.ValidateEmailUseCase
 import com.projectx.common.presentation.navigation.NavEvent
 import com.projectx.common.presentation.viewmodel.BaseViewModel
-import com.projectx.common.presentation.viewmodel.EditProfileEmailViewModel
-import com.projectx.common.presentation.viewmodel.EditProfileViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlin.random.Random
 
 class SignUpWithEmailViewModel(
@@ -63,7 +57,7 @@ class SignUpWithEmailViewModel(
                         UiState(
                             it,
                             false,
-                            if (requestSucceeded) RequestResult.SUCCESS else RequestResult.REQUESTFAILEDERROR
+                            if (requestSucceeded) RequestResult.SUCCESS else RequestResult.ERROR
                         )
                     )
                 }
@@ -91,9 +85,10 @@ class SignUpWithEmailViewModel(
         val requestResult: RequestResult? = null
     )
 
-    enum class RequestResult{
-        SUCCESS,
-        REQUESTFAILEDERROR
+    companion object {
+        enum class RequestResult{
+            SUCCESS,
+            ERROR
+        }
     }
-
 }

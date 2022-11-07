@@ -1,14 +1,11 @@
 package com.projectx.auth.presentation.fragment
 
-import android.view.View
 import androidx.core.widget.addTextChangedListener
 import com.projectx.auth.databinding.FragmentSignUpWithEmailBinding
 import com.projectx.auth.presentation.viewmodel.SignUpWithEmailViewModel
 import com.projectx.common.R
-import com.projectx.common.databinding.FragmentEditProfileEmailBinding
 import com.projectx.common.domain.use_case.ValidateEmailUseCase
 import com.projectx.common.presentation.fragment.BaseFragment
-import com.projectx.common.presentation.viewmodel.EditProfileViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpWithEmailFragment :
@@ -53,7 +50,7 @@ class SignUpWithEmailFragment :
         }
     }
 
-    private fun FragmentSignUpWithEmailBinding.addUiStateObserver() {
+    private fun addUiStateObserver() {
         viewModel.uiState.observe(viewLifecycleOwner) {
             resetError()
 //           helpMessage.visibility = View.INVISIBLE
@@ -65,11 +62,11 @@ class SignUpWithEmailFragment :
             }
 
             when (it.requestResult) {
-                SignUpWithEmailViewModel.RequestResult.SUCCESS -> {
+                SignUpWithEmailViewModel.Companion.RequestResult.SUCCESS-> {
 //                    helpMessage.visibility = View.VISIBLE
                     viewModel.onRequestSuccess()
                 }
-                SignUpWithEmailViewModel.RequestResult.REQUESTFAILEDERROR -> setConnectionError()
+                SignUpWithEmailViewModel.Companion.RequestResult.ERROR -> setConnectionError()
                 else -> {}
             }
         }

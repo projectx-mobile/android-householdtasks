@@ -28,6 +28,11 @@
     <string name="name_not_contains_letter">Имя должно содержать хотя бы одну букву</string>
     <string name="profile_is_deleted">Профиль удален</string>
 
+    <!-- Fragment create account -->
+    <string name="password_length_error">Пароль должен содержать хотя бы 8 символов</string>
+    <string name="password_format_error">Пароль должен содержать латинские буквы и хотя бы 1 цифру</string>
+    <string name="password_confirm_error">Введенные пароли не совпадают</string>
+
     <!-- Dialog permission settings -->
     <string name="title_no_camera_permission">Приложению “Alfredo” необходим доступ к камере.</string>
     <string name="message_no_camera_permission">Чтобы продолжить, измени настройки доступа.</string>
