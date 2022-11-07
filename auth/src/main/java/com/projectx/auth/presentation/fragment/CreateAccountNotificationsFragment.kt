@@ -1,8 +1,12 @@
 package com.projectx.auth.presentation.fragment
 
 import android.graphics.drawable.InsetDrawable
+import android.os.Build
 import android.view.LayoutInflater
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
 import com.projectx.auth.R
 import com.projectx.auth.databinding.DialogNotificationPermissionBinding
@@ -13,7 +17,10 @@ import com.projectx.common.presentation.navigation.NavEvent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateAccountNotificationsFragment:
-    BaseFragment<FragmentCreateAccountNotificationsBinding, CreateAccountNotificationsViewModel>(FragmentCreateAccountNotificationsBinding::inflate){
+    BaseFragment<FragmentCreateAccountNotificationsBinding, CreateAccountNotificationsViewModel>(
+        FragmentCreateAccountNotificationsBinding::inflate
+    ){
+
     override val viewModel by viewModel<CreateAccountNotificationsViewModel>()
 
     override fun FragmentCreateAccountNotificationsBinding.bindUI() {
@@ -23,10 +30,6 @@ class CreateAccountNotificationsFragment:
         buttonPermitNotifications.setOnClickListener {
             createDialogNotificationPermission()
         }
-    }
-
-    override fun CreateAccountNotificationsViewModel.subscribeUI() {
-
     }
 
     private fun createDialogNotificationPermission() {
