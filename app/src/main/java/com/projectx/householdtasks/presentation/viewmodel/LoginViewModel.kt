@@ -56,10 +56,6 @@ class LoginViewModel : BaseViewModel() {
         _password.value = password
     }
 
-    fun isSaveButtonEnabled(): Boolean {
-        return email.value!!.isNotEmpty() && password.value!!.isNotEmpty()
-    }
-
     fun resetErrorForEmail() {
         _uiState.postValue(_uiState.value!!.copy(loginEmailResult = LoginEmailResult.OK))
     }

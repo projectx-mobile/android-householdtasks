@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun setBottomNavClickListener() {
+
         binding.navigation.bottomNavigation.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.parentHomescreenFragment -> {
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                     // TODO: navigation
                     true
                 }
-                R.id.profile -> {
+                R.id.profileFragment -> {
                     findNavController(R.id.nav_host_fragment).navigate(R.id.profileFragment)
                     true
                 }
@@ -57,5 +58,4 @@ class MainActivity : AppCompatActivity() {
     private fun setCheckedItemBottomNavigation() {
         binding.navigation.bottomNavigation.menu.getItem(4).isChecked = true
     }
-
 }

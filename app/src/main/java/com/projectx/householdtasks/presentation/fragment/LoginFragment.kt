@@ -29,16 +29,6 @@ class LoginFragment : BaseFragment() {
 
     private var person: String? = null
 
-    companion object {
-        fun newInstance(person: String): LoginFragment { //todo
-            val args = Bundle()
-            args.putString(PERSON, person)
-            val loginFragment = LoginFragment()
-            loginFragment.arguments = args
-            return loginFragment
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
