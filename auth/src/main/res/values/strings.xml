@@ -27,4 +27,31 @@
     <string name="sign_in_with_google">Войти с Google</string>
     <string name="sign_in_with_email">Войти по email</string>
     <string name="create_account">Впервые в Трекере Заданий? <b><a href="">Создать аккаунт.</a></b></string>
+
+    <string name="sign_up_with_email_title">Новый аккаунт</string>
+    <string name="sign_up_with_email_subtitle">Внесенный email будет использован для восстановления доступа к твоему аккаунту.</string>
+    <string name="sign_up_with_email_terms_and_conditions">Продолжая регистрацию, ты подверждаешь согласие с <b><a href="">Правилами пользования.</a></b></string>
+
+    <string name="sign_up_confirmation_title">Подтверди email</string>
+    <string name="sign_up_confirmation_subtitle">Мы отправили ссылку на твой email. Пройди по ссылке, чтобы завершить регистрацию.</string>
+    <string name="sign_up_confirmation_support">Не видишь наше сообщение? Проверь папку спам.<b><a href=""> Поддержка здесь.</a></b></string>
+
+    <string name="create_account_subtitle">Заполни данные для своего аккаунта. Аккаунту автоматически присвоена роль родителя.</string>
+    <string name="create_account_button_finish_registration">Завершить регистрацию</string>
+    <string name="create_account_name">Твое имя</string>
+    <string name="create_account_password">Придумай пароль</string>
+    <string name="create_account_password_confirm">Подтверди пароль</string>
+
+    <string name="create_account_notifications_title">Оставайся в курсе</string>
+    <string name="create_account_notifications_subtitle">Позволь держать тебя в курсе главных обновлений твоей семьи. </string>
+    <string name="create_account_notifications_skip">Не уверен нужны ли уведомления?<b><a href="">Пропустить настройку.</a></b></string>
+    <string name="create_account_notifications_button_permit">Разрешить уведомления</string>
+
+    <string name="dialog_notification_permission_title">“Alfredo” просит разрешить отправку уведомлений.</string>
+    <string name="dialog_notification_permission_subtitle">Изменить настройки уведомлений возможно в Настройках.</string>
+    <string name="dialog_notification_button_permit">РАЗРЕШИТЬ</string>
+    <string name="dialog_notification_button_cancel">ОТМЕНА</string>
+
+    <string name="create_account_finish_title">Почти готово</string>
+    <string name="create_account_finish_subtitle">Твой аккаунт создан. Дай нам еще пару секунд.</string>
 </resources>

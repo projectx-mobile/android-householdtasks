@@ -4,6 +4,7 @@
     package="com.projectx.householdtasks">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission."/>
 
     <application
         android:name=".App"

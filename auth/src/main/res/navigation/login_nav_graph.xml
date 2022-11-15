@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_onBoardingFragment_to_chooseLoginTypeFragment"
             app:destination="@id/chooseLoginTypeFragment" />
+        <action
+            android:id="@+id/action_onBoardingFragment_to_signUpWithEmailFragment"
+            app:destination="@id/signUpWithEmailFragment"/>
     </fragment>
     <fragment
         android:id="@+id/chooseLoginTypeFragment"
@@ -28,5 +31,55 @@
         android:name="com.projectx.auth.presentation.fragment.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/signUpWithEmailFragment"
+        android:name="com.projectx.auth.presentation.fragment.SignUpWithEmailFragment"
+        android:label="SignUpWithEmailFragment"
+        tools:layout="@layout/fragment_sign_up_with_email">
+        <action
+            android:id="@+id/action_signUpWithEmailFragment_to_signUpEmailConfirmationFragment"
+            app:destination="@id/signUpEmailConfirmationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpEmailConfirmationFragment"
+        android:name="com.projectx.auth.presentation.fragment.SignUpEmailConfirmationFragment"
+        android:label="SignUpEmailConfirmationFragment"
+        tools:layout="@layout/fragment_sign_up_email_confirmation">
+    <action
+        android:id="@+id/action_signUpEmailConfirmationFragment_to_createNewAccountFragment"
+        app:destination="@id/createAccountFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.projectx.auth.presentation.fragment.CreateAccountFragment"
+        android:label="CreateNewAccountFragment"
+        tools:layout="@layout/fragment_create_account">
+        <action
+            android:id="@+id/action_createAccountFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_createAccountFragment_to_createAccountNotificationsFragment"
+            app:destination="@id/createAccountNotificationsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createAccountNotificationsFragment"
+        android:name="com.projectx.auth.presentation.fragment.CreateAccountNotificationsFragment"
+        android:label="CreateAccountNotificationsFragment"
+        tools:layout="@layout/fragment_create_account_notifications">
+        <action
+            android:id="@+id/action_createAccountNotificationsFragment_to_createAccountFinishFragment"
+            app:destination="@id/createAccountFinishFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createAccountFinishFragment"
+        android:name="com.projectx.auth.presentation.fragment.CreateAccountFinishFragment"
+        android:label="CreateAccountFinishFragment"
+        tools:layout="@layout/fragment_create_account_finish">
+    </fragment>
 
 </navigation>

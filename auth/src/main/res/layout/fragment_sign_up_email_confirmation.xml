@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textview_confirmation_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing.large"
+        android:paddingLeft="@dimen/spacing.normal"
+        android:paddingRight="@dimen/spacing.normal"
+        android:fontFamily="@font/nexa_demo_bold"
+        android:text="@string/sign_up_confirmation_title"
+        android:textAppearance="@style/TextAppearanceLoginTitleStyle"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_confirmation_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/spacing.normal"
+        android:paddingRight="@dimen/spacing.normal"
+        android:layout_marginTop="@dimen/spacing.small"
+        android:gravity="center_vertical"
+        android:text="@string/sign_up_confirmation_subtitle"
+        android:textAppearance="@style/description"
+        app:layout_constraintTop_toBottomOf="@id/textview_confirmation_title"/>
+
+    <ImageView
+        android:id="@+id/imageview_check_email"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/check_mail_image"
+        app:layout_constraintBottom_toTopOf="@+id/textview_confirmation_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_confirmation_subtitle"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_confirmation_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing.normal"
+        android:layout_marginHorizontal="@dimen/spacing.normal"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="@string/sign_up_confirmation_support"
+        android:textColor="@color/primary_midnight"
+        android:textColorLink="@color/primary_juicy_grape"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

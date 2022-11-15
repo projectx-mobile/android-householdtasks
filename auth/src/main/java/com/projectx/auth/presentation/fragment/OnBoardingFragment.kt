@@ -52,6 +52,9 @@ class OnBoardingFragment :
         loginButton.setOnClickListener {
             viewModel.navigateToChooseLoginType()
         }
+        signupButton.setOnClickListener {
+            viewModel.navigateToSignUpWithEmail()
+        }
     }
 
     override fun OnBoardingViewModel.subscribeUI() {

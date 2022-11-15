@@ -34,4 +34,7 @@ class OnBoardingViewModel : BaseViewModel() {
 
     fun navigateToChooseLoginType() =
         navigate(NavEvent.To(OnBoardingFragmentDirections.actionOnBoardingFragmentToChooseLoginTypeFragment()))
+
+    fun navigateToSignUpWithEmail() =
+        navigate(NavEvent.To(OnBoardingFragmentDirections.actionOnBoardingFragmentToSignUpWithEmailFragment()))
 }

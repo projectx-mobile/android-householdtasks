@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="240dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing.large"
+        android:fontFamily="@font/nexa_demo_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/dialog_notification_permission_title"
+        android:textAppearance="@style/TextAppearanceLoginTitleStyle"
+        android:textSize="@dimen/spacing.normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing.large"
+        android:gravity="center_horizontal"
+        android:text="@string/dialog_notification_permission_subtitle"
+        android:textColor="@color/hint_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_title" />
+
+    <TextView
+        android:id="@+id/button_permit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing.large_extra"
+        android:layout_marginEnd="@dimen/spacing.large"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/dialog_notification_button_permit"
+        android:textAllCaps="true"
+        android:textColor="@color/primary_juicy_grape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/message" />
+
+    <TextView
+        android:id="@+id/negative_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing.large"
+        android:layout_marginEnd="@dimen/spacing.large"
+        android:layout_marginBottom="@dimen/spacing.large"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/dialog_notification_button_cancel"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_permit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
