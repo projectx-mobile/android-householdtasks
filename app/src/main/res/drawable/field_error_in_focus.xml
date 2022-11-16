@@ -3,7 +3,7 @@
     <item>
         <shape>
             <solid android:color="@color/shadow_text_input_color" />
-            <corners android:radius="8dp" />
+            <corners android:radius="@dimen/spacing.small" />
         </shape>
     </item>
     <item

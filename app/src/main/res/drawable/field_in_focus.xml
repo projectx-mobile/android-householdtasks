@@ -3,7 +3,7 @@
     <item>
         <shape>
             <solid android:color="@color/shadow_text_input_color" />
-            <corners android:radius="8dp" />
+            <corners android:radius="@dimen/spacing.small" />
         </shape>
     </item>
     <item
@@ -19,9 +19,9 @@
             <size android:height="56dp" />
             <stroke
                 android:width="2dp"
-                android:color="@color/login_custom_button_enable_boarder_color" />
+                android:color="@color/primary_midnight" />
             <padding android:padding="2dp" />
-            <corners android:radius="8dp" />
+            <corners android:radius="@dimen/spacing.small" />
         </shape>
     </item>
 </layer-list>

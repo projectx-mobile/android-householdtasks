@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="100dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing.normal"
+            android:fitsSystemWindows="true">
+
+            <include
+                android:id="@+id/toolbar_layout"
+                layout="@layout/partial_layout_edit_information" />
+
+            <TextView
+                android:id="@+id/text_view_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="@string/role_management"
+                android:textColor="@color/primary_midnight"
+                android:textSize="@dimen/text_size.large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
+            <TextView
+                android:id="@+id/text_view_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.small"
+                android:fontFamily="@string/font_family_regular"
+                android:text="@string/role_management_subtitle"
+                android:textColor="@color/primary_gray"
+                android:textSize="@dimen/text_size.small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_title" />
+
+            <TextView
+                android:id="@+id/text_view_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.large"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="@string/my_role"
+                android:textColor="@color/primary_midnight"
+                android:textSize="@dimen/text_size.medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_subtitle" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/buttons_layout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/spacing.normal"
+                android:background="@drawable/rectangle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_role">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_parent"
+                    style="@style/CustomToggleButtonUserRole"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null"
+                    android:text="@string/parent"
+                    android:textAllCaps="false" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_child"
+                    style="@style/CustomToggleButtonUserRole"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null"
+                    android:text="@string/child"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primary_midnight" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:id="@+id/text_view_set_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.large"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="@string/set_parent"
+                android:textColor="@color/primary_midnight"
+                android:textSize="@dimen/text_size.medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttons_layout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_family_members_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.normal"
+                app:layout_constraintTop_toBottomOf="@id/text_view_set_parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

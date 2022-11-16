@@ -5,7 +5,7 @@
         android:right="2dp">
         <shape>
             <solid android:color="@android:color/white" />
-            <corners android:radius="8dp" />
+            <corners android:radius="@dimen/spacing.small" />
             <stroke
                 android:width="2dp"
                 android:color="@color/primary_midnight" />

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/app_bar_color"
+        android:visibility="invisible">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/app_bar_color"
+            android:elevation="0dp"
+            app:subtitle="@string/profile_settings"
+            app:subtitleTextColor="@color/primary_gray"
+            app:title="@string/name"
+            app:titleTextColor="@color/primary_midnight" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/navigation_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/oval_with_border"
+                    android:fontFamily="@font/nexa_demo_bold"
+                    android:gravity="center"
+                    android:text="И"
+                    android:textColor="@color/primary_midnight"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/spacing.small"
+                        android:layout_weight="8"
+                        android:fontFamily="@font/nexa_demo_bold"
+                        android:text="@string/name"
+                        android:textColor="@color/primary_midnight"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/navigation_edit_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:drawableEndCompat="@drawable/ic_navigation"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/profile_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
+                android:layout_marginTop="@dimen/spacing.large"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="@string/profile_settings"
+                android:textColor="@color/primary_midnight"
+                android:textSize="@dimen/text_size.medium"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/navigation_bar" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/spacing.normal"
+                    android:layout_marginTop="@dimen/spacing.normal"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_subtitle"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/list_item_settings" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/my_family"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
+                android:layout_marginTop="@dimen/spacing.large"
+                android:fontFamily="@font/nexa_demo_bold"
+                android:text="@string/my_family"
+                android:textColor="@color/primary_midnight"
+                android:textSize="@dimen/text_size.medium"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view_settings" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_family_members"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/my_family"
+                tools:listitem="@layout/family_item_profile" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/divider"
+                style="@style/Divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing.large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view_family_members" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_other_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/spacing.normal"
+                    android:layout_marginTop="@dimen/spacing.normal"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/list_item_settings" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/exit_profile"
+                style="@style/SecondaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="@dimen/spacing.normal"
+                android:layout_marginTop="@dimen/spacing.double"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view_other_settings">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing.normal"
+                    android:background="@drawable/ic_exit" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="@dimen/spacing.normal"
+                    android:layout_weight="30"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/exit"
+                    android:textColor="@color/primary_midnight"
+                    android:textSize="@dimen/text_size.small" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,8 +4,8 @@
         android:left="2dp"
         android:top="3dp">
         <shape>
-            <solid android:color="@color/login_custom_button_enable_boarder_color" />
-            <corners android:radius="8dp" />
+            <solid android:color="@color/primary_midnight" />
+            <corners android:radius="@dimen/spacing.small" />
         </shape>
     </item>
     <item
@@ -13,10 +13,10 @@
         android:right="2dp">
         <shape>
             <solid android:color="@color/primary_color" />
-            <corners android:radius="8dp" />
+            <corners android:radius="@dimen/spacing.small" />
             <stroke
                 android:width="2dp"
-                android:color="@color/login_custom_button_enable_boarder_color" />
+                android:color="@color/primary_midnight" />
         </shape>
     </item>
 </layer-list>

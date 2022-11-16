@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/profileFragment">
 
     <fragment
         android:id="@+id/onBoardingFragment"
@@ -47,6 +47,107 @@
         android:id="@+id/loginFragment"
         android:name="com.projectx.householdtasks.presentation.fragment.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileEmailFragment"
+            app:destination="@id/editProfileEmailFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfilePasswordFragment"
+            app:destination="@id/editProfilePasswordFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_inviteUserFragment"
+            app:destination="@id/inviteUserFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_supportScreenFragment"
+            app:destination="@id/supportScreenFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_accountStatusFragment"
+            app:destination="@id/accountStatusFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_dialogChangeLanguageFragment"
+            app:destination="@id/dialogChangeLanguageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile"/>
+    <fragment
+        android:id="@+id/editProfileEmailFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.EditProfileEmailFragment"
+        android:label="EditProfileEmailFragment"
+        tools:layout="@layout/fragment_edit_profile_email"/>
+    <fragment
+        android:id="@+id/editProfilePasswordFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.EditProfilePasswordFragment"
+        android:label="EditProfilePasswordFragment"
+        tools:layout="@layout/fragment_edit_profile_password"/>
+    <fragment
+        android:id="@+id/inviteUserFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.InviteUserFragment"
+        android:label="InviteUserFragment"
+        tools:layout="@layout/fragment_invite_user">
+        <action
+            android:id="@+id/action_inviteUserFragment_to_inviteUserByEmailFragment"
+            app:destination="@id/inviteUserByEmailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inviteUserByEmailFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.InviteUserByEmailFragment"
+        android:label="InviteUserByEmailFragment"
+        tools:layout="@layout/fragment_invite_user_by_email">
+        <action
+            android:id="@+id/action_inviteUserByEmailFragment_to_sendInvitationFragment"
+            app:destination="@id/sendInvitationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/supportScreenFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.SupportFragment"
+        android:label="SupportScreenFragment"
+        tools:layout="@layout/fragment_support">
+        <action
+            android:id="@+id/action_supportScreenFragment_to_bottomSheetFaqFragment"
+            app:destination="@id/bottomSheetFaqFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountStatusFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.AccountStatusFragment"
+        android:label="AccountStatusFragment"
+        tools:layout="@layout/fragment_account_status"/>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notification"/>
+    <dialog
+        android:id="@+id/bottomSheetFaqFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.BottomSheetFaqFragment"
+        android:label="BottomSheetFaqFragment"
+        tools:layout="@layout/fragment_bottom_sheet_faq"/>
+    <dialog
+        android:id="@+id/dialogChangeLanguageFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.DialogChangeLanguageFragment"
+        android:label="DialogChangeLanguageFragment"
+        tools:layout="@layout/fragment_dialog_change_language"/>
+    <fragment
+        android:id="@+id/sendInvitationFragment"
+        android:name="com.projectx.householdtasks.presentation.fragment.SendInvitationFragment"
+        android:label="fragment_send_invitation"
+        tools:layout="@layout/fragment_send_invitation" />
 
 </navigation>

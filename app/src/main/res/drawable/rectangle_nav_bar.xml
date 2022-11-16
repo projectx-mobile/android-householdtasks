@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="@color/background_nav_bar_color" />
-    <size android:height="@dimen/spacing.large_extra" />
-    <padding android:padding="@dimen/spacing.small_extra" />
+    <solid android:color="@color/primary_midnight" />
+    <size android:height="56dp" />
+    <padding android:padding="@dimen/spacing.small" />
     <corners
         android:topLeftRadius="@dimen/spacing.normal"
         android:topRightRadius="@dimen/spacing.normal" />

@@ -11,7 +11,6 @@
     <string name="wallet">Кошелек</string>
     <string name="awards">Награды</string>
     <string name="profile">Профиль</string>
-    <string name="my_family">Моя семья</string>
     <string name="updates">Обновления</string>
     <string name="view_all_updates">Просмотреть все</string>
     <string name="active_tasks">Активных на сегодня (0)</string>
@@ -19,6 +18,19 @@
     <string name="tasks_label">задач</string>
     <string name="name_placeholder">Aлиса</string>
     <string name="updates_placeholder">Обновления</string>
+    <string name="profile_settings">Настройки профиля</string>
+    <string name="name">Имя</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="parent">Родитель</string>
+    <string name="linked_accounts">Присоединенные аккаунты</string>
+    <string name="notifications">Уведомления</string>
+    <string name="my_family">Моя семья</string>
+    <string name="invited">Приглашен</string>
+    <string name="add">Добавить</string>
+    <string name="select_language">Выбрать язык</string>
+    <string name="support">Поддержка</string>
+    <string name="exit">Выйти</string>
 
     <string name="login_with_qr_code">Отсканировать QR-Code из профиля Родителей.</string>
     <string name="login_forgot_password">Не помнишь пароль? Восстановить доступ.</string>
@@ -36,6 +48,36 @@
     <string name="email_error">Неверный формат email.</string>
     <string name="password_error">Неверный формат или количество символов.</string>
     <string name="authentication_error">Неверный email или Family ID.</string>
+    <string name="help_message_forgot_password">Забыли пароль? Сбросить пароль здесь.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="passwords_not_match">Введенные пароли не совпадают</string>
+    <string name="send_invitation">Приглашение отправлено</string>
+    <string name="my_profile">Мой профиль</string>
+    <string name="save_changes">Сохранить изменения</string>
+    <string name="delete_profile">Удалить профиль</string>
+    <string name="current_email">Текущий email</string>
+    <string name="enter_new_email">Введи новый email</string>
+    <string name="help_message_edit_email">Мы отправили ссылку для подтверждения на указанный email.</string>
+    <string name="current_password">Твой текущий пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="confirm_password">Подтверди новый пароль</string>
+    <string name="changes_saved">Изменения сохранены.</string>
+    <string name="new_user">Новый пользователь</string>
+    <string name="help_message_invite_user">Выбери способ, с помощью которого мы пригласим нового пользователя.</string>
+    <string name="invite_by_email">Пригласить по email</string>
+    <string name="family_id">Family ID</string>
+    <string name="share_link">Поделиться ссылкой</string>
+    <string name="child">Ребенок</string>
+    <string name="email_new_user">Email нового пользователя</string>
+    <string name="faq">Часто задаваемые вопросы</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="feedback">Оставить отзыв</string>
+    <string name="help_message_support">Остались вопросы? Напишите нам support@email.com</string>
+    <string name="role_management">Управление ролями</string>
+    <string name="role_management_subtitle">К вашему Family ID должен дыть привязан хотя бы один пользователь с ролью родитель.</string>
+    <string name="my_role">Моя роль</string>
+    <string name="set_parent">Назначить родителя</string>
+
 
     <!-- Strings related to login -->
     <string name="title">Войти</string>
@@ -43,6 +85,34 @@
     <string name="sign_in_with_google">Войти с Google</string>
     <string name="sign_in_with_email">Войти по email</string>
     <string name="create_account">Впервые в Трекере Заданий? <b><a href="">Создать аккаунт.</a></b></string>
+    <string name="title_no_camera_permission">Приложению “Alfredo” необходим доступ к камере.</string>
+    <string name="message_no_camera_permission">Чтобы продолжить, измени настройки доступа.</string>
+    <string name="settings">Настройки</string>
+    <string name="cancel">Отмена</string>
+    <string name="title_dialog_delete_profile">Ты уверен(а), что хочешь удалить свой профиль?</string>
+    <string name="delete">Удалить</string>
+    <string name="message_dialog_delete_profile">Это действие нельзя отменить</string>
+    <string name="profile_is_deleted">Профиль удален</string>
+    <string name="turn_off">Выключить все</string>
+    <string name="remind_about_tasks">Напоминать о задачах</string>
+    <string name="remind">Напоминать</string>
+    <string name="change_photo_profile">Изменить фото профиля</string>
+    <string name="choose_method_change_photo">Выбери способ изменения фото.</string>
+    <string name="take_selfie">Сделать селфи</string>
+    <string name="load_from_gallery">Загрузить из галереи</string>
+    <string name="choose_language">Выбрать язык приложения</string>
+    <string name="russian">Русский</string>
+    <string name="english">English</string>
+    <string name="ok">ОК</string>
+    <string name="text_interval">Каждые 2 часа</string>
+    <string name="notification_new_tasks_status">Новый статус задач</string>
+    <string name="notifications_tasks_request">Запросы на задачи</string>
+    <string name="notifications_awards_request">Запросы на награды</string>
+    <string name="wrong_password">Неверный пароль</string>
+    <string name="connection_error">Ошибка подключения к серверуу</string>
+    <string name="name_length_error">Имя должно содержать 1 - 20 символов</string>
+    <string name="name_not_contains_letter">Имя должно содержать хотя бы одну букву</string>
+    <string name="invitation_sent">Приглашение отправлено</string>
 
     <!-- /Strings related to login -->
 </resources>

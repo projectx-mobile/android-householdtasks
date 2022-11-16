@@ -2,12 +2,12 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing.large_extra"
+        android:layout_height="56dp"
         android:layout_gravity="bottom"
         android:background="@drawable/rectangle_nav_bar"
         app:itemIconTint="@color/white"
@@ -17,14 +17,14 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/floating_action_button"
-        android:layout_width="@dimen/spacing.large_extra"
-        android:layout_height="@dimen/spacing.large_extra"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_gravity="center|bottom"
-        android:layout_margin="@dimen/spacing.large"
+        android:layout_margin="@dimen/spacing.normal"
         android:background="@drawable/fab_selector"
+        android:src="@drawable/ic_plus_white"
+        android:translationZ="@dimen/spacing.small"
         android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/ic_add"
-        android:translationZ="@dimen/spacing.small" />
+        android:focusable="true" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

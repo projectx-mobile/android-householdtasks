@@ -16,7 +16,6 @@ class CustomTextInputLayout(context: Context, attributeSet: AttributeSet) :
             }
         }
         updateStyles()
-
     }
 
     override fun setError(error: CharSequence?) {
@@ -24,7 +23,6 @@ class CustomTextInputLayout(context: Context, attributeSet: AttributeSet) :
         val iconView =
             this.findViewById<View>(com.google.android.material.R.id.text_input_error_icon)
         iconView.setPadding(0, 46, 0, 0)
-
         updateStyles()
     }
 

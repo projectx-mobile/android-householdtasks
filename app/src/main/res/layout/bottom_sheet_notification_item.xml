@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/interval"
+        style="@style/CustomBottomSheetWithItemSelection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing.normal"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@string/font_family_regular"
+        android:padding="@dimen/spacing.normal"
+        android:text="@string/text_interval"
+        android:textColor="@color/primary_midnight"
+        android:textSize="14sp" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        style="@style/Divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing.normal" />
+
+</LinearLayout>

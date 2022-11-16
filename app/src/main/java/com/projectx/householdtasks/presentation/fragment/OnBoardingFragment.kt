@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.AnimRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.res.ResourcesCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -58,6 +59,11 @@ class OnBoardingFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.bindUI().subscribeUI()
+
+//        TODO: navigation
+        binding.loginButton.setOnClickListener {
+            findNavController().navigate(R.id.action_onBoardingFragment_to_chooseLoginTypeFragment)
+        }
     }
 
     private fun FragmentOnboardingBinding.bindUI() = this.apply {

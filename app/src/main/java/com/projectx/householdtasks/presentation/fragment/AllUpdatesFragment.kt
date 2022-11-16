@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.projectx.householdtasks.databinding.FragmentAllUpdatesBinding
-import com.projectx.householdtasks.presentation.UpdatesListAdapter
+import com.projectx.householdtasks.presentation.adapter.UpdatesListAdapter
 import com.projectx.householdtasks.presentation.viewmodel.ParentHomescreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

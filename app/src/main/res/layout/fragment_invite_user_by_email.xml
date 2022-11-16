@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing.normal"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/partial_layout_edit_information" />
+
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nexa_demo_bold"
+            android:text="@string/invite_by_email"
+            android:textColor="@color/primary_midnight"
+            android:textSize="@dimen/text_size.large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout" />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_title">
+
+            <RadioButton
+                android:id="@+id/radio_button_child"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:drawableStart="@drawable/radio_button_selector"
+                android:drawablePadding="10dp"
+                android:checked="true"
+                android:fontFamily="sans-serif"
+                android:text="@string/child"
+                android:textSize="@dimen/text_size.small" />
+
+            <RadioButton
+                android:id="@+id/radio_button_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:drawableStart="@drawable/radio_button_selector"
+                android:drawablePadding="10dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/parent"
+                android:textSize="@dimen/text_size.small"
+                app:layout_constraintStart_toStartOf="parent" />
+        </RadioGroup>
+
+        <com.projectx.householdtasks.presentation.support.CustomTextInputLayout
+            android:id="@+id/new_user_email"
+            style="@style/CustomTextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing.large"
+            android:gravity="bottom"
+            android:hint="@string/email_new_user"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_group">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                style="@style/CustomTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:text="@={InviteUserByEmailViewModel.email}" />
+
+        </com.projectx.householdtasks.presentation.support.CustomTextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_continue"
+            style="@style/PrimaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="40dp"
+            android:padding="14dp"
+            android:text="@string/login_button_continue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/new_user_email" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+
